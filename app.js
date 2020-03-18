@@ -12,6 +12,10 @@ const accountRouter = require('./routes/account');
 
 var app = express();
 
+app.use('/public/stylesheets/', express.static('./public/stylesheets'));
+app.use('/public/images/', express.static('./public/images'));
+app.use('/public/javascripts/', express.static('./public/javascripts'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -27,6 +31,8 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/main', mainRouter);
 app.use('/account', accountRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
