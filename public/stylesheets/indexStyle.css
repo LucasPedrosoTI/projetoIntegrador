@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
 * {
     margin: 0;
     padding: 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 #parallax01 {
@@ -24,33 +24,42 @@
     background-size: cover;
 }
 
-.container {
-    box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
-    background-color:#eacd65;
+.CustomContainer {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    background-color: #eacd65;
     font-family: 'Roboto', sans-serif;
     position: fixed;
     top: 10px;
     left: 10px;
-    width: 97%;
+    width: 100% !important;
     font-size: large;
     border-radius: 0 0 20px 0;
     padding: 0;
 }
 
-.container div {
+.CustomContainer div {
     padding: 2% 3% 2% 3%;
     background-color: #eacd65;
 }
 
-.container a {
+.CustomContainer a {
     color: #597081;
     text-decoration: none;
 }
 
-.container a:hover {
+.CustomContainer a:hover {
     color: #597081;
     border-bottom: solid 2px rgba(0, 0, 0, 0.5);
     text-decoration: none;
+}
+
+.active {
+    color: #e14242 !important;
+}
+
+.navbar {
+    font-weight: bold;
+    background-color: #eacd65;
 }
 
 footer {
@@ -60,14 +69,15 @@ footer {
 }
 
 #frontbutton {
-    box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
     justify-content: center;
     background-color: #eacd65;
     border-color: #eacd65;
     border-radius: 15px;
     margin: 25% 40%;
     padding: 3% 3%;
-    font-size: large;
+    font-size: 1rem;
+    font-weight: bold;
     color: black;
 }
 
