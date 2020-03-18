@@ -10,6 +10,7 @@ const loginRouter = require('./routes/login');
 const mainRouter = require('./routes/main');
 const accountRouter = require('./routes/account');
 const cadastrocnpjRouter = require('./routes/cadastrocnpj');
+const cadastrocpfRouter = require('./routes/cadastrocpf');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/login', loginRouter);
 app.use('/main', mainRouter);
 app.use('/account', accountRouter);
 app.use('/cadastrocnpj', cadastrocnpjRouter);
+app.use('/cadastrocpf', cadastrocpfRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

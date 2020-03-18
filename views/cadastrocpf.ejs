@@ -15,7 +15,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../public/stylesheets/cadastrocnpj.css" />
+    <link rel="stylesheet" href="../public/stylesheets/cadastrocpf.css" />
   </head>
   <body>
     <header class="container">
@@ -57,12 +57,12 @@
     <form class="form-horizontal">
       <fieldset>
         <div class="panel panel-primary">
-          <div class="panel-heading">Cadastro de Postos</div>
+          <div class="panel-heading">Cadastro de Usuário</div>
           <div class="panel-body">
             <!-- Text input-->
             <div class="form-group">
               <label class="col-md-2 control-label" for="Nome"
-                >Nome do Proprietário<h11>*</h11></label
+                >Nome do usuário<h11>*</h11></label
               >
               <div class="col-md-8">
                 <input
@@ -75,43 +75,10 @@
                 />
               </div>
             </div>
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-2 control-label" for="NomePosto"
-                >Nome do Posto<h11>*</h11></label
-              >
-              <div class="col-md-8">
-                <input
-                  id="NomePosto"
-                  name="NomePosto"
-                  placeholder="Digite o nome do posto"
-                  class="form-control input-md"
-                  required=""
-                  type="text"
-                />
-              </div>
-            </div>
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-2 control-label" for="cnpj"
-                >CNPJ<h11>*</h11></label
-              >
-              <div class="col-md-2">
-                <input
-                  id="cnpj"
-                  name="cnpj"
-                  placeholder="Apenas números"
-                  class="form-control input-md"
-                  required=""
-                  type="text"
-                  maxlength="12"
-                  pattern="[0-9]+$"
-                />
-              </div>
             <!-- Prepended text-->
             <div class="form-group">
               <label class="col-md-2 control-label" for="prependedtext"
-                >Telefone do Posto<h11>*</h11></label
+                >Telefone<h11>*</h11></label
               >
               <div class="col-md-2">
                 <div class="input-group">
@@ -155,21 +122,21 @@
             </div>
             <!-- Password input -->
             <div class="form-group">
-              <label class="col-md-2 control-label" for="senha"
-                >Senha: <h11>*</h11></label
-              >
-              <div class="col-md-5">
-                <div class="input-group">
-                  <input
-                    id="senha"
-                    name="senha"
-                    class="form-control"
-                    placeholder="8 dígitos"
-                    required=""
-                    type="password"
-                  />
+                <label class="col-md-2 control-label" for="senha"
+                  >Senha: <h11>*</h11></label
+                >
+                <div class="col-md-5">
+                  <div class="input-group">
+                    <input
+                      id="senha"
+                      name="senha"
+                      class="form-control"
+                      placeholder="8 dígitos"
+                      required=""
+                      type="password"
+                    />
+                  </div>
                 </div>
-              </div>
             </div>
             <!-- Search input-->
             <div class="form-group">
@@ -237,37 +204,6 @@
                      <option>TO</option>
                      </select>
                 </div>
-              </div>
-              <label class="col-md-6">O estabelecimento possui serviço(s) adicional(is)?</label>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="bombapneu" id="bombapneu">
-                <label class="form-check-label" for="bombapneu">
-                  Bomba de calibrar pneu
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="lojaConveniencia" id="lojaConveniencia">
-                <label class="form-check-label" for="lojaConveniencia">
-                  Loja de Conveniência
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="restaurante" id="restaurante">
-                <label class="form-check-label" for="restaurante">
-                  Restaurante
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="oficina" id="oficina">
-                <label class="form-check-label" for="oficina">
-                  Oficina Mecânica
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="lavarVeiculo" id="lavarVeiculo">
-                <label class="form-check-label" for="lavarVeiculo">
-                  Lavagem de Veículo
-                </label>
               </div>
               <div class="form-group">
                 <div class="form-check" id="termosDeUso">
