@@ -106,7 +106,7 @@ a {
     height: 100%;
     position: absolute;
     padding: 90px 70px 50px 70px;
-    background: #eacd6566;
+    background: rgba(204, 204, 204, 0.637);
     border-radius: 20px;
 }
 
