@@ -1,101 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <title>Meu Posto</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-    <link rel='stylesheet' href='../public/stylesheets/indexStyle.css' />
+    <link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
+  </head>
 
-</head>
-
-<body>
-    <header class="customContainer">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#"><img src="public/images/icone-semfundo.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <body>
+    <header class="container" id="navbar">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/"
+          ><img src="public/images/icone-semfundo.png" class="logonavbar"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            Página Inicial<span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/main">Ache o Melhor Posto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cadastroCnpj">Postos Parceiros</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Serviços
-              </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Mecânica</a>
-                            <a class="dropdown-item" href="#">Calibrar pneu</a>
-                            <a class="dropdown-item" href="#">Lavar Veículo</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <a class="nav-link" id="logar" href="/login">Entrar</a>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Procurar Posto" aria-label="Search" />
-                    <button class="btn btn-outline-secondary my-2 my-sm-0" id="btn-procurar" type="submit">
-              Procurar
-            </button>
-                </form>
-            </div>
-        </nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"
+                >Página Inicial<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Encontre o melhor posto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Serviços</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Seja um Posto Parceiro</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link" id="logar" href="/login">Entrar</a>
+          </form>
+        </div>
+      </nav>
     </header>
 
     <div id="parallax01">
-        <a href="/login">
-            <button id="frontbutton">FAÇA SEU CADASTRO</button>
-        </a>
+      <p class="text-img">
+        Confie no combustível que entra no seu motor
+      </p>
+      <a href="/login">
+        <button id="frontbutton">FAÇA SEU CADASTRO</button>
+      </a>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div id="principaltext" class="col-6">
+          <h1>O que é o MEU POSTO</h1>
+          <br />
+          <p>
+            Acesse os dados de millhares de postos de combustíveis e compare
+            instantaneamente o preço, qualidade, e a localização, com a
+            confiança de não comprar combustíveis de baixa qualidade ou de
+            procedência não garantida.
+          </p>
+          <p>
+            Compartilha sua opinião e confira o que outros motoristas tem a
+            dizer sobre o posto de combustíveis de sua preferência. Compartilhe
+            experiências e ajude outras pessoas a encontrar o melhor preço,
+            melhor serviço ou o posto de mais confiança da sua região.
+          </p>
+          <p>
+            Ajude a levar clientes pra quem cuida da segurança do seu carro e
+            diminua o lucro de quem não negocia honestamente.
+          </p>
+        </div>
+        <div class="col-6">
+          Inserir mapa
+        </div>
+      </div>
     </div>
 
-    <div id="principaltext">
-        <h1>O que é o MEU POSTO</h1>
-        <br>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris metus mauris, aliquam non varius nec, ornare non erat. Nam dignissim at enim in varius. Donec ornare ultrices arcu in scelerisque. Integer in viverra lorem. Proin tincidunt, turpis vitae
-            suscipit interdum, lorem augue venenatis neque, ullamcorper bibendum ante mauris ut felis. Praesent eu magna ornare, cursus est ultrices, consectetur mi. Vivamus ut ultrices orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia Curae; Proin est nisl, posuere sit amet tempus non, convallis eget urna. Curabitur at nibh ut massa semper aliquet. Morbi pellentesque nisl nec libero posuere condimentum. Proin interdum tincidunt ante sit amet ornare. Nullam
-            gravida, diam in dictum maximus, erat orci consequat sem, nec maximus enim nisl sed ipsum. Aenean vitae libero venenatis, cursus purus ac, rutrum mauris.
-            <br><br> Donec eget nulla leo. Vivamus elementum feugiat condimentum. Sed nec scelerisque libero. Aliquam a ex eget lacus ultrices egestas euismod sed urna. Phasellus posuere nunc sed facilisis feugiat. Praesent aliquet mi quis ligula fringilla,
-            ac ornare leo luctus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam eget nisi sit amet sem pulvinar varius. Mauris porta nulla vel velit volutpat fringilla. Cras non tincidunt nunc. Suspendisse
-            fringilla aliquet velit et mollis. Pellentesque quis massa dignissim, porta velit ut, ultrices justo. Donec interdum porta lorem, eu tincidunt velit feugiat sed. Duis sapien mi, efficitur at mattis sit amet, semper non erat. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut eget pharetra ipsum, eget lobortis risus.
-            <br><br> Donec placerat felis eu orci egestas eleifend. Donec quis vulputate ante. Phasellus tristique eros non volutpat mollis. Curabitur feugiat vestibulum libero nec dictum. Curabitur auctor erat at vulputate mollis. Vivamus nec sem a felis
-            hendrerit iaculis ac quis ligula. Curabitur malesuada arcu sed scelerisque tristique. Nullam quis consequat sem. Nullam dictum eros quis ipsum vestibulum interdum. Sed iaculis augue elit, pharetra sollicitudin arcu pretium lacinia. Proin leo
-            diam, luctus ut tortor a, eleifend faucibus lectus. Cras pulvinar ornare sapien sagittis lacinia. In nisi magna, pretium vitae metus eget, malesuada accumsan ex. Pellentesque urna magna, ornare sed pellentesque a, gravida vel diam.
-        </p>
+    <div id="parallax02">
+      <a href="/login">
+        <button id="frontbuttondown">SEJA UM POSTO PARCEIRO</button>
+      </a>
+      <p class="text-imgbot">
+        Amplie o alcance de suas vendas
+      </p>
     </div>
-
-    <div id="parallax02"></div>
 
     <footer>
-        <p> Copyright</p>
-        <p> e-mail: contato@contato.com.br</p>
-        <br>
-        <p><a href="#">Home</a> - <a href="#">Login</a> - <a hrf="#">Cadastro</a> - <a href="#">Postos Parceiros</a> - <a>Contato</a></p>
+      <div>
+        &copy; Copyright - Todos os direitos reservados
+        <a href="#" class="footer">Home</a>
+        <a href="#" class="footer">Quem Somos</a>
+        <a href="#" class="footer">Contato</a>
+        <a href="#" class="footer">Termos de Uso</a>
+      </div>
     </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
