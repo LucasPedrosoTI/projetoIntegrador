@@ -57,4 +57,7 @@ module.exports = {
   cadastroCnpj: (req, res, next) => {
     res.render("cadastrocnpj");
   },
+  servicos: (req, res) => {
+    res.render("servicos")
+  },
 };

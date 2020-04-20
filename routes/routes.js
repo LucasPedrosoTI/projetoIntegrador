@@ -15,4 +15,6 @@ router.get("/cadastrocnpj", viewController.cadastroCnpj);
 
 router.get("/postos", viewController.indexPostos);
 
+router.get("/servicos", viewController.servicos);
+
 module.exports = router;
