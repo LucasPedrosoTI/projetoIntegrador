@@ -11,24 +11,27 @@
 }
 
 #navbar {
-  margin: 0.4% 5%;
-  opacity: 1;
+  margin: 0 0.4% 5% 5%;
+  opacity: 0.95;
+  position: fixed;
   font-size: 1.2rem;
+  z-index: 1;
 }
 
 .navbar {
-  border: 1px solid #707070;
+  border: none;
   border-radius: 0px 0px 25px 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
   font-weight: bold;
   background-color: #ffffff;
-  padding: 0px;
+  padding: 0 0 0 3%;
   color: #707070;
 }
 
 .text-img {
   color: #ffffffe6;
   text-align: center;
-  padding-top: 10%;
+  padding-top: 15%;
   font-size: 3rem;
   font-weight: bold;
 }
@@ -40,10 +43,40 @@
   font-weight: bold;
 }
 
+#minimap {
+  background-image: url(../images/mapmini.jpg);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  padding: 2% 0 0 0;
+  margin: 2.5% 0 2.5% 0;
+}
+
+#textsearch {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#searchbutton {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  background-color: #eacd65;
+  border-color: #eacd65;
+  border-radius: 10px;
+  margin: 10% 20%;
+  padding: 5% 5%;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: black;
+}
+
 #parallax01 {
   background-image: url(../images/back02.jpg);
   background-attachment: fixed;
-  height: 450px;
+  height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,7 +85,7 @@
 #parallax02 {
   background-image: url(../images/back01.jpg);
   background-attachment: fixed;
-  height: 350px;
+  height: 450px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -63,12 +96,12 @@
 }
 
 #frontbutton {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
   justify-content: center;
   background-color: #eacd65;
   border-color: #eacd65;
   border-radius: 15px;
-  margin: 7% 36%;
+  margin: 5% 36%;
   padding: 2% 2%;
   font-size: 1.5rem;
   font-weight: bold;
@@ -86,7 +119,7 @@
   background-color: #eacd65;
   border-color: #eacd65;
   border-radius: 15px;
-  margin: 5% 36%;
+  margin: 8% 36%;
   padding: 2% 2%;
   font-size: 1.5rem;
   font-weight: bold;
@@ -99,6 +132,8 @@
 
 #principaltext {
   text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #logar {
@@ -122,19 +157,34 @@ header img {
 }
 
 footer {
+  display: flex;
+  color: white;
   background-color: #597081;
   padding: 2%;
-  color: white;
-}
-
-footer div a {
-  display: inline-block;
-  padding: 0% 6%;
-}
-
-.footer {
   text-decoration: none;
   font-style: none;
-  color: inherit;
   align-self: center;
 }
+
+footer div ul li a {
+  padding: 0% 2%;
+  color: white;
+  padding: 2%;
+  text-decoration: none;
+  font-style: none;
+  align-self: center;
+}
+
+footer div ul li a:hover{
+  color: white;
+  text-decoration: none;
+  font-style: none;
+}
+
+footer div ul li{
+  display: inline;
+  text-decoration: none;
+  font-style: none;
+  align-self: left;
+}
+
