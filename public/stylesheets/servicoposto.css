@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+
+  background: url(../images/backLogin.jpg) no-repeat center;
+  font: 600 16px/18px 'Roboto', sans-serif;
+}
+
+.form-horizontal {
+  margin-top: 150px;
+  background-color: #fcfcfccc;
+  border-radius: 15px;
+  margin-bottom: 100px;
+  padding-left: 10px;
+}
+
+#title {
+  display: flex;
+}
+
+h2 {
+  margin: 20px auto;
+}
+
+#btnsalvar {
+  margin: 5%;
+  background-color: #e14242;
+  border-color: #df3737;
+  color: #fff;
+}
+
+.check {
+  margin-right: 10px;
+  margin-left: 15px;
+}

@@ -1,54 +1,62 @@
 <%- include('parts/head', {title: 'Meu Posto'}) %>
-    <link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
+<link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
 
-    <header>
-        <%- include('parts/navbar') %>
-    </header>
+<header>
+  <%- include('parts/navbar') %>
+</header>
 
-    <div id="parallax01">
-        <p class="text-img">
-            Confie no combustível que entra no seu motor
-        </p>
-        <a href="/login">
-            <button id="frontbutton">FAÇA SEU CADASTRO</button>
-        </a>
+<div id="parallax01">
+  <p class="text-img">
+    Confie no combustível que entra no seu motor
+  </p>
+  <a href="/cadastro">
+    <button id="frontbutton">FAÇA SEU CADASTRO</button>
+  </a>
+</div>
+<div class="container">
+  <div class="row">
+    <div id="principaltext" class="col-lg-8 col-md-8">
+      <h1>O que é o MEU POSTO</h1>
+      <br />
+      <p>
+        Acesse os dados de millhares de postos de combustíveis e compare
+        instantaneamente o preço, qualidade, e a localização, com a confiança de
+        não comprar combustíveis de baixa qualidade ou de procedência não
+        garantida.
+      </p>
+      <p>
+        Compartilha sua opinião e confira o que outros motoristas tem a dizer
+        sobre o posto de combustíveis de sua preferência. Compartilhe
+        experiências e ajude outras pessoas a encontrar o melhor preço, melhor
+        serviço ou o posto de mais confiança da sua região.
+      </p>
+      <p>
+        Ajude a levar clientes pra quem cuida da segurança do seu carro e
+        diminua o lucro de quem não negocia honestamente.
+      </p>
     </div>
-    <div class="container">
-        <div class="row">
-            <div id="principaltext" class="col-lg-8 col-md-8">
-                <h1>O que é o MEU POSTO</h1>
-                <br />
-                <p>
-                    Acesse os dados de millhares de postos de combustíveis e compare instantaneamente o preço, qualidade, e a localização, com a confiança de não comprar combustíveis de baixa qualidade ou de procedência não garantida.
-                </p>
-                <p>
-                    Compartilha sua opinião e confira o que outros motoristas tem a dizer sobre o posto de combustíveis de sua preferência. Compartilhe experiências e ajude outras pessoas a encontrar o melhor preço, melhor serviço ou o posto de mais confiança da sua região.
-                </p>
-                <p>
-                    Ajude a levar clientes pra quem cuida da segurança do seu carro e diminua o lucro de quem não negocia honestamente.
-                </p>
-            </div>
-            <div id="minimap" class="col-lg-4 col-md-4">
-                <form action="/main">
-                    <br>
-                    <label for="search"><p id="textsearch">Procure o posto mais próximo</p></label>
-                    <br>
-                    <input name="search" type="search" placeholder="Digite o endereço">
-                    <br>
-                    <input id="searchbutton" type="submit" value="BUSCAR">
-                </form>
-
-            </div>
-        </div>
+    <div id="minimap" class="col-lg-4 col-md-4">
+      <form action="/main">
+        <br />
+        <label for="search"
+          ><p id="textsearch">Procure o posto mais próximo</p></label
+        >
+        <br />
+        <input name="search" type="search" placeholder="Digite o endereço" />
+        <br />
+        <input id="searchbutton" type="submit" value="BUSCAR" />
+      </form>
     </div>
+  </div>
+</div>
 
-    <div id="parallax02">
-        <a href="/login">
-            <button id="frontbuttondown">SEJA UM POSTO PARCEIRO</button>
-        </a>
-        <p class="text-imgbot">
-            Amplie o alcance de suas vendas
-        </p>
-    </div>
+<div id="parallax02">
+  <a href="/cadastro">
+    <button id="frontbuttondown">SEJA UM POSTO PARCEIRO</button>
+  </a>
+  <p class="text-imgbot">
+    Amplie o alcance de suas vendas
+  </p>
+</div>
 
-    <%- include('parts/foot') %>
+<%- include('parts/foot') %>
