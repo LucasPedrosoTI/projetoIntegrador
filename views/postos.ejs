@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postos</title>
+</head>
+
+<body>
+    <table border="1">
+        <% postos.forEach(element => { %>
+            <tr>
+                <td>
+                    <%= element["cnpj"] %>
+                </td>
+                <td>
+                    <%= element["nome"] %>
+                </td>
+                <td>
+                    <%= element["endereco"] %>
+                </td>
+                <td>
+                    <%= element["complemento"] %>
+                </td>
+                <td>
+                    <%= element["bairro"] %>
+                </td>
+                <td>
+                    <%= element["cidade"] %>
+                </td>
+                <td>
+                    <%= element["uf"] %>
+                </td>
+                <td>
+                    <%= element["produto"] %>
+                </td>
+                <td>
+                    <%= element["preco"] %>
+                </td>
+                <td>
+                    <%= element["data"] %>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+</body>
+
+</html>
