@@ -6,6 +6,9 @@ footer {
   text-decoration: none;
   font-style: none;
   align-self: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 footer div ul li a {

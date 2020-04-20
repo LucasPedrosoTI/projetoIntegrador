@@ -9,12 +9,12 @@ router.get("/main", viewController.main);
 
 router.get("/login", viewController.login);
 
-router.get("/cadastrocpf", viewController.cadastroCpf);
-
-router.get("/cadastrocnpj", viewController.cadastroCnpj);
+router.get("/cadastro", viewController.cadastro);
 
 router.get("/postos", viewController.indexPostos);
 
 router.get("/servicos", viewController.servicos);
+
+router.get("/dashboard-empresa", viewController.dashboardEmpresa);
 
 module.exports = router;

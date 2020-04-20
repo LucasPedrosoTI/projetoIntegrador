@@ -1,0 +1,27 @@
+<%- include('parts/head', {title: "Dashboard - Meu Posto"}) %>
+    <link rel="stylesheet" href="../public/stylesheets/login.css    ">
+    <link rel="stylesheet" href="/stylesheets/dashboard-empresa.css">
+
+    <header>
+        <%- include('parts/navbar') %>
+    </header>
+
+    <main>
+        <div class="container">
+            <aside>
+                <div class="logo-empresa">
+                    <img src="/images/petrobras.png" alt="petrobras" height="300" width="300">
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">Atualizar meus serviços</a></li>
+                        <li><a href="#">Atualizar Cadastro</a></li>
+                        <li><a href="#">Publicidade</a></li>
+                    </ul>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <%- include('parts/foot') %>

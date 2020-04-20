@@ -51,13 +51,14 @@ module.exports = {
     res.render("login");
   },
 
-  cadastroCpf: (req, res, next) => {
-    res.render("cadastrocpf");
-  },
-  cadastroCnpj: (req, res, next) => {
-    res.render("cadastrocnpj");
+  cadastro: (req, res, next) => {
+    res.render("cadastro");
   },
   servicos: (req, res) => {
-    res.render("servicos")
+    res.render("servicos");
+  },
+
+  dashboardEmpresa: (req, res) => {
+    res.render("dashboard-empresa");
   },
 };
