@@ -71,7 +71,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div id="principaltext" class="col-6">
+        <div id="principaltext" class="col-lg-10 col-md-8">
           <h1>O que é o MEU POSTO</h1>
           <br />
           <p>
@@ -91,8 +91,16 @@
             diminua o lucro de quem não negocia honestamente.
           </p>
         </div>
-        <div class="col-6">
-          Inserir mapa
+        <div id="minimap" class="col-lg-2 col-md-4">
+          <form action="#">
+            <br>
+            <label for="search"><p id="textsearch">Procure o posto mais próximo</p></label>
+            <br>
+            <input name="search" type="text" placeholder="Digite o endereço" style="width: 85%;">
+            <br>
+            <input id="searchbutton" type="submit" value="BUSCAR">
+          </form>
+          
         </div>
       </div>
     </div>
@@ -107,12 +115,14 @@
     </div>
 
     <footer>
-      <div>
-        &copy; Copyright - Todos os direitos reservados
-        <a href="#" class="footer">Home</a>
-        <a href="#" class="footer">Quem Somos</a>
-        <a href="#" class="footer">Contato</a>
-        <a href="#" class="footer">Termos de Uso</a>
+      <div class="container">
+        <ul>
+          <li class="col-12">2020&copy; Copyright - Todos os direitos reservados</li>
+          <li><a href="#">Página Inicial</a></li>
+          <li><a href="#">Quem Somos</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+      </ul>
       </div>
     </footer>
 
