@@ -9,9 +9,9 @@ router.get("/main", viewController.main);
 
 router.get("/login", viewController.login);
 
-router.get("/cadastroCpf", viewController.cadastroCpf);
+router.get("/cadastrocpf", viewController.cadastroCpf);
 
-router.get("/cadastroCnpj", viewController.cadastroCnpj);
+router.get("/cadastrocnpj", viewController.cadastroCnpj);
 
 router.get("/postos", viewController.indexPostos);
 

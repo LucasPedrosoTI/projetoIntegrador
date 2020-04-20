@@ -1,0 +1,58 @@
+.container-fluid {
+  padding: 0;
+}
+
+.logonavbar {
+  height: 60px;
+}
+
+#navbar {
+  opacity: 0.95;
+  position: fixed;
+  font-size: 1.2rem;
+  z-index: 1;
+  top: 0;
+}
+
+.navbar {
+  border: none;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  background-color: #eacd65;
+  color: #0009;
+  line-height: 10px;
+}
+
+.navbar a {
+  color: #000 !important;
+  transition: all 0.2s;
+}
+
+.navbar a:hover {
+  opacity: 0.7;
+  color: #e14242 !important;
+}
+
+#cadastrar {
+  padding: 10px 20px;
+  margin: 25px;
+  color: #f0f0f0 !important;
+  background: #e14242 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+  box-shadow: 0px 2px 5px 1px #0009;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+#logar {
+  font-weight: bold;
+  padding: 10px 20px;
+  color: #e14242 !important;
+}
+
+#logar:hover {
+  background-color: #e2945ccc;
+  padding: 10px 20px;
+  border-radius: 15px;
+}

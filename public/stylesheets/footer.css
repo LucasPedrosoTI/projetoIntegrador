@@ -1,0 +1,31 @@
+footer {
+  display: flex;
+  color: white;
+  background-color: #597081;
+  padding: 2%;
+  text-decoration: none;
+  font-style: none;
+  align-self: center;
+}
+
+footer div ul li a {
+  padding: 0% 2%;
+  color: white;
+  padding: 2%;
+  text-decoration: none;
+  font-style: none;
+  align-self: center;
+}
+
+footer div ul li a:hover {
+  color: white;
+  text-decoration: none;
+  font-style: none;
+}
+
+footer div ul li {
+  display: inline;
+  text-decoration: none;
+  font-style: none;
+  align-self: left;
+}

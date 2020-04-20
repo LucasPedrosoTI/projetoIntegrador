@@ -1,147 +1,54 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <title>Meu Posto</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-
+<%- include('parts/head', {title: 'Meu Posto'}) %>
     <link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
-  </head>
 
-  <body>
-    <header class="container" id="navbar">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/"
-          ><img src="public/images/icone-semfundo.png" class="logonavbar"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/"
-                >Página Inicial<span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Encontre o melhor posto</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Serviços</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Seja um Posto Parceiro</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <a class="nav-link" id="logar" href="/login">Entrar</a>
-          </form>
-        </div>
-      </nav>
+    <header>
+        <%- include('parts/navbar') %>
     </header>
 
     <div id="parallax01">
-      <p class="text-img">
-        Confie no combustível que entra no seu motor
-      </p>
-      <a href="/login">
-        <button id="frontbutton">FAÇA SEU CADASTRO</button>
-      </a>
+        <p class="text-img">
+            Confie no combustível que entra no seu motor
+        </p>
+        <a href="/login">
+            <button id="frontbutton">FAÇA SEU CADASTRO</button>
+        </a>
     </div>
     <div class="container">
-      <div class="row">
-        <div id="principaltext" class="col-lg-10 col-md-8">
-          <h1>O que é o MEU POSTO</h1>
-          <br />
-          <p>
-            Acesse os dados de millhares de postos de combustíveis e compare
-            instantaneamente o preço, qualidade, e a localização, com a
-            confiança de não comprar combustíveis de baixa qualidade ou de
-            procedência não garantida.
-          </p>
-          <p>
-            Compartilha sua opinião e confira o que outros motoristas tem a
-            dizer sobre o posto de combustíveis de sua preferência. Compartilhe
-            experiências e ajude outras pessoas a encontrar o melhor preço,
-            melhor serviço ou o posto de mais confiança da sua região.
-          </p>
-          <p>
-            Ajude a levar clientes pra quem cuida da segurança do seu carro e
-            diminua o lucro de quem não negocia honestamente.
-          </p>
+        <div class="row">
+            <div id="principaltext" class="col-lg-8 col-md-8">
+                <h1>O que é o MEU POSTO</h1>
+                <br />
+                <p>
+                    Acesse os dados de millhares de postos de combustíveis e compare instantaneamente o preço, qualidade, e a localização, com a confiança de não comprar combustíveis de baixa qualidade ou de procedência não garantida.
+                </p>
+                <p>
+                    Compartilha sua opinião e confira o que outros motoristas tem a dizer sobre o posto de combustíveis de sua preferência. Compartilhe experiências e ajude outras pessoas a encontrar o melhor preço, melhor serviço ou o posto de mais confiança da sua região.
+                </p>
+                <p>
+                    Ajude a levar clientes pra quem cuida da segurança do seu carro e diminua o lucro de quem não negocia honestamente.
+                </p>
+            </div>
+            <div id="minimap" class="col-lg-4 col-md-4">
+                <form action="/main">
+                    <br>
+                    <label for="search"><p id="textsearch">Procure o posto mais próximo</p></label>
+                    <br>
+                    <input name="search" type="search" placeholder="Digite o endereço">
+                    <br>
+                    <input id="searchbutton" type="submit" value="BUSCAR">
+                </form>
+
+            </div>
         </div>
-        <div id="minimap" class="col-lg-2 col-md-4">
-          <form action="#">
-            <br>
-            <label for="search"><p id="textsearch">Procure o posto mais próximo</p></label>
-            <br>
-            <input name="search" type="text" placeholder="Digite o endereço" style="width: 85%;">
-            <br>
-            <input id="searchbutton" type="submit" value="BUSCAR">
-          </form>
-          
-        </div>
-      </div>
     </div>
 
     <div id="parallax02">
-      <a href="/login">
-        <button id="frontbuttondown">SEJA UM POSTO PARCEIRO</button>
-      </a>
-      <p class="text-imgbot">
-        Amplie o alcance de suas vendas
-      </p>
+        <a href="/login">
+            <button id="frontbuttondown">SEJA UM POSTO PARCEIRO</button>
+        </a>
+        <p class="text-imgbot">
+            Amplie o alcance de suas vendas
+        </p>
     </div>
 
-    <footer>
-      <div class="container">
-        <ul>
-          <li class="col-12">2020&copy; Copyright - Todos os direitos reservados</li>
-          <li><a href="#">Página Inicial</a></li>
-          <li><a href="#">Quem Somos</a></li>
-          <li><a href="#">Contato</a></li>
-          <li><a href="#">Termos de Uso</a></li>
-      </ul>
-      </div>
-    </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+    <%- include('parts/foot') %>

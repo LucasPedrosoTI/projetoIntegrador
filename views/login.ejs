@@ -1,63 +1,13 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<%- include('parts/head', {title: 'Entrar'}) %>
     <link rel="stylesheet" href="../public/stylesheets/login.css    ">
-    <title>Sign-in</title>
-</head>
-
-<body>
-    <header class="customContainer">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#"><img src="public/images/icone-semfundo.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:3000/">
-                            Página Inicial<span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:3000/main">Ache o Melhor Posto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Postos Parceiros</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Serviços
-              </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Mecânica</a>
-                            <a class="dropdown-item" href="#">Calibrar pneu</a>
-                            <a class="dropdown-item" href="#">Lavar Veículo</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <a class="nav-link" id="logar" href="#">Entrar</a>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Procurar Posto" aria-label="Search" />
-                    <button class="btn btn-outline-secondary my-2 my-sm-0" id="btn-procurar" type="submit">
-              Procurar
-            </button>
-                </form>
-            </div>
-        </nav>
+    <header>
+        <%- include('parts/navbar') %>
     </header>
 
     <div class="login-wrap">
         <div class="login-html">
-            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Entrar</label>
-            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Cadastrar</label>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Usuário</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Empresa</label>
             <div class="login-form">
                 <div class="sign-in-htm">
                     <div class="group">
@@ -77,10 +27,14 @@
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
-                        <a href="#forgot">Esqueceu a Senha?</a>
+                        <a href="#forgot">Esqueceu a Senha?</a><br><br>
+                        <a href="/cadastrocpf">
+                            Cadastrar
+                        </a>
                     </div>
+
                 </div>
-                <form action="/cadastroCpf" method="get">
+                <form action="#" method="get">
                     <div class="sign-up-htm">
                         <div class="group">
                             <label for="email" class="label">E-mail</label>
@@ -91,27 +45,24 @@
                             <input id="pass" name="senha" type="password" class="input" data-type="password">
                         </div>
                         <div class="group">
-                            <label for="pass" class="label">Repita a senha</label>
-                            <input id="pass" type="password" class="input" data-type="password">
-                        </div>
-                        <div class="group">
-                            <input type="submit" class="button" value="Cadastrar">
+                            <input type="submit" class="button" value="Entrar">
                         </div>
                         <div class="hr"></div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Mantenha-me conectado</label>
+                        </div>
                         <div class="foot-lnk">
-                            <label for="tab-1">Já está cadastrado?</a>
+                            <a href="#forgot">Esqueceu a Senha?</a><br><br>
+                            <a href="/cadastrocnpj">
+                                Cadastrar
+                            </a>
+                        </div>
                     </div>
                 </form>
-                </div>
             </div>
         </div>
     </div>
+    </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <%- include('parts/foot') %>

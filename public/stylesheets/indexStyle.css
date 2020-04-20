@@ -1,31 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-}
-
-.logonavbar {
-  height: 60px;
-}
-
-#navbar {
-  margin: 0 0.4% 5% 5%;
-  opacity: 0.95;
-  position: fixed;
-  font-size: 1.2rem;
-  z-index: 1;
-}
-
-.navbar {
+button {
   border: none;
-  border-radius: 0px 0px 25px 25px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
-  font-weight: bold;
-  background-color: #ffffff;
-  padding: 0 0 0 3%;
-  color: #707070;
+  transition: all 0.2s;
+}
+button:hover {
+  background-color: #e2945c;
 }
 
 .text-img {
@@ -60,6 +38,15 @@
   font-weight: bold;
 }
 
+form input[type="search"] {
+  border-radius: 10px;
+  border: none;
+  height: 40px;
+  width: 85%;
+  text-align: center;
+  box-shadow: 0px 3px 3px 0px #0009;
+}
+
 #searchbutton {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
   justify-content: center;
@@ -71,6 +58,12 @@
   font-size: 1.25rem;
   font-weight: bold;
   color: black;
+  transition: all 0.2s;
+  border: none;
+}
+
+#searchbutton:hover {
+  background-color: #e2945c;
 }
 
 #parallax01 {
@@ -110,7 +103,7 @@
 
 #frontbutton:hover,
 #frontbuttondown:hover {
-  color: #597081;
+  background-color: #e2945c;
 }
 
 #frontbuttondown {
@@ -135,56 +128,3 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
-#logar {
-  padding: 10px 50px;
-  margin: 25px;
-  border-radius: 5px;
-  color: white;
-  background: #597081 0% 0% no-repeat padding-box;
-  mix-blend-mode: darken;
-  border-radius: 15px;
-  opacity: 1;
-}
-
-#logar:hover {
-  color: black;
-  border-bottom: none;
-}
-
-header img {
-  height: 75px;
-}
-
-footer {
-  display: flex;
-  color: white;
-  background-color: #597081;
-  padding: 2%;
-  text-decoration: none;
-  font-style: none;
-  align-self: center;
-}
-
-footer div ul li a {
-  padding: 0% 2%;
-  color: white;
-  padding: 2%;
-  text-decoration: none;
-  font-style: none;
-  align-self: center;
-}
-
-footer div ul li a:hover{
-  color: white;
-  text-decoration: none;
-  font-style: none;
-}
-
-footer div ul li{
-  display: inline;
-  text-decoration: none;
-  font-style: none;
-  align-self: left;
-}
-
