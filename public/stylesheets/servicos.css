@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    background: url(../images/backLogin.jpg) no-repeat center;
+    font: 600 16px/18px "Roboto", sans-serif;
+  }
+
+  .boxwhite{
+    margin: 10% 5% 2% 5%;
+    padding: 2%;
+    position: relative;
+    border-radius: 20px;
+    background-color: #f6f6f6dd;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  form {
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .busca{
+      color: white;
+      background-color: #e14242;
+      border-radius: 15px;
+      padding: 10px 20px;
+  }
+
+  .busca :hover{
+    background-color: #e14242;
+  }
+
+ .content {
+     padding: 2%;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+ }

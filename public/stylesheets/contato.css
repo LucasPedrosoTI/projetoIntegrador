@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    background: url(../images/backLogin.jpg) no-repeat center;
+    font: 600 16px/18px "Roboto", sans-serif;
+  }
+
+  .boxwhite {
+    margin: 10% auto 2% auto;
+    padding: 2%;
+    position: relative;
+    border-radius: 20px;
+    background-color: #f6f6f6dd;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  form {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  form input {
+    margin: 1%;
+  }
+
+  .line {
+    width: 80%;
+    padding: 1%;
+}
+
+  .box{
+    width: 80%;
+    height: 20vh;
+    padding: 1%;
+  }
+
+  .enviar {
+      color: white;
+      background-color: #e14242;
+      border-radius: 15px;
+      padding: 10px 20px;
+  }
+
+  .enviar :hover {
+    background-color: #e14242;
+  }

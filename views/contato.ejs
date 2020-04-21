@@ -1,12 +1,25 @@
 <%- include('parts/head', {title: 'Meu Posto'}) %>
 <link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
+<link rel="stylesheet" href="../public/stylesheets/contato.css" />
 
 <header>
   <%- include('parts/navbar') %>
 </header>
 
 <body>
-  <div style="height: 500px;">
+  <div class="boxwhite col-10 col-md-8 col-lg-4">
+
+   <form action="#" method="POST">
+      <h2>Fale Conosco</h2>
+      <br><br>
+      <label for="nome">Nome:</label>
+      <input class="line" type="text" id="name" placeholder="Digite seu Nome">
+      <label for="email">E-mail:</label>
+      <input class="line" type="email" id="email" placeholder="nome@mail.com.br">
+      <label for="mensagem">Mensagem:</label>
+      <textarea class="box" id="mensagem" placeholder="Digite sua mensagem"></textarea>
+      <input type="submit" value="Enviar" id="enviar" class="enviar">
+   </form>
    
   </div>
 </body>
