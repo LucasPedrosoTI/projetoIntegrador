@@ -1,0 +1,24 @@
+<%- include('parts/head', {title: 'Entrar'}) %>
+    <link rel="stylesheet" href="../public/stylesheets/cadastro2.css    ">
+    <header>
+        <%- include('parts/navbar') %>
+    </header>
+
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Cadastro Usuário</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Cadastro Empresa</label>
+            <div class="login-form">
+                <div class="hr"></div>
+                <div class="sign-in-htm">
+                    <%- include('parts/cadastrocpf') %>
+                </div>
+                <form action="/dashboard-empresa" method="">
+                    <div class="sign-up-htm">
+                        <%- include('parts/cadastrocnpj') %>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>

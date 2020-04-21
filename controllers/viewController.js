@@ -54,6 +54,11 @@ module.exports = {
   cadastro: (req, res, next) => {
     res.render('cadastro');
   },
+
+  cadastro2: (req, res, next) => {
+    res.render('cadastro2');
+  },
+
   servicos: (req, res) => {
     res.render('servicos');
   },

@@ -27,4 +27,6 @@ router.get('/servicoposto', viewController.servicoposto);
 
 router.get('/postologado', viewController.postologado);
 
+router.get('/cadastro2', viewController.cadastro2);
+
 module.exports = router;
