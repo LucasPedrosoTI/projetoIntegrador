@@ -53,7 +53,7 @@ a {
   position: absolute;
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  transition: all 0.4s linear;
+  transition: all 0.5s linear;
 }
 
 .login-html .sign-in,
@@ -107,7 +107,7 @@ a {
   border: none;
   padding: 15px 20px;
   border-radius: 25px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .login-form .group input[data-type="password"] {
@@ -190,7 +190,7 @@ a {
 .hr {
   height: 2px;
   margin: 60px 0 50px 0;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
 }
 
 .foot-lnk {
