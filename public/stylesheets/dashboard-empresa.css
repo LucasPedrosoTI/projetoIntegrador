@@ -1,3 +1,311 @@
 main {
+  margin-top: 150px;
   height: 100vh;
+  color: #000;
+}
+
+.dashboard-container {
+  width: 80%;
+  height: 90%;
+  background-color: #ffffffd8;
+  border-radius: 30px;
+  padding: 30px 45px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+aside {
+  flex-grow: 1;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo-empresa {
+  border: 1 solid black;
+  border-radius: 100%;
+  width: 35%;
+  height: 15%;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.logo-empresa img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.menu {
+  height: 100%;
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 75%;
+}
+.menu ul li button {
+  text-align: center;
+  margin: 0 auto;
+}
+
+section {
+  flex-grow: 2;
+  width: 80%;
+}
+
+.form-servicos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+  justify-items: start;
+  justify-content: space-around;
+  align-content: space-around;
+  column-gap: 10px;
+  row-gap: 20px;
+  height: 100%;
+}
+
+.servico-titulo {
+  text-transform: uppercase;
+  color: #000c;
+  font-size: 1rem;
+}
+
+.servico-container input[type="number"] {
+  border: none;
+  border-radius: 10px;
+  line-height: 30px;
+  margin-top: 5px;
+}
+
+.preco {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.preco span {
+  margin: 0;
+}
+
+.preco label {
+  margin: 5px 10px 0 0;
+}
+.titulo-switch {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  justify-self: end;
+  align-self: center;
+  grid-column-start: 3;
+}
+/* The switch - the box around the slider */
+.switch {
+  margin-left: 10px;
+  margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* section form */
+
+section form h1 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5px;
+  overflow: auto;
+}
+
+.form-group {
+  margin: 5px 0 !important;
+}
+
+.form-group input {
+  margin: 0 !important;
+}
+
+.form-container button {
+  grid-column: 2 / span 2;
+}
+
+@media (max-width: 1920px) {
+  .form-servicos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn {
+    grid-column-start: 2;
+  }
+}
+@media (max-width: 1350px) {
+  .form-servicos {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    grid-column-start: 1;
+  }
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container-pagamento {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  /* background-color: #e14242; */
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 75%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn-success {
+  background-color: #4caf50;
+}
+
+.btn:hover {
+  background-color: #e4704e;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
 }
