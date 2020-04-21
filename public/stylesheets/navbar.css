@@ -4,6 +4,7 @@
 
 .logonavbar {
   height: 60px;
+  padding-left: 5px
 }
 
 #navbar {
@@ -35,7 +36,7 @@
 
 #cadastrar {
   padding: 10px 20px;
-  margin: 25px;
+  margin: 0 70px 0 20px;
   color: #f0f0f0 !important;
   background: #e14242 0% 0% no-repeat padding-box;
   border-radius: 15px;
