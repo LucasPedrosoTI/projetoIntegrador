@@ -15,6 +15,12 @@ router.get('/postos', viewController.indexPostos);
 
 router.get('/servicos', viewController.servicos);
 
+router.get('/quemsomos', viewController.quemsomos);
+
+router.get('/contato', viewController.contato);
+
+router.get('/termosdeuso', viewController.termosdeuso);
+
 router.get('/dashboard-empresa', viewController.dashboardEmpresa);
 
 router.get('/servicoposto', viewController.servicoposto);

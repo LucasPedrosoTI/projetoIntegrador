@@ -58,6 +58,18 @@ module.exports = {
     res.render('servicos');
   },
 
+  quemsomos: (req, res) => {
+    res.render('quemsomos');
+  },
+
+  contato: (req, res) => {
+    res.render('contato');
+  },
+
+  termosdeuso: (req, res) => {
+    res.render('termosdeuso');
+  },
+
   dashboardEmpresa: (req, res) => {
     res.render('dashboard-empresa');
   },

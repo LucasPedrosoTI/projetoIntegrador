@@ -1,34 +1,31 @@
 footer {
-  display: flex;
   color: white;
   background-color: #597081;
   padding: 2%;
   text-decoration: none;
   font-style: none;
-  align-self: center;
-  position: relative;
   bottom: 0;
   width: 100%;
 }
 
-footer div ul li a {
-  padding: 0% 2%;
-  color: white;
-  padding: 2%;
+footer div ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+footer div ul li {
   text-decoration: none;
-  font-style: none;
-  align-self: center;
+  padding:1%;
+}
+
+footer div ul li a {
+  color: white;
+  text-decoration: none;
 }
 
 footer div ul li a:hover {
   color: white;
   text-decoration: none;
-  font-style: none;
 }
 
-footer div ul li {
-  display: inline;
-  text-decoration: none;
-  font-style: none;
-  align-self: left;
-}
