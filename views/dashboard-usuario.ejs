@@ -1,0 +1,140 @@
+<%- include('parts/head', {title: "Dashboard - Meu Posto"}) %>
+<link rel="stylesheet" href="../public/stylesheets/login.css    " />
+<link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
+
+<header>
+  <%- include('parts/navbar') %>
+</header>
+
+<main>
+  <div class="dashboard-container">
+    <aside>
+      <div class="logo-empresa">
+        <img src="/images/logousuario.png" alt="usuario" />
+      </div>
+      <div class="menu">
+        <ul>
+          <li>
+            <button
+              class="btn btn-secondary btn-sm btn-block"
+              onclick="mostrarCadastro()"
+            >
+              Atualizar Cadastro
+            </button>
+          </li>
+          <li>
+            <button
+              class="btn btn-secondary btn-sm btn-block"
+              onclick="mostrarFavoritos()"
+            >
+              Postos Favoritos
+            </button>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <section id="cadastro" class="cadastro">
+      <form action="">
+        <h1>Alterar Cadastro</h1>
+        <div class="form-container">
+          <div class="form-group">
+            <label for="email"><b>Email</b></label>
+            <input
+              class="form-control-sm"
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input class="form-control-sm" type="text" name="nome" id="nome" />
+          </div>
+
+          <div class="form-group">
+            <label for="cep">CEP</label>
+            <input class="form-control-sm" type="text" name="cep" id="cep" />
+          </div>
+
+          <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input
+              class="form-control-sm"
+              type="text"
+              name="endereco"
+              id="endereco"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="numero">Número</label>
+            <input
+              class="form-control-sm"
+              type="text"
+              name="numero"
+              id="numero"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="cidade">Cidade</label>
+            <input
+              class="form-control-sm"
+              type="text"
+              name="cidade"
+              id="cidade"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <input
+              class="form-control-sm"
+              type="text"
+              name="estado"
+              id="estado"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="psw"><b>Senha</b></label>
+            <input
+              class="form-control-sm"
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="psw-repeat"><b>Repetir Senha</b></label>
+            <input
+              class="form-control-sm"
+              type="password"
+              placeholder="Repeat Password"
+              name="psw-repeat"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-warning">Salvar</button>
+        </div>
+      </form>
+    </section>
+    <section id="favoritos" class="favoritos" style="display: none;">
+      <form action="">
+        <h1>Meus Postos Favoritos</h1>
+        <div class="form-container">
+          <div></div>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<script src="../public/javascripts/dashboard-empresa.js"></script>
+<%- include('parts/foot') %>

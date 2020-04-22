@@ -23,9 +23,7 @@ router.get('/termosdeuso', viewController.termosdeuso);
 
 router.get('/dashboard-empresa', viewController.dashboardEmpresa);
 
-router.get('/servicoposto', viewController.servicoposto);
-
-router.get('/postologado', viewController.postologado);
+router.get('/dashboard-usuario', viewController.dashboardUsuario);
 
 router.get('/cadastro2', viewController.cadastro2);
 

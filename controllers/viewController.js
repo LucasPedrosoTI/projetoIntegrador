@@ -79,11 +79,7 @@ module.exports = {
     res.render('dashboard-empresa');
   },
 
-  servicoposto: (req, res) => {
-    res.render('servicoposto');
-  },
-
-  postologado: (req, res) => {
-    res.render('postologado');
+  dashboardUsuario: (req, res) => {
+    res.render('dashboard-usuario');
   },
 };
