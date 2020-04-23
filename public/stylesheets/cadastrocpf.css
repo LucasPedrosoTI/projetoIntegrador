@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background: url(../images/backLogin.jpg) no-repeat center;
-  font: 600 16px/18px "Roboto", sans-serif;
+  font: 600 16px/18px 'Roboto', sans-serif;
 }
 
 .form-horizontal {
@@ -25,5 +25,17 @@ body {
 .btn {
   background-color: #e14242;
   color: #fff;
-  margin: 10px 5px;
+}
+
+#usuario-tab,
+#empresa-tab {
+  background-color: #e14242;
+  color: #fff;
+}
+
+#usuario-tab:focus,
+#empresa-tab:focus {
+  background-color: #fff;
+  color: black;
+  font-weight: bold;
 }
