@@ -25,6 +25,4 @@ router.get('/dashboard-empresa', viewController.dashboardEmpresa);
 
 router.get('/dashboard-usuario', viewController.dashboardUsuario);
 
-router.get('/cadastro2', viewController.cadastro2);
-
 module.exports = router;

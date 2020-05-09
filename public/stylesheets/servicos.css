@@ -5,7 +5,7 @@ body {
   }
 
   .boxwhite{
-    margin: 10% 5% 2% 5%;
+    margin: 20vh 5% 2% 5%;
     padding: 2%;
     position: relative;
     border-radius: 20px;
@@ -17,6 +17,10 @@ body {
   form {
       display: flex;
       justify-content: space-around;
+  }
+
+  .form-control {
+    margin-right: 5%;
   }
 
   .busca{
@@ -36,3 +40,40 @@ body {
      flex-direction: column;
      justify-content: space-between;
  }
+
+ .card {
+   height: 120px;
+   width: 300px;
+   border-radius: 10px;
+ }
+
+ .logo {
+   position: relative;
+   height: 75px;
+   width: 75px;
+   border-radius: 50%;
+   background-color: gray;
+   top: 22px;
+   left: 5px;
+ }
+
+ .nomePosto {
+  font-size: 10pt;
+  position:relative;
+  top: 5px;
+  left: 85px;
+ }
+
+ .endPosto {
+  width: 120px;
+  font-size: 10pt;
+  position: relative;
+  left: 85px;
+}
+
+.distancia {
+  font-size: 16pt;
+  position: relative;
+  left: 190px;
+  top: 5px;
+}
