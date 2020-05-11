@@ -9,34 +9,35 @@ main {
   height: 90%;
   background-color: #ffffffd8;
   border-radius: 30px;
-  padding: 30px 45px;
+  padding: 30px 15px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 
-aside {
+.nav-dashboard {
   flex-grow: 1;
   width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-right: 20px;
 }
 
-.logo-empresa {
-  border: 1 solid black;
+.logo-usuario {
   border-radius: 100%;
-  width: 35%;
-  height: 15%;
+  width: 75%;
+  height: 100%;
   background-color: #fff;
-  padding: 10px;
+  margin: 0 auto;
 }
 
-.logo-empresa img {
+.logo-usuario img {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  border-radius: 100%;
 }
 
 .menu {
@@ -103,7 +104,7 @@ section {
 
 .slider:before {
   position: absolute;
-  content: '';
+  content: "";
   height: 26px;
   width: 26px;
   left: 4px;
@@ -162,25 +163,6 @@ section form h1 {
   grid-column: 2 / span 2;
 }
 
-@media (max-width: 1920px) {
-  .form-servicos {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .btn {
-    grid-column-start: 2;
-  }
-}
-@media (max-width: 1350px) {
-  .form-servicos {
-    grid-template-columns: 1fr;
-  }
-
-  .btn {
-    grid-column-start: 1;
-  }
-}
-
 .row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
@@ -210,7 +192,7 @@ section form h1 {
   padding: 0 16px;
 }
 
-input[type='text'] {
+input[type="text"] {
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
@@ -249,6 +231,86 @@ label {
   background-color: #e4704e;
 }
 
+input[type="password"] {
+  border: 1px solid #ccc;
+  padding-right: 67px;
+}
+
+/* POSTOS FAVORITOS */
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.card {
+  width: 100%;
+  height: 9rem;
+  flex-direction: row;
+  margin: 20px 0;
+}
+
+.card-img-top {
+  width: unset;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+}
+
+.title span {
+  font-weight: normal;
+  padding: 2px 0 0 15px;
+}
+.produto-detalhe {
+  margin: 0 0 15px;
+}
+
+.logo-empresa {
+  border-radius: 100%;
+  background-color: #fff;
+  margin: 10px auto;
+  width: 20%;
+  padding: 20px;
+}
+
+.logo-empresa img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.ir {
+  width: 15%;
+  margin-right: 30px;
+}
+
+/* COMENTARIOS */
+
+.edit {
+  position: absolute;
+  top: 8px;
+  right: 35px;
+  border: none;
+  background-color: transparent;
+  color: #0000008f;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.avaliacao-estrelas {
+  color: gold;
+}
+
+.avaliacao-comentario h6 {
+  margin-top: 10px;
+}
+
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
   .row {
@@ -256,5 +318,24 @@ label {
   }
   .col-25 {
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 1920px) {
+  .form-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn {
+    grid-column-start: 2;
+  }
+}
+@media (max-width: 1350px) {
+  .form-servicos {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    grid-column-start: 1;
   }
 }

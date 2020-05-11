@@ -19,7 +19,6 @@
 /* Style the search field */
 
 #form-container {
-  position: absolute;
   width: 4vw;
   position: fixed;
   top: 10px;
@@ -48,6 +47,21 @@
   line-height: 23px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+}
+
+/* home button */
+
+#home {
+  z-index: 2;
+  position: fixed;
+  top: 15px;
+  right: 150px;
+  border-radius: 50px;
+  background-color: #e14242;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  line-height: 23px;
+  color: #fff;
 }
 
 .mapboxgl-ctrl-top-left {
@@ -296,6 +310,22 @@ div.symbol {
   p.price {
     font-size: 1.3rem;
     font-weight: 900;
+  }
+}
+
+@media (max-width: 600px) {
+  #entrar {
+    bottom: 20px;
+    left: 20px;
+    top: unset;
+    right: unset;
+  }
+
+  #home {
+    bottom: 15px;
+    left: 150px;
+    top: unset;
+    right: unset;
   }
 }
 

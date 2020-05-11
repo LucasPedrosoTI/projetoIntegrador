@@ -2,9 +2,18 @@
   padding: 0;
 }
 
+ul.navbar-nav {
+  margin-left: 60px;
+  line-height: 25px;
+}
+
+ul.navbar-nav li.nav-item {
+  padding-left: 40px;
+}
+
 .logonavbar {
   height: 60px;
-  padding-left: 5px
+  padding-left: 5px;
 }
 
 #navbar {
@@ -36,7 +45,7 @@
 
 #cadastrar {
   padding: 10px 20px;
-  margin: 0 70px 0 20px;
+  margin: 0 20px;
   color: #f0f0f0 !important;
   background: #e14242 0% 0% no-repeat padding-box;
   border-radius: 15px;
