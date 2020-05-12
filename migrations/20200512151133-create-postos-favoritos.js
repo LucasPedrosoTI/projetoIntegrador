@@ -18,3 +18,4 @@ module.exports = {
     return queryInterface.dropTable('postos_favoritos');
   }
 };
+// ok

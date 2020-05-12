@@ -22,3 +22,4 @@ module.exports = {
     return queryInterface.dropTable('postos_produtos');
   }
 };
+// ok

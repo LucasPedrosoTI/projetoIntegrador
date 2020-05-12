@@ -26,3 +26,4 @@ module.exports = {
     return queryInterface.dropTable('postos_anuncios');
   }
 };
+// ok
