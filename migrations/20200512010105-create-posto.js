@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(1),
       },
       nome_fantasia: {
         type: Sequelize.STRING(100),
@@ -45,11 +45,11 @@ module.exports = {
         type: Sequelize.DECIMAL(11, 8),
         allowNull: false,
       },
-      createdAt: {
+      create_time: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updatedAt: {
+      update_time: {
         allowNull: false,
         type: Sequelize.DATE,
       },

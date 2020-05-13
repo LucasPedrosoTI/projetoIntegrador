@@ -6,9 +6,9 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(1),
       },
-      servico: {
+      nome: {
         type: Sequelize.STRING(100),
         allowNull: false,
         unique: true,
