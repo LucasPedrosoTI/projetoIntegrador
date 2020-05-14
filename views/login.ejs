@@ -1,24 +1,58 @@
 <%- include('parts/head', {title: 'Entrar'}) %>
-    <link rel="stylesheet" href="../public/stylesheets/login.css    ">
-    <header>
-        <%- include('parts/navbar') %>
-    </header>
+<link rel="stylesheet" href="../public/stylesheets/login.css    ">
+<header>
+    <%- include('parts/navbar') %>
+</header>
 
-    <div class="login-wrap">
-        <div class="login-html">
-            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Usuário</label>
-            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Empresa</label>
-            <div class="login-form">
-                <div class="hr"></div>
-                <form action="/dashboard-usuario" method="">
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Usuário</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Empresa</label>
+        <div class="login-form">
+            <div class="hr"></div>
+            <form action="/usuario/logar" method="POST">
                 <div class="sign-in-htm">
                     <div class="group">
                         <label for="user" class="label">E-mail</label>
-                        <input id="user" type="text" class="input">
+                        <input id="user" type="text" class="input" name="email">
+                    </div>
+                    <div class=" group">
+                        <label for="pass" class="label">Senha</label>
+                        <input id="pass" type="password" class="input" data-type="password" name="senha">
+                    </div>
+                    <div class="group">
+                        <input id="check" type="checkbox" class="check" name="logado" checked>
+                        <label for="check"><span class="icon"></span> Mantenha-me conectado</label>
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Entrar">
+                        <% if (error) { %>
+
+                        <div class="mt-3 text-center"> <%= error %> </div>
+                        <% } %>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Esqueceu a Senha?</a><br><br>
+                        <a href="/cadastro">
+                            Cadastrar
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+            </form>
+            <form action="/dashboard-empresa" method="">
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="email" class="label">E-mail</label>
+                        <input id="email" name="email" type="email" class="input">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">Senha</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <input id="pass" name="senha" type="password" class="input" data-type="password">
                     </div>
                     <div class="group">
                         <input id="check" type="checkbox" class="check" checked>
@@ -35,34 +69,8 @@
                         </a>
                     </div>
                 </div>
-                </form>
-                <form action="/dashboard-empresa" method="">
-                    <div class="sign-up-htm">
-                        <div class="group">
-                            <label for="email" class="label">E-mail</label>
-                            <input id="email" name="email" type="email" class="input">
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Senha</label>
-                            <input id="pass" name="senha" type="password" class="input" data-type="password">
-                        </div>
-                        <div class="group">
-                            <input id="check" type="checkbox" class="check" checked>
-                            <label for="check"><span class="icon"></span> Mantenha-me conectado</label>
-                        </div>
-                        <div class="group">
-                            <input type="submit" class="button" value="Entrar">
-                        </div>
-                        <div class="hr"></div>
-                        <div class="foot-lnk">
-                            <a href="#forgot">Esqueceu a Senha?</a><br><br>
-                            <a href="/cadastro">
-                                Cadastrar
-                            </a>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
-    </div>
+</div>
+</div>

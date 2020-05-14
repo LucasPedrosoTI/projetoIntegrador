@@ -28,7 +28,7 @@ button#botao-cadastrar {
   border: none;
 }
 
-button#cancelar {
+#cancelar {
   background-color: #597081;
   color: #ccc;
   border: none;
@@ -72,4 +72,40 @@ fieldset {
 
 .nav-tabs .nav-link {
   border: none;
+}
+
+/* POP TIP MESSAGE  */
+#message {
+  color: #fff;
+  padding: 0 60px;
+}
+
+#message h3 {
+  color: #fff;
+  font-size: 20px;
+}
+/* Add a green text color and a checkmark when the requirements are right */
+
+.valid {
+  color: green;
+  background-color: #0f02;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔️";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+
+.invalid {
+  background-color: #f002;
+  color: darkred;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "❌";
 }
