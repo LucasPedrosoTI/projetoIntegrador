@@ -43,9 +43,15 @@ module.exports = {
         res.cookie("logado", user.email, { maxAge: 3600000 });
       }
 
-      res.render("dashboard-usuario");
+      res.redirect("/dashboard-usuario");
     } catch (err) {
       return res.status(400).send(err);
     }
+  },
+  logout: async (req, res) => {
+    req.session.destroy();
+    res.clearCookie("logado");
+    //res.cookie("logado", { expires: Date.now() });
+    res.redirect("/login");
   },
 };

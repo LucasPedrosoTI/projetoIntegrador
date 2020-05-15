@@ -48,10 +48,17 @@ module.exports = {
   },
 
   login: (req, res, next) => {
+    if (req.session.usuario) {
+      res.redirect("dashboard-usuario");
+    }
+
     res.render("login", { error: null });
   },
 
   cadastro: (req, res, next) => {
+    if (req.session.usuario) {
+      res.redirect("dashboard-usuario");
+    }
     res.render("cadastro");
   },
 
