@@ -10,7 +10,19 @@ module.exports = {
         {
           nome: "Lucas",
           sobrenome: "Pedroso",
-          email: "lucas@gmail.com",
+          email: "lp@mail.com",
+          senha: bcrypt.hashSync("123456", 10),
+        },
+        {
+          nome: "Bruno",
+          sobrenome: "Prata",
+          email: "bruno@mail.com",
+          senha: bcrypt.hashSync("123456", 10),
+        },
+        {
+          nome: "Mauricio",
+          sobrenome: "Reis",
+          email: "mr@mail.com",
           senha: bcrypt.hashSync("123456", 10),
         },
       ],
