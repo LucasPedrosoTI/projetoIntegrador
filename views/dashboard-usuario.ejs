@@ -9,17 +9,12 @@
 <main>
   <div class="dashboard-container">
     <nav class="nav-dashboard">
-      <div class="container-logo">
-        <div class="logo-usuario">
-          <img src="/images/teste-perfil.jpg" alt="usuario" />
-        </div>
-      </div>
       <div class="menu">
         <ul>
-          <li>
-            <button class="btn btn-secondary btn-sm btn-block" onclick="mostrarCadastro()">
+          <button class="btn btn-secondary btn-sm btn-block" onclick="mostrarCadastro()">
+            <li>
               Atualizar Cadastro
-            </button>
+          </button>
           </li>
           <li>
             <button class="btn btn-secondary btn-sm btn-block" onclick="mostrarFavoritos()">
@@ -35,32 +30,24 @@
       </div>
     </nav>
 
-    <section id="cadastro" class="cadastro" style="display: none;">
-      <form action="">
+    <section id="cadastro" class="cadastro" style="display: block;">
+      <form class="form" action="/usuario/editar/" method="GET">
         <h1>Alterar Cadastro</h1>
         <div class="form-container">
           <div class="form-group">
-            <input class="form-control-sm" type="text" placeholder="Novo Email" name="email" required />
+            <input class="form-control mt-3" type="text" placeholder="Novo Email" name="email" value="" required />
+
+            <input class="form-control mt-3" type="text" placeholder="Alterar Nome" name="nome" id="nome" value="" />
+
+            <input class="form-control mt-3" type="text" placeholder="Alterar sobrenome" name="sobrenome" id="sobrenome"
+              value="" />
+
+            <input class="form-control mt-3" type="password" placeholder="Senha" name="senha" required />
+
+            <button type="submit" class="btn btn-warning">Salvar</button>
+
           </div>
 
-          <div class="form-group">
-            <input class="form-control-sm" type="text" placeholder="Alterar Nome" name="nome" id="nome" />
-          </div>
-
-          <div class="form-group">
-            <input class="form-control-sm" type="text" placeholder="Alterar sobrenome" name="nome" id="nome" />
-          </div>
-
-          <div class="form-group">
-            <input class="form-control-sm" type="password" placeholder="Alterar senha" name="psw" required />
-          </div>
-
-          <div class="form-group">
-            <label for="psw-repeat"><b>Repetir Senha</b></label>
-            <input class="form-control-sm" type="password" placeholder="Repetir senha" name="psw-repeat" required />
-          </div>
-
-          <button type="submit" class="btn btn-warning">Salvar</button>
         </div>
       </form>
     </section>
@@ -145,7 +132,7 @@
         </div>
     </section>
 
-    <section id="comentarios" class="comentarios" style="display: block;">
+    <section id="comentarios" class="comentarios" style="display: none;">
       <h2>Meus Comentários</h2>
 
       <div class="comentarios-container">

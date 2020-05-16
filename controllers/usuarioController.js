@@ -43,15 +43,50 @@ module.exports = {
         res.cookie("logado", user.email, { maxAge: 3600000 });
       }
 
-      res.redirect("/dashboard-usuario");
+      res.render("dashboard-usuario", { user });
     } catch (err) {
       return res.status(400).send(err);
     }
   },
-  logout: async (req, res) => {
+  logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("logado");
     //res.cookie("logado", { expires: Date.now() });
     res.redirect("/login");
+  },
+  verEditar: (req, res) => {
+    res.render("./usuario/cadastro", { user: req.session.usuario.dataValues });
+  },
+  editar: async (req, res) => {
+    let { nome, sobrenome, email, senha } = req.body;
+    let { id } = req.params;
+
+    try {
+      const usuario = await Usuario.findByPk(id);
+
+      // console.log(usuario);
+      // console.log(bcrypt.compareSync(senha, usuario.senha));
+
+      // return res.send("OK");
+      // if (!bcrypt.compareSync(senha, usuario.senha)) {
+      //   return res.send("Senha inválida!");
+      // }
+
+      // return res.send("Alterado");
+
+      nome = nome || usuario.nome;
+      sobrenome = sobrenome || usuario.sobrenome;
+      email = email || usuario.email;
+
+      Usuario.update({
+        nome,
+        sobrenome,
+        email,
+      });
+
+      res.render("dashboard-usuario", { user: req.session.usuario.dataValues });
+    } catch (error) {
+      res.status(404).send(error);
+    }
   },
 };

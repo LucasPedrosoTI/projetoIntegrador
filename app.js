@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const cookieLogin = require("./middlewares/cookieLogin");
+const methodOverride = require("method-override");
 
 const viewRouter = require("./routes/routes");
 const usuarioRouter = require("./routes/usuarioRouter");
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride("_method")); //MIDDLEWARE PARA O USO DE METHOD OVERRIDE, REQUISIÇÕES PUT E DELETE
 app.use(cookieLogin);
 
 app.use("/", viewRouter);

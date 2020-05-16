@@ -8,4 +8,6 @@ router.post("/logar", usuarioController.logar);
 
 router.get("/logout", usuarioController.logout);
 
+router.get("/editar/:id", usuarioController.verEditar);
+
 module.exports = router;

@@ -139,28 +139,33 @@ input:checked + .slider:before {
 
 /* section form */
 
+.form {
+  height: 100%;
+}
+
 section form h1 {
   text-align: center;
   margin-bottom: 15px;
 }
 
 .form-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 5px;
-  overflow: auto;
+  height: 100%;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .form-group {
-  margin: 5px 0 !important;
-}
-
-.form-group input {
-  margin: 0 !important;
+  height: 100%;
 }
 
 .form-container button {
-  grid-column: 2 / span 2;
+  float: right;
+  width: 35%;
+  background-color: #e14242;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px 1px #0009;
+  font-weight: bold;
+  padding: 6px;
 }
 
 .row {
@@ -312,7 +317,7 @@ input[type="password"] {
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .row {
     flex-direction: column-reverse;
   }
@@ -338,4 +343,4 @@ input[type="password"] {
   .btn {
     grid-column-start: 1;
   }
-}
+} */
