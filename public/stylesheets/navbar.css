@@ -3,7 +3,7 @@
 }
 
 ul.navbar-nav {
-  margin-left: 60px;
+  /* margin-left: 60px; */
   line-height: 25px;
 }
 
@@ -65,4 +65,11 @@ ul.navbar-nav li.nav-item {
   background-color: #e2945ccc;
   padding: 10px 20px;
   border-radius: 15px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1140px) {
+  ul.navbar-nav li.nav-item {
+    padding-left: unset;
+  }
 }
