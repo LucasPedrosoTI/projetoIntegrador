@@ -24,6 +24,4 @@ router.get("/termosdeuso", viewController.termosdeuso);
 
 router.get("/dashboard-empresa", viewController.dashboardEmpresa);
 
-router.get("/dashboard-usuario", auth, viewController.dashboardUsuario);
-
 module.exports = router;

@@ -1,7 +1,10 @@
 const bcrypt = require("bcrypt");
-const { Usuario } = require("../models");
+const { Usuario, Posto } = require("../models");
 
 module.exports = {
+  dashboardUsuario: async (req, res) => {
+    res.render("dashboard-usuario", { user: req.session.usuario.dataValues });
+  },
   cadastrar: async (req, res) => {
     let { nome, sobrenome, email, senha } = req.body;
 
@@ -54,7 +57,7 @@ module.exports = {
     //res.cookie("logado", { expires: Date.now() });
     res.redirect("/login");
   },
-  verEditar: (req, res) => {
+  verCadastro: (req, res) => {
     res.render("./usuario/cadastro", { user: req.session.usuario.dataValues });
   },
   editar: async (req, res) => {
@@ -88,5 +91,15 @@ module.exports = {
     } catch (error) {
       res.status(404).send(error);
     }
+  },
+  verPostosFavoritos: async (req, res) => {
+    // await Posto.findAll({
+    //   where: "",
+    // });
+
+    res.render("./usuario/postos-favoritos");
+  },
+  verAvaliacoes: (req, res) => {
+    res.render("./usuario/avaliacoes");
   },
 };

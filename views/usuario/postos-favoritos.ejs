@@ -1,0 +1,98 @@
+<%- include('../parts/head', {title: "Dashboard - Meu Posto"}) %>
+<link rel="stylesheet" href="/stylesheets/login.css    " />
+<link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
+
+<header>
+    <%- include('../parts/navbar') %>
+</header>
+
+<main>
+    <div class="dashboard-container">
+
+        <%- include('../parts/navbar-usuario') %>
+
+        <section id="favoritos" class="favoritos" style="display: block;">
+            <h2>Meus Postos Favoritos</h2>
+            <div class="favoritos-container">
+                <div class="card">
+                    <div class="logo-empresa">
+                        <img src="/images/petrobras.png" alt="petrobras">
+                    </div>
+                    <form action="" method="">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
+                    <div class="card-body">
+                        <div class="title">
+                            <h5 class="card-title">Posto Fulano &mdash;</h5>
+                            <span class="card-text">Ruas dos Fulanos, 000</span>
+                        </div>
+                        <div class="produto-detalhe">
+                            <span class="card-text">Gasolina &mdash;</span>
+                            <span class="card-text">R$ 4,00</span>
+                        </div>
+                        <div class="produto-detalhe">
+                            <span class="card-text">Etanol &mdash;</span>
+                            <span class="card-text">R$ 2,00</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-success btn-sm ir">Ir </a>
+                </div>
+                <div class="card">
+                    <div class="logo-empresa">
+                        <img src="/images/ipiranga.png" alt="petrobras">
+                    </div>
+                    <form action="" method="">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
+                    <div class="card-body">
+                        <div class="title">
+                            <h5 class="card-title">Posto Fulano &mdash;</h5>
+                            <span class="card-text">Ruas dos Fulanos, 000</span>
+                        </div>
+                        <div class="produto-detalhe">
+                            <span class="card-text">Gasolina &mdash;</span>
+                            <span class="card-text">R$ 4,00</span>
+                        </div>
+                        <div class="produto-detalhe">
+                            <span class="card-text">Etanol &mdash;</span>
+                            <span class="card-text">R$ 2,00</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-success btn-sm ir">Ir </a>
+                </div>
+                <div class="card">
+                    <div class="logo-empresa">
+                        <img src="/images/shell.png" alt="petrobras">
+                    </div>
+                    <form action="" method="">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
+                    <div class="card-body">
+                        <div class="title">
+                            <h5 class="card-title">Posto Fulano &mdash;</h5>
+                            <span class="card-text">Ruas dos Fulanos, 000</span>
+                        </div>
+                        <div class="produto-detalhe">
+                            <span class="card-text">Gasolina &mdash;</span>
+                            <span class="card-text">R$ 4,00</span>
+                        </div>
+                        <div class="produto-detalhe">
+                            <span class="card-text">Etanol &mdash;</span>
+                            <span class="card-text">R$ 2,00</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-success btn-sm ir">Ir </a>
+                </div>
+        </section>
+
+
+    </div>
+</main>
+
+<%- include('../parts/foot') %>

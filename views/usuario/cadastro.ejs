@@ -1,32 +1,41 @@
 <%- include('../parts/head', {title: "Dashboard - Meu Posto"}) %>
-<link rel="stylesheet" href="../public/stylesheets/login.css    " />
+<link rel="stylesheet" href="/stylesheets/login.css    " />
 <link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
 
 <header>
     <%- include('../parts/navbar') %>
 </header>
 
-<section id="cadastro" class="cadastro" style="display: block;">
-    <form class="form" action="" method="GET">
-        <h1>Alterar Cadastro</h1>
-        <div class="form-container">
-            <div class="form-group">
-                <input class="form-control mt-3" type="text" placeholder="Novo Email" name="email" value="" required />
+<main>
+    <div class="dashboard-container">
 
-                <input class="form-control mt-3" type="text" placeholder="Alterar Nome" name="nome" id="nome"
-                    value="" />
+        <%- include('../parts/navbar-usuario') %>
 
-                <input class="form-control mt-3" type="text" placeholder="Alterar sobrenome" name="sobrenome"
-                    id="sobrenome" value="" />
+        <section id="cadastro" class="cadastro" style="display: block;">
+            <form class="form" action="" method="GET">
+                <h1>Alterar Cadastro</h1>
+                <div class="form-container">
+                    <div class="form-group">
+                        <input class="form-control mt-3" type="text" placeholder="Novo Email" name="email" value=""
+                            required />
 
-                <input class="form-control mt-3" type="password" placeholder="Senha" name="senha" required />
+                        <input class="form-control mt-3" type="text" placeholder="Alterar Nome" name="nome" id="nome"
+                            value="" />
 
-                <button type="submit" class="btn btn-warning">Salvar</button>
+                        <input class="form-control mt-3" type="text" placeholder="Alterar sobrenome" name="sobrenome"
+                            id="sobrenome" value="" />
 
-            </div>
+                        <input class="form-control mt-3" type="password" placeholder="Senha" name="senha" required />
 
-        </div>
-    </form>
-</section>
+                        <button type="submit" class="btn btn-warning">Salvar</button>
+
+                    </div>
+
+                </div>
+            </form>
+        </section>
+
+    </div>
+</main>
 
 <%- include('../parts/foot') %>

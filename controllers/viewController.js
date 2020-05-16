@@ -49,7 +49,7 @@ module.exports = {
 
   login: (req, res, next) => {
     if (req.session.usuario) {
-      res.render("dashboard-usuario", { user: req.session.usuario.dataValues });
+      res.redirect("/usuario/dashboard");
     }
 
     res.render("login", { error: null });
@@ -57,7 +57,7 @@ module.exports = {
 
   cadastro: (req, res, next) => {
     if (req.session.usuario) {
-      res.redirect("dashboard-usuario");
+      res.redirect("/usuario/dashboard");
     }
     res.render("cadastro");
   },
@@ -80,9 +80,5 @@ module.exports = {
 
   dashboardEmpresa: (req, res) => {
     res.render("dashboard-empresa");
-  },
-
-  dashboardUsuario: (req, res) => {
-    res.render("dashboard-usuario", { user: req.session.usuario.dataValues });
   },
 };

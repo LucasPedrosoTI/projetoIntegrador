@@ -13,8 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     }
   );
-  // Usuario.associate = function (models) {
-  //   // associations can be defined here
-  // };
+  Usuario.associate = function (models) {
+    // associations can be defined here
+    Usuario.belongsToMany(models.Posto, {
+      through: "postos_favoritos",
+      foreignKey: "usuarios_id",
+      as: "usuarios",
+    });
+  };
   return Usuario;
 };

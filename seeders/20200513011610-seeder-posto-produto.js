@@ -15,6 +15,26 @@ module.exports = {
           produtos_id: 2,
           preco: 2.19,
         },
+        {
+          postos_id: 2,
+          produtos_id: 1,
+          preco: 3.69,
+        },
+        {
+          postos_id: 2,
+          produtos_id: 2,
+          preco: 2.29,
+        },
+        {
+          postos_id: 3,
+          produtos_id: 1,
+          preco: 3.79,
+        },
+        {
+          postos_id: 3,
+          produtos_id: 2,
+          preco: 2.09,
+        },
       ],
       {}
     );

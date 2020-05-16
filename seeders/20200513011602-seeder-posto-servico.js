@@ -20,6 +20,21 @@ module.exports = {
           servicos_id: 3,
           preco: 0,
         },
+        {
+          postos_id: 2,
+          servicos_id: 1,
+          preco: 20,
+        },
+        {
+          postos_id: 2,
+          servicos_id: 2,
+          preco: 35,
+        },
+        {
+          postos_id: 3,
+          servicos_id: 2,
+          preco: 40,
+        },
       ],
       {}
     );
