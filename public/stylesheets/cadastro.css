@@ -1,13 +1,17 @@
 body {
   margin: 0;
   background: url(../images/backLogin.jpg) no-repeat center;
-  font: 600 16px/18px "Roboto", sans-serif;
+  font: 600 16px/18px 'Roboto', sans-serif;
 }
 
 .form-horizontal {
   margin-top: 150px;
   background-color: #fcfcfccc;
   border-radius: 15px;
+}
+
+#form-all {
+  margin-bottom: 2%;
 }
 
 .panel-heading h1 {
@@ -94,7 +98,7 @@ fieldset {
 .valid:before {
   position: relative;
   left: -35px;
-  content: "✔️";
+  content: '✔️';
 }
 
 /* Add a red text color and an "x" icon when the requirements are wrong */
@@ -107,5 +111,5 @@ fieldset {
 .invalid:before {
   position: relative;
   left: -35px;
-  content: "❌";
+  content: '❌';
 }

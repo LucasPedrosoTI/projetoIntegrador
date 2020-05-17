@@ -1,91 +1,123 @@
 <fieldset>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h1>Crie sua conta em Meu Posto
-            </h1>
-        </div>
-        <div class="panel-body">
-            <form action="/usuario/cadastrar" method="POST">
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-8 control-label" for="Nome">Nome*</label>
-                    <div class="col-md-8">
-                        <input id="Nome" name="nome" placeholder="Digite seu nome" class="form-control input-md"
-                            required type="text" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-8 control-label" for="Sobrenome">Sobrenome*</label>
-                    <div class="col-md-8">
-                        <input id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome"
-                            class="form-control input-md" required type="text" />
-                    </div>
-                </div>
-                <!-- Prepended text-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Email *</label>
-                    <div class="col-md-5">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input id="email" name="email" class="form-control" placeholder="email@email.com" required
-                                type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
-                        </div>
-                    </div>
-                </div>
-                <!-- Password input -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="senha">Senha: *</label>
-                    <div class="col-md-5">
-                        <div class="input-group">
-                            <input id="senha" name="senha" class="form-control" placeholder="8 dígitos" required
-                                type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
-                            <!-- -->
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="col-md-4 control-label" for="senha">Confirme a Senha: *</label>
-                        <div class="col-md-5">
-                            <div class="input-group">
-                                <input class="l-form-password form-control" type="password" name="senha-confirmacao"
-                                    placeholder="Confirme Senha" id="senha-confirmacao" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class=" form-group">
-                    <div class="form-check" id="termosDeUso">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                            Li e aceito os <a href="/termosdeuso">termos de uso</a>!
-                        </label>
-                    </div>
-                </div>
-
-                <div id="message" style="display: none;">
-                    <h3>Senha deve conter o seguinte:</h3>
-                    <p id="letter" class="invalid">Uma letra <b>minúscula</b> </p>
-                    <p id="capital" class="invalid">Uma letra <b>maiúscula</b> </p>
-                    <p id="number" class="invalid">Um <b>número</b></p>
-                    <p id="length" class="invalid">Mínimo <b>8 caracteres</b></p>
-                </div>
-
-
-
-
-                <div class="col-md-8">
-                    <button id="botao-cadastrar" class="btn btn-success" type="submit">
-                        Cadastrar
-                    </button>
-                    <a href="/login" id="cancelar" class="btn btn-outline-danger">
-                        Cancelar
-                    </a>
-                </div>
-
-            </form>
-
-        </div>
+  <div class="panel panel-primary" id="form-all">
+    <div class="panel-heading">
+      <h1>Crie sua conta em Meu Posto</h1>
     </div>
+    <div class="panel-body">
+      <form action="/usuario/cadastrar" method="POST">
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-8 control-label" for="Nome">Nome*</label>
+          <div class="col-md-8">
+            <input
+              id="Nome"
+              name="nome"
+              placeholder="Digite seu nome"
+              class="form-control input-md"
+              required
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-8 control-label" for="Sobrenome"
+            >Sobrenome*</label
+          >
+          <div class="col-md-8">
+            <input
+              id="sobrenome"
+              name="sobrenome"
+              placeholder="Digite seu sobrenome"
+              class="form-control input-md"
+              required
+              type="text"
+            />
+          </div>
+        </div>
+        <!-- Prepended text-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="email">Email *</label>
+          <div class="col-md-5">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="glyphicon glyphicon-envelope"></i
+              ></span>
+              <input
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="email@email.com"
+                required
+                type="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Password input -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="senha">Senha: *</label>
+          <div class="col-md-5">
+            <div class="input-group">
+              <input
+                id="senha"
+                name="senha"
+                class="form-control"
+                placeholder="8 dígitos"
+                required
+                type="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              />
+              <!-- -->
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <label class="col-md-4 control-label" for="senha"
+              >Confirme a Senha: *</label
+            >
+            <div class="col-md-5">
+              <div class="input-group">
+                <input
+                  class="l-form-password form-control"
+                  type="password"
+                  name="senha-confirmacao"
+                  placeholder="Confirme Senha"
+                  id="senha-confirmacao"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-check" id="termosDeUso">
+            <input class="form-check-input" type="checkbox" id="gridCheck" />
+            <label class="form-check-label" for="gridCheck">
+              Li e aceito os <a href="/termosdeuso">termos de uso</a>!
+            </label>
+          </div>
+        </div>
+
+        <div id="message" style="display: none;">
+          <h3>Senha deve conter o seguinte:</h3>
+          <p id="letter" class="invalid">Uma letra <b>minúscula</b></p>
+          <p id="capital" class="invalid">Uma letra <b>maiúscula</b></p>
+          <p id="number" class="invalid">Um <b>número</b></p>
+          <p id="length" class="invalid">Mínimo <b>8 caracteres</b></p>
+        </div>
+
+        <div class="col-md-8">
+          <button id="botao-cadastrar" class="btn btn-success" type="submit">
+            Cadastrar
+          </button>
+          <a href="/login" id="cancelar" class="btn btn-outline-danger">
+            Cancelar
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
 </fieldset>
 
 <script src="/javascripts/cadastro.js"></script>
