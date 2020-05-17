@@ -3,12 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const Posto = sequelize.define(
     "Posto",
     {
-      nome_fantasia: DataTypes.STRING,
+      nome: DataTypes.STRING,
       cnpj: DataTypes.STRING,
       cep: DataTypes.STRING,
       cidade: DataTypes.STRING,
       estado: DataTypes.STRING,
       bairro: DataTypes.STRING,
+      endereco: DataTypes.STRING,
       bandeira: DataTypes.STRING,
       latitude: DataTypes.DECIMAL,
       longitude: DataTypes.DECIMAL,
@@ -23,14 +24,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       tablename: "postos",
+      timestamps: false,
     }
   );
   Posto.associate = function (models) {
     // associations can be defined here
     Posto.belongsToMany(models.Usuario, {
-      through: "postos_favoritos",
+      through: models.postos_favoritos,
       foreignKey: "postos_id",
-      as: "postos",
+      as: "usuarios",
+    });
+    Posto.belongsToMany(models.Produto, {
+      through: models.postos_produtos,
+      foreignKey: "postos_id",
+      as: "produtos",
     });
   };
   return Posto;

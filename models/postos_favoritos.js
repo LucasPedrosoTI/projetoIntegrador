@@ -1,6 +1,6 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const postos_favoritos = sequelize.define(
+  const PostosFavoritos = sequelize.define(
     "postos_favoritos",
     {
       postos_id: DataTypes.INTEGER,
@@ -14,5 +14,5 @@ module.exports = (sequelize, DataTypes) => {
   // postos_favoritos.associate = function(models) {
   //   // associations can be defined here
   // };
-  return postos_favoritos;
+  return PostosFavoritos;
 };

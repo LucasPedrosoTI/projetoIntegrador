@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { Usuario, Posto } = require("../models");
+const { Usuario, Posto, Produto } = require("../models");
 
 module.exports = {
   dashboardUsuario: async (req, res) => {
@@ -93,11 +93,33 @@ module.exports = {
     }
   },
   verPostosFavoritos: async (req, res) => {
-    // await Posto.findAll({
-    //   where: "",
-    // });
+    let { id } = req.session.usuario;
 
-    res.render("./usuario/postos-favoritos");
+    let user = await Usuario.findOne({
+      where: { id },
+      include: {
+        association: "postos",
+        through: {
+          attributes: [
+            "nome_fantasia",
+            "cidade",
+            "estado",
+            "bairro",
+            "endereco",
+            "bandeira",
+          ],
+        },
+        include: {
+          association: "produtos",
+          through: {
+            attributes: ["nome", "preco"],
+          },
+        },
+      },
+    });
+
+    // return res.send(user);
+    res.render("./usuario/postos-favoritos", { user });
   },
   verAvaliacoes: (req, res) => {
     res.render("./usuario/avaliacoes");

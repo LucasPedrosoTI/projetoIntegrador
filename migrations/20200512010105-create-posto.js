@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER(1),
       },
-      nome_fantasia: {
+      nome: {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
@@ -31,6 +31,10 @@ module.exports = {
       },
       bairro: {
         type: Sequelize.STRING(100),
+        allowNull: false,
+      },
+      endereco: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       bandeira: {
