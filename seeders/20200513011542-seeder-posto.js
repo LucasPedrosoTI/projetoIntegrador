@@ -6,7 +6,7 @@ module.exports = {
       'Postos',
       [
         {
-          nome_fantasia: 'Posto 1',
+          nome: 'Posto 1',
           cnpj: '12345678912345',
           cep: '12345678',
           cidade: 'São Paulo',
@@ -20,7 +20,7 @@ module.exports = {
           update_time: new Date(),
         },
         {
-          nome_fantasia: 'Posto 2',
+          nome: 'Posto 2',
           cnpj: '12345678912346',
           cep: '12345678',
           cidade: 'São Paulo',
@@ -34,7 +34,7 @@ module.exports = {
           update_time: new Date(),
         },
         {
-          nome_fantasia: 'Posto 3',
+          nome: 'Posto 3',
           cnpj: '12345678912347',
           cep: '12345678',
           cidade: 'São Paulo',
@@ -48,7 +48,7 @@ module.exports = {
           update_time: new Date(),
         },
         {
-          nome_fantasia: 'Posto 4',
+          nome: 'Posto 4',
           cnpj: '12345678912348',
           cep: '12345678',
           cidade: 'São Paulo',

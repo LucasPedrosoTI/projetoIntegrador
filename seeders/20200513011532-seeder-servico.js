@@ -6,13 +6,13 @@ module.exports = {
       'Servicos',
       [
         {
-          servico: 'Borracharia',
+          nome: 'Borracharia',
         },
         {
-          servico: 'Lavagem',
+          nome: 'Lavagem',
         },
         {
-          servico: 'Conveniência',
+          nome: 'Conveniência',
         },
       ],
       {}

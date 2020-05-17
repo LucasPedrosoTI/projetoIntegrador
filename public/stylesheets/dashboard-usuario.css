@@ -6,7 +6,7 @@ main {
 
 .dashboard-container {
   width: 80%;
-  height: auto;
+  height: 90vh;
   background-color: #ffffffd8;
   border-radius: 30px;
   padding: 30px 15px;
@@ -146,7 +146,7 @@ input:checked + .slider:before {
 /* section form */
 
 .form {
-  height: 90%;
+  height: 82%;
 }
 
 section form h1 {
@@ -240,11 +240,23 @@ label {
 
 .btn:hover {
   background-color: #e4704e;
+  color: white;
 }
 
 input[type="password"] {
   border: 1px solid #ccc;
   padding-right: 67px;
+}
+
+.btn-posto-2 {
+  margin-right: 25%;
+  float: right;
+  width: 20%;
+  background-color: #e14242;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px 1px #0009;
+  font-weight: bold;
+  padding: 6px;
 }
 
 /* POSTOS FAVORITOS */
@@ -306,6 +318,9 @@ input[type="password"] {
 }
 
 /* COMENTARIOS */
+.comentarios-container {
+height: auto;
+}
 
 .edit {
   position: absolute;
@@ -327,14 +342,26 @@ input[type="password"] {
 }
 
 @media (max-width: 360px) {
+  .btn-block{
+    font-size: 14px;
+  }
+
   main {
-    height: 60vh;
+    height: auto;
   }
 
   .dashboard-container {
-    width: 90%;
+    width: 95%;
     height: auto;
     padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+  }
+
+  .nav-dashboard {
+    flex-wrap: wrap;
+    margin-bottom: 10%;
   }
 
   .menu {
@@ -343,6 +370,10 @@ input[type="password"] {
 
   .menu ul {
     height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   ul {
@@ -351,20 +382,27 @@ input[type="password"] {
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 1.5rem;
   }
+
   .btn {
     width: 95%;
     border-radius: 10px;
     margin: 5px;
   }
 
-  .nav-dashboard {
-    width: 25%
+  .btn-posto-2 {
+    margin-right: 10%;
+    float: right;
+    width: 50%;
+  }
+
+  .cadastro {
+    margin: 0 auto;
   }
 
   .form-container {
-    width: 75%;
+    width: 85%;
   }
 
   .mt-3 {
@@ -379,11 +417,43 @@ input[type="password"] {
     width: 45%
   }
 
+  footer{
+    font-size: 12px;
+  }
+
+  .favoritos {
+    width: 100%;
+  }
+
+  .comentarios {
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-body{
+    padding: 0.2rem;
+  }
+
+  .btn-success {
+    width: 20%;
+  }
+
+  .logo-empresa {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  h2{
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 361px) and (max-width: 800px) {
   main {
-    height: 75vh;
+    height: 76vh;
   }
 
   .btn {
@@ -393,9 +463,52 @@ input[type="password"] {
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 2rem;
+  }
+  .btn-block{
+    font-size: 14px;
   }
 
+  .dashboard-container {
+    width: 95%;
+    height: 70vh;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+  }
+
+  .nav-dashboard {
+    flex-wrap: wrap;
+    margin-bottom: 10%;
+  }
+
+  .menu {
+    height: auto;
+  }
+
+  .menu ul {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ul {
+    margin-bottom: 0px;
+    padding-left:10px;
+  }
+
+  .btn-posto-2 {
+    margin-right: 10%;
+    float: right;
+    width: 50%;
+  }
+
+  .favoritos-container {
+    margin: 0 auto;
+  }
 }
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
 /* @media (max-width: 800px) {
