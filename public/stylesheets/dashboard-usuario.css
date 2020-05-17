@@ -6,7 +6,7 @@ main {
 
 .dashboard-container {
   width: 80%;
-  height: 50%;
+  height: auto;
   background-color: #ffffffd8;
   border-radius: 30px;
   padding: 30px 15px;
@@ -60,9 +60,6 @@ section {
   flex-grow: 2;
   width: 80%;
   overflow: auto;
-  height: inherit;
-  position: relative;
-  max-height: 550px;
 }
 
 section h2 {
@@ -148,9 +145,9 @@ input:checked + .slider:before {
 
 /* section form */
 
-/* .form {
-  height: 100%;
-} */
+.form {
+  height: 90%;
+}
 
 section form h1 {
   text-align: center;
@@ -167,25 +164,14 @@ section form h1 {
   height: 100%;
 }
 
-.btn-posto {
+.form-container button {
   float: right;
-  width: 35% !important;
+  width: 35%;
   background-color: #e14242;
   border-radius: 15px;
   box-shadow: 0px 2px 5px 1px #0009;
   font-weight: bold;
   padding: 6px;
-}
-
-.btn-posto-2 {
-  width: 18% !important;
-  background-color: #eacd65;
-  border-radius: 15px;
-  box-shadow: 0px 2px 5px 1px #0009;
-  font-weight: bold;
-  padding: 6px;
-  color: #000 !important;
-  margin: 30px 0 0 260px !important;
 }
 
 .row {
@@ -340,14 +326,11 @@ input[type="password"] {
   margin-bottom: 0;
 }
 
-/* CADASTRO */
-
-#cadastro {
-  display: flex;
-  flex-direction: column;
-}
-
 @media (max-width: 360px) {
+  main {
+    height: 60vh;
+  }
+
   .dashboard-container {
     width: 90%;
     height: auto;
@@ -364,10 +347,11 @@ input[type="password"] {
 
   ul {
     margin-bottom: 0px;
+    padding-left:10px;
   }
 
   h1 {
-    font-size: medium;
+    font-size: 20px;
   }
   .btn {
     width: 95%;
@@ -376,7 +360,7 @@ input[type="password"] {
   }
 
   .nav-dashboard {
-    width: 25%;
+    width: 25%
   }
 
   .form-container {
@@ -384,18 +368,35 @@ input[type="password"] {
   }
 
   .mt-3 {
-    margin-top: 0px !important;
+    margin-top: 0px!important;
   }
 
   input {
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
   }
 
   .form-container button {
-    width: 45%;
+    width: 45%
   }
+
 }
 
+@media (min-width: 361px) and (max-width: 800px) {
+  main {
+    height: 75vh;
+  }
+
+  .btn {
+    width: 95%;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+}
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
 /* @media (max-width: 800px) {
   .row {
