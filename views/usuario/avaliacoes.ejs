@@ -18,9 +18,19 @@
                 <% user.avaliacoes.forEach(avaliacao => { %>
 
                 <div class="card">
+                    <% if (avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "petrobras" ||
+                    avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
+                    avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
+                    avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
                     <div class="logo-empresa">
-                        <img src="/images/petrobras.png" alt="petrobras">
+                        <img src="/images/<%=avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")%>.png"
+                            alt="petrobras">
                     </div>
+                    <% } else { %>
+                    <div class="logo-empresa">
+                        <img src="/images/branca.png" alt="Branca">
+                    </div>
+                    <% } %>
                     <form action="" method="">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -51,11 +61,7 @@
                                 <% for( let i = 0; i < 5-Math.ceil(avaliacao.Avaliacoes["nota"]) ; i++ ) { %>
                                 <i class="far fa-star"></i>
                                 <% } %>
-                                <!-- <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star"></i> -->
+
                             </div>
 
                             <div class="avaliacao-comentario">

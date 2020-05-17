@@ -17,9 +17,19 @@
 
                 <% user.postos.forEach(posto => { %>
                 <div class="card">
+                    <% if (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "petrobras" ||
+                    posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
+                    posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
+                    posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
                     <div class="logo-empresa">
-                        <img src="/images/petrobras.png" alt="petrobras">
+                        <img src="/images/<%=posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")%>.png"
+                            alt="petrobras">
                     </div>
+                    <% } else { %>
+                    <div class="logo-empresa">
+                        <img src="/images/branca.png" alt="Branca">
+                    </div>
+                    <% } %>
                     <form action="" method="">
                         <button type="button" class="close">
                             <span aria-hidden="true">&times;</span>
