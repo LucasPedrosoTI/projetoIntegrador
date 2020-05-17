@@ -98,30 +98,22 @@ module.exports = {
   alterarSenha: async (req, res) => {
     const { senha, novaSenha, confirmarSenha } = req.body;
     const { id } = req.session.usuario;
-
+    let novaSenha2 = bcrypt.hashSync(novaSenha, 10);
     try {
       const user = await Usuario.findByPk(id);
-
       if (!bcrypt.compareSync(senha, user.senha)) {
         return res.render('dashboard-usuario', { msg: 'Senha inválida' });
-      } else if (bcrypt.compareSync(novaSenha, confirmarSenha)) {
-        return res.render('dashboard-usuario', {msg: 'A nova senha está diferente da confirmada'});
-      }
-
-      senha = novaSenha;
-
+      } 
       await user.update({
-        senha
+        senha: novaSenha2,
       });
-
       res.cookie('logado', user.email, { maxAge: 3600000 });
-
       res.render('dashboard-usuario', { msg: 'Atualizado com sucesso!!' });
     } catch (error) {
       res.status(404).send(error);
       console.log(error);
     }
-    console.log("executou");
+    console.log('executou');
   },
   destroy: async (req, res) => {
     const { id } = req.session.usuario;

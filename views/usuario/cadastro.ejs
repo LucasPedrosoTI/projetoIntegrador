@@ -13,7 +13,10 @@
     <section id="cadastro" class="cadastro">
       <!-- <div class="cadastro-container"> -->
       <!-- Modal -->
-      <form action="/dashboard/cadastro/alterarsenha_?method=PUT" method="POST">
+      <form
+        action="/usuario/dashboard/cadastro/alterarsenha?_method=PUT"
+        method="POST"
+      >
         <div
           class="modal fade"
           id="alterar-senha"
@@ -42,20 +45,20 @@
                   class="form-control mt-3"
                   type="password"
                   name="senha"
-                  id="senha"
+                  id="senha1"
                   placeholder="Senha atual"
                 />
                 <input
                   class="form-control mt-3"
                   type="password"
                   name="novaSenha"
-                  id="novaSenha"
+                  id="senha"
                   placeholder="Nova senha"
                 />
                 <input
                   class="form-control mt-3"
                   type="password"
-                  id="confirmarSenha"
+                  id="senha-confirmacao"
                   placeholder="Repetir nova senha"
                 />
               </div>
@@ -141,4 +144,5 @@
   </div>
 </main>
 
+<script src="/javascripts/cadastro.js"></script>
 <%- include('../parts/foot') %>
