@@ -53,6 +53,14 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          usuarios_id: 3,
+          postos_id: 4,
+          texto: "Bom custo benefício!",
+          nota: 3.5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
