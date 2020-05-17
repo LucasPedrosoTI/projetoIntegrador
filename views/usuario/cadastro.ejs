@@ -121,24 +121,22 @@
               required
             />
 
-            <button type="submit" class="btn btn-warning btn-posto">
-              Salvar
-            </button>
+            <button type="submit" class="btn btn-warning btn-posto">Salvar</button>
           </div>
         </div>
       </form>
       <!-- Button trigger modal -->
-      <button
+      <div><button
         type="button"
         class="btn btn-danger btn-sm btn-posto-2"
         data-toggle="modal"
         data-target="#alterar-senha"
-      >
-        Alterar Senha
-      </button>
+      >Alterar Senha</button>
+
       <form action="/dashboard/cadastro/deletar_method=DELETE" method="post">
-        <button type="submit" class="btn btn-danger">Excluir cadastro</button>
+        <button type="submit" id="excluir" class="btn btn-danger btn-sm btn-posto-2">Excluir Cadastro</button>
       </form>
+      </div>
       <!-- </div> -->
     </section>
   </div>

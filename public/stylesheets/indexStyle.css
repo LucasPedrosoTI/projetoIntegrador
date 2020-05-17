@@ -130,7 +130,7 @@ form input[type="search"] {
   padding-right: 5%;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 400px) {
   #parallax01 {
     height: 420px;
 }
@@ -164,6 +164,6 @@ h1 {
     font-size: 1.75rem;
 }
 
-@media (min-width: 361px) and (max-width: 800px) {
+@media (min-width: 401px) and (max-width: 800px) {
 }
 }
