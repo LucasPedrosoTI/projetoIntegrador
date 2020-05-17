@@ -60,6 +60,9 @@ section {
   flex-grow: 2;
   width: 80%;
   overflow: auto;
+  height: inherit;
+  position: relative;
+  max-height: 550px;
 }
 
 section h2 {
@@ -145,9 +148,9 @@ input:checked + .slider:before {
 
 /* section form */
 
-.form {
+/* .form {
   height: 100%;
-}
+} */
 
 section form h1 {
   text-align: center;
@@ -164,14 +167,25 @@ section form h1 {
   height: 100%;
 }
 
-.form-container button {
+.btn-posto {
   float: right;
-  width: 35%;
+  width: 35% !important;
   background-color: #e14242;
   border-radius: 15px;
   box-shadow: 0px 2px 5px 1px #0009;
   font-weight: bold;
   padding: 6px;
+}
+
+.btn-posto-2 {
+  width: 18% !important;
+  background-color: #eacd65;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px 1px #0009;
+  font-weight: bold;
+  padding: 6px;
+  color: #000 !important;
+  margin: 30px 0 0 260px !important;
 }
 
 .row {
@@ -324,6 +338,13 @@ input[type="password"] {
 
 .card-title {
   margin-bottom: 0;
+}
+
+/* CADASTRO */
+
+#cadastro {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */

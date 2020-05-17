@@ -11,7 +11,37 @@
 
         <%- include('../parts/navbar-usuario') %>
 
-        <section id="cadastro" class="cadastro" style="display: block;">
+        <section id="cadastro" class="cadastro">
+
+            <!-- <div class="cadastro-container"> -->
+            <!-- Modal -->
+            <div class="modal fade" id="alterar-senha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="" method="post">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Alterar senha</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control mt-3" type="password" name="senha" id="senha"
+                                    placeholder="Senha atual">
+                                <input class="form-control mt-3" type="password" name="novaSenha" id="nova-senha"
+                                    placeholder="Nova senha">
+                                <input class="form-control mt-3" type="password" id="confirmar-senha"
+                                    placeholder="Repetir nova senha">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-posto">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <form class="form" action="/usuario/dashboard/cadastro?_method=PUT" method="POST">
                 <h1>Alterar Cadastro</h1>
                 <div class="form-container">
@@ -27,12 +57,18 @@
 
                         <input class="form-control mt-3" type="password" placeholder="Senha" name="senha" required />
 
-                        <button type="submit" class="btn btn-warning">Salvar</button>
+                        <button type="submit" class="btn btn-warning btn-posto">Salvar</button>
 
                     </div>
 
                 </div>
             </form>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger btn-sm btn-posto-2" data-toggle="modal"
+                data-target="#alterar-senha">
+                Alterar Senha
+            </button>
+            <!-- </div> -->
         </section>
 
     </div>
