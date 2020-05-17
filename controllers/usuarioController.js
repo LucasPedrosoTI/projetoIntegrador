@@ -103,7 +103,7 @@ module.exports = {
       const user = await Usuario.findByPk(id);
       if (!bcrypt.compareSync(senha, user.senha)) {
         return res.render('dashboard-usuario', { msg: 'Senha inválida' });
-      } 
+      }
       await user.update({
         senha: novaSenha2,
       });
@@ -113,16 +113,14 @@ module.exports = {
       res.status(404).send(error);
       console.log(error);
     }
-    console.log('executou');
   },
   destroy: async (req, res) => {
     const { id } = req.session.usuario;
 
-    const user = await user.destroy({
-      where: { id: id },
+    const user = await Usuario.destroy({
+      where: { id },
     });
-    console.log(user);
-
+    console.log('executou');
     res.redirect('/');
   },
 
