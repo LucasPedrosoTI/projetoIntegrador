@@ -12,18 +12,18 @@
         <%- include('../parts/navbar-usuario') %>
 
         <section id="cadastro" class="cadastro" style="display: block;">
-            <form class="form" action="" method="GET">
+            <form class="form" action="/usuario/dashboard/cadastro?_method=PUT" method="POST">
                 <h1>Alterar Cadastro</h1>
                 <div class="form-container">
                     <div class="form-group">
-                        <input class="form-control mt-3" type="text" placeholder="Novo Email" name="email" value=""
-                            required />
+                        <input class="form-control mt-3" type="email" placeholder="Novo Email" name="email"
+                            value="<%= user.email %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
 
                         <input class="form-control mt-3" type="text" placeholder="Alterar Nome" name="nome" id="nome"
-                            value="" />
+                            value="<%=user.nome%>" />
 
                         <input class="form-control mt-3" type="text" placeholder="Alterar sobrenome" name="sobrenome"
-                            id="sobrenome" value="" />
+                            id="sobrenome" value="<%=user.sobrenome%>" />
 
                         <input class="form-control mt-3" type="password" placeholder="Senha" name="senha" required />
 

@@ -1,9 +1,10 @@
 const bcrypt = require("bcrypt");
 const { Usuario, Posto, Produto, Avaliacoes } = require("../models");
+const { capitalizeName } = require("../lib/capitalizeName");
 
 module.exports = {
   dashboardUsuario: async (req, res) => {
-    res.render("dashboard-usuario", { user: req.session.usuario.dataValues });
+    res.render("dashboard-usuario", { msg: null });
   },
   cadastrar: async (req, res) => {
     let { nome, sobrenome, email, senha } = req.body;
@@ -13,8 +14,8 @@ module.exports = {
     try {
       // create a new user with the password hash from bcrypt
       await Usuario.create({
-        nome,
-        sobrenome,
+        nome: capitalizeName(nome.trim()),
+        sobrenome: capitalizeName(sobrenome.trim()),
         email,
         senha: hash,
       });
@@ -46,7 +47,7 @@ module.exports = {
         res.cookie("logado", user.email, { maxAge: 3600000 });
       }
 
-      res.render("dashboard-usuario", { user });
+      res.render("dashboard-usuario", { msg: null });
     } catch (err) {
       return res.status(400).send(err);
     }
@@ -57,37 +58,39 @@ module.exports = {
     //res.cookie("logado", { expires: Date.now() });
     res.redirect("/login");
   },
-  verCadastro: (req, res) => {
-    res.render("./usuario/cadastro", { user: req.session.usuario.dataValues });
+  verCadastro: async (req, res) => {
+    let { id } = req.session.usuario;
+
+    let user = await Usuario.findByPk(id);
+
+    // return res.send(user);
+
+    res.render("./usuario/cadastro", { user });
   },
   editar: async (req, res) => {
     let { nome, sobrenome, email, senha } = req.body;
-    let { id } = req.params;
+    let { id } = req.session.usuario;
 
     try {
-      const usuario = await Usuario.findByPk(id);
+      const user = await Usuario.findByPk(id);
 
-      // console.log(usuario);
-      // console.log(bcrypt.compareSync(senha, usuario.senha));
+      if (!bcrypt.compareSync(senha, user.senha)) {
+        return res.render("dashboard-usuario", { msg: "Senha inválida" });
+      }
 
-      // return res.send("OK");
-      // if (!bcrypt.compareSync(senha, usuario.senha)) {
-      //   return res.send("Senha inválida!");
-      // }
+      nome = capitalizeName(nome.trim()) || user.nome;
+      sobrenome = capitalizeName(sobrenome.trim()) || user.sobrenome;
+      email = email || user.email;
 
-      // return res.send("Alterado");
-
-      nome = nome || usuario.nome;
-      sobrenome = sobrenome || usuario.sobrenome;
-      email = email || usuario.email;
-
-      Usuario.update({
+      await user.update({
         nome,
         sobrenome,
         email,
       });
 
-      res.render("dashboard-usuario", { user: req.session.usuario.dataValues });
+      res.cookie("logado", user.email, { maxAge: 3600000 });
+
+      res.render("dashboard-usuario", { msg: "Atualizado com sucesso!!" });
     } catch (error) {
       res.status(404).send(error);
     }

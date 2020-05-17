@@ -9,6 +9,8 @@ router.get("/dashboard/favoritos", auth, usuarioController.verPostosFavoritos);
 
 router.get("/dashboard/cadastro", auth, usuarioController.verCadastro);
 
+router.put("/dashboard/cadastro", usuarioController.editar);
+
 router.get("/dashboard/avaliacoes", auth, usuarioController.verAvaliacoes);
 
 router.post("/cadastrar", usuarioController.cadastrar);

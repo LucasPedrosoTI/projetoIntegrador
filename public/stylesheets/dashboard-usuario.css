@@ -13,6 +13,7 @@ main {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .nav-dashboard {

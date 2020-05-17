@@ -2,13 +2,15 @@ const { Usuario } = require("../models");
 
 const cookieLogin = async (req, res, next) => {
   if (req.cookies.logado != undefined && req.session.usuario == null) {
-    let cookieUsername = req.cookies.logado;
+    let email = req.cookies.logado;
 
-    let usuarios = await Usuario.findAll();
+    let user = await Usuario.findOne({
+      where: {
+        email,
+      },
+    });
 
-    let user = usuarios.find((user) => user.email == cookieUsername);
-
-    if (user.email == cookieUsername) {
+    if (user.email == email) {
       req.session.usuario = user;
     }
   }
