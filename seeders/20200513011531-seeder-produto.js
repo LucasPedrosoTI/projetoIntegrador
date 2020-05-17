@@ -6,10 +6,10 @@ module.exports = {
       "Produtos",
       [
         {
-          nome: "Gasolina",
+          produto: "Gasolina",
         },
         {
-          nome: "Etanol",
+          produto: "Etanol",
         },
       ],
       {}

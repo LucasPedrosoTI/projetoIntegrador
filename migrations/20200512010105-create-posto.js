@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Postos", {
+    return queryInterface.createTable('Postos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -21,6 +21,14 @@ module.exports = {
         type: Sequelize.STRING(8),
         allowNull: false,
       },
+      endereco: {
+        type: Sequelize.STRING(150),
+        allowNull: false,
+      },
+      bairro: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
       cidade: {
         type: Sequelize.STRING(45),
         allowNull: false,
@@ -29,17 +37,9 @@ module.exports = {
         type: Sequelize.STRING(2),
         allowNull: false,
       },
-      bairro: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-      },
-      endereco: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       bandeira: {
         type: Sequelize.STRING(20),
-        defaultValue: "Branca",
+        defaultValue: 'Branca',
       },
       latitude: {
         type: Sequelize.DECIMAL(10, 8),
@@ -60,6 +60,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Postos");
+    return queryInterface.dropTable('Postos');
   },
 };
