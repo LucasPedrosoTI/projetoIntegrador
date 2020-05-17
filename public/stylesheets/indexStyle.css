@@ -129,3 +129,41 @@ form input[type="search"] {
   padding-bottom: 2%;
   padding-right: 5%;
 }
+
+@media (max-width: 360px) {
+  #parallax01 {
+    height: 420px;
+}
+
+  #parallax02 {
+   height: 360px;
+}
+
+  .text-img {
+    padding-top: 40%;
+    font-size: 2rem;
+}
+
+  .text-imgbot {
+    font-size: 2rem;
+}
+
+  #frontbutton{
+    margin: 10% 30%;
+    padding: 4% 4%;
+    font-size: 1.2rem;
+}
+
+  #frontbuttondown {
+    margin: 10% 30%;
+    padding: 4% 4%;
+    font-size: 1.2rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+}
+
+@media (min-width: 361px) and (max-width: 800px) {
+}
+}
