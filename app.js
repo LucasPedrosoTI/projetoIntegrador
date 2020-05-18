@@ -31,6 +31,13 @@ app.use(
     cookie: { maxAge: 3600000 },
   })
 );
+
+// faz com que a session fique disponivel em todas as paginas
+app.use(function (req, res, next) {
+  res.locals.USUARIO = req.session.usuario;
+  next();
+});
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

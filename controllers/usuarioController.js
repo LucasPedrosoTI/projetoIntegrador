@@ -1,10 +1,10 @@
-const bcrypt = require('bcrypt');
-const { Usuario, Posto, Produto, Avaliacoes } = require('../models');
-const { capitalizeName } = require('../lib/capitalizeName');
+const bcrypt = require("bcrypt");
+const { Usuario, Posto, Produto, Avaliacoes } = require("../models");
+const { capitalizeName } = require("../lib/capitalizeName");
 
 module.exports = {
   dashboardUsuario: async (req, res) => {
-    res.render('dashboard-usuario', { msg: null });
+    res.render("dashboard-usuario", { msg: null });
   },
   cadastrar: async (req, res) => {
     let { nome, sobrenome, email, senha } = req.body;
@@ -20,7 +20,7 @@ module.exports = {
         senha: hash,
       });
 
-      return res.redirect('/login');
+      return res.redirect("/login");
     } catch (err) {
       return res.status(400).send(err);
     }
@@ -36,27 +36,27 @@ module.exports = {
       );
 
       if (!user) {
-        return res.render('login', { error: 'Usuário/Senha inválido' });
+        return res.render("login", { error: "Usuário/Senha inválido" });
       }
 
       req.session.usuario = user;
 
-      res.locals.user = user;
+      // res.locals.user = user;
 
       if (logado != undefined) {
-        res.cookie('logado', user.email, { maxAge: 3600000 });
+        res.cookie("logado", user.email, { maxAge: 3600000 });
       }
 
-      res.render('dashboard-usuario', { msg: null });
+      res.redirect("/usuario/dashboard");
     } catch (err) {
       return res.status(400).send(err);
     }
   },
   logout: (req, res) => {
     req.session.destroy();
-    res.clearCookie('logado');
+    res.clearCookie("logado");
     //res.cookie("logado", { expires: Date.now() });
-    res.redirect('/login');
+    res.redirect("/login");
   },
   verCadastro: async (req, res) => {
     let { id } = req.session.usuario;
@@ -65,7 +65,7 @@ module.exports = {
 
     // return res.send(user);
 
-    res.render('./usuario/cadastro', { user });
+    res.render("./usuario/cadastro", { user });
   },
   editar: async (req, res) => {
     let { nome, sobrenome, email, senha } = req.body;
@@ -75,7 +75,7 @@ module.exports = {
       const user = await Usuario.findByPk(id);
 
       if (!bcrypt.compareSync(senha, user.senha)) {
-        return res.render('dashboard-usuario', { msg: 'Senha inválida' });
+        return res.render("dashboard-usuario", { msg: "Senha inválida" });
       }
 
       nome = capitalizeName(nome.trim()) || user.nome;
@@ -88,9 +88,9 @@ module.exports = {
         email,
       });
 
-      res.cookie('logado', user.email, { maxAge: 3600000 });
+      res.cookie("logado", user.email, { maxAge: 3600000 });
 
-      res.render('dashboard-usuario', { msg: 'Atualizado com sucesso!!' });
+      res.render("dashboard-usuario", { msg: "Atualizado com sucesso!!" });
     } catch (error) {
       res.status(404).send(error);
     }
@@ -102,18 +102,18 @@ module.exports = {
     try {
       const user = await Usuario.findByPk(id);
       if (!bcrypt.compareSync(senha, user.senha)) {
-        return res.render('dashboard-usuario', { msg: 'Senha inválida' });
-      } 
+        return res.render("dashboard-usuario", { msg: "Senha inválida" });
+      }
       await user.update({
         senha: novaSenha2,
       });
-      res.cookie('logado', user.email, { maxAge: 3600000 });
-      res.render('dashboard-usuario', { msg: 'Atualizado com sucesso!!' });
+      res.cookie("logado", user.email, { maxAge: 3600000 });
+      res.render("dashboard-usuario", { msg: "Atualizado com sucesso!!" });
     } catch (error) {
       res.status(404).send(error);
       console.log(error);
     }
-    console.log('executou');
+    console.log("executou");
   },
   destroy: async (req, res) => {
     const { id } = req.session.usuario;
@@ -123,7 +123,7 @@ module.exports = {
     });
     console.log(user);
 
-    res.redirect('/');
+    res.redirect("/");
   },
 
   verPostosFavoritos: async (req, res) => {
@@ -132,27 +132,27 @@ module.exports = {
     let user = await Usuario.findOne({
       where: { id },
       include: {
-        association: 'postos',
+        association: "postos",
         through: {
           attributes: [
-            'nome_fantasia',
-            'cidade',
-            'estado',
-            'bairro',
-            'endereco',
-            'bandeira',
+            "nome_fantasia",
+            "cidade",
+            "estado",
+            "bairro",
+            "endereco",
+            "bandeira",
           ],
         },
         include: {
-          association: 'produtos',
+          association: "produtos",
           through: {
-            attributes: ['nome', 'preco'],
+            attributes: ["nome", "preco"],
           },
         },
       },
     });
 
-    res.render('./usuario/postos-favoritos', { user });
+    res.render("./usuario/postos-favoritos", { user });
   },
   verAvaliacoes: async (req, res) => {
     let { id } = req.session.usuario;
@@ -160,14 +160,14 @@ module.exports = {
     let user = await Usuario.findOne({
       where: { id },
       include: {
-        association: 'avaliacoes',
+        association: "avaliacoes",
         through: {
-          attributes: ['texto', 'nota'],
+          attributes: ["texto", "nota"],
         },
       },
     });
     // return res.send(user);
 
-    res.render('./usuario/avaliacoes', { user });
+    res.render("./usuario/avaliacoes", { user });
   },
 };

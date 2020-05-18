@@ -21,25 +21,28 @@
                 </li>
             </ul>
 
-            <!--        
+            <% if (USUARIO) { %>
+
             <form id="logado" class="form-inline my-2 my-lg-0" style="display: flex;">
-                <a class="nav-link" id="logar" href="/login">
+                <a class="nav-link mr-3" id="logar" href="/usuario/dashboard">
                     <i class="far fa-user"></i>
+                    <%= USUARIO.nome %>
                 </a>
-                <a id="sair" href="/sair">Sair</a>
+                <a href="/usuario/logout" class="text-danger d-inline-block">
+                    <i class="fas fa-sign-out-alt text-danger"></i>
+                </a>
             </form>
-        -->
+            <% } else { %>
+
 
             <form id="naoLogado" class="form-inline my-2 my-lg-0" style="display: flex;">
                 <a class="nav-link" id="logar" href="/login">
                     <i class="far fa-user"></i> Entrar
                 </a>
                 <a id="cadastrar" href="/cadastro">Cadastrar</a>
-                <a href="/usuario/logout" class="text-danger d-inline-block">
-                    <i class="fas fa-sign-out-alt text-danger"></i>
-                </a>
-            </form>
 
+            </form>
+            <% } %>
         </div>
     </nav>
 </div>
