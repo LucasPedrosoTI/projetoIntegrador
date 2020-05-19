@@ -1,22 +1,22 @@
 <nav class="nav-dashboard">
     <div class="menu">
-        <ul>
-            <li>
-                <button class="btn btn-secondary btn-sm btn-block"
+        <ul id="nav" class="nav nav-tabs">
+            <li class="nav-item">
+                <button class="btn btn-secondary btn-sm btn-block <%= active.cadastro %>"
                     onclick="location.href='/usuario/dashboard/cadastro'">
                     <i class="fas fa-cogs"></i>
                     <p> Atualizar Cadastro</p>
                 </button>
             </li>
-            <li>
-                <button class="btn btn-secondary btn-sm btn-block"
+            <li class="nav-item">
+                <button class="btn btn-secondary btn-sm btn-block <%= active.favoritos %>"
                     onclick="location.href='/usuario/dashboard/favoritos'">
                     <i class="fas fa-heart"></i><br>
                     <p>Postos Favoritos</p>
                 </button>
             </li>
-            <li>
-                <button class="btn btn-secondary btn-sm btn-block"
+            <li class="nav-item">
+                <button class="btn btn-secondary btn-sm btn-block <%= active.avaliacoes %>"
                     onclick="location.href='/usuario/dashboard/avaliacoes'">
                     <i class="fas fa-comments"></i><br>
                     <p>Minhas Avaliações</p>

@@ -2,9 +2,19 @@ const bcrypt = require("bcrypt");
 const { Usuario, Posto, Produto, Avaliacoes } = require("../models");
 const { capitalizeName } = require("../lib/capitalizeName");
 
+let active = {
+  cadastro: "",
+  favoritos: "",
+  avaliacoes: "",
+};
+
 module.exports = {
   dashboardUsuario: async (req, res) => {
-    res.render("dashboard-usuario", { msg: null });
+    active.avaliacoes = "";
+    active.favoritos = "";
+    active.cadastro = "";
+
+    res.render("dashboard-usuario", { msg: null, active });
   },
   cadastrar: async (req, res) => {
     let { nome, sobrenome, email, senha } = req.body;
@@ -61,11 +71,15 @@ module.exports = {
   verCadastro: async (req, res) => {
     let { id } = req.session.usuario;
 
+    active.cadastro = "active";
+    active.avaliacoes = "";
+    active.favoritos = "";
+
     let user = await Usuario.findByPk(id);
 
     // return res.send(user);
 
-    res.render("./usuario/cadastro", { user });
+    res.render("./usuario/cadastro", { user, active });
   },
   editar: async (req, res) => {
     let { nome, sobrenome, email, senha } = req.body;
@@ -127,6 +141,10 @@ module.exports = {
   verPostosFavoritos: async (req, res) => {
     let { id } = req.session.usuario;
 
+    active.favoritos = "active";
+    active.avaliacoes = "";
+    active.cadastro = "";
+
     let user = await Usuario.findOne({
       where: { id },
       include: {
@@ -150,10 +168,14 @@ module.exports = {
       },
     });
 
-    res.render("./usuario/postos-favoritos", { user });
+    res.render("./usuario/postos-favoritos", { active, user });
   },
   verAvaliacoes: async (req, res) => {
     let { id } = req.session.usuario;
+
+    active.avaliacoes = "active";
+    active.favoritos = "";
+    active.cadastro = "";
 
     let user = await Usuario.findOne({
       where: { id },
@@ -166,6 +188,6 @@ module.exports = {
     });
     // return res.send(user);
 
-    res.render("./usuario/avaliacoes", { user });
+    res.render("./usuario/avaliacoes", { active, user });
   },
 };

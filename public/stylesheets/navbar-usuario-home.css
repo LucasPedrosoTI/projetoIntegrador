@@ -1,197 +1,115 @@
-main {
-  margin-top: 150px;
-  height: 100vh;
-  color: #000;
-}
-
-.dashboard-container {
-  width: 80%;
-  height: 90vh;
-  background-color: #ffffffd8;
-  border-radius: 30px;
-  padding: 30px 15px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-
-.nav-dashboard {
-  flex-grow: 1;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin-right: 0 auto;
-}
-
-.menu {
-  height: 100%;
-}
-
-.menu ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  margin: 0;
-}
-.menu ul li button {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.menu li p {
-  font-size: 30px;
-  width: max-content;
-  margin: 0;
-}
-
-.btn {
-  /* background-color: #e14242; */
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 75%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-}
-
-.btn-success {
-  background-color: #4caf50;
-}
-
-.btn:hover {
-  background-color: #e4704e;
-  color: white;
-}
-
-.btn-posto {
-  float: right;
-  width: 35% !important;
-  background-color: #e14242;
-  border-radius: 15px;
-  box-shadow: 0px 2px 5px 1px #0009;
-  font-weight: bold;
-  padding: 6px;
-}
-
-.btn-posto-2 {
-  float: right;
-  margin-right: 25%;
-  width: 20%;
-  background-color: #e14242;
-  border-radius: 15px;
-  box-shadow: 0px 2px 5px 1px #0009;
-  font-weight: bold;
-  padding: 6px 10px;
-}
-
-.btn-secondary {
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
-.btn-secondary:hover {
-  background-color: #000;
-}
-
-@media (max-width: 400px) {
-  .btn-block {
-    font-size: 14px;
-  }
-
+@media (max-width: 5000px) {
   main {
-    height: auto;
+    margin-top: 150px;
+    height: 100%;
+    color: #000;
   }
 
   .dashboard-container {
     width: 95%;
-    height: 66vh;
-    padding: 10px 10px;
+    height: 70vh;
+    background-color: #ffffffd8;
+    border-radius: 30px;
+    padding: 30px 15px;
+    margin: 20px auto;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 10%;
+    justify-content: space-between;
+    position: relative;
   }
 
   .nav-dashboard {
-    flex-wrap: wrap;
-    margin-bottom: 10%;
-    width: auto;
+    flex-grow: 1;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 0 auto;
   }
 
   .menu {
-    height: auto;
+    height: 100%;
+    width: 100%;
   }
 
   .menu ul {
-    height: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    height: 100%;
+    margin: 0;
   }
-
-  ul {
-    margin-bottom: 0px;
-    /* padding-left: 10px; */
-  }
-
-  .menu li {
-    margin: 15px auto;
+  .menu ul li button {
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
   }
 
   .menu li i {
     font-size: 30px;
-    margin-bottom: 15px;
   }
 
   .menu li p {
-    margin-bottom: unset;
+    font-size: 30px;
     width: 100%;
-    font-size: 20px;
-    min-width: 170px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
+    margin: 0;
   }
 
   .btn {
-    width: 95% !important;
-    border-radius: 10px;
-    margin: 15px 5px;
-    padding: 15px 60px;
+    /* background-color: #e14242; */
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 75%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+
+  .btn-success {
+    background-color: #4caf50;
+  }
+
+  .btn:hover {
+    background-color: #e4704e;
+    color: white;
+  }
+
+  .btn-posto {
+    float: right;
+    width: 35% !important;
+    background-color: #e14242;
+    border-radius: 15px;
+    box-shadow: 0px 2px 5px 1px #0009;
+    font-weight: bold;
+    padding: 6px;
   }
 
   .btn-posto-2 {
     float: right;
-    width: 50%;
-  }
-
-  .mt-3 {
-    margin-top: 0px !important;
-  }
-
-  .card-body {
-    padding: 0.2rem;
-  }
-
-  .btn-success {
+    margin-right: 25%;
     width: 20%;
+    background-color: #e14242;
+    border-radius: 15px;
+    box-shadow: 0px 2px 5px 1px #0009;
+    font-weight: bold;
+    padding: 6px 10px;
+  }
+
+  .btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .btn-secondary:hover {
+    background-color: #000;
   }
 }
 
-@media (min-width: 401px) and (max-width: 800px) {
-  main {
-    height: 76vh;
-  }
-
+@media (min-width: 401px) and (max-width: 850px) {
   .btn {
     width: 95% !important;
     border-radius: 10px;
@@ -208,7 +126,7 @@ main {
 
   .dashboard-container {
     width: 95%;
-    height: 70vh;
+    height: 95vh;
     padding: 10px 10px;
     display: flex;
     flex-direction: column;
@@ -254,8 +172,107 @@ main {
     min-width: 170px;
   }
 
+  .menu ul li button {
+    padding: 15px 60px;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
   .btn-posto-2 {
     float: right;
     width: 40%;
+  }
+}
+
+@media (max-width: 400px) {
+  main {
+    height: 100vh;
+  }
+
+  .dashboard-container {
+    width: 95%;
+    height: 95vh;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+  }
+
+  .nav-dashboard {
+    flex-wrap: wrap;
+    margin-bottom: 10%;
+    width: auto;
+  }
+
+  .menu {
+    height: auto;
+  }
+
+  .menu ul {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ul {
+    margin-bottom: 0px;
+    /* padding-left: 10px; */
+  }
+
+  .menu li {
+    margin: 15px auto;
+  }
+
+  .menu li i {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .menu li p {
+    margin-bottom: unset;
+    width: 100%;
+    font-size: 20px;
+    min-width: 170px;
+  }
+
+  .menu ul li button {
+    padding: 15px 60px;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn-block {
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 95% !important;
+    border-radius: 10px;
+    margin: 15px 5px;
+  }
+
+  .btn-posto-2 {
+    float: right;
+    width: 50%;
+  }
+
+  .mt-3 {
+    margin-top: 0px !important;
+  }
+
+  .card-body {
+    padding: 0.2rem;
+  }
+
+  .btn-success {
+    width: 20%;
   }
 }
