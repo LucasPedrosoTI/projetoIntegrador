@@ -10,10 +10,7 @@ const methodOverride = require("method-override");
 const viewRouter = require("./routes/routes");
 const usuarioRouter = require("./routes/usuarioRouter");
 
-// var usersRouter = require('./routes/users');
-// const accountRouter = require('./routes/account');
-
-var app = express();
+const app = express();
 
 app.use("/public/stylesheets/", express.static("./public/stylesheets"));
 app.use("/public/images/", express.static("./public/images"));
@@ -36,6 +33,13 @@ app.use(
 app.use(function (req, res, next) {
   res.locals.USUARIO = req.session.usuario;
   res.locals.error = null;
+  res.locals.msg = null;
+  res.locals.active = {
+    cadastro: "",
+    favoritos: "",
+    avaliacoes: "",
+  };
+
   next();
 });
 

@@ -1,5 +1,11 @@
 const bcrypt = require("bcrypt");
-const { Usuario, Posto, Produto, Avaliacoes } = require("../models");
+const {
+  Usuario,
+  Posto,
+  Produto,
+  Avaliacoes,
+  postos_favoritos,
+} = require("../models");
 const { capitalizeName } = require("../lib/capitalizeName");
 
 let active = {
@@ -193,6 +199,19 @@ module.exports = {
     });
 
     res.render("./usuario/postos-favoritos", { active, user });
+  },
+  deletarFavorito: async (req, res) => {
+    let { id } = req.body;
+
+    let posto = await postos_favoritos.findOne({ where: { postos_id: id } });
+
+    try {
+      await posto.destroy();
+
+      res.redirect("/usuario/dashboard/favoritos");
+    } catch (error) {
+      res.send(error);
+    }
   },
   verAvaliacoes: async (req, res) => {
     let { id } = req.session.usuario;

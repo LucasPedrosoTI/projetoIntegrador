@@ -1,26 +1,31 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const usuarioController = require('../controllers/usuarioController');
-const auth = require('../middlewares/auth');
+const usuarioController = require("../controllers/usuarioController");
+const auth = require("../middlewares/auth");
 
-router.get('/dashboard', auth, usuarioController.dashboardUsuario);
+router.get("/dashboard", auth, usuarioController.dashboardUsuario);
 
-router.get('/dashboard/favoritos', auth, usuarioController.verPostosFavoritos);
+router.get("/dashboard/favoritos", auth, usuarioController.verPostosFavoritos);
 
-router.get('/dashboard/cadastro', auth, usuarioController.verCadastro);
+router.delete(
+  "/dashboard/favoritos/deletar",
+  usuarioController.deletarFavorito
+);
 
-router.put('/dashboard/cadastro', usuarioController.editar);
+router.get("/dashboard/cadastro", auth, usuarioController.verCadastro);
 
-router.put('/dashboard/cadastro/alterarsenha', usuarioController.alterarSenha);
+router.put("/dashboard/cadastro", usuarioController.editar);
 
-router.delete('/dashboard/cadastro/deletar', usuarioController.destroy);
+router.put("/dashboard/cadastro/alterarsenha", usuarioController.alterarSenha);
 
-router.get('/dashboard/avaliacoes', auth, usuarioController.verAvaliacoes);
+router.delete("/dashboard/cadastro/deletar", usuarioController.destroy);
 
-router.post('/cadastrar', usuarioController.cadastrar);
+router.get("/dashboard/avaliacoes", auth, usuarioController.verAvaliacoes);
 
-router.post('/logar', usuarioController.logar);
+router.post("/cadastrar", usuarioController.cadastrar);
 
-router.get('/logout', usuarioController.logout);
+router.post("/logar", usuarioController.logar);
+
+router.get("/logout", usuarioController.logout);
 
 module.exports = router;

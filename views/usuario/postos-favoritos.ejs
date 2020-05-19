@@ -12,6 +12,7 @@
         <%- include('../parts/navbar-usuario') %>
 
         <section id="favoritos" class="favoritos" style="display: block;">
+
             <h2>Meus Postos Favoritos</h2>
             <div class="favoritos-container">
 
@@ -30,8 +31,10 @@
                         <img src="/images/branca.png" alt="Branca">
                     </div>
                     <% } %>
-                    <form action="" method="">
-                        <button type="button" class="close">
+                    <form action="favoritos/deletar?_method=DELETE" method="POST"
+                        onsubmit="return confirm('Tem certeza?')">
+                        <input type="hidden" name="id" value="<%=posto.id%>">
+                        <button id="destroy" type="submit" class="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </form>
@@ -60,4 +63,18 @@
     </div>
 </main>
 
+<script>
+
+    // Stores the original url in the local storage
+    window.localStorage.setItem('specifiedKey', window.location.href);
+
+    // Cleans the query parameter of a string and replace it in the history API
+    const cleanUrl = location.href.match(/^.+(?=\?)/g);
+    window.history.replaceState(null, null, (cleanUrl ? cleanUrl[0] : location.href));
+
+    // the history is updated before the window reloads
+    window.onbeforeunload = () => {
+        window.history.replaceState(null, null, window.localStorage.getItem('specifiedKey'));
+    }
+</script>
 <%- include('../parts/foot') %>
