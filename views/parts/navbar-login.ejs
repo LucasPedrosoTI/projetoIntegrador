@@ -1,18 +1,3 @@
-<!-- Modal -->
-<div class="modal fade bg-transparent" id="exampleModalCenter" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="modal-body">
-                <%- include("./login") %>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container-fluid" id="navbar">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/"><img src="/images/icone-semfundo.png" class="logonavbar" /></a>
@@ -51,7 +36,7 @@
 
 
             <form id="naoLogado" class="form-inline my-2 my-lg-0" style="display: flex;">
-                <a type="button" id="logar" class="btn nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+                <a type="button" id="logar" class="btn nav-link" href="/login">
                     <i class="far fa-user"></i>
                     Entrar
                 </a>

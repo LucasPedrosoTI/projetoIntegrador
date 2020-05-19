@@ -35,6 +35,7 @@ app.use(
 // faz com que a session fique disponivel em todas as paginas
 app.use(function (req, res, next) {
   res.locals.USUARIO = req.session.usuario;
+  res.locals.error = null;
   next();
 });
 

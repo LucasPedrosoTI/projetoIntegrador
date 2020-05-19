@@ -75,11 +75,12 @@ a {
   margin: 0 15px 10px 0;
   display: inline-block;
   border-bottom: 2px solid transparent;
+  color: #000c;
 }
 
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab {
-  color: #0c0c0c;
+  color: #e14242 !important;
   border-color: #1161ee;
 }
 

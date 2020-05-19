@@ -1,3 +1,8 @@
+body {
+  color: #000d;
+  background: none;
+}
+
 button {
   border: none;
   transition: all 0.2s;
@@ -9,7 +14,7 @@ button:hover {
 .text-img {
   color: #ffffffe6;
   text-align: center;
-  padding-top: 15%;
+  padding-top: 20%;
   font-size: 3rem;
   font-weight: bold;
 }
@@ -117,6 +122,7 @@ form input[type="search"] {
   font-size: 1.5rem;
   font-weight: bold;
   color: black;
+  line-height: 30px;
 }
 
 .row {
@@ -128,42 +134,43 @@ form input[type="search"] {
   padding-top: 2%;
   padding-bottom: 2%;
   padding-right: 5%;
+  line-height: 25px;
 }
 
 @media (max-width: 400px) {
   #parallax01 {
     height: 420px;
-}
+  }
 
   #parallax02 {
-   height: 360px;
-}
+    height: 360px;
+  }
 
   .text-img {
     padding-top: 40%;
     font-size: 2rem;
-}
+  }
 
   .text-imgbot {
     font-size: 2rem;
-}
+  }
 
-  #frontbutton{
+  #frontbutton {
     margin: 10% 30%;
     padding: 4% 4%;
     font-size: 1.2rem;
-}
+  }
 
   #frontbuttondown {
     margin: 10% 30%;
     padding: 4% 4%;
     font-size: 1.2rem;
-}
+  }
 
-h1 {
+  h1 {
     font-size: 1.75rem;
-}
+  }
 
-@media (min-width: 401px) and (max-width: 800px) {
-}
+  @media (min-width: 401px) and (max-width: 800px) {
+  }
 }

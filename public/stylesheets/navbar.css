@@ -67,6 +67,19 @@ ul.navbar-nav li.nav-item {
   border-radius: 15px;
 }
 
+/* modal style */
+
+.modal-content {
+  background-color: unset !important;
+  border: none;
+}
+
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab {
+  color: #e14242 !important;
+  border-color: #1161ee;
+}
+
 /* RESPONSIVIDADE */
 @media (max-width: 1140px) {
   ul.navbar-nav li.nav-item {

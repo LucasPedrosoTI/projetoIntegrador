@@ -1,9 +1,9 @@
 <%- include('parts/head', {title: 'Meu Posto'}) %>
-<link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
 
 <header>
   <%- include('parts/navbar') %>
 </header>
+<link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
 
 <div id="parallax01">
   <p class="text-img">
@@ -38,9 +38,9 @@
     <div id="minimap" class="col-lg-4 col-md-4">
       <form action="/main">
         <br />
-        <label for="search"
-          ><p id="textsearch">Procure o posto mais próximo</p></label
-        >
+        <label for="search"></label>
+        <p id="textsearch">Procure o posto mais próximo</p>
+        </label>
         <br />
         <input name="search" type="search" placeholder="Digite o endereço" />
         <br />
