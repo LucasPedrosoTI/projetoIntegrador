@@ -1,73 +1,75 @@
 body {
-    margin: 0;
-    background: url(../images/backLogin.jpg) no-repeat center;
-    font: 600 16px/18px "Roboto", sans-serif;
-  }
+  margin: 0;
+  background: url(../images/backLogin.jpg) no-repeat center;
+  font: 600 16px/18px "Roboto", sans-serif;
+}
 
-  .boxwhite{
-    margin: 20vh 5% 2% 5%;
-    padding: 2%;
-    position: relative;
-    border-radius: 20px;
-    background-color: #f6f6f6dd;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
-      0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  }
+.boxwhite {
+  margin: 20vh 5% 2% 5%;
+  padding: 2%;
+  position: relative;
+  border-radius: 20px;
+  background-color: #f6f6f6dd;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: #000d;
+  line-height: 20px;
+}
 
-  form {
-      display: flex;
-      justify-content: space-around;
-  }
+form {
+  display: flex;
+  justify-content: space-around;
+}
 
-  .form-control {
-    margin-right: 5%;
-  }
+.form-control {
+  margin-right: 5%;
+}
 
-  .busca{
-      color: white;
-      background-color: #e14242;
-      border-radius: 15px;
-      padding: 10px 20px;
-      border-style: none;
-      box-shadow: 0px 2px 5px 1px #0009;
-  }
+.busca {
+  color: white;
+  background-color: #e14242;
+  border-radius: 15px;
+  padding: 10px 20px;
+  border-style: none;
+  box-shadow: 0px 2px 5px 1px #0009;
+}
 
-  .busca :hover{
-    background-color: #e14242;
-  }
+.busca :hover {
+  background-color: #e14242;
+}
 
- .content {
-     display: flex;
-     flex-direction: column;
- }
+.content {
+  display: flex;
+  flex-direction: column;
+}
 
- .card {
-   margin-top: 1%;
-   height: 120px;
-   width: 300px;
-   border-radius: 10px;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-evenly;
-   align-items: center;
-   border-style: none;
- }
+.card {
+  margin-top: 1%;
+  height: 120px;
+  width: 300px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-style: none;
+}
 
- .logo {
-   height: 60px;
-   width: 60px;
-   border-radius: 50%;
-   background-image: url("../images/petrobras.png");
-   background-size: 50px;
-   background-position: center;
-   background-repeat: no-repeat;
-   z-index: 1;
- }
+.logo {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-image: url("../images/petrobras.png");
+  background-size: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
 
- .texto {
+.texto {
   font-size: 10pt;
   width: 160px;
- }
+}
 
 .distancia {
   font-size: 10pt;
@@ -79,26 +81,26 @@ body {
   font-size: 10pt;
 }
 
-h4{
+h4 {
   margin: 0px;
   font-weight: bold;
   font-size: 12pt;
 }
 
-h5{
+h5 {
   margin: 0px;
-  padding:0px;
+  padding: 0px;
   color: red;
   font-size: 12pt;
 }
 
-h6{
+h6 {
   margin: 0px;
   color: orange;
   font-size: 10pt;
 }
 
-hr{
+hr {
   margin: 2px;
 }
 
@@ -107,8 +109,8 @@ hr{
     display: flex;
     flex-direction: column;
   }
-  
+
   .card {
-    margin:5px auto;
+    margin: 5px auto;
   }
 }

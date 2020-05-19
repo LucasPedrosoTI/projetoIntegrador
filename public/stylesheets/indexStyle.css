@@ -17,6 +17,7 @@ button:hover {
   padding-top: 20%;
   font-size: 3rem;
   font-weight: bold;
+  line-height: 50px;
 }
 
 .text-imgbot {
@@ -24,6 +25,7 @@ button:hover {
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
+  line-height: 50px;
 }
 
 #minimap {
@@ -104,6 +106,7 @@ form input[type="search"] {
   font-size: 1.5rem;
   font-weight: bold;
   color: black;
+  line-height: 30px;
 }
 
 #frontbutton:hover,
@@ -149,22 +152,26 @@ form input[type="search"] {
   .text-img {
     padding-top: 40%;
     font-size: 2rem;
+    line-height: 40px;
   }
 
   .text-imgbot {
     font-size: 2rem;
+    line-height: 40px;
   }
 
   #frontbutton {
     margin: 10% 30%;
     padding: 4% 4%;
     font-size: 1.2rem;
+    line-height: 30px;
   }
 
   #frontbuttondown {
     margin: 10% 30%;
     padding: 4% 4%;
     font-size: 1.2rem;
+    line-height: 30px;
   }
 
   h1 {
