@@ -22,6 +22,11 @@ router.delete("/dashboard/cadastro/deletar", usuarioController.destroy);
 
 router.get("/dashboard/avaliacoes", auth, usuarioController.verAvaliacoes);
 
+router.delete(
+  "/dashboard/avaliacoes/deletar",
+  usuarioController.deletarAvaliacao
+);
+
 router.post("/cadastrar", usuarioController.cadastrar);
 
 router.post("/logar", usuarioController.logar);

@@ -233,4 +233,17 @@ module.exports = {
 
     res.render("./usuario/avaliacoes", { active, user });
   },
+  deletarAvaliacao: async (req, res) => {
+    let { id } = req.body;
+
+    let avaliacao = await Avaliacoes.findOne({ where: { id } });
+
+    try {
+      await avaliacao.destroy();
+
+      res.redirect("/usuario/dashboard/avaliacoes");
+    } catch (error) {
+      res.send(error);
+    }
+  },
 };
