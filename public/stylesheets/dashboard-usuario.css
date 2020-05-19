@@ -23,7 +23,7 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 0 auto;
 }
 
 .logo-usuario {
@@ -49,12 +49,20 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 75%;
+  align-items: center;
+  height: 100%;
+  margin: 0;
 }
 .menu ul li button {
   text-align: center;
   margin: 0 auto;
 }
+
+/* .menu li p {
+  font-size: 30px;
+  width: max-content;
+  margin: 0;
+} */
 
 section {
   flex-grow: 2;
@@ -73,11 +81,11 @@ section h2 {
   align-items: center;
 }
 
-.btn {
+/* .btn {
   justify-self: end;
   align-self: center;
   grid-column-start: 3;
-}
+} */
 /* The switch - the box around the slider */
 .switch {
   margin-left: 10px;
@@ -248,10 +256,9 @@ input[type="password"] {
   padding-right: 67px;
 }
 
-.btn-posto-2 {
+.btn-posto {
   float: right;
-  margin-right:25%;
-  width: 20%;
+  width: 35% !important;
   background-color: #e14242;
   border-radius: 15px;
   box-shadow: 0px 2px 5px 1px #0009;
@@ -259,12 +266,33 @@ input[type="password"] {
   padding: 6px;
 }
 
+.btn-posto-2 {
+  float: right;
+  margin-right: 24%;
+  width: 25%;
+  background-color: #e14242;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px 1px #0009;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #000;
+}
+
 #excluir {
   background-color: #000000;
 }
 
 #excluir:hover {
-  background-color:#0009;
+  background-color: #0009;
 }
 /* POSTOS FAVORITOS */
 
@@ -320,13 +348,14 @@ input[type="password"] {
 }
 
 .ir {
-  width: 15%;
-  margin-right: 30px;
+  width: 20%;
+  margin: 10% 2% 0 0;
+  height: 25%;
 }
 
 /* COMENTARIOS */
 .comentarios-container {
-height: auto;
+  height: auto;
 }
 
 .edit {
@@ -349,7 +378,7 @@ height: auto;
 }
 
 @media (max-width: 400px) {
-  .btn-block{
+  .btn-block {
     font-size: 14px;
   }
 
@@ -359,7 +388,7 @@ height: auto;
 
   .dashboard-container {
     width: 95%;
-    height: auto;
+    height: 66vh;
     padding: 10px 10px;
     display: flex;
     flex-direction: column;
@@ -369,6 +398,7 @@ height: auto;
   .nav-dashboard {
     flex-wrap: wrap;
     margin-bottom: 10%;
+    width: auto;
   }
 
   .menu {
@@ -385,17 +415,34 @@ height: auto;
 
   ul {
     margin-bottom: 0px;
-    padding-left:10px;
+    /* padding-left: 10px; */
   }
+
+  /* .menu li {
+    margin: 15px auto;
+  }
+
+  .menu li i {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .menu li p {
+    margin-bottom: unset;
+    width: 100%;
+    font-size: 20px;
+    min-width: 170px;
+  } */
 
   h1 {
     font-size: 1.5rem;
   }
 
   .btn {
-    width: 95%;
+    width: 95% !important;
     border-radius: 10px;
-    margin: 5px;
+    margin: 15px 5px;
+    /* padding: 15px 60px; */
   }
 
   .btn-posto-2 {
@@ -412,18 +459,19 @@ height: auto;
   }
 
   .mt-3 {
-    margin-top: 0px!important;
+    margin-top: 0px !important;
   }
 
   input {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
   }
 
   .form-container button {
-    width: 45%
+    width: 45%;
+    padding: 10px;
   }
 
-  footer{
+  footer {
     font-size: 12px;
   }
 
@@ -439,12 +487,13 @@ height: auto;
     width: 100%;
   }
 
-  .card-body{
+  .card-body {
     padding: 0.2rem;
   }
 
   .btn-success {
-    width: 20%;
+    width: 20% !important;
+    margin: 13% 4% 0 0;
   }
 
   .logo-empresa {
@@ -452,7 +501,7 @@ height: auto;
     margin-right: 5px;
   }
 
-  h2{
+  h2 {
     font-size: 1.5rem;
   }
 }
@@ -463,15 +512,16 @@ height: auto;
   }
 
   .btn {
-    width: 95%;
+    width: 95% !important;
     border-radius: 10px;
-    margin: 5px;
+    margin: 10px 5px;
+    /* padding: 13px 100px; */
   }
 
   h1 {
     font-size: 2rem;
   }
-  .btn-block{
+  .btn-block {
     font-size: 14px;
   }
 
@@ -487,6 +537,7 @@ height: auto;
   .nav-dashboard {
     flex-wrap: wrap;
     margin-bottom: 5%;
+    width: auto;
   }
 
   .menu {
@@ -503,12 +554,33 @@ height: auto;
 
   ul {
     margin-bottom: 0px;
-    padding-left:10px;
+    /* padding-left: 10px; */
   }
+
+  /* .menu li {
+    margin: 15px auto;
+  }
+
+  .menu li i {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .menu li p {
+    margin-bottom: unset;
+    width: 100%;
+    font-size: 20px;
+    min-width: 170px;
+  } */
 
   .btn-posto-2 {
     float: right;
-    width: 20%;
+    width: 40%;
+  }
+
+  .btn-success {
+    width: 20% !important;
+    margin: 20% 4% 0 0;
   }
 
   .favoritos-container {
@@ -518,7 +590,6 @@ height: auto;
   section {
     width: 100%;
   }
-
 }
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
 /* @media (max-width: 800px) {

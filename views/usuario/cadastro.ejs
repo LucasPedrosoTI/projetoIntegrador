@@ -13,61 +13,27 @@
     <section id="cadastro" class="cadastro">
       <!-- <div class="cadastro-container"> -->
       <!-- Modal -->
-      <form
-        action="/usuario/dashboard/cadastro/alterarsenha?_method=PUT"
-        method="POST"
-      >
-        <div
-          class="modal fade"
-          id="alterar-senha"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
+      <form action="/usuario/dashboard/cadastro/alterarsenha?_method=PUT" method="POST">
+        <div class="modal fade" id="alterar-senha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
                   Alterar senha
                 </h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <input
-                  class="form-control mt-3"
-                  type="password"
-                  name="senha"
-                  id="senha1"
-                  placeholder="Senha atual"
-                />
-                <input
-                  class="form-control mt-3"
-                  type="password"
-                  name="novaSenha"
-                  id="senha"
-                  placeholder="Nova senha"
-                />
-                <input
-                  class="form-control mt-3"
-                  type="password"
-                  id="senha-confirmacao"
-                  placeholder="Repetir nova senha"
-                />
+                <input class="form-control mt-3" type="password" name="senha" id="senha1" placeholder="Senha atual" />
+                <input class="form-control mt-3" type="password" name="novaSenha" id="senha" placeholder="Nova senha" />
+                <input class="form-control mt-3" type="password" id="senha-confirmacao"
+                  placeholder="Repetir nova senha" />
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
+                <button type="button" class="btn btn-posto btn-secondary" data-dismiss="modal">
                   Close
                 </button>
                 <button type="submit" class="btn btn-posto">
@@ -78,64 +44,32 @@
           </div>
         </div>
       </form>
-      <form
-        class="form"
-        action="/usuario/dashboard/cadastro?_method=PUT"
-        method="POST"
-      >
+      <form class="form" action="/usuario/dashboard/cadastro?_method=PUT" method="POST">
         <h1>Alterar Cadastro</h1>
         <div class="form-container">
           <div class="form-group">
-            <input
-              class="form-control mt-3"
-              type="email"
-              placeholder="Novo Email"
-              name="email"
-              value="<%= user.email %>"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-            />
+            <input class="form-control mt-3" type="email" placeholder="Novo Email" name="email"
+              value="<%= user.email %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
 
-            <input
-              class="form-control mt-3"
-              type="text"
-              placeholder="Alterar Nome"
-              name="nome"
-              id="nome"
-              value="<%=user.nome%>"
-            />
+            <input class="form-control mt-3" type="text" placeholder="Alterar Nome" name="nome" id="nome"
+              value="<%=user.nome%>" />
 
-            <input
-              class="form-control mt-3"
-              type="text"
-              placeholder="Alterar sobrenome"
-              name="sobrenome"
-              id="sobrenome"
-              value="<%=user.sobrenome%>"
-            />
+            <input class="form-control mt-3" type="text" placeholder="Alterar sobrenome" name="sobrenome" id="sobrenome"
+              value="<%=user.sobrenome%>" />
 
-            <input
-              class="form-control mt-3"
-              type="password"
-              placeholder="Senha"
-              name="senha"
-              required
-            />
+            <input class="form-control mt-3" type="password" placeholder="Senha" name="senha" required />
 
             <button type="submit" class="btn btn-warning btn-posto">Salvar</button>
           </div>
         </div>
       </form>
       <!-- Button trigger modal -->
-      <div><button
-        type="button"
-        class="btn btn-danger btn-sm btn-posto-2"
-        data-toggle="modal"
-        data-target="#alterar-senha"
-      >Alterar Senha</button>
+      <div><button type="button" class="btn btn-danger btn-sm btn-posto-2" data-toggle="modal"
+          data-target="#alterar-senha">Alterar Senha</button>
 
-      <form action="/usuario/dashboard/cadastro/deletar?_method=DELETE" method="post">
-        <button type="submit" id="excluir" class="btn btn-danger btn-sm btn-posto-2">Excluir Cadastro</button>
-      </form>
+        <form action="/usuario/dashboard/cadastro/deletar?_method=DELETE" method="post">
+          <button type="submit" id="excluir" class="btn btn-danger btn-sm btn-posto-2">Excluir Cadastro</button>
+        </form>
       </div>
       <!-- </div> -->
     </section>
