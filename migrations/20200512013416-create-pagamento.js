@@ -18,10 +18,9 @@ module.exports = {
       },
       anuncios_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: { model: "anuncios", key: "id" },
         onUpdate: "NO ACTION",
-        onDelete: "NO ACTION",
+        onDelete: "SET NULL",
       },
     });
   },

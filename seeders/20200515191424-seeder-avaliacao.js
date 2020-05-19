@@ -22,6 +22,22 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          usuarios_id: 1,
+          postos_id: 3,
+          texto: "Esse posto é ótimo",
+          nota: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          usuarios_id: 1,
+          postos_id: 4,
+          texto: "Lavagem caprichada",
+          nota: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           usuarios_id: 2,
           postos_id: 1,
           texto: "Gasolina adulterada, não recomendo.",

@@ -10,10 +10,9 @@ module.exports = {
       },
       usuarios_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: { model: "usuarios", key: "id" },
         onUpdate: "CASCADE",
-        onDelete: "NO ACTION",
+        onDelete: "SET NULL",
       },
       postos_id: {
         type: Sequelize.INTEGER,

@@ -4,10 +4,9 @@ module.exports = {
     return queryInterface.createTable("postos_anuncios", {
       postos_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: { model: "postos", key: "id" },
         onUpdate: "NO ACTION",
-        onDelete: "NO ACTION",
+        onDelete: "SET NULL",
       },
       anuncios_id: {
         type: Sequelize.INTEGER,

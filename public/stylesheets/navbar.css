@@ -69,7 +69,7 @@ ul.navbar-nav li.nav-item {
 
 /* modal style */
 
-.modal-content {
+.modal-transparent {
   background-color: unset !important;
   border: none;
 }

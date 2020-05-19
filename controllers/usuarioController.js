@@ -65,7 +65,6 @@ module.exports = {
   logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("logado");
-    //res.cookie("logado", { expires: Date.now() });
     res.redirect("/login");
   },
   verCadastro: async (req, res) => {
@@ -89,7 +88,10 @@ module.exports = {
       const user = await Usuario.findByPk(id);
 
       if (!bcrypt.compareSync(senha, user.senha)) {
-        return res.render("dashboard-usuario", { msg: "Senha inválida" });
+        return res.render("dashboard-usuario", {
+          active,
+          msg: "Senha inválida",
+        });
       }
 
       nome = capitalizeName(nome.trim()) || user.nome;
@@ -104,7 +106,10 @@ module.exports = {
 
       res.cookie("logado", user.email, { maxAge: 3600000 });
 
-      res.render("dashboard-usuario", { msg: "Atualizado com sucesso!!" });
+      res.render("dashboard-usuario", {
+        active,
+        msg: "Atualizado com sucesso!!",
+      });
     } catch (error) {
       res.status(404).send(error);
     }
@@ -122,22 +127,41 @@ module.exports = {
         senha: novaSenha2,
       });
       res.cookie("logado", user.email, { maxAge: 3600000 });
-      res.render("dashboard-usuario", { msg: "Atualizado com sucesso!!" });
+      res.render("dashboard-usuario", {
+        active,
+        msg: "Atualizado com sucesso!!",
+      });
     } catch (error) {
       res.status(404).send(error);
       console.log(error);
     }
   },
   destroy: async (req, res) => {
-    const { id } = req.session.usuario;
+    let { id } = req.session.usuario;
+    let { senha } = req.body;
 
-    const user = await Usuario.destroy({
-      where: { id },
-    });
-    console.log("executou");
-    res.redirect("/");
+    try {
+      const user = await Usuario.findByPk(id);
+
+      if (!bcrypt.compareSync(senha, user.senha)) {
+        return res.render("dashboard-usuario", {
+          active,
+          msg: "Senha inválida",
+        });
+      }
+
+      await Usuario.destroy({
+        where: { id },
+      });
+
+      req.session.destroy();
+      res.clearCookie("logado");
+
+      res.redirect("/");
+    } catch (error) {
+      res.status(404).send(error);
+    }
   },
-
   verPostosFavoritos: async (req, res) => {
     let { id } = req.session.usuario;
 
