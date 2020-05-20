@@ -6,12 +6,17 @@
     <%- include('../parts/navbar') %>
 </header>
 
+
+
+
+
+
 <main>
     <div class="dashboard-container">
 
         <%- include('../parts/navbar-usuario') %>
 
-        <section id="comentarios" class="comentarios" style="display: block;">
+        <section id="comentarios" class="comentarios">
             <h2>Meus Comentários</h2>
 
             <div class="comentarios-container">
@@ -35,14 +40,45 @@
                         onsubmit="return confirm('Tem certeza?')">
                         <input type="hidden" name="id" value="<%=avaliacao.id%>">
                         <button id="destroy" type="submit" class="close">
-                            <span aria-hidden="true">&times;</span>
+                            <small><i class="far fa-trash-alt"></i></small>
                         </button>
                     </form>
-                    <form action="" method="">
-                        <button type="button" class="edit">
-                            <i class="far fa-edit"></i>
-                        </button>
-                    </form>
+
+
+                    <button type="button" class="edit mr-3" data-toggle="modal"
+                        data-target="#alterar-avaliacao<%=avaliacao.id%>">
+                        <i class="far fa-edit"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade " id="alterar-avaliacao<%=avaliacao.id%>" tabindex="-1" role="dialog"
+                        aria-labelledby="alterar-avaliacao" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="modal-body">
+                                    <form action="avaliacoes/editar?_method=PUT" method="POST">
+                                        <label for="text">O que deseja falar sobre esse posto?</label>
+                                        <textarea class="form-control" name="texto" id="text" cols="40"
+                                            rows="5"></textarea>
+                                        <input type="hidden" name="id" value="<%=avaliacao.id%>">
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-posto btn-secondary"
+                                                data-dismiss="modal">
+                                                Fechar
+                                            </button>
+                                            <button class="btn btn-posto" type="submit">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="card-body">
                         <div class="title">
                             <h5 class="card-title"> <%= avaliacao.nome %> &mdash;</h5>
@@ -77,10 +113,16 @@
                 </div>
 
                 <% }) %>
+
+
             </div>
         </section>
 
+
     </div>
 </main>
+
+
+
 
 <%- include('../parts/foot') %>

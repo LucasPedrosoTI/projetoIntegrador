@@ -233,6 +233,23 @@ module.exports = {
 
     res.render("./usuario/avaliacoes", { active, user });
   },
+  editarAvaliacao: async (req, res) => {
+    let { id, texto } = req.body;
+
+    let avaliacao = await Avaliacoes.findOne({ where: { id } });
+
+    texto = texto.trim() || avaliacao.texto;
+
+    try {
+      await avaliacao.update({
+        texto,
+      });
+
+      res.redirect("/usuario/dashboard/avaliacoes");
+    } catch (error) {
+      res.send(error);
+    }
+  },
   deletarAvaliacao: async (req, res) => {
     let { id } = req.body;
 

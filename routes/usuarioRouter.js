@@ -22,6 +22,8 @@ router.delete("/dashboard/cadastro/deletar", usuarioController.destroy);
 
 router.get("/dashboard/avaliacoes", auth, usuarioController.verAvaliacoes);
 
+router.put("/dashboard/avaliacoes/editar", usuarioController.editarAvaliacao);
+
 router.delete(
   "/dashboard/avaliacoes/deletar",
   usuarioController.deletarAvaliacao

@@ -365,6 +365,7 @@
     background-color: transparent;
     color: #0000008f;
     text-shadow: 0 1px 0 #fff;
+    font-size: 19px;
   }
 
   .avaliacao-estrelas {
@@ -444,6 +445,7 @@
 
   .menu li p {
     font-size: 0;
+    line-height: 0;
   }
 
   .btn-posto-2 {
@@ -509,6 +511,7 @@
 
   .menu li p {
     font-size: 0;
+    line-height: 0;
   }
 
   ul {
