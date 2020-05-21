@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Postos', {
+    return queryInterface.createTable("Postos", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -38,8 +38,8 @@ module.exports = {
         allowNull: false,
       },
       bandeira: {
-        type: Sequelize.STRING(20),
-        defaultValue: 'Branca',
+        type: Sequelize.STRING,
+        defaultValue: "Branca",
       },
       latitude: {
         type: Sequelize.DECIMAL(10, 8),
@@ -60,6 +60,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Postos');
+    return queryInterface.dropTable("Postos");
   },
 };

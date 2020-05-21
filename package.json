@@ -9,6 +9,7 @@
     "unseed": "sequelize db:seed:undo:all"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "cookie-parser": "~1.4.4",
     "csvtojson": "^2.0.10",
@@ -18,12 +19,13 @@
     "express": "~4.16.1",
     "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
+    "interval-promise": "^1.4.0",
     "jquery": "^3.5.0",
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.1.0",
-    "node-geocoder": "^3.27.0",
     "nodemon": "^2.0.4",
+    "opencage-api-client": "^0.7.1",
     "path": "^0.12.7",
     "sequelize": "^5.21.9"
   },
