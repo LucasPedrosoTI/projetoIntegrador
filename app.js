@@ -9,6 +9,7 @@ const methodOverride = require("method-override");
 
 const viewRouter = require("./routes/routes");
 const usuarioRouter = require("./routes/usuarioRouter");
+const postoRouter = require("./routes/postoRouter");
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use(cookieLogin);
 
 app.use("/", viewRouter);
 app.use("/usuario", usuarioRouter);
+app.use("/posto", postoRouter);
 
 // app.use('/users', usersRouter);
 // app.use('/account', accountRouter);

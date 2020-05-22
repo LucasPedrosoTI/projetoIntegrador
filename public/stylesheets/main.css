@@ -1,4 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.marker {
+  background-image: url("/images/icone-semfundo.png");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
 #logo {
   width: 60px;
   height: 60px;
@@ -19,7 +38,7 @@
 
 a#entrar:hover,
 a#dashboard:hover,
-a#home {
+a#home:hover {
   background-color: #e4704e;
 }
 
@@ -88,7 +107,7 @@ a#home {
   z-index: 2;
   position: fixed;
   top: 15px;
-  right: 150px;
+  right: 175px;
   border-radius: 50px;
   background-color: #e14242;
   padding: 10px;
@@ -100,11 +119,18 @@ a#home {
 .mapboxgl-ctrl-top-left {
   top: 7px;
   left: 80px;
-  width: 100%;
+  width: 40%;
+  border-radius: 20px;
+}
+
+.mapboxgl-ctrl-geocoder {
+  border-radius: 20px;
 }
 
 .mapboxgl-ctrl-geocoder--input {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  text-align: end;
+  border-radius: 20px;
 }
 
 form.example input[type="text"] {
@@ -327,6 +353,9 @@ div.symbol {
     font-size: 1.3rem;
     font-weight: 900;
   }
+  .mapboxgl-ctrl-top-left {
+    width: 50%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -342,6 +371,10 @@ div.symbol {
     left: 150px;
     top: unset;
     right: unset;
+  }
+
+  .mapboxgl-ctrl-top-left {
+    width: 85%;
   }
 }
 
