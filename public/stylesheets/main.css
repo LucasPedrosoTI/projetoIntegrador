@@ -236,6 +236,11 @@ li {
   transform: translate(-50%, -50%);
 }
 
+.img img {
+  width: 63px;
+  height: 42px;
+}
+
 .logoComEndereco {
   display: flex;
   align-items: center;

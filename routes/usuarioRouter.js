@@ -7,6 +7,12 @@ router.get("/dashboard", auth, usuarioController.dashboardUsuario);
 
 router.get("/dashboard/favoritos", auth, usuarioController.verPostosFavoritos);
 
+router.get(
+  "/dashboard/favoritos/add/:id",
+  auth,
+  usuarioController.favoritarPosto
+);
+
 router.delete(
   "/dashboard/favoritos/deletar",
   usuarioController.deletarFavorito

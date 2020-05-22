@@ -4,17 +4,51 @@ const path = require("path");
 const axios = require("axios");
 const opencage = require("opencage-api-client");
 const postosResposta = require("../database/postosResposta.json");
+const { Posto } = require("../models");
+const { roundHalf } = require("../lib/utils");
+
 // const interval = require("interval-promise");
 // const util = require("util");
 
-// const file = path.join("database", "postos.csv");
+// const source = path.join("database", "postos.csv");
 const destination = path.join("database", "postosResposta.json");
 
 module.exports = {
   index: (req, res, next) => res.render("index"),
 
-  main: (req, res, next) => {
-    res.render("main", { error: null });
+  main: async (req, res, next) => {
+    const postos = await Posto.findAll({
+      include: ["produtos", "avaliacoes", "usuarios"],
+    });
+
+    // CÓDIGO PARA CALCULAR E ARMAZENAR A NOTA MÉDIA DOS POSTOS
+    for (const posto of postos) {
+      // console.log("nome: " + posto.nome);
+
+      // console.log("total avaliações: " + posto.avaliacoes.length);
+      if (posto.avaliacoes.length == 0) {
+        posto.media = 0;
+      } else {
+        // EXTRAIR TODAS AS NOTAS DE UM POSTO E ARMAZENAR EM UM ARRAY
+        let notas = [];
+        for (const avaliacao of posto.avaliacoes) {
+          notas.push(Number(avaliacao.Avaliacoes.nota));
+        }
+        // console.log("notas: " + notas);
+        // COM O ARRAY DE NOTAS, BASTA SOMAR TODOS OS INDICES E DIVIDIR PELA QTD PARA OBTER A MEDIA
+        let media = notas.reduce((a, b) => a + b) / notas.length;
+
+        // COD P/ TER CTZ QUE A NOTA SERÁ SEMPRE DE 0.5 EM 0.5
+        media = Math.round(media * 2) / 2;
+        // console.log("media: " + media);
+        // CRIAR A PROPRIEDADE MEDIA
+        posto.media = media;
+      }
+
+      // console.log("media do posto na prop: " + posto.media);
+    }
+
+    res.render("main", { postos });
   },
 
   indexPostos: async (req, res) => {
@@ -23,7 +57,7 @@ module.exports = {
       noheader: false,
       headers: ["nome", "cnpj", "produto", "data", "preco", "bandeira"],
       delimiter: ",",
-    }).fromFile(file);
+    }).fromFile(source);
 
     // CONSULTAR A API DE CNPJ
     const { data } = await axios.get(

@@ -18,12 +18,12 @@
 
                 <% user.postos.forEach(posto => { %>
                 <div class="card">
-                    <% if (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "petrobras" ||
+                    <% if (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","") == "petrobras" ||
                     posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
                     posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
                     posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
                     <div class="logo-empresa">
-                        <img src="/images/<%=posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")%>.png"
+                        <img src="/images/<%=posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","")%>.png"
                             alt="petrobras">
                     </div>
                     <% } else { %>

@@ -6,7 +6,7 @@ const {
   Avaliacoes,
   postos_favoritos,
 } = require("../models");
-const { capitalizeName } = require("../lib/capitalizeName");
+const { capitalizeName } = require("../lib/utils");
 
 let active = {
   cadastro: "",
@@ -200,10 +200,39 @@ module.exports = {
 
     res.render("./usuario/postos-favoritos", { active, user });
   },
-  deletarFavorito: async (req, res) => {
-    let { id } = req.body;
+  favoritarPosto: async (req, res) => {
+    let postos_id = req.params.id;
+    let usuarios_id = req.session.usuario.id;
 
-    let posto = await postos_favoritos.findOne({ where: { postos_id: id } });
+    let posto = await postos_favoritos.findOne({
+      where: { postos_id, usuarios_id },
+    });
+
+    // return res.send(posto);
+    if (!posto)
+      try {
+        await postos_favoritos.create({ postos_id, usuarios_id });
+
+        res.redirect("/main");
+      } catch (error) {
+        res.send(error);
+      }
+    try {
+      await posto.destroy();
+
+      res.redirect("/main");
+    } catch (error) {
+      res.send(error);
+    }
+  },
+  deletarFavorito: async (req, res) => {
+    let postos_id = req.body.id;
+    let usuarios_id = req.session.usuario.id;
+
+    // let user = await Usuario.findByPk()
+    let posto = await postos_favoritos.findOne({
+      where: { postos_id, usuarios_id },
+    });
 
     try {
       await posto.destroy();

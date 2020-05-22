@@ -23,12 +23,12 @@
                 <% user.avaliacoes.forEach(avaliacao => { %>
 
                 <div class="card">
-                    <% if (avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "petrobras" ||
+                    <% if (avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","") == "petrobras" ||
                     avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
                     avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
                     avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
                     <div class="logo-empresa">
-                        <img src="/images/<%=avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")%>.png"
+                        <img src="/images/<%=avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","")%>.png"
                             alt="petrobras">
                     </div>
                     <% } else { %>
