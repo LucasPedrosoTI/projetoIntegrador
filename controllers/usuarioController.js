@@ -214,6 +214,7 @@ module.exports = {
         await postos_favoritos.create({ postos_id, usuarios_id });
 
         res.redirect("/main");
+        return;
       } catch (error) {
         res.send(error);
       }
@@ -251,31 +252,69 @@ module.exports = {
 
     let user = await Usuario.findOne({
       where: { id },
-      include: {
-        association: "avaliacoes",
-        through: {
-          attributes: ["texto", "nota"],
-        },
-      },
+      include: ["avaliacoes"],
     });
     // return res.send(user);
 
     res.render("./usuario/avaliacoes", { active, user });
   },
+  criarAvaliacao: async (req, res) => {
+    let { id, texto, nota } = req.query;
+    let usuarios_id = req.session.usuario.id;
+
+    texto = texto.trim();
+
+    let avaliacao = await Avaliacoes.findOne({
+      where: { postos_id: id, usuarios_id },
+    });
+
+    if (avaliacao) {
+      await avaliacao.update({
+        nota: Number(nota),
+        texto,
+        updatedAt: new Date(),
+      });
+
+      res.redirect("/main");
+      return;
+    } else {
+      try {
+        await Avaliacoes.create({
+          usuarios_id,
+          postos_id: id,
+          nota: Number(nota),
+          texto,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+
+        res.redirect("/main");
+      } catch (error) {
+        res.send(error);
+      }
+    }
+  },
   editarAvaliacao: async (req, res) => {
     let { id, texto } = req.body;
+    let usuarios_id = req.session.usuario.id;
 
-    let avaliacao = await Avaliacoes.findOne({ where: { id } });
+    let avaliacao = await Avaliacoes.findOne({
+      where: { postos_id: id, usuarios_id },
+    });
+    // return res.send(avaliacao);
 
     texto = texto.trim() || avaliacao.texto;
 
     try {
       await avaliacao.update({
         texto,
+        updatedAt: new Date(),
       });
 
       res.redirect("/usuario/dashboard/avaliacoes");
     } catch (error) {
+      console.log(error);
+
       res.send(error);
     }
   },

@@ -38,7 +38,7 @@
                     <% } %>
                     <form action="avaliacoes/deletar?_method=DELETE" method="POST"
                         onsubmit="return confirm('Tem certeza?')">
-                        <input type="hidden" name="id" value="<%=avaliacao.id%>">
+                        <input type="hidden" name="id" value="<%=avaliacao.Avaliacoes.postos_id%>">
                         <button id="destroy" type="submit" class="close">
                             <small><i class="far fa-trash-alt"></i></small>
                         </button>

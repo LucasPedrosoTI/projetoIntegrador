@@ -1,5 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.modal.show .modal-dialog {
+  z-index: 1060;
+}
+
+.modal-backdrop {
+  z-index: unset;
+  position: unset;
+}
 .marker {
   background-image: url("/images/icone-semfundo.png");
   background-size: cover;
@@ -29,24 +44,51 @@
   height: 100vh;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  padding: 0;
-  margin: 0;
-}
-
 a#entrar:hover,
 a#dashboard:hover,
 a#home:hover {
   background-color: #e4704e;
 }
 
+.likes a > .fa-heart {
+  color: #e14242;
+}
+
+a:hover > .fa-comment,
+a:hover > .fa-heart {
+  color: #e14242;
+  text-decoration: none;
+}
+
 /* modal style */
 
-.modal-content {
+.modal-transparent {
   background-color: unset !important;
   border: none;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  padding: 0 0.15em;
+}
+
+.star.selected {
+  color: #e8a500;
+  text-shadow: 0px 1px 0px #8f8f01;
+}
+
+.screen-reader {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 /* Style the search field */
 
@@ -60,6 +102,23 @@ a#home:hover {
   border-radius: 20px;
   z-index: 1;
   max-width: 35px;
+}
+
+.btn-posto {
+  width: 35% !important;
+  background-color: #e14242;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px 1px #0009;
+  font-weight: bold;
+  padding: 6px;
+  position: absolute;
+  bottom: 33px;
+  right: 28px;
+  color: white;
+}
+
+.modal-footer {
+  justify-content: flex-start;
 }
 
 /* dashboard button */
@@ -107,7 +166,7 @@ a#home:hover {
   z-index: 2;
   position: fixed;
   top: 15px;
-  right: 175px;
+  right: 185px;
   border-radius: 50px;
   background-color: #e14242;
   padding: 10px;
@@ -178,6 +237,7 @@ form.example button:hover {
     } */
 
 aside {
+  font: 400 16px/18px "Roboto", sans-serif;
   display: none;
   z-index: 2;
   position: fixed;
@@ -193,6 +253,7 @@ aside {
 ol.posto {
   padding: 5px;
   margin: auto;
+  color: #0e0e0e;
 }
 
 li {
@@ -244,11 +305,23 @@ li {
 .logoComEndereco {
   display: flex;
   align-items: center;
+  margin: auto 0;
 }
 
 .nomeComEndereço {
   margin-left: 10px;
-  width: 60%;
+  width: 100%;
+}
+
+.nomeComEndereço a {
+  color: #e8a500;
+  text-shadow: 0px 1px 0px #8f8f01;
+}
+
+.nomeComEndereço a:hover {
+  color: #e8a500;
+  text-shadow: 0px 1px 0px #8f8f01;
+  opacity: 0.7;
 }
 
 .part2 {
@@ -256,7 +329,7 @@ li {
   flex-direction: column;
   text-align: center;
   width: 20%;
-  margin: 2px 15px;
+  margin: 7px 15px;
 }
 
 p {
@@ -306,6 +379,9 @@ p.price {
   font-size: 1.5rem;
   margin: 5px;
   padding: 0 5px;
+  line-height: 30px;
+  margin: 5px auto;
+  width: 110px;
 }
 
 .high {
