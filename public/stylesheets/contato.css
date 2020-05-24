@@ -1,12 +1,12 @@
 body {
   margin: 0;
   background: url(../images/backLogin.jpg) no-repeat center;
-  font: 600 16px/18px "Roboto", sans-serif;
+  font: 600 16px/18px 'Roboto', sans-serif;
 }
 
 .boxwhite {
   margin: 20vh auto 2% auto;
-  padding: 2%;
+  padding: 1.8%;
   position: relative;
   border-radius: 20px;
   background-color: #f6f6f6dd;
