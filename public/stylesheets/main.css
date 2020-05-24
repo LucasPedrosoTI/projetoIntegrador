@@ -6,6 +6,26 @@
   padding: 0;
   margin: 0;
 }
+a {
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #e14242;
+  cursor: pointer;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 .modal.show .modal-dialog {
   z-index: 1060;
@@ -112,9 +132,16 @@ a:hover > .fa-heart {
   font-weight: bold;
   padding: 6px;
   position: absolute;
-  bottom: 33px;
+  bottom: 29px;
   right: 28px;
   color: white;
+}
+
+.btn-secondary {
+  width: 35%;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px 1px #0009;
+  font-weight: bold;
 }
 
 .modal-footer {
@@ -250,6 +277,14 @@ aside {
   overflow: auto;
 }
 
+.scroller {
+  scrollbar-width: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
 ol.posto {
   padding: 5px;
   margin: auto;
@@ -372,7 +407,7 @@ p.date {
   width: auto;
 }
 
-p.price {
+a.price {
   border-radius: 10px;
   color: #f7f7f7;
   font-weight: bold;

@@ -144,3 +144,32 @@ for (let i = 0; i < btns.length; i++) {
     document.querySelectorAll("form[id|=form-posto]")[i].submit();
   });
 }
+
+let hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
+
+for (let i = 0; i < hearts.length; i++) {
+  hearts[i].addEventListener("mouseover", (e) => {
+    hearts[i].classList.add("fas", "hover-change");
+    hearts[i].classList.remove("far");
+  });
+}
+
+// let heartsNotUser = Array.from(document.querySelectorAll(".not-user-fav"));
+
+// for (let i = 0; i < heartsNotUser.length; i++) {
+//   heartsNotUser[i].addEventListener("mouseleave", (e) => {
+//     console.log(heartsNotUser[i]);
+
+//     heartsNotUser[i].classList.add("far");
+//     heartsNotUser[i].classList.remove("fas");
+//   });
+// }
+
+for (let i = 0; i < hearts.length; i++) {
+  hearts[i].addEventListener("mouseleave", (e) => {
+    if (hearts[i].classList.contains("hover-change")) {
+      hearts[i].classList.add("far");
+      hearts[i].classList.remove("fas", "hover-change");
+    }
+  });
+}

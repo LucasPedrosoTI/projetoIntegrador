@@ -35,12 +35,12 @@
                         onsubmit="return confirm('Tem certeza?')">
                         <input type="hidden" name="id" value="<%=posto.id%>">
                         <button id="destroy" type="submit" class="close">
-                            <span aria-hidden="true">&times;</span>
+                            <small><i class="far fa-trash-alt"></i></small>
                         </button>
                     </form>
                     <div class="card-body">
-                        <div class="title">
-                            <h5 class="card-title"> <%= posto.nome %> &mdash;</h5>
+                        <div class="title mt-1">
+                            <h5 class="card-title mt-4"> <%= posto.nome %> &mdash;</h5>
                             <span class="card-text"><%= posto.endereco %>, <%= posto.bairro %>,
                                 <%= posto.cidade %>-<%= posto.estado %> </span>
                         </div>

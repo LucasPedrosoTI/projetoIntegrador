@@ -13,21 +13,25 @@
     <!-- Load icon library -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/c01b4bce71.js" crossorigin="anonymous"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <script src="https://kit.fontawesome.com/c01b4bce71.js" crossorigin="anonymous" defer></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js' defer></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-    <script
-        src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'
+        defer></script>
     <link rel='stylesheet'
         href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css'
         type='text/css' />
-    <script
-        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"
+        defer></script>
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
         type="text/css" />
     <link rel='stylesheet' href="../public/stylesheets/main.css" />
     <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <!-- <script src="https://unpkg.com/feather-icons" defer></script>
+    <script defer>
+        feather.replace()
+    </script> -->
 
 
 </head>
@@ -37,7 +41,7 @@
         <!-- Modal -->
         <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content modal-transparent">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -104,14 +108,14 @@
                             <% }) %>
                             <span>
                                 <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
-                                    <i class="<%=favorito%> fa-heart"></i>
+                                    <i class="<%=favorito%> fa-heart user-fav"></i>
                                 </a>
                             </span>
                             <% } else { %>
 
                             <span>
                                 <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
-                                    <i class="far fa-heart"></i>
+                                    <i class="far fa-heart not-user-fav"></i>
                                 </a>
                             </span>
 
@@ -239,12 +243,17 @@
                                                     <li>
 
                                                         <p>
+                                                            <% if (USUARIO) { %>
                                                             <% if (USUARIO.nome == avaliacao.nome) { %>
                                                             <strong>Você</strong>
                                                             <% } else { %>
                                                             <strong><%=avaliacao.nome%></strong>
                                                             <% } %>
                                                             <span> <%=avaliacao.Avaliacoes.texto%></span>
+                                                            <% } else { %>
+                                                            <strong><%=avaliacao.nome%></strong>
+                                                            <span> <%=avaliacao.Avaliacoes.texto%></span>
+                                                            <% } %>
                                                         </p>
                                                     </li>
                                                     <% }) %>
@@ -278,17 +287,54 @@
 
                             <p class="date"><%=posto.update_time%></p>
 
-                            <p class="price high">
+                            <a class="price high" type="button" data-toggle="modal"
+                                data-target="#alterar-preco-<%=posto.id%>">
                                 <%= posto.produtos[0].postos_produtos.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}).replace('.',',') %>
-                            </p>
-                            <div class="symbol">
-                                <span>
-                                    <i class="fas fa-gas-pump"></i>
-                                </span>
-                                <span>R$</span>
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade " id="alterar-preco-<%=posto.id%>" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div class="modal-body">
+                                            <form id="form-atualizar-preco-<%=posto.id%>" class="text-center"
+                                                action="/posto/preco/atualizar" method="GET">
+                                                <strong><label for="preco">O preço está incorreto? Atualize digitando o
+                                                        valor
+                                                        correto abaixo:</label></strong>
+                                                <input class="form-control w-50 mx-auto my-3" type="number" name="preco"
+                                                    id="preco" min="0" step="0.00" pattern="^\d*(\.\d{0,2})?$"
+                                                    value="<%=posto.produtos[0].postos_produtos.preco%>">
+                                                <input type="hidden" name="postos_id" value="<%=posto.id%>" required>
+                                                <input type="hidden" name="produtos_id"
+                                                    value="<%=posto.produtos[0].postos_produtos.produtos_id%>">
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-posto" type="submit">Salvar</button>
+
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">
+                                                        Fechar
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="symbol">
+                            <span>
+                                <i class="fas fa-gas-pump"></i>
+                            </span>
+                            <span>R$</span>
+                        </div>
                     </div>
+                </div>
                 </div>
             </li>
 

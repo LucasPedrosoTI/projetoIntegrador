@@ -1,6 +1,8 @@
 <%- include('../parts/head', {title: "Dashboard - Meu Posto"}) %>
 <link rel="stylesheet" href="/stylesheets/login.css    " />
 <link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
+<script src="/javascripts/main.js" defer></script>
+
 
 <header>
     <%- include('../parts/navbar') %>
@@ -58,21 +60,41 @@
                                 <button type="button" class="close" data-dismiss="modal">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                                <div class="modal-body">
-                                    <form action="avaliacoes/editar?_method=PUT" method="POST">
+                                <div class="modal-body text-center">
+                                    <form id="form-posto-<%=avaliacao.id%>" class="rating"
+                                        action="avaliacoes/editar?_method=PUT" method="POST">
                                         <label for="text">O que deseja falar sobre esse posto?</label>
+
+                                        <div id="nota-stars-container" class="stars">
+                                            <button type="submit" class="star" data-star="1">
+                                                <span aria-hidden="true">&#9733;</span>
+                                                <span class="screen-reader">1 Star</span>
+                                            </button><button type="submit" class="star" data-star="2">
+                                                <span aria-hidden="true">&#9733;</span>
+                                                <span class="screen-reader">2 Stars</span>
+                                            </button><button type="submit" class="star" data-star="3">
+                                                <span aria-hidden="true">&#9733;</span>
+                                                <span class="screen-reader">3 Stars</span>
+                                            </button><button type="submit" class="star" data-star="4">
+                                                <span aria-hidden="true">&#9733;</span>
+                                                <span class="screen-reader">4 Stars</span>
+                                            </button><button type="submit" class="star" data-star="5">
+                                                <span aria-hidden="true">&#9733;</span>
+                                                <span class="screen-reader">5 Stars</span>
+                                            </button>
+                                        </div>
+
                                         <textarea class="form-control" name="texto" id="text" cols="40"
                                             rows="5"></textarea>
                                         <input type="hidden" name="id" value="<%=avaliacao.id%>">
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-posto btn-secondary"
-                                                data-dismiss="modal">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                 Fechar
                                             </button>
-                                            <button class="btn btn-posto" type="submit">Salvar</button>
                                         </div>
                                     </form>
+                                    <button class="btn btn-posto salvar-form" type="submit">Salvar</button>
                                 </div>
                             </div>
                         </div>
@@ -80,8 +102,8 @@
 
 
                     <div class="card-body">
-                        <div class="title">
-                            <h5 class="card-title"> <%= avaliacao.nome %> &mdash;</h5>
+                        <div class="title mt-1">
+                            <h5 class="card-title mt-3"> <%= avaliacao.nome %> &mdash;</h5>
                             <span class="card-text"><%= avaliacao.endereco %>, <%= avaliacao.bairro %>,
                                 <%= avaliacao.cidade %>-<%= avaliacao.estado %> </span>
                         </div>

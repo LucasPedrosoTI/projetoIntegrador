@@ -256,13 +256,40 @@
   }
 
   .btn-posto {
-    float: right;
     width: 35% !important;
     background-color: #e14242;
     border-radius: 15px;
     box-shadow: 0px 2px 5px 1px #0009;
     font-weight: bold;
     padding: 6px;
+    bottom: 33px;
+    right: 28px;
+    color: white;
+  }
+
+  button.btn-posto.salvar-form {
+    width: 35% !important;
+    background-color: #e14242;
+    border-radius: 15px;
+    box-shadow: 0px 2px 5px 1px #0009;
+    font-weight: bold;
+    padding: 6px;
+    position: absolute;
+    bottom: 11%;
+    right: 28px;
+    color: white;
+  }
+
+  button[data-dismiss="modal"].btn.btn-secondary {
+    color: white;
+    padding: 7px;
+    margin: 10px 0;
+    border: none;
+    width: 37% !important;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 17px;
+    box-shadow: 0px 2px 5px 1px #0009;
   }
 
   .btn-posto-2 {
@@ -368,9 +395,39 @@
     font-size: 19px;
   }
 
+  /* estrelas - avaliações */
+
   .avaliacao-estrelas {
     color: gold;
     margin-bottom: 5px;
+  }
+
+  .star {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    padding: 0 0.15em;
+  }
+
+  .star.selected {
+    color: #e8a500;
+    text-shadow: 0px 1px 0px #8f8f01;
+  }
+
+  .screen-reader {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .modal-footer {
+    justify-content: flex-start;
   }
 
   .card-title {

@@ -295,18 +295,18 @@ module.exports = {
     }
   },
   editarAvaliacao: async (req, res) => {
-    let { id, texto } = req.body;
+    let { id, texto, nota } = req.body;
     let usuarios_id = req.session.usuario.id;
 
     let avaliacao = await Avaliacoes.findOne({
       where: { postos_id: id, usuarios_id },
     });
-    // return res.send(avaliacao);
 
     texto = texto.trim() || avaliacao.texto;
 
     try {
       await avaliacao.update({
+        nota: Number(nota),
         texto,
         updatedAt: new Date(),
       });
@@ -320,9 +320,13 @@ module.exports = {
   },
   deletarAvaliacao: async (req, res) => {
     let { id } = req.body;
+    let usuarios_id = req.session.usuario.id;
 
-    let avaliacao = await Avaliacoes.findOne({ where: { id } });
+    let avaliacao = await Avaliacoes.findOne({
+      where: { postos_id: id, usuarios_id },
+    });
 
+    // return res.send(avaliacao);
     try {
       await avaliacao.destroy();
 

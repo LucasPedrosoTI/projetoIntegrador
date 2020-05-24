@@ -1,10 +1,4 @@
-const {
-  Usuario,
-  Posto,
-  Produto,
-  Avaliacoes,
-  postos_favoritos,
-} = require("../models");
+const { Posto, postos_produtos } = require("../models");
 
 module.exports = {
   index: async (req, res) => {
@@ -13,5 +7,22 @@ module.exports = {
     });
 
     res.json(postos);
+  },
+
+  atualizarPreco: async (req, res) => {
+    let { produtos_id, postos_id, preco } = req.query;
+
+    const posto = await postos_produtos.findOne({
+      where: {
+        postos_id,
+        produtos_id,
+      },
+    });
+
+    posto.update({
+      preco: Number(preco),
+    });
+
+    res.redirect("/main");
   },
 };
