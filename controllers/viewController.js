@@ -4,8 +4,8 @@ const path = require("path");
 const axios = require("axios");
 const opencage = require("opencage-api-client");
 const postosResposta = require("../database/postosResposta.json");
+const moment = require("moment");
 const { Posto } = require("../models");
-const { roundHalf } = require("../lib/utils");
 
 // const interval = require("interval-promise");
 // const util = require("util");
@@ -44,8 +44,9 @@ module.exports = {
         // CRIAR A PROPRIEDADE MEDIA
         posto.media = media;
       }
-
+      posto.update_time = moment.utc(posto.update_time).format("DD/MM/YYYY");
       // console.log("media do posto na prop: " + posto.media);
+      console.log(posto.update_time);
     }
 
     res.render("main", { postos });
