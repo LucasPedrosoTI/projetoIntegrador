@@ -4,8 +4,8 @@ const path = require("path");
 const axios = require("axios");
 const opencage = require("opencage-api-client");
 const postosResposta = require("../database/postosResposta.json");
-const { Posto } = require("../models");
-const { roundHalf } = require("../lib/utils");
+const moment = require("moment");
+const { Posto, Usuario } = require("../models");
 
 // const interval = require("interval-promise");
 // const util = require("util");
@@ -17,9 +17,25 @@ module.exports = {
   index: (req, res, next) => res.render("index"),
 
   main: async (req, res, next) => {
-    const postos = await Posto.findAll({
-      include: ["produtos", "avaliacoes", "usuarios"],
-    });
+    let postos;
+
+    if (req.session.usuario) {
+      let { id } = req.session.usuario;
+      const user = await Usuario.findOne({ where: id });
+      // return res.send(user);
+      postos = await Posto.findAll({
+        include: [
+          { association: "produtos", where: { id: user.produtos_id } },
+          "avaliacoes",
+          "usuarios",
+        ],
+      });
+    } else {
+      postos = await Posto.findAll({
+        include: ["produtos", "avaliacoes", "usuarios"],
+      });
+      // return res.send(postos);
+    }
 
     // CÓDIGO PARA CALCULAR E ARMAZENAR A NOTA MÉDIA DOS POSTOS
     for (const posto of postos) {
@@ -44,10 +60,11 @@ module.exports = {
         // CRIAR A PROPRIEDADE MEDIA
         posto.media = media;
       }
-
+      posto.update_time = moment.utc(posto.update_time).format("DD/MM/YYYY");
       // console.log("media do posto na prop: " + posto.media);
+      console.log(posto.update_time);
     }
-
+    // return res.send(postos);
     res.render("main", { postos });
   },
 

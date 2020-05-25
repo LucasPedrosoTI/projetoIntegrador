@@ -9,29 +9,15 @@
         <div class="form-group">
           <label class="col-md-8 control-label" for="Nome">Nome*</label>
           <div class="col-md-8">
-            <input
-              id="Nome"
-              name="nome"
-              placeholder="Digite seu nome"
-              class="form-control input-md"
-              required
-              type="text"
-            />
+            <input id="Nome" name="nome" placeholder="Digite seu nome" class="form-control input-md" required
+              type="text" />
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-8 control-label" for="Sobrenome"
-            >Sobrenome*</label
-          >
+          <label class="col-md-8 control-label" for="Sobrenome">Sobrenome*</label>
           <div class="col-md-8">
-            <input
-              id="sobrenome"
-              name="sobrenome"
-              placeholder="Digite seu sobrenome"
-              class="form-control input-md"
-              required
-              type="text"
-            />
+            <input id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome" class="form-control input-md"
+              required type="text" />
           </div>
         </div>
         <!-- Prepended text-->
@@ -39,18 +25,21 @@
           <label class="col-md-4 control-label" for="email">Email *</label>
           <div class="col-md-5">
             <div class="input-group">
-              <span class="input-group-addon"
-                ><i class="glyphicon glyphicon-envelope"></i
-              ></span>
-              <input
-                id="email"
-                name="email"
-                class="form-control"
-                placeholder="email@email.com"
-                required
-                type="email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              />
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input id="email" name="email" class="form-control" placeholder="email@email.com" required type="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="fuel">Tipo de combustivel preferido:*</label>
+          <div class="col-md-5">
+            <div class="input-group">
+              <select class="form-control" id="fuel" name="produtos_id" required>
+                <option value="1" selected>Gasolina</option>
+                <option value="2">Etanol</option>
+              </select>
+
             </div>
           </div>
         </div>
@@ -59,32 +48,17 @@
           <label class="col-md-4 control-label" for="senha">Senha: *</label>
           <div class="col-md-5">
             <div class="input-group">
-              <input
-                id="senha"
-                name="senha"
-                class="form-control"
-                placeholder="8 dígitos"
-                required
-                type="password"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              />
+              <input id="senha" name="senha" class="form-control" placeholder="8 dígitos" required type="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
               <!-- -->
             </div>
           </div>
           <div class="form-group mt-3">
-            <label class="col-md-4 control-label" for="senha"
-              >Confirme a Senha: *</label
-            >
+            <label class="col-md-4 control-label" for="senha">Confirme a Senha: *</label>
             <div class="col-md-5">
               <div class="input-group">
-                <input
-                  class="l-form-password form-control"
-                  type="password"
-                  name="senha-confirmacao"
-                  placeholder="Confirme Senha"
-                  id="senha-confirmacao"
-                  required
-                />
+                <input class="l-form-password form-control" type="password" name="senha-confirmacao"
+                  placeholder="Confirme Senha" id="senha-confirmacao" required />
               </div>
             </div>
           </div>

@@ -90,6 +90,17 @@
             <input class="form-control mt-3" type="text" placeholder="Alterar sobrenome" name="sobrenome" id="sobrenome"
               value="<%=user.sobrenome%>" />
 
+            <select class="form-control" id="fuel" name="produtos_id" required>
+              <% if (user.produtos.id == 1) { %>
+              <option value="1" selected>Gasolina</option>
+              <option value="2">Etanol</option>
+
+              <% } else { %>
+              <option value="1">Gasolina</option>
+              <option value="2" selected>Etanol</option>
+              <% } %>
+            </select>
+
             <input class="form-control mt-3" type="password" placeholder="Senha" name="senha" required />
 
             <button type="submit" class="btn btn-warning btn-posto">Salvar</button>

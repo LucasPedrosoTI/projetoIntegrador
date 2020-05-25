@@ -23,7 +23,7 @@ module.exports = {
     res.render("dashboard-usuario", { msg: null, active });
   },
   cadastrar: async (req, res) => {
-    let { nome, sobrenome, email, senha } = req.body;
+    let { nome, sobrenome, email, produtos_id, senha } = req.body;
 
     let hash = bcrypt.hashSync(senha, 10);
 
@@ -33,6 +33,7 @@ module.exports = {
         nome: capitalizeName(nome.trim()),
         sobrenome: capitalizeName(sobrenome.trim()),
         email,
+        produtos_id: Number(produtos_id),
         senha: hash,
       });
 
@@ -57,8 +58,6 @@ module.exports = {
 
       req.session.usuario = user;
 
-      // res.locals.user = user;
-
       if (logado != undefined) {
         res.cookie("logado", user.email, { maxAge: 3600000 });
       }
@@ -80,14 +79,17 @@ module.exports = {
     active.avaliacoes = "";
     active.favoritos = "";
 
-    let user = await Usuario.findByPk(id);
+    let user = await Usuario.findOne({
+      where: { id },
+      include: ["produtos"],
+    });
 
     // return res.send(user);
 
     res.render("./usuario/cadastro", { user, active });
   },
   editar: async (req, res) => {
-    let { nome, sobrenome, email, senha } = req.body;
+    let { nome, sobrenome, email, produtos_id, senha } = req.body;
     let { id } = req.session.usuario;
 
     try {
@@ -108,6 +110,7 @@ module.exports = {
         nome,
         sobrenome,
         email,
+        produtos_id: Number(produtos_id),
       });
 
       res.cookie("logado", user.email, { maxAge: 3600000 });

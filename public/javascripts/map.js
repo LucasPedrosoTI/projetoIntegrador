@@ -52,12 +52,17 @@ function error() {
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 
+<<<<<<< HEAD
 mapboxgl.accessToken =
 <<<<<<< HEAD
   'pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg';
 =======
   "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
 >>>>>>> 1ab6831015d9ccf63941f8511c9cf00c8e54ed15
+=======
+// mapboxgl.accessToken =
+//   "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
+>>>>>>> 6c9953432e520935fdb1433e5d16a9aacc542b1f
 
 var map = new mapboxgl.Map({
   container: 'map',

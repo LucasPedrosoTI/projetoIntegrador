@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       nome: DataTypes.STRING,
       sobrenome: DataTypes.STRING,
       email: DataTypes.STRING,
+      produtos_id: DataTypes.TINYINT,
       senha: DataTypes.STRING,
     },
     {
@@ -24,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
       through: models.Avaliacoes,
       foreignKey: "usuarios_id",
       as: "avaliacoes",
+    });
+    Usuario.belongsTo(models.Produto, {
+      foreignKey: "produtos_id",
+      as: "produtos",
     });
   };
   return Usuario;

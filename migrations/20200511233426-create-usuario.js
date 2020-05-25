@@ -21,6 +21,11 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      produtos_id: {
+        type: Sequelize.TINYINT,
+        allowNull: false,
+        defaultValue: 1,
+      },
       senha: {
         type: Sequelize.STRING,
         allowNull: false,
