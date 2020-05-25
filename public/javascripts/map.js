@@ -30,8 +30,13 @@ request.onload = function () {
 request.send();
 console.log(postos);
 
-var longitude = -47.92972;
-var latitude = -15.77972;
+let params = new URLSearchParams(document.location.search.substring(1));
+var latitude = params.get('latitude');
+var longitude = params.get('longitude');
+if (!latitude && !longitude) {
+  var longitude = -47.92972;
+  var latitude = -15.77972;
+}
 
 var options = {
   enableHighAccuracy: false,
@@ -52,17 +57,8 @@ function error() {
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 
-<<<<<<< HEAD
 mapboxgl.accessToken =
-<<<<<<< HEAD
   'pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg';
-=======
-  "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
->>>>>>> 1ab6831015d9ccf63941f8511c9cf00c8e54ed15
-=======
-// mapboxgl.accessToken =
-//   "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
->>>>>>> 6c9953432e520935fdb1433e5d16a9aacc542b1f
 
 var map = new mapboxgl.Map({
   container: 'map',
@@ -259,13 +255,13 @@ var geocoder = new MapboxGeocoder({
 // Add the geocoder to the map
 map.addControl(geocoder, 'top-left');
 
-var directions = new MapboxDirections({
-  accessToken: mapboxgl.accessToken,
-  unit: 'metric',
-  placeholderOrigin: 'Clique na sua posição inicial',
-  placeholderDestination: 'Clique no posto escolhido',
-  geocoder: geocoder,
-  country: 'br',
-});
+// var directions = new MapboxDirections({
+//   accessToken: mapboxgl.accessToken,
+//   unit: 'metric',
+//   placeholderOrigin: 'Clique na sua posição inicial',
+//   placeholderDestination: 'Clique no posto escolhido',
+//   geocoder: geocoder,
+//   country: 'br',
+// });
 
-map.addControl(directions, 'top-left');
+// map.addControl(directions, 'top-left');
