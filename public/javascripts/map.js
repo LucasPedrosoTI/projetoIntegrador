@@ -52,8 +52,8 @@ function error() {
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
+// mapboxgl.accessToken =
+//   "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
 
 var map = new mapboxgl.Map({
   container: "map",
