@@ -6,14 +6,15 @@ const opencage = require("opencage-api-client");
 const postosResposta = require("../database/postosResposta.json");
 const produtosResposta = require("../database/produtosResposta.json");
 const moment = require("moment");
-const { Posto, Usuario } = require("../models");
+const { Posto, Usuario, Produto } = require("../models");
+const sequelize = require("sequelize");
 
 const now = moment();
 
 // const interval = require("interval-promise");
 // const util = require("util");
 
-const source = path.join("database", "postos.csv");
+// const source = path.join("database", "postos.csv");
 const destination = path.join("database", "postosResposta.json");
 const destinationProdutos = path.join("database", "produtosResposta.json");
 
@@ -21,7 +22,7 @@ module.exports = {
   index: (req, res, next) => res.render("index"),
 
   main: async (req, res, next) => {
-    let postos;
+    let postos = [];
 
     if (req.session.usuario) {
       let { id } = req.session.usuario;
@@ -29,7 +30,11 @@ module.exports = {
       // return res.send(user);
       postos = await Posto.findAll({
         include: [
-          { association: "produtos", where: { id: user.produtos_id } },
+          {
+            association: "produtos",
+            where: { id: user.produtos_id },
+            order: [sequelize.literal("postos_produtos.preco"), "ASC"],
+          },
           "avaliacoes",
           "usuarios",
         ],
@@ -69,6 +74,13 @@ module.exports = {
       // console.log("media do posto na prop: " + posto.media);
       // console.log(posto.update_time);
     }
+
+    // postos = postos.sort(
+    //   (a, b) =>
+    //     a.produtos[0].postos_produtos.preco -
+    //     b.produtos[0].postos_produtos.preco
+    // );
+
     // return res.send(postos);
     res.render("main", { postos });
   },

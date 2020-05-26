@@ -1,3 +1,53 @@
+const hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
+const btns = Array.from(document.querySelectorAll(".salvar-form"));
+const prices = Array.from(document.querySelectorAll("a.price"));
+const dates = Array.from(document.querySelectorAll("p.date"));
+
+function dataAtualFormatada(data) {
+  (dia = data.getDate().toString()),
+    (diaF = dia.length == 1 ? "0" + dia : dia),
+    (mes = (data.getMonth() + 1).toString()), //+1 pois no getMonth Janeiro começa com zero.
+    (mesF = mes.length == 1 ? "0" + mes : mes),
+    (anoF = data.getFullYear());
+  return diaF + "/" + mesF + "/" + anoF;
+}
+
+dates.forEach((date) => {
+  data = new Date(date.innerText);
+
+  data = dataAtualFormatada(data);
+
+  date.innerText = data;
+});
+
+function addColorsByPrice(array) {
+  // SETA UM ARRAY COM OS VALORES EM FORMATO NUMERICO
+  let values = [];
+  array.forEach((p) => {
+    let value = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
+    values.push(value);
+  });
+
+  // CALCULA A MEDIA DESSE ARRAY
+  let media = values.reduce((a, b) => a + b) / values.length;
+  media = media.toFixed(2);
+
+  // COMPARA OS VALORES COM A MEDIA E DEFINE A CLASSE
+  array.forEach((p) => {
+    let n = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
+
+    if (n > media) {
+      p.classList.add("high");
+    } else if (n < media) {
+      p.classList.add("low");
+    } else {
+      p.classList.add("med");
+    }
+  });
+}
+
+addColorsByPrice(prices);
+
 function showList() {
   event.preventDefault();
   var x = document.getElementById("sidebar");
@@ -137,7 +187,6 @@ document.addEventListener("mouseleave", resetSelected, true);
 document.addEventListener("blur", resetSelected, true);
 
 // ******************** SUBMETER FORM COM JS ********************
-let btns = Array.from(document.querySelectorAll(".salvar-form"));
 
 for (let i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", (e) => {
@@ -145,25 +194,12 @@ for (let i = 0; i < btns.length; i++) {
   });
 }
 
-let hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
-
 for (let i = 0; i < hearts.length; i++) {
   hearts[i].addEventListener("mouseover", (e) => {
     hearts[i].classList.add("fas", "hover-change");
     hearts[i].classList.remove("far");
   });
 }
-
-// let heartsNotUser = Array.from(document.querySelectorAll(".not-user-fav"));
-
-// for (let i = 0; i < heartsNotUser.length; i++) {
-//   heartsNotUser[i].addEventListener("mouseleave", (e) => {
-//     console.log(heartsNotUser[i]);
-
-//     heartsNotUser[i].classList.add("far");
-//     heartsNotUser[i].classList.remove("fas");
-//   });
-// }
 
 for (let i = 0; i < hearts.length; i++) {
   hearts[i].addEventListener("mouseleave", (e) => {

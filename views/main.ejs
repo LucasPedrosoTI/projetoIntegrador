@@ -286,10 +286,10 @@
                         </div>
                         <hr class="horizontal">
                         <div class="priceDetails">
-
+                            <small>Última atualização:</small>
                             <p class="date"><%=posto.update_time%></p>
 
-                            <a class="price high" type="button" data-toggle="modal"
+                            <a class="price" type="button" data-toggle="modal"
                                 data-target="#alterar-preco-<%=posto.id%>">
                                 <%= posto.produtos[0].postos_produtos.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}).replace('.',',') %>
                             </a>
@@ -336,7 +336,6 @@
                             <span>R$</span>
                         </div>
                     </div>
-                </div>
                 </div>
             </li>
 

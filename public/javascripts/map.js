@@ -31,8 +31,8 @@ request.send();
 // console.log(postos);
 
 let params = new URLSearchParams(document.location.search.substring(1));
-var latitude = params.get('latitude');
-var longitude = params.get('longitude');
+var latitude = params.get("latitude");
+var longitude = params.get("longitude");
 if (!latitude && !longitude) {
   var longitude = -47.92972;
   var latitude = -15.77972;
@@ -57,8 +57,8 @@ function error() {
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg';
+// mapboxgl.accessToken =
+//   'pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg';
 
 var map = new mapboxgl.Map({
   container: "map",
