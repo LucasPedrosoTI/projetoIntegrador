@@ -4,14 +4,18 @@ const path = require("path");
 const axios = require("axios");
 const opencage = require("opencage-api-client");
 const postosResposta = require("../database/postosResposta.json");
+const produtosResposta = require("../database/produtosResposta.json");
 const moment = require("moment");
 const { Posto, Usuario } = require("../models");
+
+const now = moment();
 
 // const interval = require("interval-promise");
 // const util = require("util");
 
-// const source = path.join("database", "postos.csv");
+const source = path.join("database", "postos.csv");
 const destination = path.join("database", "postosResposta.json");
+const destinationProdutos = path.join("database", "produtosResposta.json");
 
 module.exports = {
   index: (req, res, next) => res.render("index"),
@@ -60,15 +64,19 @@ module.exports = {
         // CRIAR A PROPRIEDADE MEDIA
         posto.media = media;
       }
-      posto.update_time = moment.utc(posto.update_time).format("DD/MM/YYYY");
+
+      // posto.update_time = moment(posto.update_time).format("DD/MM/YYYY");
       // console.log("media do posto na prop: " + posto.media);
-      console.log(posto.update_time);
+      // console.log(posto.update_time);
     }
     // return res.send(postos);
     res.render("main", { postos });
   },
 
   indexPostos: async (req, res) => {
+    let produto = {};
+    let produtos_id;
+
     // TRANSFORMAR CSV EM JSON
     const postos = await csv({
       noheader: false,
@@ -76,45 +84,132 @@ module.exports = {
       delimiter: ",",
     }).fromFile(source);
 
-    // CONSULTAR A API DE CNPJ
-    const { data } = await axios.get(
-      `https://www.receitaws.com.br/v1/cnpj/${postos[9].cnpj}`,
-      {}
+    let postoJaExiste = postosResposta.find(
+      (posto) => posto.cnpj == postos[20721].cnpj
     );
 
-    // ENCODAR QUERY PARA TIPO URL
-    let uri = encodeURI(
-      `${data.logradouro}, ${data.bairro}, ${data.municipio}, ${data.uf}`
-    );
+    postos[20721].produto == "ETANOL" ? (produtos_id = 2) : (produtos_id = 1);
 
-    // CONSULTAR API DE GEOCODING
-    const { results } = await opencage.geocode({
-      q: uri,
-    });
+    if (postoJaExiste) {
+      var produtoJaExiste = produtosResposta.find(
+        (produto) =>
+          produto.produtos_id == produtos_id &&
+          produto.postos_id == postoJaExiste.id
+      );
+      console.log("Posto já existe, verificando se o produto existe");
+      produto.postos_id = postoJaExiste.id;
+    }
 
-    // CRIAR UM OBJETO COM AS INFORMAÇÕES NECESSÁRIAS
+    produto.produtos_id = produtos_id;
 
-    let novoPosto = {
-      nome: data.nome,
-      cnpj: postos[9].cnpj,
-      cep: data.cep.replace(/[-.]/gm, ""),
-      cidade: data.municipio,
-      estado: data.uf,
-      bairro: data.bairro,
-      endereco: data.logradouro,
-      bandeira: postos[9].bandeira,
-      latitude: results[0].geometry.lat,
-      longitude: results[0].geometry.lng,
-      create_time: new Date(),
-      update_time: new Date(postos[9].data),
-      produto: postos[9].produto,
-      preco: Number(postos[9].preco.replace(",", ".")),
-    };
+    if (
+      produtoJaExiste &&
+      postoJaExiste &&
+      moment(postos[20721].data, "DD/MM/YYYY").subtract(
+        moment(postoJaExiste.update_time, "DD/MM/YYYY")
+      ) > 0
+    ) {
+      console.log(
+        "posto e produto já existem, mas o produto analisado é mais atual. Atualizando!"
+      );
+      produtoJaExiste.preco = Number(postos[20721].preco.replace(",", "."));
+      postoJaExiste.update_time = moment(
+        postos[20721].data,
+        "DD/MM/YYYY"
+      ).format("DD/MM/YYYY");
 
-    postosResposta.push(novoPosto);
+      fs.writeFileSync(destination, JSON.stringify(postosResposta));
+      fs.writeFileSync(destinationProdutos, JSON.stringify(produtosResposta));
+
+      console.log("Produto e posto atualizados com sucesso!");
+
+      return res.send(produtosResposta);
+    }
+
+    // let dataDestination = moment(
+    //   postoJaExiste.update_time,
+    //   "DD/MM/YYYY"
+    // ).format("DD/MM/YYYY");
+    // let dataSource = moment(postos[20721].data, "DD/MM/YYYY").format("DD/MM/YYYY");
+
+    // if (produtoJaExiste && postoJaExiste && dataDestination > dataSource) {
+    //   return res.send(
+    //     "Ambos já existem e o produto a adicionar é mais antigo que o existente"
+    //   );
+    // }
+
+    produto.preco = Number(postos[20721].preco.replace(",", "."));
+
+    if (!postoJaExiste) {
+      // CONSULTAR A API DE CNPJ
+      const { data } = await axios.get(
+        `https://www.receitaws.com.br/v1/cnpj/${postos[20721].cnpj}`,
+        {}
+      );
+
+      // ENCODAR QUERY PARA TIPO URL
+      let uri = encodeURI(
+        `${data.logradouro}, ${data.bairro}, ${data.municipio}, ${data.uf}`
+      );
+
+      // CONSULTAR API DE GEOCODING
+      const { results } = await opencage.geocode({
+        q: uri,
+      });
+
+      // CRIAR UM OBJETO COM AS INFORMAÇÕES NECESSÁRIAS
+
+      let id =
+        postosResposta.length == 0
+          ? 1
+          : postosResposta[postosResposta.length - 1].id + 1;
+
+      let novoPosto = {
+        id,
+        nome: data.nome,
+        cnpj: postos[20721].cnpj,
+        cep: data.cep.replace(/[-.]/gm, ""),
+        cidade: data.municipio,
+        estado: data.uf,
+        bairro: data.bairro,
+        endereco: data.logradouro,
+        bandeira: postos[20721].bandeira,
+        latitude: results[0].geometry.lat,
+        longitude: results[0].geometry.lng,
+        create_time: now.format("DD/MM/YYYY"),
+        update_time: moment(postos[20721].data, "DD/MM/YYYY").format(
+          "DD/MM/YYYY"
+        ),
+      };
+
+      postosResposta.push(novoPosto);
+
+      produto.postos_id = novoPosto.id;
+
+      fs.writeFileSync(destination, JSON.stringify(postosResposta));
+    }
+
+    if (!produtoJaExiste) {
+      produtosResposta.push(produto);
+
+      postoJaExiste.update_time = moment(
+        postos[20721].data,
+        "DD/MM/YYYY"
+      ).format("DD/MM/YYYY");
+
+      fs.writeFileSync(destination, JSON.stringify(postosResposta));
+
+      fs.writeFileSync(destinationProdutos, JSON.stringify(produtosResposta));
+
+      console.log("Produto criado com sucesso!");
+
+      return res.send(produtosResposta);
+    }
 
     // SALVAR O OBJETO NUM JSON
-    fs.writeFileSync(destination, JSON.stringify(postosResposta));
+    console.log(
+      "Ambos já existem e o produto a adicionar é mais antigo que o existente"
+    );
 
     return res.send(postosResposta);
 

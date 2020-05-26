@@ -28,7 +28,7 @@ request.onload = function () {
   }
 };
 request.send();
-console.log(postos);
+// console.log(postos);
 
 var longitude = -47.92972;
 var latitude = -15.77972;
