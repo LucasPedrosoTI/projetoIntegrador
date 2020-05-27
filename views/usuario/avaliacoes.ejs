@@ -1,7 +1,7 @@
 <%- include('../parts/head', {title: "Dashboard - Meu Posto"}) %>
 <link rel="stylesheet" href="/stylesheets/login.css    " />
 <link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
-<script src="/javascripts/main.js" defer></script>
+<script src="/javascripts/stars.js" defer></script>
 
 
 <header>
@@ -79,8 +79,8 @@
                                             </button>
                                         </div>
 
-                                        <textarea class="form-control" name="texto" id="text" cols="40"
-                                            rows="5"></textarea>
+                                        <textarea class="form-control" name="texto" id="text" cols="40" rows="5"
+                                            placeholder="<%=avaliacao.Avaliacoes.texto%>"></textarea>
                                         <input type="hidden" name="id" value="<%=avaliacao.id%>">
 
                                         <div class="modal-footer">
