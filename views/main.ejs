@@ -30,15 +30,14 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
     <script src="/javascripts/main.js" defer></script>
     <script src="/javascripts/map.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"
-        defer></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"
         defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"
         defer></script>
+
+    <script src="/javascripts/cep.js"></script>
 </head>
 
 <body>
@@ -64,9 +63,9 @@
 
             <!-- The form -->
             <div id="form-container">
-                <form class="example">
+                <div class="btn-sidebar">
                     <button id="bars" onclick="showList()"> <i class="fas fa-bars"></i> </button>
-                </form>
+                </div>
 
                 <% if (USUARIO) { %>
                 <a class="nav-link mr-3" id="dashboard" href="/usuario/dashboard">
@@ -91,14 +90,89 @@
         </div>
     </main>
     <aside id="sidebar">
-        <ol class="posto">
+        <div class="sidebar-options my-2 mx-auto text-center">
+            <a class="btn btn-secondary mt-2" href="#" data-toggle="modal" data-target="#novo-posto">
+                Novo posto
+            </a>
+        </div>
+
+        <!-- Modal Novo posto -->
+        <div class="modal fade " id="novo-posto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body">
+                        <form id="form-novo-posto" class="text-center" action="/posto/adicionar" method="POST">
+                            <strong>Não encontrou um posto? Nos ajude a ampliar a base de dados de postos
+                                cadastrados inserindo os dados abaixo</strong>
+                            <small class="form-text text-muted">
+                                Essas informações podem ser encontradas na nota fiscal fornecida ao abastecer,
+                                inclusive o CNPJ. Obrigado por contribuir.
+                            </small>
+                            <input required class="form-control w-75 mx-auto my-3" type="text" name="nome"
+                                placeholder="Nome do posto">
+                            <input required class="form-control w-75 mx-auto my-3" type="text" name="cnpj"
+                                placeholder="CNPJ do posto">
+                            <input required class="form-control w-75 mx-auto my-3" type="text" name="cep"
+                                placeholder="CEP" maxlength="9" onblur="pesquisacep(this.value);">
+
+                            <input id="rua" required class="form-control w-75 mx-auto my-3" type="text" name="endereco"
+                                placeholder="Rua x" hidden>
+
+                            <input class="form-control w-75 mx-auto my-3" type="text" name="numero" placeholder="Número"
+                                required>
+
+                            <input id="bairro" required class="form-control w-75 mx-auto my-3" type="text" name="bairro"
+                                placeholder="Bairro" hidden>
+                            <input id="cidade" required class="form-control w-75 mx-auto my-3" type="text" name="cidade"
+                                placeholder="Cidade" hidden>
+                            <input id="uf" required class="form-control w-75 mx-auto my-3" type="text" name="estado"
+                                placeholder="Estado" hidden>
+
+                            <label for="bandeira">Bandeira</label>
+                            <select id="bandeira" class="form-control w-75 mx-auto mb-3" name="bandeira" required>
+                                <option value="ipiranga" selected>Ipiranga</option>
+                                <option value="petrobras">Petrobrás</option>
+                                <option value="raizen">Shell</option>
+                                <option value="alesat">Ale</option>
+                                <option value="branca">Outros</option>
+                            </select>
+
+                            <label for="preco-etanol">Preço Etanol</label>
+
+                            <input required class="form-control w-75 mx-auto mb-3" type="number" name="precoEtanol"
+                                id="preco-etanol" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$" placeholder="Preço">
+
+                            <label for="preco-gasolina">Preço Gasolina</label>
+
+                            <input required class="form-control w-75 mx-auto mb-3" type="number" name="precoGasolina"
+                                id="preco-gasolina" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
+                                placeholder="Preço">
+
+                            <div class="modal-footer">
+                                <button class="btn btn-posto" type="submit">Salvar</button>
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Fechar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ol class="posto mb-5">
+
 
             <% for( const posto of postos ) { %>
 
             <li>
                 <div class="container grey">
                     <div class="part1">
-                        <div class="likes my-2 h5">
+                        <div class="likes my-2 h6">
                             <!-- heart image -->
                             <% if (USUARIO) { %>
                             <% var favorito = "far" %>
@@ -137,7 +211,7 @@
                         </div>
                         <div class="logoComEndereco">
                             <div class="circle">
-                                <svg width="98" height="98" viewBox="0 0 98 98" fill="none"
+                                <svg width="100%" height="100%" viewBox="0 0 98 98" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d)">
                                         <circle cx="49" cy="45" r="45" fill="white" />
@@ -289,12 +363,14 @@
                             <small>Última atualização:</small>
                             <p class="date"><%=posto.update_time%></p>
 
+                            <small><%= posto.produtos[0].nome %></small><br>
                             <a class="price" type="button" data-toggle="modal"
                                 data-target="#alterar-preco-<%=posto.id%>">
+
                                 <%= posto.produtos[0].postos_produtos.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}).replace('.',',') %>
                             </a>
 
-                            <!-- Modal -->
+                            <!-- Modal alterar preço -->
                             <div class="modal fade " id="alterar-preco-<%=posto.id%>" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -329,7 +405,7 @@
                             </div>
                         </div>
 
-                        <div class="symbol">
+                        <div class="symbol mt-1">
                             <span>
                                 <i class="fas fa-gas-pump"></i>
                             </span>
@@ -343,6 +419,20 @@
 
         </ol>
     </aside>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#bars").on("click", function () {
+                $('[data-toggle="tooltip"]').tooltip({ trigger: 'manual' }).tooltip("show")
+                setTimeout(function () { $('[data-toggle="tooltip"]').tooltip('hide'); }, 6000);
+            })
+        });
+
+    </script>
 
 </body>
 

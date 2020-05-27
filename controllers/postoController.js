@@ -1,5 +1,6 @@
 const moment = require("moment");
 const { Posto, postos_produtos } = require("../models");
+const opencage = require("opencage-api-client");
 
 module.exports = {
   index: async (req, res) => {
@@ -38,6 +39,66 @@ module.exports = {
     await posto.update({
       preco: Number(preco),
     });
+
+    res.redirect("/main");
+  },
+  novoPosto: async (req, res) => {
+    let {
+      nome,
+      cnpj,
+      cep,
+      endereco,
+      numero,
+      bairro,
+      cidade,
+      estado,
+      bandeira,
+      precoEtanol,
+      precoGasolina,
+    } = req.body;
+
+    endereco = endereco.toUpperCase().trim() + ", " + numero.trim();
+
+    // ENCODAR QUERY PARA TIPO URL
+    let uri = encodeURI(`${endereco}, ${bairro}, ${cidade}, ${estado}`);
+
+    // CONSULTAR API DE GEOCODING
+    const { results } = await opencage.geocode({
+      q: uri,
+    });
+
+    await Posto.findOrCreate({
+      where: { cnpj },
+      defaults: {
+        nome: nome.toUpperCase().trim(),
+        cnpj,
+        cep: cep.replace(/[-.]/gm, "").trim(),
+        endereco,
+        bairro: bairro.toUpperCase().trim(),
+        cidade: cidade.toUpperCase().trim(),
+        estado: estado.toUpperCase().trim(),
+        bandeira: bandeira.toUpperCase().trim(),
+        latitude: results[0].geometry.lat,
+        longitude: results[0].geometry.lng,
+        create_time: new Date(),
+        update_time: new Date(),
+      },
+    });
+
+    let posto = await Posto.findOne({ where: { cnpj } });
+
+    await postos_produtos.bulkCreate([
+      {
+        postos_id: posto.id,
+        produtos_id: 1,
+        preco: precoGasolina,
+      },
+      {
+        postos_id: posto.id,
+        produtos_id: 2,
+        preco: precoEtanol,
+      },
+    ]);
 
     res.redirect("/main");
   },

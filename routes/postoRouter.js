@@ -6,4 +6,6 @@ router.get("/index", postoController.index);
 
 router.get("/preco/atualizar", postoController.atualizarPreco);
 
+router.post("/adicionar", postoController.novoPosto);
+
 module.exports = router;

@@ -13,11 +13,54 @@ function dataAtualFormatada(data) {
 }
 
 dates.forEach((date) => {
-  data = new Date(date.innerText);
+  let data = new Date(date.innerText);
+  let hoje = new Date();
+  let ontem = new Date();
+  let haUmaSemana = new Date();
+  let haUmMes = new Date();
+  let estaSemana = new Date();
+  let duasSemanas = new Date();
 
-  data = dataAtualFormatada(data);
+  ontem = new Date(ontem.setDate(ontem.getDate() - 1));
+  estaSemana = new Date(estaSemana.setDate(estaSemana.getDate() - 6));
+  haUmaSemana = haUmaSemana.setDate(haUmaSemana.getDate() - 7);
+  duasSemanas = duasSemanas.setDate(duasSemanas.getDate() - 14);
+  haUmMes = new Date(haUmMes.setDate(haUmMes.getDate() - 31));
 
-  date.innerText = data;
+  let dataFormatada = dataAtualFormatada(data);
+
+  let hojeFormatado = dataAtualFormatada(hoje);
+
+  let ontemFormatado = dataAtualFormatada(ontem);
+
+  if (hojeFormatado == dataFormatada) {
+    date.innerText = "Hoje";
+  } else if (ontemFormatado == dataFormatada) {
+    date.innerText = "Ontem";
+  } else if (
+    data.setDate(data.getDate()) < ontem &&
+    data.setDate(data.getDate()) > haUmaSemana
+  ) {
+    date.innerText = "Esta semana";
+  } else if (
+    data.setDate(data.getDate()) < haUmaSemana &&
+    data.setDate(data.getDate()) > duasSemanas
+  ) {
+    date.innerText = "Semana passada";
+  } else if (
+    data.setDate(data.getDate()) < duasSemanas &&
+    data.setDate(data.getDate()) > haUmMes
+  ) {
+    date.innerText = "Este mês";
+  } else {
+    date.innerText = dataFormatada;
+    date.setAttribute("data-toggle", "tooltip");
+    date.setAttribute(
+      "title",
+      "O preço desse posto não é atualizado há mais de 1 mês Ajude a manter os preços atualizados, clique no preço e corrija agora mesmo!"
+    );
+    date.setAttribute("data-placement", "auto");
+  }
 });
 
 function addColorsByPrice(array) {
@@ -32,13 +75,15 @@ function addColorsByPrice(array) {
   let media = values.reduce((a, b) => a + b) / values.length;
   media = media.toFixed(2);
 
+  console.log("Função addColorsByPrice OK: " + media);
+
   // COMPARA OS VALORES COM A MEDIA E DEFINE A CLASSE
   array.forEach((p) => {
     let n = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
 
-    if (n > media) {
+    if (n > media * 1.01) {
       p.classList.add("high");
-    } else if (n < media) {
+    } else if (n < media * 0.99) {
       p.classList.add("low");
     } else {
       p.classList.add("med");
