@@ -262,6 +262,9 @@
                                 <a type="button" data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
                                     <div class="stars">
 
+                                        <span class="d-none">
+                                            <%=posto.media%>
+                                        </span>
                                         <% for( let i = 0; i < parseInt(posto.media); i++ ) { %>
                                         <i class="fas fa-star"></i>
                                         <% } %>

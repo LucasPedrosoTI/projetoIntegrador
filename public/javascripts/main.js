@@ -135,6 +135,32 @@ function porPrecoMenor(a, b) {
   );
 }
 
+function porLikes(a, b) {
+  return (
+    Number(
+      b.firstElementChild.firstElementChild.children[0].children[1].innerText
+        .replace("likes", "")
+        .trim()
+    ) -
+    Number(
+      a.firstElementChild.firstElementChild.children[0].children[1].innerText
+        .replace("likes", "")
+        .trim()
+    )
+  );
+}
+
+function porNota(a, b) {
+  return (
+    Number(
+      b.firstElementChild.firstElementChild.children[1].children[1].firstElementChild.firstElementChild.firstElementChild.innerText.trim()
+    ) -
+    Number(
+      a.firstElementChild.firstElementChild.children[1].children[1].firstElementChild.firstElementChild.firstElementChild.innerText.trim()
+    )
+  );
+}
+
 function mostrarLista(array) {
   let ol = array[0].parentNode;
 
@@ -148,20 +174,19 @@ function mostrarLista(array) {
 const select = document.querySelector("#classificar");
 let li = Array.from(document.querySelectorAll(".posto-item"));
 
-console.log(li.sort(porPrecoMenor));
-
 select.addEventListener("change", (e) => {
   if (e.target.value == "precoMenor") {
-    console.log("precoMenor selecionado");
-
     li.sort(porPrecoMenor);
 
     mostrarLista(li);
   } else if (e.target.value == "maisCurtidas") {
-    console.log("maisCurtidas selecionado");
+    li.sort(porLikes);
+
+    mostrarLista(li);
   } else if (e.target.value == "melhorNota") {
-    console.log("melhorNota selecionado");
+    li.sort(porNota);
+
+    mostrarLista(li);
   } else {
-    console.log("menorDistancia selecionado");
   }
 });
