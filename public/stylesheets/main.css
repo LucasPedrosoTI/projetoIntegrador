@@ -416,7 +416,7 @@ a.price {
   padding: 1px 6px;
   line-height: 30px;
   margin: 5px auto;
-  width: 110px;
+  width: 100%;
 }
 
 a.price:hover {
@@ -500,9 +500,9 @@ div.symbol {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   a.price {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
 
   small {

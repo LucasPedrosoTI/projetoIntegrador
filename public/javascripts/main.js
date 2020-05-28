@@ -117,3 +117,51 @@ for (let i = 0; i < hearts.length; i++) {
     }
   });
 }
+
+function porPrecoMenor(a, b) {
+  return (
+    Number(
+      a.firstElementChild.lastElementChild.children[2].children[4].innerText
+        .replace("R$", "")
+        .replace(",", ".")
+        .trim()
+    ) -
+    Number(
+      b.firstElementChild.lastElementChild.children[2].children[4].innerText
+        .replace("R$", "")
+        .replace(",", ".")
+        .trim()
+    )
+  );
+}
+
+function mostrarLista(array) {
+  let ol = array[0].parentNode;
+
+  ol.innerHTML = "";
+
+  array.forEach((a) => {
+    ol.appendChild(a);
+  });
+}
+
+const select = document.querySelector("#classificar");
+let li = Array.from(document.querySelectorAll(".posto-item"));
+
+console.log(li.sort(porPrecoMenor));
+
+select.addEventListener("change", (e) => {
+  if (e.target.value == "precoMenor") {
+    console.log("precoMenor selecionado");
+
+    li.sort(porPrecoMenor);
+
+    mostrarLista(li);
+  } else if (e.target.value == "maisCurtidas") {
+    console.log("maisCurtidas selecionado");
+  } else if (e.target.value == "melhorNota") {
+    console.log("melhorNota selecionado");
+  } else {
+    console.log("menorDistancia selecionado");
+  }
+});

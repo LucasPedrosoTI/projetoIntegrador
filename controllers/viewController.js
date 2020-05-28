@@ -33,7 +33,6 @@ module.exports = {
           {
             association: "produtos",
             where: { id: user.produtos_id },
-            order: [sequelize.literal("postos_produtos.preco"), "ASC"],
           },
           "avaliacoes",
           "usuarios",

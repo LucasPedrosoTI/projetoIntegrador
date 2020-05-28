@@ -91,10 +91,18 @@
         </div>
     </main>
     <aside id="sidebar">
-        <div class="sidebar-options my-2 mx-auto text-center">
-            <a class="btn btn-secondary mt-2" href="#" data-toggle="modal" data-target="#novo-posto">
+        <div class="sidebar-options w-75 my-3 mx-auto text-center d-flex justify-content-around">
+            <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#novo-posto">
                 Novo posto
             </a>
+
+            <select class="form-control w-50 mx-auto" id="classificar">
+                <option selected>-- Classifique --</option>
+                <option id="precoMenor" value="precoMenor">Preço menor primeiro</option>
+                <option id="maisCurtidas" value="maisCurtidas">Mais curtidas primeiro</option>
+                <option id="melhorNota" value="melhorNota">Melhor nota primeiro</option>
+                <option id="menorDistancia" value="menorDistancia">Menor distância primeiro</option>
+            </select>
         </div>
 
         <!-- Modal Novo posto -->
@@ -170,7 +178,7 @@
 
             <% for( const posto of postos ) { %>
 
-            <li>
+            <li class="posto-item">
                 <div class="container grey">
                     <div class="part1">
                         <div class="likes my-2 h6">
