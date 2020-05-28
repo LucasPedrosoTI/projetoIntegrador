@@ -20,19 +20,42 @@
                 <% user.avaliacoes.forEach(avaliacao => { %>
 
                 <div class="card">
-                    <% if (avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","") == "petrobras" ||
-                    avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
-                    avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
-                    avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
-                    <div class="logo-empresa">
-                        <img src="/images/<%=avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","")%>.png"
-                            alt="petrobras">
+                    <div class="circle">
+                        <svg width="100%" height="100%" viewBox="0 0 98 98" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d)">
+                                <circle cx="49" cy="45" r="45" fill="white" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d" x="0" y="0" width="98" height="98" filterUnits="userSpaceOnUse"
+                                    color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                    <feOffset dy="4" />
+                                    <feGaussianBlur stdDeviation="2" />
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+
+
+                        <% if (avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","") == "petrobras" ||
+                            avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
+                            avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
+                            avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
+                        <div class="img">
+                            <img src="/images/<%=avaliacao.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","")%>.png"
+                                alt="<%=avaliacao.bandeira%>">
+                        </div>
+                        <% } else { %>
+                        <div class="img">
+                            <img src="/images/branca.png" alt="Branca">
+                        </div>
+                        <% } %>
                     </div>
-                    <% } else { %>
-                    <div class="logo-empresa">
-                        <img src="/images/branca.png" alt="Branca">
-                    </div>
-                    <% } %>
                     <form action="avaliacoes/deletar?_method=DELETE" method="POST"
                         onsubmit="return confirm('Tem certeza?')">
                         <input type="hidden" name="id" value="<%=avaliacao.Avaliacoes.postos_id%>">

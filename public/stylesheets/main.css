@@ -138,6 +138,10 @@ a:hover > .fa-heart {
   color: white;
 }
 
+.btn-novo-posto {
+  position: unset;
+}
+
 .btn-secondary {
   width: 35%;
   border-radius: 20px;
@@ -426,24 +430,16 @@ a.price:hover {
 }
 
 .high {
-  background: #e14242;
-  background: linear-gradient(180deg, #e14242 0%, #e46f4e 100%);
+  background-color: #e14242;
+  background: linear-gradient(180deg, #e14242 50%, #e46f4e 100%);
 }
 
 .low {
-  background: linear-gradient(
-    180deg,
-    rgba(66, 225, 111, 0.9) 0%,
-    rgba(0, 118, 12, 0.9) 100%
-  );
+  background: linear-gradient(180deg, #42e16fe6 50%, #00760ce6 100%);
 }
 
 .med {
-  background: linear-gradient(
-    180deg,
-    rgb(255, 177, 27) 0%,
-    rgba(255, 179, 0, 0.47) 100%
-  );
+  background: linear-gradient(180deg, #ff4400de 50%, #ff7600b5 100%);
 }
 
 div.symbol {
@@ -481,7 +477,8 @@ div.symbol {
 }
 
 @media (max-width: 600px) {
-  #entrar {
+  #entrar,
+  #dashboard {
     bottom: 20px;
     left: 20px;
     top: unset;
@@ -500,7 +497,7 @@ div.symbol {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 430px) {
   a.price {
     font-size: 0.75rem;
   }

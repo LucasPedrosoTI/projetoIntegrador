@@ -1,7 +1,8 @@
 body {
   margin: 0;
   color: #e14242;
-  background: url(../images/backLogin.jpg) no-repeat center;
+  background: url(/images/bkg1.jpg) no-repeat center;
+  background-size: cover;
   font: 600 16px/18px "Roboto", sans-serif;
 }
 

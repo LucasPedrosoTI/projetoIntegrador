@@ -171,6 +171,22 @@ function mostrarLista(array) {
   });
 }
 
+function favsPrimeiro(a, b) {
+  // true values first
+  return a.firstElementChild.firstElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.classList.contains(
+    "fas"
+  ) ===
+    b.firstElementChild.firstElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.classList.contains(
+      "fas"
+    )
+    ? 0
+    : a.firstElementChild.firstElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.classList.contains(
+        "fas"
+      )
+    ? -1
+    : 1;
+}
+
 const select = document.querySelector("#classificar");
 let li = Array.from(document.querySelectorAll(".posto-item"));
 
@@ -185,6 +201,10 @@ select.addEventListener("change", (e) => {
     mostrarLista(li);
   } else if (e.target.value == "melhorNota") {
     li.sort(porNota);
+
+    mostrarLista(li);
+  } else if (e.target.value == "favsPrimeiro") {
+    li.sort(favsPrimeiro);
 
     mostrarLista(li);
   } else {

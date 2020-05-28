@@ -99,6 +99,7 @@
             <select class="form-control w-50 mx-auto" id="classificar">
                 <option selected>-- Classifique --</option>
                 <option id="precoMenor" value="precoMenor">Preço menor primeiro</option>
+                <option id="favsPrimeiro" value="favsPrimeiro">Favoritos primeiro</option>
                 <option id="maisCurtidas" value="maisCurtidas">Mais curtidas primeiro</option>
                 <option id="melhorNota" value="melhorNota">Melhor nota primeiro</option>
                 <option id="menorDistancia" value="menorDistancia">Menor distância primeiro</option>
@@ -108,65 +109,108 @@
         <!-- Modal Novo posto -->
         <div class="modal fade " id="novo-posto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                <div class="modal-content mt-5">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <div class="modal-body">
-                        <form id="form-novo-posto" class="text-center" action="/posto/adicionar" method="POST">
-                            <strong>Não encontrou um posto? Nos ajude a ampliar a base de dados de postos
-                                cadastrados inserindo os dados abaixo</strong>
-                            <small class="form-text text-muted">
-                                Essas informações podem ser encontradas na nota fiscal fornecida ao abastecer,
-                                inclusive o CNPJ. Obrigado por contribuir.
-                            </small>
-                            <input required class="form-control w-75 mx-auto my-3" type="text" name="nome"
-                                placeholder="Nome do posto">
-                            <input required class="form-control w-75 mx-auto my-3" type="text" name="cnpj"
-                                placeholder="CNPJ do posto">
-                            <input required class="form-control w-75 mx-auto my-3" type="text" name="cep"
-                                placeholder="CEP" maxlength="9" onblur="pesquisacep(this.value);">
+                    <div class="modal-body text-center">
+                        <strong>Não encontrou um posto? Nos ajude a ampliar a base de dados de postos
+                            cadastrados inserindo os dados abaixo</strong>
+                        <small class="form-text text-muted">
+                            Essas informações podem ser encontradas na nota fiscal fornecida ao abastecer,
+                            inclusive o CNPJ. Obrigado por contribuir.
+                        </small>
+                        <form id="form-novo-posto" class="text-dark" action="/posto/adicionar" method="POST">
+                            <div class="form-row my-3">
+                                <div class="col-6">
+                                    <label for="nome-posto">Nome do Posto</label>
+                                    <input required class="form-control mx-auto" type="text" name="nome"
+                                        placeholder="Nome do posto" id="nome-posto">
+                                </div>
+                                <div class="col-6">
+                                    <label for="cnpj-posto">CNPJ</label>
+                                    <input required class="form-control mx-auto" type="text" name="cnpj"
+                                        placeholder="CNPJ do posto" id="cnpj-posto">
+                                </div>
+                            </div>
 
-                            <input id="rua" required class="form-control w-75 mx-auto my-3" type="text" name="endereco"
-                                placeholder="Rua x" hidden>
+                            <div class="form-row my-3">
+                                <div class="col-4">
+                                    <label for="cep">CEP</label>
+                                    <input required class="form-control mx-auto" type="text" name="cep"
+                                        placeholder="CEP" id="cep" maxlength="9" onblur="pesquisacep(this.value);">
+                                </div>
+                                <div class="col-8">
+                                    <label for="rua">Rua</label>
+                                    <input id="rua" required class="form-control mx-auto" type="text" name="endereco"
+                                        placeholder="Rua x" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col-4">
+                                    <label for="numero">Numero</label>
+                                    <input class="form-control mx-auto" type="text" name="numero" placeholder="Número"
+                                        required>
+                                </div>
+                                <div class="col-8">
+                                    <label for="bairro">Bairro</label>
+                                    <input id="bairro" required class="form-control mx-auto" type="text" name="bairro"
+                                        placeholder="Bairro" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row my-3">
 
-                            <input class="form-control w-75 mx-auto my-3" type="text" name="numero" placeholder="Número"
-                                required>
+                                <div class="col-6">
+                                    <label for="cidade">Cidade</label>
+                                    <input id="cidade" required class="form-control mx-auto" type="text" name="cidade"
+                                        placeholder="Cidade" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label for="uf">Estado</label>
+                                    <input id="uf" required class="form-control mx-auto" type="text" name="estado"
+                                        placeholder="Estado" readonly>
+                                </div>
+                            </div>
 
-                            <input id="bairro" required class="form-control w-75 mx-auto my-3" type="text" name="bairro"
-                                placeholder="Bairro" hidden>
-                            <input id="cidade" required class="form-control w-75 mx-auto my-3" type="text" name="cidade"
-                                placeholder="Cidade" hidden>
-                            <input id="uf" required class="form-control w-75 mx-auto my-3" type="text" name="estado"
-                                placeholder="Estado" hidden>
+                            <div class="form-row mb-3">
+                                <div class="col-4">
 
-                            <label for="bandeira">Bandeira</label>
-                            <select id="bandeira" class="form-control w-75 mx-auto mb-3" name="bandeira" required>
-                                <option value="ipiranga" selected>Ipiranga</option>
-                                <option value="petrobras">Petrobrás</option>
-                                <option value="raizen">Shell</option>
-                                <option value="alesat">Ale</option>
-                                <option value="branca">Outros</option>
-                            </select>
+                                    <label for="bandeira">Bandeira</label>
+                                    <select id="bandeira" class="form-control mx-auto" name="bandeira" required>
+                                        <option value="ipiranga" selected>Ipiranga</option>
+                                        <option value="petrobras">Petrobrás</option>
+                                        <option value="raizen">Shell</option>
+                                        <option value="alesat">Ale</option>
+                                        <option value="branca">Outros</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
 
-                            <label for="preco-etanol">Preço Etanol</label>
+                                    <label for="preco-etanol">Preço Etanol</label>
 
-                            <input required class="form-control w-75 mx-auto mb-3" type="number" name="precoEtanol"
-                                id="preco-etanol" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$" placeholder="Preço">
+                                    <input required class="form-control mx-auto" type="number" name="precoEtanol"
+                                        id="preco-etanol" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
+                                        placeholder="Preço">
+                                </div>
+                                <div class="col-4">
 
-                            <label for="preco-gasolina">Preço Gasolina</label>
+                                    <label for="preco-gasolina">Preço Gasolina</label>
 
-                            <input required class="form-control w-75 mx-auto mb-3" type="number" name="precoGasolina"
-                                id="preco-gasolina" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
-                                placeholder="Preço">
+                                    <input required class="form-control mx-auto" type="number" name="precoGasolina"
+                                        id="preco-gasolina" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
+                                        placeholder="Preço">
+                                </div>
+                            </div>
 
-                            <div class="modal-footer">
-                                <button class="btn btn-posto" type="submit">Salvar</button>
+
+
+                            <div class="modal-footer justify-content-between">
 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                     Fechar
                                 </button>
+                                <button class="btn btn-posto btn-novo-posto" type="submit">Salvar</button>
                             </div>
                         </form>
                     </div>
@@ -210,8 +254,7 @@
                                 <%=posto.usuarios.length%> likes
                             </span>
 
-                            <a class="ml-lg-2" type="button" data-toggle="modal"
-                                data-target="#alterar-avaliacao<%=posto.id%>">
+                            <a class="ml-lg-2" data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
                                 <i class="far fa-comment"></i>
                                 <span class="ml-1">
                                     <%=posto.avaliacoes.length%> comentários
@@ -259,7 +302,7 @@
                                 <% } %>
                             </div>
                             <div class="nomeComEndereço">
-                                <a type="button" data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
+                                <a data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
                                     <div class="stars">
 
                                         <span class="d-none">
@@ -279,7 +322,7 @@
                                     </div>
                                 </a>
 
-                                <!-- Modal -->
+                                <!-- Modal avaliacao-->
                                 <div class="modal fade " id="alterar-avaliacao<%=posto.id%>" tabindex="-1" role="dialog"
                                     aria-labelledby="alterar-avaliacao" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -385,7 +428,7 @@
                             <!-- Modal alterar preço -->
                             <div class="modal fade " id="alterar-preco-<%=posto.id%>" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>

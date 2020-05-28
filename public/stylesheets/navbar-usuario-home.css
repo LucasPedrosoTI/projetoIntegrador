@@ -47,13 +47,15 @@
   }
 
   .menu li i {
-    font-size: 30px;
+    font-size: 40px;
+    margin-bottom: 15px;
   }
 
   .menu li p {
     font-size: 30px;
     width: 100%;
     margin: 0;
+    line-height: 40px;
   }
 
   .btn {
@@ -160,11 +162,6 @@
     margin: 15px auto;
   }
 
-  .menu li i {
-    font-size: 30px;
-    margin-bottom: 15px;
-  }
-
   .menu li p {
     margin-bottom: unset;
     width: 100%;
@@ -224,11 +221,6 @@
 
   .menu li {
     margin: 15px auto;
-  }
-
-  .menu li i {
-    font-size: 30px;
-    margin-bottom: 15px;
   }
 
   .menu li p {
