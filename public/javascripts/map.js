@@ -71,6 +71,13 @@ postos.features.forEach(function (posto, i) {
   posto.properties.id = i;
 });
 
+map.loadImage("../images/icone-semfundo.png", function(error0, image0) {
+  if (error0) throw error0;
+map.addImage("image", image0, {
+  "sdf": "true"
+});
+});
+
 map.on("load", function (e) {
   /* Add the data to your map as a layer */
   map.addLayer({
@@ -82,15 +89,19 @@ map.on("load", function (e) {
       data: postos,
     },
     layout: {
-      "icon-image": "fuel-15",
+      "icon-image": "image",
+      "icon-size": 0.35,
       "icon-allow-overlap": true,
     },
+    "paint": {
+        "icon-color": "#e14242",
+    }
   });
-
   /**
    * Add things to the page:
    * - The location listings on the side of the page
    */
+
   buildLocationList(postos);
 });
 
