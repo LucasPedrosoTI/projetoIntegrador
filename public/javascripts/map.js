@@ -222,11 +222,12 @@ function createPopUp(currentFeature) {
   var popup = new mapboxgl.Popup({ closeOnClick: false })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML(
-      "<h3>" + currentFeature.properties.name +
-      "</h3>" +
-        "<h4>" +
+      '<h3>' + currentFeature.properties.name +
+      '</h3>' +
+        '<h4>' +
         currentFeature.properties.address +
-        "</h4>"
+        '</h4>' +
+        '<a href="geo:' + currentFeature.geometry.coordinates + '"target="_system">Mostrar no Google Maps</a>'
     )
     .addTo(map);
 }
