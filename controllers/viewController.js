@@ -40,16 +40,19 @@ module.exports = {
       });
     } else {
       postos = await Posto.findAll({
-        include: ["produtos", "avaliacoes", "usuarios"],
+        include: [
+          {
+            association: "produtos",
+            where: { id: 1 },
+          },
+          "avaliacoes",
+          "usuarios",
+        ],
       });
-      // return res.send(postos);
     }
 
     // CÓDIGO PARA CALCULAR E ARMAZENAR A NOTA MÉDIA DOS POSTOS
     for (const posto of postos) {
-      // console.log("nome: " + posto.nome);
-
-      // console.log("total avaliações: " + posto.avaliacoes.length);
       if (posto.avaliacoes.length == 0) {
         posto.media = 0;
       } else {
@@ -58,29 +61,16 @@ module.exports = {
         for (const avaliacao of posto.avaliacoes) {
           notas.push(Number(avaliacao.Avaliacoes.nota));
         }
-        // console.log("notas: " + notas);
         // COM O ARRAY DE NOTAS, BASTA SOMAR TODOS OS INDICES E DIVIDIR PELA QTD PARA OBTER A MEDIA
         let media = notas.reduce((a, b) => a + b) / notas.length;
 
         // COD P/ TER CTZ QUE A NOTA SERÁ SEMPRE DE 0.5 EM 0.5
         media = Math.round(media * 2) / 2;
-        // console.log("media: " + media);
         // CRIAR A PROPRIEDADE MEDIA
         posto.media = media;
       }
-
-      // posto.update_time = moment(posto.update_time).format("DD/MM/YYYY");
-      // console.log("media do posto na prop: " + posto.media);
-      // console.log(posto.update_time);
     }
 
-    // postos = postos.sort(
-    //   (a, b) =>
-    //     a.produtos[0].postos_produtos.preco -
-    //     b.produtos[0].postos_produtos.preco
-    // );
-
-    // return res.send(postos);
     res.render("main", { postos });
   },
 
@@ -137,18 +127,6 @@ module.exports = {
       return res.send(produtosResposta);
     }
 
-    // let dataDestination = moment(
-    //   postoJaExiste.update_time,
-    //   "DD/MM/YYYY"
-    // ).format("DD/MM/YYYY");
-    // let dataSource = moment(postos[20721].data, "DD/MM/YYYY").format("DD/MM/YYYY");
-
-    // if (produtoJaExiste && postoJaExiste && dataDestination > dataSource) {
-    //   return res.send(
-    //     "Ambos já existem e o produto a adicionar é mais antigo que o existente"
-    //   );
-    // }
-
     produto.preco = Number(postos[20721].preco.replace(",", "."));
 
     if (!postoJaExiste) {
@@ -165,7 +143,7 @@ module.exports = {
 
       // CONSULTAR API DE GEOCODING
       const { results } = await opencage.geocode({
-        q: uri,
+        q: `${data.logradouro}, ${data.bairro}, ${data.municipio}, ${data.uf}`,
       });
 
       // CRIAR UM OBJETO COM AS INFORMAÇÕES NECESSÁRIAS

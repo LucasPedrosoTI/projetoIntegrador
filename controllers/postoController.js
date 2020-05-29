@@ -1,4 +1,3 @@
-const moment = require("moment");
 const { Posto, postos_produtos } = require("../models");
 const opencage = require("opencage-api-client");
 
@@ -8,13 +7,7 @@ module.exports = {
       include: ["produtos", "avaliacoes", "usuarios"],
     });
 
-    for (const posto of postos) {
-      posto.update_time = moment.utc(posto.update_time).format("DD/MM/YYYY");
-      console.log(posto.update_time);
-    }
-
-    // let data = moment(postos[0].update_time).format("DD/MM/YY");
-    res.send(postos);
+    res.json(postos);
   },
 
   atualizarPreco: async (req, res) => {
@@ -60,11 +53,14 @@ module.exports = {
     endereco = endereco.toUpperCase().trim() + ", " + numero.trim();
 
     // ENCODAR QUERY PARA TIPO URL
-    let uri = encodeURI(`${endereco}, ${bairro}, ${cidade}, ${estado}`);
+    let uri = encodeURI(
+      `${endereco}, ${bairro}, ${cidade}, ${estado}, Brazil, ${cep}`
+    );
 
     // CONSULTAR API DE GEOCODING
     const { results } = await opencage.geocode({
-      q: uri,
+      q: `${endereco}, ${bairro}, ${cidade}, ${estado}, Brazil`,
+      language: "pt",
     });
 
     await Posto.findOrCreate({
