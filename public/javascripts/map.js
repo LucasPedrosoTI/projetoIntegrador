@@ -16,6 +16,7 @@ request.onload = function () {
           coordinates: [posto.longitude, posto.latitude],
         },
         properties: {
+          name: posto.nome,
           address: posto.endereco,
           city: posto.cidade,
           country: "Brasil",
@@ -73,7 +74,7 @@ postos.features.forEach(function (posto, i) {
 
 map.loadImage("../images/icone-semfundo.png", function(error0, image0) {
   if (error0) throw error0;
-map.addImage("image", image0, {
+map.addImage("icon-map", image0, {
   "sdf": "true"
 });
 });
@@ -89,7 +90,7 @@ map.on("load", function (e) {
       data: postos,
     },
     layout: {
-      "icon-image": "image",
+      "icon-image": "icon-map",
       "icon-size": 0.35,
       "icon-allow-overlap": true,
     },
@@ -221,7 +222,8 @@ function createPopUp(currentFeature) {
   var popup = new mapboxgl.Popup({ closeOnClick: false })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML(
-      "<h3>Sweetgreen</h3>" +
+      "<h3>" + currentFeature.properties.name +
+      "</h3>" +
         "<h4>" +
         currentFeature.properties.address +
         "</h4>"
