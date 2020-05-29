@@ -22,6 +22,11 @@ request.onload = function () {
           country: "Brasil",
           postalCode: posto.cep,
           state: posto.estado,
+          bandeira: posto.bandeira,
+          produto: posto.produtos[0].nome,
+          preco: posto.produtos[0].postos_produtos.preco
+            .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+            .replace(".", ","),
         },
       };
 
@@ -72,11 +77,11 @@ postos.features.forEach(function (posto, i) {
   posto.properties.id = i;
 });
 
-map.loadImage("../images/icone-semfundo.png", function(error0, image0) {
+map.loadImage("../images/icone-semfundo.png", function (error0, image0) {
   if (error0) throw error0;
-map.addImage("icon-map", image0, {
-  "sdf": "true"
-});
+  map.addImage("icon-map", image0, {
+    sdf: "true",
+  });
 });
 
 map.on("load", function (e) {
@@ -91,12 +96,12 @@ map.on("load", function (e) {
     },
     layout: {
       "icon-image": "icon-map",
-      "icon-size": 0.35,
+      "icon-size": 0.3,
       "icon-allow-overlap": true,
     },
-    "paint": {
-        "icon-color": "#e14242",
-    }
+    paint: {
+      "icon-color": "#e14242",
+    },
   });
   /**
    * Add things to the page:
@@ -222,12 +227,26 @@ function createPopUp(currentFeature) {
   var popup = new mapboxgl.Popup({ closeOnClick: false })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML(
-      '<h3>' + currentFeature.properties.name +
-      '</h3>' +
-        '<h4>' +
+      "<div class='d-flex'><div class='img-popup'> <img src='/images/" +
+        currentFeature.properties.bandeira
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(" distribuidora s.a.", "") +
+        ".png'> </div> <div class='info-popup'>" +
+        "<h5>" +
+        currentFeature.properties.bandeira +
+        "</h5>" +
+        "<p>" +
         currentFeature.properties.address +
-        '</h4>' +
-        '<a href="geo:' + currentFeature.geometry.coordinates + '"target="_system">Mostrar no Google Maps</a>'
+        "</p> <strong>" +
+        currentFeature.properties.produto +
+        "&mdash;" +
+        currentFeature.properties.preco +
+        "</strong> <br>" +
+        '<a class="btn btn-success" href="geo:' +
+        currentFeature.geometry.coordinates +
+        '"target="_system">Ir</a> </div> </div>'
     )
     .addTo(map);
 }

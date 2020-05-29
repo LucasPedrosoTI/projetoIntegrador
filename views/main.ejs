@@ -354,7 +354,7 @@
                                                         </button>
                                                     </div>
 
-                                                    <textarea class="form-control" name="texto" id="text" cols="40"
+                                                    <textarea class="form-control" name="texto" cols="40"
                                                         rows="5"></textarea>
                                                     <input type="hidden" name="id" value="<%=posto.id%>">
 
@@ -436,11 +436,13 @@
                                         <div class="modal-body">
                                             <form id="form-atualizar-preco-<%=posto.id%>" class="text-center"
                                                 action="/posto/preco/atualizar" method="GET">
-                                                <strong><label for="preco">O preço está incorreto? Atualize digitando o
+                                                <strong><label for="preco-<%=posto.id%>">O preço está incorreto?
+                                                        Atualize digitando o
                                                         valor
                                                         correto abaixo:</label></strong>
                                                 <input class="form-control w-50 mx-auto my-3" type="number" name="preco"
-                                                    id="preco" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
+                                                    id="preco-<%=posto.id%>" min="0" step="0.001"
+                                                    pattern="^\d*(\.\d{0,2})?$"
                                                     value="<%=posto.produtos[0].postos_produtos.preco%>">
                                                 <input type="hidden" name="postos_id" value="<%=posto.id%>" required>
                                                 <input type="hidden" name="produtos_id"

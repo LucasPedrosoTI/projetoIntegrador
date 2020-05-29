@@ -50,9 +50,42 @@ input[type="number"] {
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
+  color: #0e0e0e;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 30px;
+  background-color: #e0e0e0;
 }
 
+.mapboxgl-popup-content .img-popup {
+  background-color: #fff;
+  border-radius: 100%;
+  min-width: 80px;
+  min-height: 80px;
+  height: 50%;
+  width: 50%;
+  margin: auto 15px;
+  position: relative;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.mapboxgl-popup-content img {
+  /* width: 75%; */
+  /* height: 75%; */
+  max-height: 45px;
+  min-width: 45px;
+  /* margin: 15px; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 20px;
+}
 #logo {
   width: 60px;
   height: 60px;
