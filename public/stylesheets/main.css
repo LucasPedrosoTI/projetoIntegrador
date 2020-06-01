@@ -45,7 +45,7 @@ input[type="number"] {
 }
 
 .mapboxgl-popup {
-  max-width: 200px;
+  max-width: 300px;
 }
 
 .mapboxgl-popup-content {
@@ -53,7 +53,7 @@ input[type="number"] {
   font-family: "Roboto", sans-serif;
   color: #0e0e0e;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: #e0e0e0;
 }
 
@@ -85,6 +85,7 @@ input[type="number"] {
 
 .mapboxgl-popup-close-button {
   font-size: 20px;
+  right: 3px;
 }
 #logo {
   width: 60px;

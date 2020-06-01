@@ -234,9 +234,9 @@ function createPopUp(currentFeature) {
           .replace(/[\u0300-\u036f]/g, "")
           .replace(" distribuidora s.a.", "") +
         ".png'> </div> <div class='info-popup'>" +
-        "<h5>" +
+        "<h6>" +
         currentFeature.properties.bandeira +
-        "</h5>" +
+        "</h6>" +
         "<p>" +
         currentFeature.properties.address +
         "</p> <strong>" +
