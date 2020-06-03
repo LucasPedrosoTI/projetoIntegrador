@@ -244,9 +244,13 @@ function createPopUp(currentFeature) {
         "&mdash;" +
         currentFeature.properties.preco +
         "</strong> <br>" +
-        '<a class="btn btn-success" href="geo:' +
-        currentFeature.geometry.coordinates +
-        '"target="_system">Ir</a> </div> </div>'
+         //       '<a class="btn btn-success" href="geo:' +
+        '<a class="btn btn-success" href="https://www.google.com/maps/@' +
+        currentFeature.geometry.coordinates[1] + "," + 
+        currentFeature.geometry.coordinates[0] + 
+        ',17z' + //Comentar essa linha se utilizar o geo:
+        '"target="_blank">Ir</a> </div> </div>' // Alterar para _system se utilizar o geo
+
     )
     .addTo(map);
 }
