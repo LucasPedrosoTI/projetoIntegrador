@@ -53,9 +53,9 @@ module.exports = {
     endereco = endereco.toUpperCase().trim() + ", " + numero.trim();
 
     // ENCODAR QUERY PARA TIPO URL
-    let uri = encodeURI(
-      `${endereco}, ${bairro}, ${cidade}, ${estado}, Brazil, ${cep}`
-    );
+    // let uri = encodeURI(
+    //   `${endereco}, ${bairro}, ${cidade}, ${estado}, Brazil, ${cep}`
+    // );
 
     // CONSULTAR API DE GEOCODING
     const { results } = await opencage.geocode({
@@ -63,7 +63,7 @@ module.exports = {
       language: "pt",
     });
 
-    await Posto.findOrCreate({
+    const [posto] = await Posto.findOrCreate({
       where: { cnpj },
       defaults: {
         nome: nome.toUpperCase().trim(),
@@ -80,8 +80,6 @@ module.exports = {
         update_time: new Date(),
       },
     });
-
-    let posto = await Posto.findOne({ where: { cnpj } });
 
     await postos_produtos.bulkCreate([
       {
