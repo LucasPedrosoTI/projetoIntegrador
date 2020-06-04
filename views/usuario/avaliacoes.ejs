@@ -1,7 +1,11 @@
 <%- include('../parts/head', {title: "Dashboard - Meu Posto"}) %>
 <link rel="stylesheet" href="/stylesheets/login.css    " />
 <link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
+<!-- <link href="/stylesheets/star-rating.min.css" media="all" rel="stylesheet" type="text/css" /> -->
+
 <script src="/javascripts/stars.js" defer></script>
+<!-- <script src="/javascripts/star-rating.min.js" type="text/javascript" defer></script> -->
+
 
 
 <header>
@@ -101,6 +105,10 @@
                                                 <span class="screen-reader">5 Stars</span>
                                             </button>
                                         </div>
+                                        <%#
+                                        <input id="input-" type="text" name="nota" required
+                                        class="rating">
+                                        %>
 
                                         <textarea class="form-control" name="texto" id="text" cols="40" rows="5"
                                             placeholder="<%=avaliacao.Avaliacoes.texto%>"></textarea>
