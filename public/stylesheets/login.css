@@ -1,11 +1,27 @@
 body {
   margin: 0;
   color: #e14242;
-  background: url(../images/backLogin.jpg) no-repeat center;
+  background: url(/images/bkg1.jpg) no-repeat center;
+  background-size: cover;
   font: 600 16px/18px "Roboto", sans-serif;
 }
 
 /* LOGIN */
+
+.nav-link.active {
+  color: #e14242 !important;
+  box-shadow: inset 0px -1px 0px #e14242;
+  border: none !important;
+  background-color: unset !important;
+}
+
+.nav-link {
+  color: #000 !important;
+}
+
+.nav-tabs {
+  border: none !important;
+}
 
 .clearfix:after,
 .clearfix:before {
@@ -51,7 +67,7 @@ a {
   right: 0;
   bottom: 0;
   position: absolute;
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
   backface-visibility: hidden;
   transition: all 0.5s linear;
 }
@@ -70,12 +86,12 @@ a {
 
 .login-html .tab {
   font-size: 22px;
-  margin-right: 15px;
-  padding-bottom: 5px;
-  margin: 0 15px 10px 0;
+  /* margin-right: 15px; */
+  /* padding-bottom: 5px; */
+  margin: auto;
   display: inline-block;
   border-bottom: 2px solid transparent;
-  color: #000c;
+  /* color: #000c; */
 }
 
 .login-html .sign-in:checked + .tab,
