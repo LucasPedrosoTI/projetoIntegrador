@@ -1,7 +1,6 @@
 mapboxgl.accessToken =
   'pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg';
 
-
 var request = new XMLHttpRequest();
 let postos = { type: 'FeatureCollection', features: [] };
 request.open('GET', 'http://localhost:3000/posto/index', true);
@@ -26,8 +25,8 @@ request.onload = function () {
           bandeira: posto.bandeira,
           produto: posto.produtos[0].nome,
           preco: posto.produtos[0].postos_produtos.preco
-            .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-            .replace(".", ","),
+            .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+            .replace('.', ','),
         },
       };
 
@@ -79,14 +78,14 @@ postos.features.forEach(function (posto, i) {
   posto.properties.id = i;
 });
 
-map.loadImage("../images/icone-semfundo.png", function (error0, image0) {
+map.loadImage('../images/icone-semfundo.png', function (error0, image0) {
   if (error0) throw error0;
-  map.addImage("icon-map", image0, {
-    sdf: "true",
+  map.addImage('icon-map', image0, {
+    sdf: 'true',
   });
 });
 
-map.on("load", function (e) {
+map.on('load', function (e) {
   /* Add the data to your map as a layer */
   map.addLayer({
     id: 'locations',
@@ -97,12 +96,12 @@ map.on("load", function (e) {
       data: postos,
     },
     layout: {
-      "icon-image": "icon-map",
-      "icon-size": 0.3,
-      "icon-allow-overlap": true,
+      'icon-image': 'icon-map',
+      'icon-size': 0.3,
+      'icon-allow-overlap': true,
     },
     paint: {
-      "icon-color": "#e14242",
+      'icon-color': '#e14242',
     },
   });
   /**
@@ -230,29 +229,29 @@ function createPopUp(currentFeature) {
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML(
       "<div class='d-flex'><div class='img-popup'> <img src='/images/" +
-        currentFeature.properties.bandeira
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(" distribuidora s.a.", "") +
-        ".png'> </div> <div class='info-popup'>" +
-        "<h6>" +
-        currentFeature.properties.bandeira +
-        "</h6>" +
-        "<p>" +
-        currentFeature.properties.address +
-        "</p> <strong>" +
-        currentFeature.properties.produto +
-        "&mdash;" +
-        currentFeature.properties.preco +
-        "</strong> <br>" +
-         //       '<a class="btn btn-success" href="geo:' +
-        '<a class="btn btn-success" href="https://www.google.com/maps/@' +
-        currentFeature.geometry.coordinates[1] + "," + 
-        currentFeature.geometry.coordinates[0] + 
-        ',17z' + //Comentar essa linha se utilizar o geo:
+      currentFeature.properties.bandeira
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(' distribuidora s.a.', '') +
+      ".png'> </div> <div class='info-popup'>" +
+      '<h6>' +
+      currentFeature.properties.bandeira +
+      '</h6>' +
+      '<p>' +
+      currentFeature.properties.address +
+      '</p> <strong>' +
+      currentFeature.properties.produto +
+      '&mdash;' +
+      currentFeature.properties.preco +
+      '</strong> <br>' +
+      //       '<a class="btn btn-success" href="geo:' +
+      '<a class="btn btn-success" href="https://www.google.com/maps/@' +
+      currentFeature.geometry.coordinates[1] +
+      ',' +
+      currentFeature.geometry.coordinates[0] +
+      ',17z' + //Comentar essa linha se utilizar o geo:
         '"target="_blank">Ir</a> </div> </div>' // Alterar para _system se utilizar o geo
-
     )
     .addTo(map);
 }
@@ -304,3 +303,4 @@ map.addControl(geocoder, 'top-left');
 // });
 
 // map.addControl(directions, 'top-left');
+//teste
