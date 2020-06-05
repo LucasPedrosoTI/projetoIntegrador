@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -23,7 +23,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -36,7 +36,7 @@ input[type="number"] {
   position: unset;
 }
 .marker {
-  background-image: url("/images/icone-semfundo.png");
+  background-image: url('/images/icone-semfundo.png');
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -50,7 +50,7 @@ input[type="number"] {
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #logo {
@@ -220,7 +220,7 @@ a:hover > .fa-heart {
   border-radius: 20px;
 }
 
-form.example input[type="text"] {
+form.example input[type='text'] {
   padding: 10px;
   float: left;
   width: 60%;
@@ -265,7 +265,7 @@ div.btn-sidebar button:hover {
     } */
 
 aside {
-  font: 400 16px/18px "Roboto", sans-serif;
+  font: 400 16px/18px 'Roboto', sans-serif;
   display: none;
   z-index: 2;
   position: fixed;

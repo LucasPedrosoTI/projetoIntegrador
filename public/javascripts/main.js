@@ -1,14 +1,14 @@
-const hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
-const prices = Array.from(document.querySelectorAll("a.price"));
-const dates = Array.from(document.querySelectorAll("p.date"));
+const hearts = Array.from(document.querySelectorAll('.far.fa-heart'));
+const prices = Array.from(document.querySelectorAll('a.price'));
+const dates = Array.from(document.querySelectorAll('p.date'));
 
 function dataAtualFormatada(data) {
   (dia = data.getDate().toString()),
-    (diaF = dia.length == 1 ? "0" + dia : dia),
+    (diaF = dia.length == 1 ? '0' + dia : dia),
     (mes = (data.getMonth() + 1).toString()), //+1 pois no getMonth Janeiro começa com zero.
-    (mesF = mes.length == 1 ? "0" + mes : mes),
+    (mesF = mes.length == 1 ? '0' + mes : mes),
     (anoF = data.getFullYear());
-  return diaF + "/" + mesF + "/" + anoF;
+  return diaF + '/' + mesF + '/' + anoF;
 }
 
 dates.forEach((date) => {
@@ -33,32 +33,32 @@ dates.forEach((date) => {
   let ontemFormatado = dataAtualFormatada(ontem);
 
   if (hojeFormatado == dataFormatada) {
-    date.innerText = "Hoje";
+    date.innerText = 'Hoje';
   } else if (ontemFormatado == dataFormatada) {
-    date.innerText = "Ontem";
+    date.innerText = 'Ontem';
   } else if (
     data.setDate(data.getDate()) < ontem &&
     data.setDate(data.getDate()) > haUmaSemana
   ) {
-    date.innerText = "Esta semana";
+    date.innerText = 'Esta semana';
   } else if (
     data.setDate(data.getDate()) < haUmaSemana &&
     data.setDate(data.getDate()) > duasSemanas
   ) {
-    date.innerText = "Semana passada";
+    date.innerText = 'Semana passada';
   } else if (
     data.setDate(data.getDate()) < duasSemanas &&
     data.setDate(data.getDate()) > haUmMes
   ) {
-    date.innerText = "Este mês";
+    date.innerText = 'Este mês';
   } else {
     date.innerText = dataFormatada;
-    date.setAttribute("data-toggle", "tooltip");
+    date.setAttribute('data-toggle', 'tooltip');
     date.setAttribute(
-      "title",
-      "O preço desse posto não é atualizado há mais de 1 mês Ajude a manter os preços atualizados, clique no preço e corrija agora mesmo!"
+      'title',
+      'O preço desse posto não é atualizado há mais de 1 mês Ajude a manter os preços atualizados, clique no preço e corrija agora mesmo!'
     );
-    date.setAttribute("data-placement", "auto");
+    date.setAttribute('data-placement', 'auto');
   }
 });
 
@@ -66,7 +66,7 @@ function addColorsByPrice(array) {
   // SETA UM ARRAY COM OS VALORES EM FORMATO NUMERICO
   let values = [];
   array.forEach((p) => {
-    let value = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
+    let value = Number(p.innerText.replace('R$', '').replace(',', '.').trim());
     values.push(value);
   });
 
@@ -74,18 +74,18 @@ function addColorsByPrice(array) {
   let media = values.reduce((a, b) => a + b) / values.length;
   media = media.toFixed(2);
 
-  console.log("Função addColorsByPrice OK: " + media);
+  console.log('Função addColorsByPrice OK: ' + media);
 
   // COMPARA OS VALORES COM A MEDIA E DEFINE A CLASSE
   array.forEach((p) => {
-    let n = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
+    let n = Number(p.innerText.replace('R$', '').replace(',', '.').trim());
 
     if (n > media * 1.01) {
-      p.classList.add("high");
+      p.classList.add('high');
     } else if (n < media * 0.99) {
-      p.classList.add("low");
+      p.classList.add('low');
     } else {
-      p.classList.add("med");
+      p.classList.add('med');
     }
   });
 }
@@ -94,26 +94,26 @@ addColorsByPrice(prices);
 
 function showList() {
   event.preventDefault();
-  var x = document.getElementById("sidebar");
-  if (x.style.display === "none") {
-    x.style.display = "block";
+  var x = document.getElementById('sidebar');
+  if (x.style.display === 'none') {
+    x.style.display = 'block';
   } else {
-    x.style.display = "none";
+    x.style.display = 'none';
   }
 }
 
 for (let i = 0; i < hearts.length; i++) {
-  hearts[i].addEventListener("mouseover", (e) => {
-    hearts[i].classList.add("fas", "hover-change");
-    hearts[i].classList.remove("far");
+  hearts[i].addEventListener('mouseover', (e) => {
+    hearts[i].classList.add('fas', 'hover-change');
+    hearts[i].classList.remove('far');
   });
 }
 
 for (let i = 0; i < hearts.length; i++) {
-  hearts[i].addEventListener("mouseleave", (e) => {
-    if (hearts[i].classList.contains("hover-change")) {
-      hearts[i].classList.add("far");
-      hearts[i].classList.remove("fas", "hover-change");
+  hearts[i].addEventListener('mouseleave', (e) => {
+    if (hearts[i].classList.contains('hover-change')) {
+      hearts[i].classList.add('far');
+      hearts[i].classList.remove('fas', 'hover-change');
     }
   });
 }
@@ -122,14 +122,14 @@ function porPrecoMenor(a, b) {
   return (
     Number(
       a.firstElementChild.lastElementChild.children[2].children[4].innerText
-        .replace("R$", "")
-        .replace(",", ".")
+        .replace('R$', '')
+        .replace(',', '.')
         .trim()
     ) -
     Number(
       b.firstElementChild.lastElementChild.children[2].children[4].innerText
-        .replace("R$", "")
-        .replace(",", ".")
+        .replace('R$', '')
+        .replace(',', '.')
         .trim()
     )
   );
@@ -139,12 +139,12 @@ function porLikes(a, b) {
   return (
     Number(
       b.firstElementChild.firstElementChild.children[0].children[1].innerText
-        .replace("likes", "")
+        .replace('likes', '')
         .trim()
     ) -
     Number(
       a.firstElementChild.firstElementChild.children[0].children[1].innerText
-        .replace("likes", "")
+        .replace('likes', '')
         .trim()
     )
   );
@@ -161,30 +161,74 @@ function porNota(a, b) {
   );
 }
 
+function porMenorDistancia(a, b) {
+  return (
+    Number(
+      a.firstElementChild.lastElementChild.children[2].children[4].innerText
+        .replace('', ' metros')
+        .trim()
+    ) -
+    Number(
+      b.firstElementChild.lastElementChild.children[2].children[4].innerText
+        .replace('', ' metros')
+        .trim()
+    )
+  );
+}
+
+// Calcular distância entre 2 pontos
+function deg2rad(deg) {
+  return deg * (Math.PI / 180);
+}
+
+for (var i = 0; i <= postos.features.length; i++) {
+  console.log(postos.features[i].geometry.coordinates[0]);
+  var longitudeP = postos.features[i].geometry.coordinates[0];
+  var latitudeP = postos.features[i].geometry.coordinates[1];
+  function menorDistancia(latitude, longitude) {
+    const radius = 6378137;
+    const dLat = deg2rad(latitude - latitudeP);
+    const dLon = deg2rad(longitude - longitudeP);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(latitude)) *
+        Math.cos(deg2rad(latitudeP)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const center = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var distancia = radius * center; // returns the distance in meter
+    return distancia;
+  }
+}
+
 function mostrarLista(array) {
   let ol = array[0].parentNode;
 
-  ol.innerHTML = "";
+  ol.innerHTML = '';
 
   array.forEach((a) => {
     ol.appendChild(a);
   });
 }
 
-const select = document.querySelector("#classificar");
-let li = Array.from(document.querySelectorAll(".posto-item"));
+const select = document.querySelector('#classificar');
+let li = Array.from(document.querySelectorAll('.posto-item'));
 
-select.addEventListener("change", (e) => {
-  if (e.target.value == "precoMenor") {
+select.addEventListener('change', (e) => {
+  if (e.target.value == 'precoMenor') {
     li.sort(porPrecoMenor);
 
     mostrarLista(li);
-  } else if (e.target.value == "maisCurtidas") {
+  } else if (e.target.value == 'maisCurtidas') {
     li.sort(porLikes);
 
     mostrarLista(li);
-  } else if (e.target.value == "melhorNota") {
+  } else if (e.target.value == 'melhorNota') {
     li.sort(porNota);
+
+    mostrarLista(li);
+  } else if (e.target.value == 'menorDistancia') {
+    li.sort(porMenorDistancia);
 
     mostrarLista(li);
   } else {
