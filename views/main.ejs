@@ -1,1070 +1,456 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <title>
-      Main
-    </title>
-    <!-- Load icon library -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/c01b4bce71.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"
-      defer
-    ></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <script
-      src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css"
-      type="text/css"
-    />
-    <script
-      src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="../public/stylesheets/main.css" />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/png" />
-    <script src="/javascripts/map.js" defer></script>
-    <script src="/javascripts/main.js" defer></script>
-    <script src="/javascripts/stars.js" defer></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-      defer
-    ></script>
+<head>
 
-<<<<<<< HEAD
-    <script src="/javascripts/cep.js"></script>
-  </head>
-=======
-    <script src="/javascripts/cep.js" defer></script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Main
+  </title>
+  <!-- Load icon library -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/c01b4bce71.js" crossorigin="anonymous" defer></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js' defer></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'
+    defer></script>
+  <link rel='stylesheet'
+    href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css'
+    type='text/css' />
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"
+    defer></script>
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
+    type="text/css" />
+  <link rel='stylesheet' href="../public/stylesheets/main.css" />
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+  <script src="/javascripts/main.js" defer></script>
+  <script src="/javascripts/map.js" defer></script>
+  <script src="/javascripts/stars.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"
+    defer></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"
+    defer></script>
+
+  <script src="/javascripts/cep.js" defer></script>
 </head>
->>>>>>> 8361a523127c10fa35e97d2f2face28d0a03e0d3
 
-  <body>
-    <header>
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content modal-transparent">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="modal-body">
-              <%- include("./parts/login") %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <main>
-      <div id="map-container">
-        <!-- The form -->
-        <div id="form-container">
-          <div class="btn-sidebar">
-            <button id="bars" onclick="showList()">
-              <i class="fas fa-bars"></i>
-            </button>
-          </div>
-
-          <% if (USUARIO) { %>
-          <a class="nav-link mr-3" id="dashboard" href="/usuario/dashboard">
-            <i class="far fa-user"></i>
-            <%= USUARIO.nome %>
-          </a>
-          <% } else { %>
-
-          <button
-            type="button"
-            id="entrar"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModalCenter"
-          >
-            Entrar
+<body>
+  <header>
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-transparent">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
-
-          <% } %>
-          <a id="home" href="/">
-            <i class="fas fa-home"></i>
-          </a>
+          <div class="modal-body">
+            <%- include("./parts/login") %>
+          </div>
         </div>
-        <%# MAP %>
-        <div id="map"></div>
       </div>
-    </main>
-    <aside id="sidebar">
-      <div
-        class="sidebar-options w-75 my-3 mx-auto text-center d-flex justify-content-around"
-      >
-        <a
-          class="btn btn-secondary"
-          href="#"
-          data-toggle="modal"
-          data-target="#novo-posto"
-        >
-          Novo posto
+    </div>
+
+  </header>
+  <main>
+    <div id="map-container">
+
+      <!-- The form -->
+      <div id="form-container">
+        <div class="btn-sidebar">
+          <button id="bars" onclick="showList()"> <i class="fas fa-bars"></i> </button>
+        </div>
+
+        <% if (USUARIO) { %>
+        <a class="nav-link mr-3" id="dashboard" href="/usuario/dashboard">
+          <i class="far fa-user"></i>
+          <%= USUARIO.nome %>
+        </a>
+        <% } else { %>
+        <button type="button" id="entrar" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          Entrar
+        </button>
+        <% } %>
+        <a id="home" href="/">
+          <i class="fas fa-home"></i>
         </a>
 
-        <select class="form-control w-50 mx-auto" id="classificar">
-          <option selected>-- Classifique --</option>
-          <option id="precoMenor" value="precoMenor"
-            >Preço menor primeiro</option
-          >
-          <option id="maisCurtidas" value="maisCurtidas"
-            >Mais curtidas primeiro</option
-          >
-          <option id="melhorNota" value="melhorNota"
-            >Melhor nota primeiro</option
-          >
-          <option id="menorDistancia" value="menorDistancia"
-            >Menor distância primeiro</option
-          >
-        </select>
       </div>
+      <%# MAP %>
+      <div id='map'></div>
+    </div>
+  </main>
+  <aside id="sidebar">
+    <div class="sidebar-options w-75 my-3 mx-auto text-center d-flex justify-content-around">
+      <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#novo-posto">
+        Novo posto
+      </a>
 
-      <!-- Modal Novo posto -->
-      <div
-        class="modal fade"
-        id="novo-posto"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="modal-body">
-              <form
-                id="form-novo-posto"
-                class="text-center"
-                action="/posto/adicionar"
-                method="POST"
-              >
-                <strong
-                  >Não encontrou um posto? Nos ajude a ampliar a base de dados
-                  de postos cadastrados inserindo os dados abaixo</strong
-                >
-                <small class="form-text text-muted">
-                  Essas informações podem ser encontradas na nota fiscal
-                  fornecida ao abastecer, inclusive o CNPJ. Obrigado por
-                  contribuir.
-                </small>
-                <input
-                  required
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="nome"
-                  placeholder="Nome do posto"
-                />
-                <input
-                  required
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="cnpj"
-                  placeholder="CNPJ do posto"
-                />
-                <input
-                  required
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="cep"
-                  placeholder="CEP"
-                  maxlength="9"
-                  onblur="pesquisacep(this.value);"
-                />
+      <select class="form-control w-50 mx-auto" id="classificar">
+        <option selected>-- Classifique --</option>
+        <option id="precoMenor" value="precoMenor">Preço menor primeiro</option>
+        <option id="favsPrimeiro" value="favsPrimeiro">Favoritos primeiro</option>
+        <option id="maisCurtidas" value="maisCurtidas">Mais curtidas primeiro</option>
+        <option id="melhorNota" value="melhorNota">Melhor nota primeiro</option>
+        <option id="menorDistancia" value="menorDistancia">Menor distância primeiro</option>
+      </select>
+    </div>
 
-                <input
-                  id="rua"
-                  required
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="endereco"
-                  placeholder="Rua x"
-                  hidden
-                />
-
-                <input
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="numero"
-                  placeholder="Número"
-                  required
-                />
-
-                <input
-                  id="bairro"
-                  required
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="bairro"
-                  placeholder="Bairro"
-                  hidden
-                />
-                <input
-                  id="cidade"
-                  required
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="cidade"
-                  placeholder="Cidade"
-                  hidden
-                />
-                <input
-                  id="uf"
-                  required
-                  class="form-control w-75 mx-auto my-3"
-                  type="text"
-                  name="estado"
-                  placeholder="Estado"
-                  hidden
-                />
-
-                <label for="bandeira">Bandeira</label>
-                <select
-                  id="bandeira"
-                  class="form-control w-75 mx-auto mb-3"
-                  name="bandeira"
-                  required
-                >
-                  <option value="ipiranga" selected>Ipiranga</option>
-                  <option value="petrobras">Petrobrás</option>
-                  <option value="raizen">Shell</option>
-                  <option value="alesat">Ale</option>
-                  <option value="branca">Outros</option>
-                </select>
-
-                <label for="preco-etanol">Preço Etanol</label>
-
-                <input
-                  required
-                  class="form-control w-75 mx-auto mb-3"
-                  type="number"
-                  name="precoEtanol"
-                  id="preco-etanol"
-                  min="0"
-                  step="0.001"
-                  pattern="^\d*(\.\d{0,2})?$"
-                  placeholder="Preço"
-                />
-
-                <label for="preco-gasolina">Preço Gasolina</label>
-
-                <input
-                  required
-                  class="form-control w-75 mx-auto mb-3"
-                  type="number"
-                  name="precoGasolina"
-                  id="preco-gasolina"
-                  min="0"
-                  step="0.001"
-                  pattern="^\d*(\.\d{0,2})?$"
-                  placeholder="Preço"
-                />
-
-                <div class="modal-footer">
-                  <button class="btn btn-posto" type="submit">Salvar</button>
-
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Fechar
-                  </button>
+    <!-- Modal Novo posto -->
+    <div class="modal fade " id="novo-posto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content mt-5">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-body text-center">
+            <strong>Não encontrou um posto? Nos ajude a ampliar a base de dados de postos
+              cadastrados inserindo os dados abaixo</strong>
+            <small class="form-text text-muted">
+              Essas informações podem ser encontradas na nota fiscal fornecida ao abastecer,
+              inclusive o CNPJ. Obrigado por contribuir.
+            </small>
+            <form id="form-novo-posto" class="text-dark" action="/posto/adicionar" method="POST">
+              <div class="form-row my-3">
+                <div class="col-6">
+                  <label for="nome-posto">Nome do Posto</label>
+                  <input required class="form-control mx-auto" type="text" name="nome" placeholder="Nome do posto"
+                    id="nome-posto">
                 </div>
-              </form>
-            </div>
+                <div class="col-6">
+                  <label for="cnpj-posto">CNPJ</label>
+                  <input required class="form-control mx-auto" type="text" name="cnpj" placeholder="CNPJ do posto"
+                    id="cnpj-posto">
+                </div>
+              </div>
+
+              <div class="form-row my-3">
+                <div class="col-4">
+                  <label for="cep">CEP</label>
+                  <input required class="form-control mx-auto" type="text" name="cep" placeholder="CEP" id="cep"
+                    maxlength="9" onblur="pesquisacep(this.value);">
+                </div>
+                <div class="col-8">
+                  <label for="rua">Rua</label>
+                  <input id="rua" required class="form-control mx-auto" type="text" name="endereco" placeholder="Rua x"
+                    readonly>
+                </div>
+              </div>
+              <div class="form-row mb-3">
+                <div class="col-4">
+                  <label for="numero">Numero</label>
+                  <input class="form-control mx-auto" type="text" name="numero" placeholder="Número" required>
+                </div>
+                <div class="col-8">
+                  <label for="bairro">Bairro</label>
+                  <input id="bairro" required class="form-control mx-auto" type="text" name="bairro"
+                    placeholder="Bairro" readonly>
+                </div>
+              </div>
+              <div class="form-row my-3">
+
+                <div class="col-6">
+                  <label for="cidade">Cidade</label>
+                  <input id="cidade" required class="form-control mx-auto" type="text" name="cidade"
+                    placeholder="Cidade" readonly>
+                </div>
+                <div class="col-6">
+                  <label for="uf">Estado</label>
+                  <input id="uf" required class="form-control mx-auto" type="text" name="estado" placeholder="Estado"
+                    readonly>
+                </div>
+              </div>
+
+              <div class="form-row mb-3">
+                <div class="col-4">
+
+                  <label for="bandeira">Bandeira</label>
+                  <select id="bandeira" class="form-control mx-auto" name="bandeira" required>
+                    <option value="ipiranga" selected>Ipiranga</option>
+                    <option value="petrobras">Petrobrás</option>
+                    <option value="raizen">Shell</option>
+                    <option value="alesat">Ale</option>
+                    <option value="branca">Outros</option>
+                  </select>
+                </div>
+                <div class="col-4">
+
+                  <label for="preco-etanol">Preço Etanol</label>
+
+                  <input required class="form-control mx-auto" type="number" name="precoEtanol" id="preco-etanol"
+                    min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$" placeholder="Preço">
+                </div>
+                <div class="col-4">
+
+                  <label for="preco-gasolina">Preço Gasolina</label>
+
+                  <input required class="form-control mx-auto" type="number" name="precoGasolina" id="preco-gasolina"
+                    min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$" placeholder="Preço">
+                </div>
+              </div>
+
+
+
+              <div class="modal-footer justify-content-between">
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  Fechar
+                </button>
+                <button class="btn btn-posto btn-novo-posto" type="submit">Salvar</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <ol class="posto mb-5">
-        <% for( const posto of postos ) { %>
+    </div>
+    <ol class="posto mb-5">
 
-        <li class="posto-item">
-          <div class="container grey">
-            <div class="part1">
-              <div class="likes my-2 h6">
-                <!-- heart image -->
-                <% if (USUARIO) { %> <% var favorito = "far" %> <%
-                posto.usuarios.forEach(usuario => { %> <% if (USUARIO.id ==
-                usuario.id ) { %> <% favorito = "fas" %> <% } else { %> <% } %>
-                <% }) %>
-                <span>
-                  <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
-                    <i class="<%=favorito%> fa-heart user-fav"></i>
-                  </a>
-                </span>
-                <% } else { %>
 
-                <span>
-                  <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
-                    <i class="far fa-heart not-user-fav"></i>
-                  </a>
-                </span>
-
-                <% } %>
-
-<<<<<<< HEAD
+      <% for( const posto of postos ) { %>
+      <li class="posto-item">
+        <div class="container grey">
+          <div class="part1">
+            <div class="likes my-2 h6">
+              <!-- heart image -->
+              <% if (USUARIO) { %>
+              <% var favorito = "far" %>
+              <% posto.usuarios.forEach(usuario => { %>
+              <% if (USUARIO.id == usuario.id ) { %>
+              <% favorito = "fas" %>
+              <% } else { %>
+              <% } %>
+              <% }) %>
+              <span>
+                <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
+                  <i class="<%=favorito%> fa-heart user-fav"></i>
+                </a>
+              </span>
+              <% } else { %>
+              <span>
+                <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
+                  <i class="far fa-heart not-user-fav"></i>
+                </a>
+              </span>
+              <% } %>
+              <span class="ml-1">
+                <%=posto.usuarios.length%> likes
+              </span>
+              <a class="ml-lg-2" data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
+                <i class="far fa-comment"></i>
                 <span class="ml-1">
-                  <%=posto.usuarios.length%> likes
+                  <%=posto.avaliacoes.length%> comentários
                 </span>
-
-                <a
-                  class="ml-lg-2"
-                  type="button"
-                  data-toggle="modal"
-                  data-target="#alterar-avaliacao<%=posto.id%>"
-                >
-                  <i class="far fa-comment"></i>
-                  <span class="ml-1">
-                    <%=posto.avaliacoes.length%> comentários
-                  </span>
-                </a>
-              </div>
-              <div class="logoComEndereco">
-                <div class="circle">
-                  <svg
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 98 98"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g filter="url(#filter0_d)">
-                      <circle cx="49" cy="45" r="45" fill="white" />
-                    </g>
-                    <defs>
-                      <filter
-                        id="filter0_d"
-                        x="0"
-                        y="0"
-                        width="98"
-                        height="98"
-                        filterUnits="userSpaceOnUse"
-                        color-interpolation-filters="sRGB"
-                      >
-                        <feFlood
-                          flood-opacity="0"
-                          result="BackgroundImageFix"
-                        />
-                        <feColorMatrix
-                          in="SourceAlpha"
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        />
-                        <feOffset dy="4" />
-                        <feGaussianBlur stdDeviation="2" />
-                        <feColorMatrix
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in2="BackgroundImageFix"
-                          result="effect1_dropShadow"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in="SourceGraphic"
-                          in2="effect1_dropShadow"
-                          result="shape"
-                        />
-                      </filter>
-                    </defs>
-                  </svg>
-
-                  <% if
-                  (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
-                  "").replace(" distribuidora s.a.","") == "petrobras" ||
-                  posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
-                  "") == "ipiranga" ||
-                  posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
-                  "") == "raizen" ||
-                  posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
-                  "") == "alesat") { %>
-                  <div class="img">
-                    <img
-                    src="/images/<%=posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
-                    "").replace(" distribuidora s.a.","")%>.png"
+              </a>
+            </div>
+            <div class="logoComEndereco">
+              <div class="circle">
+                <svg width="100%" height="100%" viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g filter="url(#filter0_d)">
+                    <circle cx="49" cy="45" r="45" fill="white" />
+                  </g>
+                  <defs>
+                    <filter id="filter0_d" x="0" y="0" width="98" height="98" filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB">
+                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="4" />
+                      <feGaussianBlur stdDeviation="2" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                    </filter>
+                  </defs>
+                </svg>
+                <% if (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","") == "petrobras" ||
+                                    posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
+                                    posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
+                                    posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
+                <div class="img">
+                  <img
+                    src="/images/<%=posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","")%>.png"
                     alt="<%=posto.bandeira%>">
-                  </div>
-                  <% } else { %>
-                  <div class="img">
-                    <img src="/images/branca.png" alt="Branca" />
-                  </div>
-                  <% } %>
                 </div>
-                <div class="nomeComEndereço">
-                  <a
-                    type="button"
-                    data-toggle="modal"
-                    data-target="#alterar-avaliacao<%=posto.id%>"
-                  >
-                    <div class="stars">
-                      <span class="d-none">
-                        <%=posto.media%>
-                      </span>
-                      <% for( let i = 0; i < parseInt(posto.media); i++ ) { %>
-                      <i class="fas fa-star"></i>
-                      <% } %> <% for( let i = 0; i <
-                      posto.media-parseInt(posto.media) ; i++ ) { %>
-                      <i class="fas fa-star-half-alt"></i>
-                      <% } %> <% for( let i = 0; i < 5-Math.ceil(posto.media) ;
-                      i++ ) { %>
-                      <i class="far fa-star"></i>
-                      <% } %>
-                    </div>
-                  </a>
-
-                  <!-- Modal -->
-                  <div
-                    class="modal fade"
-                    id="alterar-avaliacao<%=posto.id%>"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="alterar-avaliacao"
-                    aria-hidden="true"
-                  >
-                    <div
-                      class="modal-dialog modal-dialog-centered"
-                      role="document"
-                    >
-                      <div class="modal-content">
-                        <button
-                          type="button"
-                          class="close"
-                          data-dismiss="modal"
-                        >
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="modal-body">
-                          <form
-                            id="form-posto-<%=posto.id%>"
-                            class="text-center rating"
-                            action="/usuario/avaliacoes/add"
-                            method="GET"
-                          >
-                            <label for="text"
-                              >O que deseja falar sobre esse posto?</label
-                            >
-
-                            <div id="nota-stars-container" class="stars">
-                              <button type="submit" class="star" data-star="1">
-                                <span aria-hidden="true">&#9733;</span>
-                                <span class="screen-reader"
-                                  >1 Star</span
-                                ></button
-                              ><button type="submit" class="star" data-star="2">
-                                <span aria-hidden="true">&#9733;</span>
-                                <span class="screen-reader"
-                                  >2 Stars</span
-                                ></button
-                              ><button type="submit" class="star" data-star="3">
-                                <span aria-hidden="true">&#9733;</span>
-                                <span class="screen-reader"
-                                  >3 Stars</span
-                                ></button
-                              ><button type="submit" class="star" data-star="4">
-                                <span aria-hidden="true">&#9733;</span>
-                                <span class="screen-reader"
-                                  >4 Stars</span
-                                ></button
-                              ><button type="submit" class="star" data-star="5">
-                                <span aria-hidden="true">&#9733;</span>
-                                <span class="screen-reader">5 Stars</span>
-                              </button>
-                            </div>
-
-                            <textarea
-                              class="form-control"
-                              name="texto"
-                              id="text"
-                              cols="40"
-                              rows="5"
-                            ></textarea>
-                            <input
-                              type="hidden"
-                              name="id"
-                              value="<%=posto.id%>"
-                            />
-
-                            <div class="modal-footer">
-                              <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal"
-                              >
-                                Fechar
-                              </button>
-                            </div>
-                          </form>
-                          <button
-                            class="btn btn-posto salvar-form"
-                            type="submit"
-                          >
-                            Salvar
-                          </button>
-=======
-            </div>
-            <%# MAP %>
-            <div id='map'></div>
-        </div>
-    </main>
-    <aside id="sidebar">
-        <div class="sidebar-options w-75 my-3 mx-auto text-center d-flex justify-content-around">
-            <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#novo-posto">
-                Novo posto
-            </a>
-
-            <select class="form-control w-50 mx-auto" id="classificar">
-                <option selected>-- Classifique --</option>
-                <option id="precoMenor" value="precoMenor">Preço menor primeiro</option>
-                <option id="favsPrimeiro" value="favsPrimeiro">Favoritos primeiro</option>
-                <option id="maisCurtidas" value="maisCurtidas">Mais curtidas primeiro</option>
-                <option id="melhorNota" value="melhorNota">Melhor nota primeiro</option>
-                <option id="menorDistancia" value="menorDistancia">Menor distância primeiro</option>
-            </select>
-        </div>
-
-        <!-- Modal Novo posto -->
-        <div class="modal fade " id="novo-posto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-                <div class="modal-content mt-5">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <strong>Não encontrou um posto? Nos ajude a ampliar a base de dados de postos
-                            cadastrados inserindo os dados abaixo</strong>
-                        <small class="form-text text-muted">
-                            Essas informações podem ser encontradas na nota fiscal fornecida ao abastecer,
-                            inclusive o CNPJ. Obrigado por contribuir.
-                        </small>
-                        <form id="form-novo-posto" class="text-dark" action="/posto/adicionar" method="POST">
-                            <div class="form-row my-3">
-                                <div class="col-6">
-                                    <label for="nome-posto">Nome do Posto</label>
-                                    <input required class="form-control mx-auto" type="text" name="nome"
-                                        placeholder="Nome do posto" id="nome-posto">
-                                </div>
-                                <div class="col-6">
-                                    <label for="cnpj-posto">CNPJ</label>
-                                    <input required class="form-control mx-auto" type="text" name="cnpj"
-                                        placeholder="CNPJ do posto" id="cnpj-posto">
-                                </div>
-                            </div>
-
-                            <div class="form-row my-3">
-                                <div class="col-4">
-                                    <label for="cep">CEP</label>
-                                    <input required class="form-control mx-auto" type="text" name="cep"
-                                        placeholder="CEP" id="cep" maxlength="9" onblur="pesquisacep(this.value);">
-                                </div>
-                                <div class="col-8">
-                                    <label for="rua">Rua</label>
-                                    <input id="rua" required class="form-control mx-auto" type="text" name="endereco"
-                                        placeholder="Rua x" readonly>
-                                </div>
-                            </div>
-                            <div class="form-row mb-3">
-                                <div class="col-4">
-                                    <label for="numero">Numero</label>
-                                    <input class="form-control mx-auto" type="text" name="numero" placeholder="Número"
-                                        required>
-                                </div>
-                                <div class="col-8">
-                                    <label for="bairro">Bairro</label>
-                                    <input id="bairro" required class="form-control mx-auto" type="text" name="bairro"
-                                        placeholder="Bairro" readonly>
-                                </div>
-                            </div>
-                            <div class="form-row my-3">
-
-                                <div class="col-6">
-                                    <label for="cidade">Cidade</label>
-                                    <input id="cidade" required class="form-control mx-auto" type="text" name="cidade"
-                                        placeholder="Cidade" readonly>
-                                </div>
-                                <div class="col-6">
-                                    <label for="uf">Estado</label>
-                                    <input id="uf" required class="form-control mx-auto" type="text" name="estado"
-                                        placeholder="Estado" readonly>
-                                </div>
-                            </div>
-
-                            <div class="form-row mb-3">
-                                <div class="col-4">
-
-                                    <label for="bandeira">Bandeira</label>
-                                    <select id="bandeira" class="form-control mx-auto" name="bandeira" required>
-                                        <option value="ipiranga" selected>Ipiranga</option>
-                                        <option value="petrobras">Petrobrás</option>
-                                        <option value="raizen">Shell</option>
-                                        <option value="alesat">Ale</option>
-                                        <option value="branca">Outros</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-
-                                    <label for="preco-etanol">Preço Etanol</label>
-
-                                    <input required class="form-control mx-auto" type="number" name="precoEtanol"
-                                        id="preco-etanol" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
-                                        placeholder="Preço">
-                                </div>
-                                <div class="col-4">
-
-                                    <label for="preco-gasolina">Preço Gasolina</label>
-
-                                    <input required class="form-control mx-auto" type="number" name="precoGasolina"
-                                        id="preco-gasolina" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
-                                        placeholder="Preço">
-                                </div>
-                            </div>
-
-
-
-                            <div class="modal-footer justify-content-between">
-
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                    Fechar
-                                </button>
-                                <button class="btn btn-posto btn-novo-posto" type="submit">Salvar</button>
-                            </div>
-                        </form>
-                    </div>
+                <% } else { %>
+                <div class="img">
+                  <img src="/images/branca.png" alt="Branca">
                 </div>
-            </div>
-        </div>
-        <ol class="posto mb-5">
-
-
-            <% for( const posto of postos ) { %>
-
-            <li class="posto-item">
-                <div class="container grey">
-                    <div class="part1">
-                        <div class="likes my-2 h6">
-                            <!-- heart image -->
-                            <% if (USUARIO) { %>
-                            <% var favorito = "far" %>
-                            <% posto.usuarios.forEach(usuario => { %>
-                            <% if (USUARIO.id == usuario.id ) { %>
-                            <% favorito = "fas" %>
-                            <% } else { %>
-                            <% } %>
-                            <% }) %>
-                            <span>
-                                <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
-                                    <i class="<%=favorito%> fa-heart user-fav"></i>
-                                </a>
-                            </span>
-                            <% } else { %>
-
-                            <span>
-                                <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">
-                                    <i class="far fa-heart not-user-fav"></i>
-                                </a>
-                            </span>
-
-                            <% } %>
-
-                            <span class="ml-1">
-                                <%=posto.usuarios.length%> likes
-                            </span>
-
-                            <a class="ml-lg-2" data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
-                                <i class="far fa-comment"></i>
-                                <span class="ml-1">
-                                    <%=posto.avaliacoes.length%> comentários
-                                </span>
-                            </a>
->>>>>>> 8361a523127c10fa35e97d2f2face28d0a03e0d3
-                        </div>
-                        <div class="modal-body">
-                          <h3>Últimos comentários:</h3>
-                          <ul>
-                            <% posto.avaliacoes.forEach((avaliacao) => { %>
-                            <li>
-                              <p>
-                                <% if (USUARIO) { %> <% if (USUARIO.nome ==
-                                avaliacao.nome) { %>
-                                <strong>Você</strong>
-                                <% } else { %>
-                                <strong><%=avaliacao.nome%></strong>
-                                <% } %>
-<<<<<<< HEAD
-                                <span> <%=avaliacao.Avaliacoes.texto%></span>
-                                <% } else { %>
-                                <strong><%=avaliacao.nome%></strong>
-                                <span> <%=avaliacao.Avaliacoes.texto%></span>
-                                <% } %>
-                              </p>
-                            </li>
-                            <% }) %>
-                          </ul>
-=======
-                            </div>
-                            <div class="nomeComEndereço">
-                                <a data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
-                                    <div class="stars">
-
-                                        <span class="d-none">
-                                            <%=posto.media%>
-                                        </span>
-                                        <% for( let i = 0; i < parseInt(posto.media); i++ ) { %>
-                                        <i class="fas fa-star"></i>
-                                        <% } %>
-
-                                        <% for( let i = 0; i < posto.media-parseInt(posto.media) ; i++ ) { %>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <% } %>
-
-                                        <% for( let i = 0; i < 5-Math.ceil(posto.media) ; i++ ) { %>
-                                        <i class="far fa-star"></i>
-                                        <% } %>
-                                    </div>
-                                </a>
-
-                                <!-- Modal avaliacao-->
-                                <div class="modal fade " id="alterar-avaliacao<%=posto.id%>" tabindex="-1" role="dialog"
-                                    aria-labelledby="alterar-avaliacao" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <div class="modal-body">
-                                                <form id="form-posto-<%=posto.id%>" class="text-center rating"
-                                                    action="/usuario/avaliacoes/add" method="GET">
-                                                    <label for="text">O que deseja falar sobre esse posto?</label>
-
-                                                    <div id="nota-stars-container" class="stars">
-                                                        <button type="submit" class="star" data-star="1">
-                                                            <span aria-hidden="true">&#9733;</span>
-                                                            <span class="screen-reader">1 Star</span>
-                                                        </button><button type="submit" class="star" data-star="2">
-                                                            <span aria-hidden="true">&#9733;</span>
-                                                            <span class="screen-reader">2 Stars</span>
-                                                        </button><button type="submit" class="star" data-star="3">
-                                                            <span aria-hidden="true">&#9733;</span>
-                                                            <span class="screen-reader">3 Stars</span>
-                                                        </button><button type="submit" class="star" data-star="4">
-                                                            <span aria-hidden="true">&#9733;</span>
-                                                            <span class="screen-reader">4 Stars</span>
-                                                        </button><button type="submit" class="star" data-star="5">
-                                                            <span aria-hidden="true">&#9733;</span>
-                                                            <span class="screen-reader">5 Stars</span>
-                                                        </button>
-                                                    </div>
-
-                                                    <textarea class="form-control" name="texto" cols="40"
-                                                        rows="5"></textarea>
-                                                    <input type="hidden" name="id" value="<%=posto.id%>">
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">
-                                                            Fechar
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                                <button class="btn btn-posto salvar-form" type="submit">Salvar</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h3>Últimos comentários:</h3>
-                                                <ul>
-                                                    <% posto.avaliacoes.forEach((avaliacao) => { %>
-                                                    <li>
-
-                                                        <p>
-                                                            <% if (USUARIO) { %>
-                                                            <% if (USUARIO.nome == avaliacao.nome) { %>
-                                                            <strong>Você</strong>
-                                                            <% } else { %>
-                                                            <strong><%=avaliacao.nome%></strong>
-                                                            <% } %>
-                                                            <span> <%=avaliacao.Avaliacoes.texto%></span>
-                                                            <% } else { %>
-                                                            <strong><%=avaliacao.nome%></strong>
-                                                            <span> <%=avaliacao.Avaliacoes.texto%></span>
-                                                            <% } %>
-                                                        </p>
-                                                    </li>
-                                                    <% }) %>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p>
-                                    <strong>
-                                        <%=posto.nome%>
-                                    </strong>
-                                </p>
-                                <p>
-                                    <%= posto.endereco %>, <%= posto.bairro %>,
-                                    <%= posto.cidade %>-<%= posto.estado %> - <%=posto.cep%>
-                                </p>
-
-                            </div>
->>>>>>> 8361a523127c10fa35e97d2f2face28d0a03e0d3
-                        </div>
-                      </div>
-                    </div>
-<<<<<<< HEAD
+                <% } %>
+              </div>
+              <div class="nomeComEndereço">
+                <a data-toggle="modal" data-target="#alterar-avaliacao<%=posto.id%>">
+                  <div class="stars">
+                    <span class="d-none">
+                      <%=posto.media%>
+                    </span>
+                    <% for( let i = 0; i < parseInt(posto.media); i++ ) { %>
+                    <i class="fas fa-star"></i>
+                    <% } %>
+                    <% for( let i = 0; i < posto.media-parseInt(posto.media) ; i++ ) { %>
+                    <i class="fas fa-star-half-alt"></i>
+                    <% } %>
+                    <% for( let i = 0; i < 5-Math.ceil(posto.media) ; i++ ) { %>
+                    <i class="far fa-star"></i>
+                    <% } %>
                   </div>
-                  <p>
-                    <strong>
-                      <%=posto.nome%>
-                    </strong>
-                  </p>
-                  <p>
-                    <%= posto.endereco %>, <%= posto.bairro %>, <%= posto.cidade
-                    %>-<%= posto.estado %> - <%=posto.cep%>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr class="vertical" />
-            <div class="part2">
-              </div>
-              <div class="distance">
-                <p class="distanceNumber">2</p>
-                <p class="distanceText">km distante</p>
-              </div>
-              <hr class="horizontal" />
-              <div class="priceDetails">
-                <small>Última atualização:</small>
-                <p class="date"><%=posto.update_time%></p>
-
-                <small><%= posto.produtos[0].nome %></small><br />
-                <a
-                  class="price"
-                  type="button"
-                  data-toggle="modal"
-                  data-target="#alterar-preco-<%=posto.id%>"
-                >
-                  <%=
-                  posto.produtos[0].postos_produtos.preco.toLocaleString('pt-br',{style:
-                  'currency', currency: 'BRL'}).replace('.',',') %>
                 </a>
-=======
-                    <hr class="vertical">
-                    <div class="part2">
-                        <div class="distance">
-                            <p class="distanceNumber">2</p>
-                            <p class="distanceText">km distante</p>
-                        </div>
-                        <hr class="horizontal">
-                        <div class="priceDetails">
-                            <small>Última atualização:</small>
-                            <p class="date"><%=posto.update_time%></p>
-
-                            <small><%= posto.produtos[0].nome %></small><br>
-                            <a class="price" type="button" data-toggle="modal"
-                                data-target="#alterar-preco-<%=posto.id%>">
-
-                                <%= posto.produtos[0].postos_produtos.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}).replace('.',',') %>
-                            </a>
-
-                            <!-- Modal alterar preço -->
-                            <div class="modal fade " id="alterar-preco-<%=posto.id%>" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <div class="modal-body">
-                                            <form id="form-atualizar-preco-<%=posto.id%>" class="text-center"
-                                                action="/posto/preco/atualizar" method="GET">
-                                                <strong><label for="preco-<%=posto.id%>">O preço está incorreto?
-                                                        Atualize digitando o
-                                                        valor
-                                                        correto abaixo:</label></strong>
-                                                <input class="form-control w-50 mx-auto my-3" type="number" name="preco"
-                                                    id="preco-<%=posto.id%>" min="0" step="0.001"
-                                                    pattern="^\d*(\.\d{0,2})?$"
-                                                    value="<%=posto.produtos[0].postos_produtos.preco%>">
-                                                <input type="hidden" name="postos_id" value="<%=posto.id%>" required>
-                                                <input type="hidden" name="produtos_id"
-                                                    value="<%=posto.produtos[0].postos_produtos.produtos_id%>">
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-posto" type="submit">Salvar</button>
-
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">
-                                                        Fechar
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
->>>>>>> 8361a523127c10fa35e97d2f2face28d0a03e0d3
-
-                <!-- Modal alterar preço -->
-                <div
-                  class="modal fade"
-                  id="alterar-preco-<%=posto.id%>"
-                  tabindex="-1"
-                  role="dialog"
-                  aria-labelledby="exampleModalCenterTitle"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog" role="document">
+                <!-- Modal avaliacao-->
+                <div class="modal fade " id="alterar-avaliacao<%=posto.id%>" tabindex="-1" role="dialog"
+                  aria-labelledby="alterar-avaliacao" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
+                      <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                       </button>
                       <div class="modal-body">
-                        <form
-                          id="form-atualizar-preco-<%=posto.id%>"
-                          class="text-center"
-                          action="/posto/preco/atualizar"
-                          method="GET"
-                        >
-                          <strong
-                            ><label for="preco"
-                              >O preço está incorreto? Atualize digitando o
-                              valor correto abaixo:</label
-                            ></strong
-                          >
-                          <input
-                            class="form-control w-50 mx-auto my-3"
-                            type="number"
-                            name="preco"
-                            id="preco"
-                            min="0"
-                            step="0.001"
-                            pattern="^\d*(\.\d{0,2})?$"
-                            value="<%=posto.produtos[0].postos_produtos.preco%>"
-                          />
-                          <input
-                            type="hidden"
-                            name="postos_id"
-                            value="<%=posto.id%>"
-                            required
-                          />
-                          <input
-                            type="hidden"
-                            name="produtos_id"
-                            value="<%=posto.produtos[0].postos_produtos.produtos_id%>"
-                          />
-                          <div class="modal-footer">
-                            <button class="btn btn-posto" type="submit">
-                              Salvar
+                        <form id="form-posto-<%=posto.id%>" class="text-center rating" action="/usuario/avaliacoes/add"
+                          method="GET">
+                          <label for="text">O que deseja falar sobre esse posto?</label>
+                          <div id="nota-stars-container" class="stars">
+                            <button type="submit" class="star" data-star="1">
+                              <span aria-hidden="true">&#9733;</span>
+                              <span class="screen-reader">1 Star</span>
+                            </button><button type="submit" class="star" data-star="2">
+                              <span aria-hidden="true">&#9733;</span>
+                              <span class="screen-reader">2 Stars</span>
+                            </button><button type="submit" class="star" data-star="3">
+                              <span aria-hidden="true">&#9733;</span>
+                              <span class="screen-reader">3 Stars</span>
+                            </button><button type="submit" class="star" data-star="4">
+                              <span aria-hidden="true">&#9733;</span>
+                              <span class="screen-reader">4 Stars</span>
+                            </button><button type="submit" class="star" data-star="5">
+                              <span aria-hidden="true">&#9733;</span>
+                              <span class="screen-reader">5 Stars</span>
                             </button>
-
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              data-dismiss="modal"
-                            >
+                          </div>
+                          <textarea class="form-control" name="texto" cols="40" rows="5"></textarea>
+                          <input type="hidden" name="id" value="<%=posto.id%>">
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
                               Fechar
                             </button>
                           </div>
                         </form>
+                        <button class="btn btn-posto salvar-form" type="submit">Salvar</button>
+                      </div>
+                      <div class="modal-body">
+                        <h3>Últimos comentários:</h3>
+                        <ul>
+                          <% posto.avaliacoes.forEach((avaliacao) => { %>
+                          <li>
+                            <p>
+                              <% if (USUARIO) { %>
+                              <% if (USUARIO.nome == avaliacao.nome) { %>
+                              <strong>Você</strong>
+                              <% } else { %>
+                              <strong><%=avaliacao.nome%></strong>
+                              <% } %>
+                              <span> <%=avaliacao.Avaliacoes.texto%></span>
+                              <% } else { %>
+                              <strong><%=avaliacao.nome%></strong>
+                              <span> <%=avaliacao.Avaliacoes.texto%></span>
+                              <% } %>
+                            </p>
+                          </li>
+                          <% }) %>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="symbol mt-1">
-                <span>
-                  <i class="fas fa-gas-pump"></i>
-                </span>
-                <span>R$</span>
+                <p>
+                  <strong>
+                    <%=posto.nome%>
+                  </strong>
+                </p>
+                <p>
+                  <%= posto.endereco %>, <%= posto.bairro %>,
+                  <%= posto.cidade %>-<%= posto.estado %> - <%=posto.cep%>
+                </p>
               </div>
             </div>
           </div>
-        </li>
+          <hr class="vertical">
+          <div class="part2">
+            <div class="distance">
+              <p class="distanceNumber">2</p>
+              <p class="distanceText">km distante</p>
+            </div>
+            <hr class="horizontal">
+            <div class="priceDetails">
+              <small>Última atualização:</small>
+              <p class="date"><%=posto.update_time%></p>
+              <small><%= posto.produtos[0].nome %></small><br>
+              <a class="price" type="button" data-toggle="modal" data-target="#alterar-preco-<%=posto.id%>">
+                <%= posto.produtos[0].postos_produtos.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}).replace('.',',') %>
+              </a>
+              <!-- Modal alterar preço -->
+              <div class="modal fade " id="alterar-preco-<%=posto.id%>" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body">
+                      <form id="form-atualizar-preco-<%=posto.id%>" class="text-center" action="/posto/preco/atualizar"
+                        method="GET">
+                        <strong><label for="preco-<%=posto.id%>">O preço está incorreto?
+                            Atualize digitando o
+                            valor
+                            correto abaixo:</label></strong>
+                        <input class="form-control w-50 mx-auto my-3" type="number" name="preco"
+                          id="preco-<%=posto.id%>" min="0" step="0.001" pattern="^\d*(\.\d{0,2})?$"
+                          value="<%=posto.produtos[0].postos_produtos.preco%>">
+                        <input type="hidden" name="postos_id" value="<%=posto.id%>" required>
+                        <input type="hidden" name="produtos_id"
+                          value="<%=posto.produtos[0].postos_produtos.produtos_id%>">
+                        <div class="modal-footer">
+                          <button class="btn btn-posto" type="submit">Salvar</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Fechar
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="symbol mt-1">
+              <span>
+                <i class="fas fa-gas-pump"></i>
+              </span>
+              <span>R$</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% } %>
 
-        <% } %>
-      </ol>
-    </aside>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
+    </ol>
+  </aside>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
-    <script>
-      $(document).ready(function () {
-        $('#bars').on('click', function () {
-          $('[data-toggle="tooltip"]')
-            .tooltip({ trigger: 'manual' })
-            .tooltip('show');
-          setTimeout(function () {
-            $('[data-toggle="tooltip"]').tooltip('hide');
-          }, 6000);
-        });
-      });
-    </script>
-  </body>
+  <script>
+    $(document).ready(function () {
+      $("#bars").on("click", function () {
+        $('[data-toggle="tooltip"]').tooltip({ trigger: 'manual' }).tooltip("show")
+        setTimeout(function () { $('[data-toggle="tooltip"]').tooltip('hide'); }, 6000);
+      })
+    });
+  </script>
+
+</body>
+
 </html>

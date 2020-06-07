@@ -102,7 +102,7 @@
         "latitude": -15.77972,
         "longitude": -47.92972,
         "create_time": "25/05/2020",
-        "update_time": "04/02/2020"
+        "update_time": "17/02/2020"
     },
     {
         "id": 8,
@@ -148,5 +148,20 @@
         "longitude": -47.92972,
         "create_time": "25/05/2020",
         "update_time": "28/02/2020"
+    },
+    {
+        "id": 11,
+        "nome": "POSTO JARDIM AMERICA DE BAURU LTDA",
+        "cnpj": "00002953000199",
+        "cep": "17053460",
+        "cidade": "BAURU",
+        "estado": "SP",
+        "bairro": "VILA AVIACAO",
+        "endereco": "AV NOSSA SENHORA DE FATIMA",
+        "bandeira": "IPIRANGA",
+        "latitude": -22.3535844,
+        "longitude": -49.0501443,
+        "create_time": "04/06/2020",
+        "update_time": "26/02/2020"
     }
 ]
