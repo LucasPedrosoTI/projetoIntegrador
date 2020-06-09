@@ -20,7 +20,7 @@ const destinationProdutos = path.join("database", "produtosResposta.json");
 
 let consultaCNPJ = false;
 
-module.exports = {
+let viewController = {
   index: (req, res, next) => res.render("index"),
 
   main: async (req, res, next) => {
@@ -86,11 +86,28 @@ module.exports = {
 
     console.log("Parse CSV OK!");
 
-    for (let i = 0; i < 10; i++) {
-      console.log(`Checando posto ${postos[i].nome}`);
+    const precisaReq = (posto) => {
+      return postosResposta.find((p) => p.cnpj == posto.cnpj) == undefined;
+    };
 
-      setTimeout(criarPosto(postos[i]), 20 * 1000);
-    }
+    const naoPrecisaReq = (posto) => {
+      return postosResposta.find((p) => p.cnpj == posto.cnpj) != undefined;
+    };
+
+    const postosQuePrecisamDeReq = postos.filter(precisaReq);
+    const postosQueNaoPrecisamDeReq = postos.filter(naoPrecisaReq);
+
+    let i = 0;
+    let idInterval = setInterval(() => {
+      if (i < 30) {
+        criarPosto(postosQuePrecisamDeReq[i]);
+        i++;
+      } else {
+        clearInterval(idInterval);
+      }
+    }, 20000);
+
+    postosQueNaoPrecisamDeReq.forEach((p) => criarPosto(p));
 
     function criarPosto(postoCheck) {
       let produto = {};
@@ -100,7 +117,6 @@ module.exports = {
       let postoJaExiste = postosResposta.find(
         (posto) => posto.cnpj == postoCheck.cnpj
       );
-      console.log(`posto já existe: ${postoJaExiste.cnpj}`);
 
       // DEFINE A VAR produtos_id DE ACORDO COM O PRODUTO DO CSV ETANOL(2) OU GASOLINA(1)
       postoCheck.produto == "ETANOL" ? (produtos_id = 2) : (produtos_id = 1);
@@ -275,3 +291,5 @@ module.exports = {
     res.render("dashboard-empresa");
   },
 };
+
+viewController.indexPostos();

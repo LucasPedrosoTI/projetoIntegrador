@@ -27,7 +27,7 @@ var server = http.createServer(app);
 
 process.env.IP
   ? server.listen(port, process.env.IP, () => {
-      console.log("listening on port " + port + " using:: " + process.env.IP);
+      console.log("listening on port " + port + " using: " + process.env.IP);
     })
   : server.listen(port, "0.0.0.0", () => {
       console.log("listening on port " + port + " using localhost");
