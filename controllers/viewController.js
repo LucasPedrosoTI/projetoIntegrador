@@ -6,21 +6,15 @@ const opencage = require("opencage-api-client");
 const postosResposta = require("../database/postosResposta.json");
 const produtosResposta = require("../database/produtosResposta.json");
 const moment = require("moment");
-const { Posto, Usuario, Produto } = require("../models");
-const sequelize = require("sequelize");
+const { Posto, Usuario } = require("../models");
 
 const now = moment();
-
-// const interval = require("interval-promise");
-// const util = require("util");
 
 const source = path.join("database", "postos.csv");
 const destination = path.join("database", "postosResposta.json");
 const destinationProdutos = path.join("database", "produtosResposta.json");
 
-let consultaCNPJ = false;
-
-let viewController = {
+module.exports = {
   index: (req, res, next) => res.render("index"),
 
   main: async (req, res, next) => {
@@ -99,13 +93,13 @@ let viewController = {
 
     let i = 0;
     let idInterval = setInterval(() => {
-      if (i < 30) {
+      if (i < 100) {
         criarPosto(postosQuePrecisamDeReq[i]);
         i++;
       } else {
         clearInterval(idInterval);
       }
-    }, 20000);
+    }, 22000);
 
     postosQueNaoPrecisamDeReq.forEach((p) => criarPosto(p));
 
@@ -160,21 +154,20 @@ let viewController = {
         fs.writeFileSync(destinationProdutos, JSON.stringify(produtosResposta));
 
         console.log("Produto e posto atualizados com sucesso!");
-        // res.send(produtosResposta);
         return;
       } else if (!postoJaExiste && !produtoJaExiste) {
         console.log("Criando Posto e produto...");
 
         // CASO O PRODUTO NÃO EXISTA, SETA O PREÇO
         produto.preco = Number(postoCheck.preco.replace(",", "."));
-        // CONSULTAR A API DE CNPJ
 
-        // const { data } = await
+        // CONSULTAR A API DE CNPJ
         axios
           .get(`https://www.receitaws.com.br/v1/cnpj/${postoCheck.cnpj}`)
           .then((response) => {
             const { data } = response;
 
+            // CONSULTAR API DE GEOCODING
             opencage
               .geocode({
                 q: `${data.logradouro}, ${data.bairro}, ${data.municipio}, ${data.uf}`,
@@ -209,8 +202,6 @@ let viewController = {
                 produto.postos_id = novoPosto.id;
                 produtosResposta.push(produto);
 
-                consultaCNPJ = true;
-
                 fs.writeFileSync(destination, JSON.stringify(postosResposta));
                 fs.writeFileSync(
                   destinationProdutos,
@@ -221,9 +212,6 @@ let viewController = {
                 return;
               });
           });
-
-        // CONSULTAR API DE GEOCODING
-        // const { results } = await
 
         // CRIAR UM OBJETO COM AS INFORMAÇÕES NECESSÁRIAS
       } else if (!produtoJaExiste && postoJaExiste) {
@@ -245,13 +233,11 @@ let viewController = {
         fs.writeFileSync(destinationProdutos, JSON.stringify(produtosResposta));
 
         console.log("Produto criado com sucesso!");
-        // res.send(produtosResposta);
         return;
       } else {
         console.log(
           "Ambos já existem e o produto a adicionar é mais antigo que o existente"
         );
-        // res.send(postosResposta);
         return;
       }
     }
@@ -291,5 +277,3 @@ let viewController = {
     res.render("dashboard-empresa");
   },
 };
-
-viewController.indexPostos();
