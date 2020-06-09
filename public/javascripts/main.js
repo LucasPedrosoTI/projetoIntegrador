@@ -164,14 +164,10 @@ function porNota(a, b) {
 function porMenorDistancia(a, b) {
   return (
     Number(
-      a.firstElementChild.lastElementChild.children[2].children[4].innerText
-        .replace('', ' metros')
-        .trim()
+      a.firstElementChild.lastElementChild.firstElementChild.children[0].innerText.trim()
     ) -
     Number(
-      b.firstElementChild.lastElementChild.children[2].children[4].innerText
-        .replace('', ' metros')
-        .trim()
+      b.firstElementChild.lastElementChild.firstElementChild.children[0].innerText.trim()
     )
   );
 }
@@ -181,31 +177,24 @@ function deg2rad(deg) {
   return deg * (Math.PI / 180);
 }
 
-for (var i = 0; i <= postos.features.length; i++) {
-  console.log(postos.features[i].geometry.coordinates[0]);
-  var longitudeP = postos.features[i].geometry.coordinates[0];
-  var latitudeP = postos.features[i].geometry.coordinates[1];
-  function menorDistancia(latitude, longitude) {
-    const radius = 6378137;
-    const dLat = deg2rad(latitude - latitudeP);
-    const dLon = deg2rad(longitude - longitudeP);
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(deg2rad(latitude)) *
-        Math.cos(deg2rad(latitudeP)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    const center = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var distancia = radius * center; // returns the distance in meter
-    return distancia;
-  }
+function menorDistancia(latitudeP, longitudeP, latitude, longitude) {
+  const radius = 6371;
+  const dLat = deg2rad(latitude - latitudeP);
+  const dLon = deg2rad(longitude - longitudeP);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(latitude)) *
+      Math.cos(deg2rad(latitudeP)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const center = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var distancia = radius * center; // returns the distance in km
+  return distancia;
 }
 
 function mostrarLista(array) {
   let ol = array[0].parentNode;
-
   ol.innerHTML = '';
-
   array.forEach((a) => {
     ol.appendChild(a);
   });
@@ -213,6 +202,26 @@ function mostrarLista(array) {
 
 const select = document.querySelector('#classificar');
 let li = Array.from(document.querySelectorAll('.posto-item'));
+
+function calc() {
+  for (var i = 0; i <= li.length; i++) {
+    var lat = parseFloat(li[i].children[1].value);
+    var long = parseFloat(li[i].children[2].value);
+    var latitudeUsuario = window.latitude;
+    var longitudeUsuario = window.longitude;
+    var distancia = menorDistancia(
+      lat,
+      long,
+      latitudeUsuario,
+      longitudeUsuario
+    );
+    li[
+      i
+    ].firstElementChild.lastElementChild.firstElementChild.children[0].innerText = distancia.toFixed(
+      0
+    );
+  }
+}
 
 select.addEventListener('change', (e) => {
   if (e.target.value == 'precoMenor') {
@@ -234,3 +243,5 @@ select.addEventListener('change', (e) => {
   } else {
   }
 });
+
+calc();
