@@ -10,7 +10,7 @@ const { Posto, Usuario } = require("../models");
 
 const now = moment();
 
-const source = path.join("database", "postos.csv");
+// const source = path.join("database", "postos.csv");
 const destination = path.join("database", "postosResposta.json");
 const destinationProdutos = path.join("database", "produtosResposta.json");
 
