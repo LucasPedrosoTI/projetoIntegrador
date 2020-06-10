@@ -1,13 +1,34 @@
 const { Posto, postos_produtos } = require("../models");
 const opencage = require("opencage-api-client");
-
+const { calcularDistancia } = require("../lib/utils.js");
 module.exports = {
   index: async (req, res) => {
+    const { latP, longP } = req.query;
+
     const postos = await Posto.findAll({
       include: ["produtos", "avaliacoes", "usuarios"],
     });
 
-    res.json(postos);
+    if (!latP || !longP) {
+      return res.json(postos);
+    }
+
+    for (const posto of postos) {
+      posto.distancia = calcularDistancia(
+        Number(posto.latitude),
+        Number(posto.longitude),
+        Number(latP),
+        Number(longP)
+      );
+    }
+
+    function filtrarPostos(posto) {
+      return Number(posto.distancia) < 10;
+    }
+
+    const postosFiltrados = postos.filter(filtrarPostos);
+
+    res.json(postosFiltrados);
   },
 
   atualizarPreco: async (req, res) => {
@@ -51,11 +72,6 @@ module.exports = {
     } = req.body;
 
     endereco = endereco.toUpperCase().trim() + ", " + numero.trim();
-
-    // ENCODAR QUERY PARA TIPO URL
-    // let uri = encodeURI(
-    //   `${endereco}, ${bairro}, ${cidade}, ${estado}, Brazil, ${cep}`
-    // );
 
     // CONSULTAR API DE GEOCODING
     const { results } = await opencage.geocode({

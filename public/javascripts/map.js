@@ -1,33 +1,8 @@
-// navigator.geolocation.getCurrentPosition(function (pos) {
-//   latitude = pos.coords.latitude;
-//   longitude = pos.coords.longitude;
-
-//   renderMap();
-// }, alert(
-//   "Ooops, precisamos de sua localização para mostrar os postos próximos"
-// ));
-
 // if (!latitude && !longitude) {
 //   latitude = -23.5089623;
 //   longitude = -46.3993002;
 // }
 
-// var options = {
-//   enableHighAccuracy: false,
-//   timeout: 5000,
-//   maximumAge: 0,
-// };
-
-// function success(pos) {
-//   longitude = pos.coords.longitude;
-//   latitude = pos.coords.latitude;
-// }
-
-// function error() {
-//   // window.alert(
-//   //   "Atenção, é necessário ativar localização para encontrar os postos próximos a você"
-//   // );
-// }
 var latitude;
 var longitude;
 
@@ -48,9 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function renderMap(latitude, longitude) {
-  console.log(latitude);
-  console.log(longitude);
-
   mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
 
@@ -61,12 +33,13 @@ function renderMap(latitude, longitude) {
   //   longitude = params.get("longitude");
   // }
 
-  // console.log(latitude);
-  // console.log(longitude);
-
   var request = new XMLHttpRequest();
   let postos = { type: "FeatureCollection", features: [] };
-  request.open("GET", "http://localhost:3000/posto/index", true);
+  request.open(
+    "GET",
+    `http://localhost:3000/posto/index?latP=${latitude}&longP=${longitude}`,
+    true
+  );
   request.onload = function () {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
@@ -341,5 +314,3 @@ function renderMap(latitude, longitude) {
 
   // map.addControl(directions, 'top-left');
 }
-
-// renderMap(latitude, longitude);
