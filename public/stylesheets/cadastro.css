@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background: url(../images/backLogin.jpg) no-repeat center;
-  font: 600 16px/18px 'Roboto', sans-serif;
+  font: 600 16px/18px "Roboto", sans-serif;
+  color: #fff;
 }
 
 .form-horizontal {
@@ -57,11 +57,11 @@ button#botao-cadastrar {
 }
 
 fieldset {
-  background-color: #e14242a9;
+  background-color: #e14242dd;
 }
 
-.active {
-  background-color: #e14242 !important;
+li.nav-item a.active {
+  background-color: #e14242dd !important;
   color: #fff !important;
   border: none;
 }
@@ -76,6 +76,12 @@ fieldset {
 
 .nav-tabs .nav-link {
   border: none;
+}
+
+.error {
+  background-color: #e14242dd !important;
+  color: #fff !important;
+  font-size: 1.3rem;
 }
 
 /* POP TIP MESSAGE  */
@@ -98,7 +104,7 @@ fieldset {
 .valid:before {
   position: relative;
   left: -35px;
-  content: '✔️';
+  content: "✔️";
 }
 
 /* Add a red text color and an "x" icon when the requirements are wrong */
@@ -111,5 +117,5 @@ fieldset {
 .invalid:before {
   position: relative;
   left: -35px;
-  content: '❌';
+  content: "❌";
 }

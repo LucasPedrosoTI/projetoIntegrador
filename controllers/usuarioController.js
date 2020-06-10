@@ -27,9 +27,17 @@ module.exports = {
 
     let hash = bcrypt.hashSync(senha, 10);
 
+    const user = await Usuario.findOne({ where: { email } });
+
+    console.log(user);
+
+    if (user) {
+      return res.render("cadastro", { error: "Email já cadastrado" });
+    }
+
     try {
       // create a new user with the password hash from bcrypt
-      await Usuario.create({
+      const user = await Usuario.create({
         nome: capitalizeName(nome.trim()),
         sobrenome: capitalizeName(sobrenome.trim()),
         email,
@@ -37,7 +45,9 @@ module.exports = {
         senha: hash,
       });
 
-      return res.redirect("/login");
+      req.session.usuario = user;
+
+      return res.redirect("/usuario/dashboard");
     } catch (err) {
       return res.status(400).send(err);
     }
@@ -211,7 +221,6 @@ module.exports = {
       where: { postos_id, usuarios_id },
     });
 
-    // return res.send(posto);
     if (!posto)
       try {
         await postos_favoritos.create({ postos_id, usuarios_id });
