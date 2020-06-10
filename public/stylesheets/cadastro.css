@@ -57,10 +57,12 @@ button#botao-cadastrar {
 }
 
 fieldset {
+  background-color: #e14242;
   background-color: #e14242dd;
 }
 
 li.nav-item a.active {
+  background-color: #e14242 !important;
   background-color: #e14242dd !important;
   color: #fff !important;
   border: none;

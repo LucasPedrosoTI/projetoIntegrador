@@ -1,12 +1,8 @@
 <%- include('../parts/head', {title: "Dashboard - Meu Posto"}) %>
 <link rel="stylesheet" href="/stylesheets/login.css    " />
 <link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
-<!-- <link href="/stylesheets/star-rating.min.css" media="all" rel="stylesheet" type="text/css" /> -->
 
 <script src="/javascripts/stars.js" defer></script>
-<!-- <script src="/javascripts/star-rating.min.js" type="text/javascript" defer></script> -->
-
-
 
 <header>
     <%- include('../parts/navbar') %>
@@ -63,7 +59,7 @@
                     <form action="avaliacoes/deletar?_method=DELETE" method="POST"
                         onsubmit="return confirm('Tem certeza?')">
                         <input type="hidden" name="id" value="<%=avaliacao.Avaliacoes.postos_id%>">
-                        <button id="destroy" type="submit" class="close">
+                        <button id="destroy-<%=avaliacao.Avaliacoes.postos_id%>" type="submit" class="close">
                             <small><i class="far fa-trash-alt"></i></small>
                         </button>
                     </form>
@@ -85,7 +81,7 @@
                                 <div class="modal-body text-center">
                                     <form id="form-posto-<%=avaliacao.id%>" class="rating"
                                         action="avaliacoes/editar?_method=PUT" method="POST">
-                                        <label for="text">O que deseja falar sobre esse posto?</label>
+                                        <label for="text-<%=avaliacao.id%>">O que deseja falar sobre esse posto?</label>
 
                                         <div id="nota-stars-container" class="stars">
                                             <button type="submit" class="star" data-star="1">
@@ -105,13 +101,9 @@
                                                 <span class="screen-reader">5 Stars</span>
                                             </button>
                                         </div>
-                                        <%#
-                                        <input id="input-" type="text" name="nota" required
-                                        class="rating">
-                                        %>
 
-                                        <textarea class="form-control" name="texto" id="text" cols="40" rows="5"
-                                            placeholder="<%=avaliacao.Avaliacoes.texto%>"></textarea>
+                                        <textarea class="form-control" name="texto" id="text-<%=avaliacao.id%>"
+                                            cols="40" rows="5" placeholder="<%=avaliacao.Avaliacoes.texto%>"></textarea>
                                         <input type="hidden" name="id" value="<%=avaliacao.id%>">
 
                                         <div class="modal-footer">

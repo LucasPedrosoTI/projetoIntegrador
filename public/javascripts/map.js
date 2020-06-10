@@ -2,10 +2,8 @@
 //   latitude = -23.5089623;
 //   longitude = -46.3993002;
 // }
-
 var latitude;
 var longitude;
-
 document.addEventListener("DOMContentLoaded", function () {
   navigator.geolocation.getCurrentPosition(
     function (pos) {
@@ -44,7 +42,7 @@ function renderMap(latitude, longitude) {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
     if (request.status >= 200 && request.status < 400) {
-      data.forEach((posto) => {
+      data.forEach(function (posto) {
         let novoPosto = {
           type: "Feature",
           geometry: {

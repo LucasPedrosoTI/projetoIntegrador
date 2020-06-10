@@ -1,5 +1,5 @@
 body {
-  color: #000d;
+  color: #000;
   background: none;
 }
 
@@ -80,6 +80,7 @@ form input[type="search"] {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  color: #fff;
 }
 
 #parallax02 {
@@ -89,6 +90,7 @@ form input[type="search"] {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  color: #fff;
 }
 
 .active {

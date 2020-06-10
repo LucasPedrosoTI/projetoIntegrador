@@ -57,7 +57,7 @@
                     <form action="favoritos/deletar?_method=DELETE" method="POST"
                         onsubmit="return confirm('Tem certeza?')">
                         <input type="hidden" name="id" value="<%=posto.id%>">
-                        <button id="destroy" type="submit" class="close">
+                        <button id="destroy-<%=posto.id%>" type="submit" class="close">
                             <small><i class="far fa-trash-alt"></i></small>
                         </button>
                     </form>
@@ -102,6 +102,6 @@
     window.onbeforeunload = () => {
         window.history.replaceState(null, null, window.localStorage.getItem('specifiedKey'));
     }
-    
+
 </script>
 <%- include('../parts/foot') %>

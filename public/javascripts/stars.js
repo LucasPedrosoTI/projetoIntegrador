@@ -17,6 +17,8 @@ document.addEventListener(
     // Get the selected star
     var selected = document.activeElement;
 
+    console.log(selected);
+
     if (!selected) return;
     var selectedIndex = parseInt(selected.getAttribute("data-star"), 10);
 
@@ -143,7 +145,7 @@ document.addEventListener("touchend", resetSelected, true);
 // ******************** SUBMETER FORM COM JS ********************
 
 for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", (e) => {
+  btns[i].addEventListener("click", function (e) {
     document.querySelectorAll("form[id|=form-posto]")[i].submit();
   });
 }

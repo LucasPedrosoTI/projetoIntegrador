@@ -27,7 +27,8 @@
                 </button>
               </div>
               <div class="modal-body">
-                <input class="form-control mt-3" type="password" name="senha" id="senha1" placeholder="Senha atual" />
+                <input class="form-control mt-3" type="password" name="senha" id="alterar-senha"
+                  placeholder="Senha atual" />
                 <input class="form-control mt-3" type="password" name="novaSenha" id="senha" placeholder="Nova senha" />
                 <input class="form-control mt-3" type="password" id="senha-confirmacao"
                   placeholder="Repetir nova senha" />
@@ -62,7 +63,8 @@
                 <h5 class="mb-3">Tem certeza que deseja excluir seu cadastro?</h5>
                 <p>Não poderá mais salvar seus postos favoritos e nem realizar comentários. Para confirmar, digite sua
                   senha abaixo</p>
-                <input class="form-control mt-3" type="password" name="senha" id="senha1" placeholder="Senha atual" />
+                <input class="form-control mt-3" type="password" name="senha" id="senha-<%= user.email %>"
+                  placeholder="Senha atual" />
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-posto btn-secondary" data-dismiss="modal">

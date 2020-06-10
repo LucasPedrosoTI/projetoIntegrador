@@ -9,7 +9,7 @@ function mostrarLista(array) {
 
   let ol = array[0].parentNode;
   ol.innerHTML = "";
-  array.forEach((a) => {
+  array.forEach(function (a) {
     ol.appendChild(a);
   });
 }
@@ -46,12 +46,14 @@ function calcularDistancia(latitudeP, longitudeP, latitude, longitude) {
   return menorDistancia(latitudeP, longitudeP, latitude, longitude);
 }
 
-function atualizarDistancias() {
+function atualizarDistancias(li) {
   for (var i = 0; i <= li.length; i++) {
     var lat = parseFloat(li[i].children[1].value);
     var long = parseFloat(li[i].children[2].value);
     var latitudeUsuario = window.latitude;
     var longitudeUsuario = window.longitude;
+
+    console.log(latitudeUsuario, longitudeUsuario);
 
     var distancia = calcularDistancia(
       lat,
@@ -79,7 +81,7 @@ window.addEventListener("load", function () {
   }
 
   function formatarDatas(datas) {
-    datas.forEach((date) => {
+    datas.forEach(function (date) {
       let data = new Date(date.innerText);
       let hoje = new Date();
       let ontem = new Date();
@@ -134,7 +136,7 @@ window.addEventListener("load", function () {
   function addColorsByPrice(array) {
     // SETA UM ARRAY COM OS VALORES EM FORMATO NUMERICO
     let values = [];
-    array.forEach((p) => {
+    array.forEach(function (p) {
       let value = Number(
         p.innerText.replace("R$", "").replace(",", ".").trim()
       );
@@ -142,13 +144,16 @@ window.addEventListener("load", function () {
     });
 
     // CALCULA A MEDIA DESSE ARRAY
-    let media = values.reduce((a, b) => a + b) / values.length;
+    let media =
+      values.reduce(function (a, b) {
+        return a + b;
+      }) / values.length;
     media = media.toFixed(2);
 
     console.log("Função addColorsByPrice OK: " + media);
 
     // COMPARA OS VALORES COM A MEDIA E DEFINE A CLASSE
-    array.forEach((p) => {
+    array.forEach(function (p) {
       let n = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
 
       if (n > media * 1.01) {
@@ -163,14 +168,14 @@ window.addEventListener("load", function () {
 
   function hoverHeart() {
     for (let i = 0; i < hearts.length; i++) {
-      hearts[i].addEventListener("mouseover", (e) => {
+      hearts[i].addEventListener("mouseover", function (e) {
         hearts[i].classList.add("fas", "hover-change");
         hearts[i].classList.remove("far");
       });
     }
 
     for (let i = 0; i < hearts.length; i++) {
-      hearts[i].addEventListener("mouseleave", (e) => {
+      hearts[i].addEventListener("mouseleave", function (e) {
         if (hearts[i].classList.contains("hover-change")) {
           hearts[i].classList.add("far");
           hearts[i].classList.remove("fas", "hover-change");
@@ -234,7 +239,7 @@ window.addEventListener("load", function () {
   }
 
   function controlarSelect(select) {
-    select.addEventListener("change", (e) => {
+    select.addEventListener("change", function (e) {
       if (e.target.value == "precoMenor") {
         li.sort(porPrecoMenor);
 
@@ -259,10 +264,10 @@ window.addEventListener("load", function () {
   formatarDatas(dates);
   hoverHeart();
   addColorsByPrice(prices);
-  atualizarDistancias();
+  atualizarDistancias(li);
 });
 
-setTimeout(() => {
+setTimeout(function () {
   const postosFiltrados = li.filter(filtrarPostos);
   mostrarLista(postosFiltrados);
-}, 2000);
+}, 2500);
