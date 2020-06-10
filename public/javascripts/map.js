@@ -32,7 +32,7 @@ function renderMap(latitude, longitude) {
   // }
 
   var request = new XMLHttpRequest();
-  let postos = { type: "FeatureCollection", features: [] };
+  const postos = { type: "FeatureCollection", features: [] };
   request.open(
     "GET",
     `http://localhost:3000/posto/index?latP=${latitude}&longP=${longitude}`,
@@ -50,6 +50,7 @@ function renderMap(latitude, longitude) {
             coordinates: [posto.longitude, posto.latitude],
           },
           properties: {
+            id: posto.id,
             name: posto.nome,
             address: posto.endereco,
             city: posto.cidade,
@@ -72,9 +73,6 @@ function renderMap(latitude, longitude) {
   };
   request.send();
 
-  // console.log(latitude);
-  // console.log(longitude);
-
   var map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/light-v10",
@@ -82,9 +80,9 @@ function renderMap(latitude, longitude) {
     zoom: 15, //starting zoom
   });
 
-  postos.features.forEach(function (posto, i) {
-    posto.properties.id = i;
-  });
+  // postos.features.forEach(function (posto, i) {
+  //   posto.properties.id = i;
+  // });
 
   map.loadImage("../images/icone-semfundo.png", function (error0, image0) {
     if (error0) throw error0;
@@ -131,14 +129,13 @@ function renderMap(latitude, longitude) {
    **/
   map.on("click", function (e) {
     /* Query the map to determine if a feature in the "locations" layer exists at that point. */
-    var features = map.queryRenderedFeatures(e.point, {
+    const features = map.queryRenderedFeatures(e.point, {
       layers: ["locations"],
     });
 
     /* If yes, then: */
     if (features.length) {
-      var clickedPoint = features[0];
-
+      const clickedPoint = features[0];
       /* Fly to the point */
       flyToStore(clickedPoint);
 
@@ -146,54 +143,41 @@ function renderMap(latitude, longitude) {
       createPopUp(clickedPoint);
 
       /* Highlight listing in sidebar (and remove highlight for all other listings) */
-      var activeItem = document.getElementsByClassName("active");
+      const activeItem = document.getElementsByClassName("active-posto");
       if (activeItem[0]) {
-        activeItem[0].classList.remove("active");
+        activeItem[0].classList.remove("active-posto");
       }
-      var listing = document.getElementById(
+      const listing = document.getElementById(
         "listing-" + clickedPoint.properties.id
       );
-      listing.classList.add("active");
+      listing.classList.add("active-posto");
     }
   });
 
   /**
    * Add a listing for each store to the sidebar.
    **/
-  function buildLocationList(data) {
-    data.features.forEach(function (store, i) {
+  function buildLocationList(postos) {
+    postos.features.forEach(function (posto, i) {
       /**
-       * Create a shortcut for `store.properties`,
+       * Create a shortcut for `posto.properties`,
        * which will be used several times below.
        **/
-      var prop = store.properties;
+      const prop = posto.properties;
 
       /* Add a new listing section to the sidebar. */
-      var listings = document.getElementById("listings");
-      var listing = listings.appendChild(document.createElement("div"));
-      /* Assign a unique `id` to the listing. */
-      listing.id = "listing-" + data.features[i].properties.id;
-      /* Assign the `item` class to each listing for styling. */
-      listing.className = "item";
+      // var listings = document.querySelector("listings");
+      var listing = document.getElementById(
+        "listing-" + postos.features[i].properties.id
+      );
 
       /* Add the link to the individual listing created above. */
-      var link = listing.appendChild(document.createElement("a"));
-      link.href = "#";
-      link.className = "title";
+      var link =
+        listing.firstElementChild.firstElementChild.lastElementChild
+          .lastElementChild.children[3];
       link.dataPosition = i;
-      link.innerHTML = prop.address;
-
-      /* Add details to the individual listing. */
-      var details = listing.appendChild(document.createElement("div"));
-      details.innerHTML = prop.city;
-      if (prop.phone) {
-        details.innerHTML += " &middot; " + prop.phoneFormatted;
-      }
-      if (prop.distance) {
-        var roundedDistance = Math.round(prop.distance * 100) / 100;
-        details.innerHTML +=
-          "<p><strong>" + roundedDistance + " miles away</strong></p>";
-      }
+      link.href = "#";
+      link.classList.add("endereco");
 
       /**
        * Listen to the element and when it is clicked, do four things:
@@ -203,14 +187,19 @@ function renderMap(latitude, longitude) {
        * 4. Highlight listing in sidebar (and remove highlight for all other listings)
        **/
       link.addEventListener("click", function (e) {
-        var clickedListing = data.features[this.dataPosition];
+        var clickedListing = postos.features[this.dataPosition];
+
         flyToStore(clickedListing);
         createPopUp(clickedListing);
-        var activeItem = document.getElementsByClassName("active");
+        var activeItem = document.getElementsByClassName("active-posto");
         if (activeItem[0]) {
-          activeItem[0].classList.remove("active");
+          activeItem[0].classList.remove("active-posto");
         }
-        this.parentNode.classList.add("active");
+        this.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add(
+          "active-posto"
+        );
+
+        document.getElementById("sidebar").classList.add("d-none");
       });
     });
   }

@@ -209,7 +209,7 @@
     </div>
     <ol class="posto mb-5">
       <% for( const posto of postos ) { %>
-      <li class="posto-item">
+      <li id="listing-<%=posto.id%>" class="posto-item">
         <div class="container grey">
           <div class="part1">
             <div class="likes my-2 h6">
@@ -368,10 +368,10 @@
                     <%=posto.nome%>
                   </strong>
                 </p>
-                <p>
+                <a>
                   <%= posto.endereco %>, <%= posto.bairro %>, <%= posto.cidade
                     %>-<%= posto.estado %> - <%=posto.cep%>
-                </p>
+                </a>
               </div>
             </div>
           </div>
