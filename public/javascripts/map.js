@@ -4,7 +4,7 @@
 // }
 var latitude;
 var longitude;
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   navigator.geolocation.getCurrentPosition(
     function (pos) {
       latitude = pos.coords.latitude;
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     function () {
       alert(
-        "Ooops, precisamos de sua localização para mostrar os postos próximos"
+        'Ooops, precisamos de sua localização para mostrar os postos próximos'
       );
     }
   );
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function renderMap(latitude, longitude) {
   mapboxgl.accessToken =
-    "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
+    'pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg';
 
   // let params = new URLSearchParams(document.location.search.substring(1));
 
@@ -32,9 +32,9 @@ function renderMap(latitude, longitude) {
   // }
 
   var request = new XMLHttpRequest();
-  const postos = { type: "FeatureCollection", features: [] };
+  const postos = { type: 'FeatureCollection', features: [] };
   request.open(
-    "GET",
+    'GET',
     `http://localhost:3000/posto/index?latP=${latitude}&longP=${longitude}`,
     true
   );
@@ -44,9 +44,9 @@ function renderMap(latitude, longitude) {
     if (request.status >= 200 && request.status < 400) {
       data.forEach(function (posto) {
         let novoPosto = {
-          type: "Feature",
+          type: 'Feature',
           geometry: {
-            type: "Point",
+            type: 'Point',
             coordinates: [posto.longitude, posto.latitude],
           },
           properties: {
@@ -54,14 +54,14 @@ function renderMap(latitude, longitude) {
             name: posto.nome,
             address: posto.endereco,
             city: posto.cidade,
-            country: "Brasil",
+            country: 'Brasil',
             postalCode: posto.cep,
             state: posto.estado,
             bandeira: posto.bandeira,
             produto: posto.produtos[0].nome,
             preco: posto.produtos[0].postos_produtos.preco
-              .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-              .replace(".", ","),
+              .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+              .replace('.', ','),
           },
         };
 
@@ -74,8 +74,8 @@ function renderMap(latitude, longitude) {
   request.send();
 
   var map = new mapboxgl.Map({
-    container: "map",
-    style: "mapbox://styles/mapbox/light-v10",
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10',
     center: [longitude, latitude], //starting position
     zoom: 15, //starting zoom
   });
@@ -84,30 +84,30 @@ function renderMap(latitude, longitude) {
   //   posto.properties.id = i;
   // });
 
-  map.loadImage("../images/icone-semfundo.png", function (error0, image0) {
+  map.loadImage('../images/icone-semfundo.png', function (error0, image0) {
     if (error0) throw error0;
-    map.addImage("icon-map", image0, {
-      sdf: "true",
+    map.addImage('icon-map', image0, {
+      sdf: 'true',
     });
   });
 
-  map.on("load", function (e) {
+  map.on('load', function (e) {
     /* Add the data to your map as a layer */
     map.addLayer({
-      id: "locations",
-      type: "symbol",
+      id: 'locations',
+      type: 'symbol',
       /* Add a GeoJSON source containing place coordinates and information. */
       source: {
-        type: "geojson",
+        type: 'geojson',
         data: postos,
       },
       layout: {
-        "icon-image": "icon-map",
-        "icon-size": 0.3,
-        "icon-allow-overlap": true,
+        'icon-image': 'icon-map',
+        'icon-size': 0.3,
+        'icon-allow-overlap': true,
       },
       paint: {
-        "icon-color": "#e14242",
+        'icon-color': '#e14242',
       },
     });
     /**
@@ -127,10 +127,10 @@ function renderMap(latitude, longitude) {
    *   b. Close all other popups and display popup for clicked store
    *   c. Highlight listing in sidebar (and remove highlight for all other listings)
    **/
-  map.on("click", function (e) {
+  map.on('click', function (e) {
     /* Query the map to determine if a feature in the "locations" layer exists at that point. */
     const features = map.queryRenderedFeatures(e.point, {
-      layers: ["locations"],
+      layers: ['locations'],
     });
 
     /* If yes, then: */
@@ -143,14 +143,14 @@ function renderMap(latitude, longitude) {
       createPopUp(clickedPoint);
 
       /* Highlight listing in sidebar (and remove highlight for all other listings) */
-      const activeItem = document.getElementsByClassName("active-posto");
+      const activeItem = document.getElementsByClassName('active-posto');
       if (activeItem[0]) {
-        activeItem[0].classList.remove("active-posto");
+        activeItem[0].classList.remove('active-posto');
       }
       const listing = document.getElementById(
-        "listing-" + clickedPoint.properties.id
+        'listing-' + clickedPoint.properties.id
       );
-      listing.classList.add("active-posto");
+      listing.classList.add('active-posto');
     }
   });
 
@@ -168,7 +168,7 @@ function renderMap(latitude, longitude) {
       /* Add a new listing section to the sidebar. */
       // var listings = document.querySelector("listings");
       var listing = document.getElementById(
-        "listing-" + postos.features[i].properties.id
+        'listing-' + postos.features[i].properties.id
       );
 
       /* Add the link to the individual listing created above. */
@@ -176,8 +176,8 @@ function renderMap(latitude, longitude) {
         listing.firstElementChild.firstElementChild.lastElementChild
           .lastElementChild.children[3];
       link.dataPosition = i;
-      link.href = "#";
-      link.classList.add("endereco");
+      link.href = '#';
+      link.classList.add('endereco');
 
       /**
        * Listen to the element and when it is clicked, do four things:
@@ -186,20 +186,20 @@ function renderMap(latitude, longitude) {
        * 3. Close all other popups and display popup for clicked store
        * 4. Highlight listing in sidebar (and remove highlight for all other listings)
        **/
-      link.addEventListener("click", function (e) {
+      link.addEventListener('click', function (e) {
         var clickedListing = postos.features[this.dataPosition];
 
         flyToStore(clickedListing);
         createPopUp(clickedListing);
-        var activeItem = document.getElementsByClassName("active-posto");
+        var activeItem = document.getElementsByClassName('active-posto');
         if (activeItem[0]) {
-          activeItem[0].classList.remove("active-posto");
+          activeItem[0].classList.remove('active-posto');
         }
         this.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add(
-          "active-posto"
+          'active-posto'
         );
 
-        document.getElementById("sidebar").classList.add("d-none");
+        document.getElementById('sidebar').classList.add('d-none');
       });
     });
   }
@@ -219,7 +219,7 @@ function renderMap(latitude, longitude) {
    * Create a Mapbox GL JS `Popup`.
    **/
   function createPopUp(currentFeature) {
-    var popUps = document.getElementsByClassName("mapboxgl-popup");
+    var popUps = document.getElementsByClassName('mapboxgl-popup');
     if (popUps[0]) popUps[0].remove();
 
     var popup = new mapboxgl.Popup({ closeOnClick: false })
@@ -228,33 +228,33 @@ function renderMap(latitude, longitude) {
         "<div class='d-flex'><div class='img-popup'> <img src='/images/" +
         currentFeature.properties.bandeira
           .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(" distribuidora s.a.", "") +
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(' distribuidora s.a.', '') +
         ".png'> </div> <div class='info-popup'>" +
-        "<h6>" +
+        '<h6>' +
         currentFeature.properties.bandeira +
-        "</h6>" +
-        "<p>" +
+        '</h6>' +
+        '<p>' +
         currentFeature.properties.address +
-        "</p> <strong>" +
+        '</p> <strong>' +
         currentFeature.properties.produto +
-        "&mdash;" +
+        '&mdash;' +
         currentFeature.properties.preco +
-        "</strong> <br>" +
+        '</strong> <br>' +
         //       '<a class="btn btn-success" href="geo:' +
         '<a class="btn btn-success" href="https://www.google.com/maps/@' +
         currentFeature.geometry.coordinates[1] +
-        "," +
+        ',' +
         currentFeature.geometry.coordinates[0] +
-        ",17z" + //Comentar essa linha se utilizar o geo:
+        ',17z' + //Comentar essa linha se utilizar o geo:
           '"target="_blank">Ir</a> </div> </div>' // Alterar para _system se utilizar o geo
       )
       .addTo(map);
   }
 
   // Add zoom and rotation controls to the map.
-  map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
+  map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
   map.addControl(
     new mapboxgl.GeolocateControl({
@@ -263,16 +263,16 @@ function renderMap(latitude, longitude) {
       },
       trackUserLocation: true,
     }),
-    "bottom-right"
+    'bottom-right'
   );
 
   var geocoder = new MapboxGeocoder({
     // Initialize the geocoder
     accessToken: mapboxgl.accessToken, // Set the access token
-    country: "br",
-    language: "pt",
+    country: 'br',
+    language: 'pt',
     limit: 3,
-    placeholder: "Procure por postos na sua região",
+    placeholder: 'Procure por postos na sua região',
     bbox: [
       -73.77493776908774,
       -32.98057295306361,
@@ -288,7 +288,7 @@ function renderMap(latitude, longitude) {
   });
 
   // Add the geocoder to the map
-  map.addControl(geocoder, "top-left");
+  map.addControl(geocoder, 'top-left');
 
   // var directions = new MapboxDirections({
   //   accessToken: mapboxgl.accessToken,

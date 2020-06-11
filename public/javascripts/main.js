@@ -1,14 +1,14 @@
-const select = document.querySelector("#classificar");
-const li = Array.from(document.querySelectorAll(".posto-item"));
-const hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
-const prices = Array.from(document.querySelectorAll("a.price"));
-const dates = Array.from(document.querySelectorAll("p.date"));
+const select = document.querySelector('#classificar');
+const li = Array.from(document.querySelectorAll('.posto-item'));
+const hearts = Array.from(document.querySelectorAll('.far.fa-heart'));
+const prices = Array.from(document.querySelectorAll('a.price'));
+const dates = Array.from(document.querySelectorAll('p.date'));
 
 function mostrarLista(array) {
-  console.log("executado");
+  console.log('executado');
 
   let ol = array[0].parentNode;
-  ol.innerHTML = "";
+  ol.innerHTML = '';
   array.forEach(function (a) {
     ol.appendChild(a);
   });
@@ -70,14 +70,14 @@ function atualizarDistancias(li) {
   }
 }
 
-window.addEventListener("load", function () {
+window.addEventListener('load', function () {
   function dataAtualFormatada(data) {
     (dia = data.getDate().toString()),
-      (diaF = dia.length == 1 ? "0" + dia : dia),
+      (diaF = dia.length == 1 ? '0' + dia : dia),
       (mes = (data.getMonth() + 1).toString()), //+1 pois no getMonth Janeiro começa com zero.
-      (mesF = mes.length == 1 ? "0" + mes : mes),
+      (mesF = mes.length == 1 ? '0' + mes : mes),
       (anoF = data.getFullYear());
-    return diaF + "/" + mesF + "/" + anoF;
+    return diaF + '/' + mesF + '/' + anoF;
   }
 
   function formatarDatas(datas) {
@@ -103,32 +103,32 @@ window.addEventListener("load", function () {
       let ontemFormatado = dataAtualFormatada(ontem);
 
       if (hojeFormatado == dataFormatada) {
-        date.innerText = "Hoje";
+        date.innerText = 'Hoje';
       } else if (ontemFormatado == dataFormatada) {
-        date.innerText = "Ontem";
+        date.innerText = 'Ontem';
       } else if (
         data.setDate(data.getDate()) < ontem &&
         data.setDate(data.getDate()) > haUmaSemana
       ) {
-        date.innerText = "Esta semana";
+        date.innerText = 'Esta semana';
       } else if (
         data.setDate(data.getDate()) < haUmaSemana &&
         data.setDate(data.getDate()) > duasSemanas
       ) {
-        date.innerText = "Semana passada";
+        date.innerText = 'Semana passada';
       } else if (
         data.setDate(data.getDate()) < duasSemanas &&
         data.setDate(data.getDate()) > haUmMes
       ) {
-        date.innerText = "Este mês";
+        date.innerText = 'Este mês';
       } else {
         date.innerText = dataFormatada;
-        date.setAttribute("data-toggle", "tooltip");
+        date.setAttribute('data-toggle', 'tooltip');
         date.setAttribute(
-          "title",
-          "O preço desse posto não é atualizado há mais de 1 mês Ajude a manter os preços atualizados, clique no preço e corrija agora mesmo!"
+          'title',
+          'O preço desse posto não é atualizado há mais de 1 mês Ajude a manter os preços atualizados, clique no preço e corrija agora mesmo!'
         );
-        date.setAttribute("data-placement", "auto");
+        date.setAttribute('data-placement', 'auto');
       }
     });
   }
@@ -138,7 +138,7 @@ window.addEventListener("load", function () {
     let values = [];
     array.forEach(function (p) {
       let value = Number(
-        p.innerText.replace("R$", "").replace(",", ".").trim()
+        p.innerText.replace('R$', '').replace(',', '.').trim()
       );
       values.push(value);
     });
@@ -150,35 +150,35 @@ window.addEventListener("load", function () {
       }) / values.length;
     media = media.toFixed(2);
 
-    console.log("Função addColorsByPrice OK: " + media);
+    console.log('Função addColorsByPrice OK: ' + media);
 
     // COMPARA OS VALORES COM A MEDIA E DEFINE A CLASSE
     array.forEach(function (p) {
-      let n = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
+      let n = Number(p.innerText.replace('R$', '').replace(',', '.').trim());
 
       if (n > media * 1.01) {
-        p.classList.add("high");
+        p.classList.add('high');
       } else if (n < media * 0.99) {
-        p.classList.add("low");
+        p.classList.add('low');
       } else {
-        p.classList.add("med");
+        p.classList.add('med');
       }
     });
   }
 
   function hoverHeart() {
     for (let i = 0; i < hearts.length; i++) {
-      hearts[i].addEventListener("mouseover", function (e) {
-        hearts[i].classList.add("fas", "hover-change");
-        hearts[i].classList.remove("far");
+      hearts[i].addEventListener('mouseover', function (e) {
+        hearts[i].classList.add('fas', 'hover-change');
+        hearts[i].classList.remove('far');
       });
     }
 
     for (let i = 0; i < hearts.length; i++) {
-      hearts[i].addEventListener("mouseleave", function (e) {
-        if (hearts[i].classList.contains("hover-change")) {
-          hearts[i].classList.add("far");
-          hearts[i].classList.remove("fas", "hover-change");
+      hearts[i].addEventListener('mouseleave', function (e) {
+        if (hearts[i].classList.contains('hover-change')) {
+          hearts[i].classList.add('far');
+          hearts[i].classList.remove('fas', 'hover-change');
         }
       });
     }
@@ -188,14 +188,14 @@ window.addEventListener("load", function () {
     return (
       Number(
         a.firstElementChild.lastElementChild.children[2].children[4].innerText
-          .replace("R$", "")
-          .replace(",", ".")
+          .replace('R$', '')
+          .replace(',', '.')
           .trim()
       ) -
       Number(
         b.firstElementChild.lastElementChild.children[2].children[4].innerText
-          .replace("R$", "")
-          .replace(",", ".")
+          .replace('R$', '')
+          .replace(',', '.')
           .trim()
       )
     );
@@ -205,12 +205,12 @@ window.addEventListener("load", function () {
     return (
       Number(
         b.firstElementChild.firstElementChild.children[0].children[1].innerText
-          .replace("likes", "")
+          .replace('likes', '')
           .trim()
       ) -
       Number(
         a.firstElementChild.firstElementChild.children[0].children[1].innerText
-          .replace("likes", "")
+          .replace('likes', '')
           .trim()
       )
     );
@@ -239,16 +239,16 @@ window.addEventListener("load", function () {
   }
 
   function controlarSelect(select) {
-    select.addEventListener("change", function (e) {
-      if (e.target.value == "precoMenor") {
+    select.addEventListener('change', function (e) {
+      if (e.target.value == 'precoMenor') {
         li.sort(porPrecoMenor);
 
         mostrarLista(li);
-      } else if (e.target.value == "maisCurtidas") {
+      } else if (e.target.value == 'maisCurtidas') {
         li.sort(porLikes);
 
         mostrarLista(li);
-      } else if (e.target.value == "melhorNota") {
+      } else if (e.target.value == 'melhorNota') {
         li.sort(porNota);
 
         mostrarLista(li);
@@ -264,7 +264,7 @@ window.addEventListener("load", function () {
   formatarDatas(dates);
   hoverHeart();
   addColorsByPrice(prices);
-  atualizarDistancias(li);
+  //  atualizarDistancias(li);
 });
 
 setTimeout(function () {
