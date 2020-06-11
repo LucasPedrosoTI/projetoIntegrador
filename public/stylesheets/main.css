@@ -408,6 +408,13 @@ li {
   text-shadow: none;
 }
 
+.nomeComEndereço a.posto-nome {
+  color: #000000;
+  text-shadow: none;
+  font-weight: bold;
+  display: block;
+}
+
 .part2 {
   display: flex;
   flex-direction: column;
