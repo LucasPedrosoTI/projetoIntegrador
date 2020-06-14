@@ -215,23 +215,25 @@ window.addEventListener("load", function () {
   }
 
   function controlarSelect(select) {
+    const postosFiltrados = li.filter(filtrarPostos);
+
     select.addEventListener("change", function (e) {
       if (e.target.value == "precoMenor") {
-        li.sort(porPrecoMenor);
+        postosFiltrados.sort(porPrecoMenor);
 
-        mostrarLista(li);
+        mostrarLista(postosFiltrados);
       } else if (e.target.value == "maisCurtidas") {
-        li.sort(porLikes);
+        postosFiltrados.sort(porLikes);
 
-        mostrarLista(li);
+        mostrarLista(postosFiltrados);
       } else if (e.target.value == "melhorNota") {
-        li.sort(porNota);
+        postosFiltrados.sort(porNota);
 
-        mostrarLista(li);
+        mostrarLista(postosFiltrados);
       } else {
-        li.sort(porMenorDistancia);
+        postosFiltrados.sort(porMenorDistancia);
 
-        mostrarLista(li);
+        mostrarLista(postosFiltrados);
       }
     });
   }
@@ -273,7 +275,19 @@ const interval = setInterval(() => {
   }
 }, 500);
 
+function submeterAvaliacao(arrayDeButtons) {
+  for (let i = 0; i < arrayDeButtons.length; i++) {
+    arrayDeButtons[i].addEventListener("click", function () {
+      let formSubmit = document.querySelectorAll("form[id|=form-posto]")[i];
+
+      formSubmit.submit();
+    });
+  }
+}
+
 document.getElementById("bars").addEventListener("click", function () {
   const postosFiltrados = li.filter(filtrarPostos);
   mostrarLista(postosFiltrados);
+  const btns = Array.from(document.querySelectorAll(".salvar-form"));
+  submeterAvaliacao(btns);
 });

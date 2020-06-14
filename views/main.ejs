@@ -74,6 +74,11 @@
           <i class="far fa-user"></i>
           <%= USUARIO.nome %>
         </a>
+        <% } else if (POSTO) { %>
+        <a class="nav-link mr-3" id="dashboard" href="/posto/dashboard">
+          <i class="fas fa-gas-pump"></i>
+          <%= POSTO.nome_proprietario %>
+        </a>
         <% } else { %>
         <button type="button" id="entrar" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
           Entrar

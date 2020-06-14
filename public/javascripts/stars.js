@@ -1,9 +1,3 @@
-function isTouchScreendevice() {
-  return "ontouchstart" in window || navigator.maxTouchPoints;
-}
-
-const btns = Array.from(document.querySelectorAll(".salvar-form"));
-
 // Listen for form submissions
 document.addEventListener(
   "submit",
@@ -17,7 +11,7 @@ document.addEventListener(
     // Get the selected star
     var selected = document.activeElement;
 
-    console.log(selected);
+    // console.log(selected);
 
     if (!selected) return;
     var selectedIndex = parseInt(selected.getAttribute("data-star"), 10);
@@ -97,12 +91,8 @@ var highlight = function (event) {
 
 // Listen for hover and focus events on stars
 
-if (!isTouchScreendevice()) {
-  document.addEventListener("mouseover", highlight, false);
-  document.addEventListener("focus", highlight, true);
-}
-
-document.addEventListener("touchstart", highlight, true);
+document.addEventListener("mouseover", highlight, false);
+document.addEventListener("focus", highlight, true);
 
 // Reset highlighting after hover or focus
 var resetSelected = function (event) {
@@ -136,16 +126,6 @@ var resetSelected = function (event) {
 };
 
 // Reset selected on mouse off and blur
-if (!isTouchScreendevice()) {
-  document.addEventListener("mouseleave", resetSelected, true);
-  document.addEventListener("blur", resetSelected, true);
-}
-document.addEventListener("touchend", resetSelected, true);
 
-// ******************** SUBMETER FORM COM JS ********************
-
-for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function (e) {
-    document.querySelectorAll("form[id|=form-posto]")[i].submit();
-  });
-}
+document.addEventListener("mouseleave", resetSelected, true);
+document.addEventListener("blur", resetSelected, true);
