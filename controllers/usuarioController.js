@@ -39,6 +39,8 @@ module.exports = {
         senha: hash,
       });
 
+      user.senha = undefined;
+
       req.session.usuario = user;
 
       return res.redirect("/usuario/dashboard");
@@ -59,6 +61,8 @@ module.exports = {
       if (!user) {
         return res.render("login", { error: "Usuário/Senha inválido" });
       }
+
+      user.senha = undefined;
 
       req.session.usuario = user;
 
@@ -128,16 +132,16 @@ module.exports = {
     }
   },
   alterarSenha: async (req, res) => {
-    const { senha, novaSenha, confirmarSenha } = req.body;
+    const { senha, novaSenha } = req.body;
     const { id } = req.session.usuario;
-    let novaSenha2 = bcrypt.hashSync(novaSenha, 10);
+    const hash = bcrypt.hashSync(novaSenha, 10);
     try {
       const user = await Usuario.findByPk(id);
       if (!bcrypt.compareSync(senha, user.senha)) {
         return res.render("dashboard-usuario", { msg: "Senha inválida" });
       }
       await user.update({
-        senha: novaSenha2,
+        senha: hash,
       });
       res.cookie("logado", user.email, { maxAge: 3600000 });
       res.render("dashboard-usuario", {

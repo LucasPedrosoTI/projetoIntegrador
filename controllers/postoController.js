@@ -124,7 +124,7 @@ module.exports = {
       },
       // include: {
       //   association: "posto",
-      //   include: "servicos",
+      //   include: "anuncios",
       // },
     });
 
@@ -148,7 +148,7 @@ module.exports = {
       res.cookie("postoLogado", user.email, { maxAge: 3600000 });
     }
 
-    // return res.json(user);
+    return res.json(user);
     res.redirect("/posto/dashboard");
   },
   logout: (req, res) => {

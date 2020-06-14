@@ -15,6 +15,10 @@ module.exports = {
         onUpdate: "NO ACTION",
         onDelete: "NO ACTION",
       },
+      tipo_de_pagamento: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       created_date: {
         allowNull: false,
         type: Sequelize.DATE,
