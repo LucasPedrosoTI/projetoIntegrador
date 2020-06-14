@@ -1,7 +1,12 @@
-const { Posto, postos_produtos } = require("../models");
+const { Posto, postos_produtos, Usuario_Posto } = require("../models");
 const opencage = require("opencage-api-client");
 const { calcularDistancia } = require("../lib/utils.js");
+const bcrypt = require("bcrypt");
+
 module.exports = {
+  dashboardEmpresa: (req, res) => {
+    res.render("dashboard-empresa");
+  },
   index: async (req, res) => {
     const { latP, longP } = req.query;
 
@@ -22,11 +27,7 @@ module.exports = {
       );
     }
 
-    function filtrarPostos(posto) {
-      return Number(posto.distancia) < 10;
-    }
-
-    const postosFiltrados = postos.filter(filtrarPostos);
+    const postosFiltrados = postos.filter((posto) => posto.distancia < 10);
 
     res.json(postosFiltrados);
   },
@@ -111,5 +112,48 @@ module.exports = {
     ]);
 
     res.redirect("/main");
+  },
+  logar: async (req, res) => {
+    // pegar info do body
+    let { email, senha, logado } = req.body;
+
+    // tentar carregar user
+    let user = await Usuario_Posto.findOne({
+      where: {
+        email,
+      },
+      // include: {
+      //   association: "posto",
+      //   include: "servicos",
+      // },
+    });
+
+    //verificar se existe o user
+    if (!user) {
+      return res.render("login", { error: "Usuário/Senha inválido" });
+    }
+
+    // validar senha passada
+    if (!bcrypt.compareSync(senha, user.senha)) {
+      // return res.send("sucesso");
+      return res.render("login", { error: "Usuário/Senha inválido" }); //senha ou email invalidos
+    }
+    //setar session
+
+    user.senha = undefined;
+
+    req.session.posto = user;
+
+    if (logado != undefined) {
+      res.cookie("postoLogado", user.email, { maxAge: 3600000 });
+    }
+
+    // return res.json(user);
+    res.redirect("/posto/dashboard");
+  },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.clearCookie("postoLogado");
+    res.redirect("/login");
   },
 };

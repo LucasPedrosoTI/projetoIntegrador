@@ -5,173 +5,172 @@
       </h1>
     </div>
     <div class="panel-body">
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="Nome">Nome do Proprietário<h11>*</h11></label>
-        <div class="col-md-8">
-          <input id="Nome" name="Nome" placeholder="Digite seu nome" class="form-control input-md" required=""
-            type="text" />
-        </div>
-      </div>
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="NomePosto">Nome do Posto<h11>*</h11></label>
-        <div class="col-md-8">
-          <input id="NomePosto" name="NomePosto" placeholder="Digite o nome do posto" class="form-control input-md"
-            required="" type="text" />
-        </div>
-      </div>
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="cnpj">CNPJ<h11>*</h11></label>
-        <div class="col-md-4">
-          <input id="cnpj" name="cnpj" placeholder="Apenas números" class="form-control input-md" required=""
-            type="text" maxlength="14" pattern="" />
+      <form action="" method="post">
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="Nome">Nome do Proprietário<h11>*</h11></label>
+          <div class="col-md-8">
+            <input id="Nome" name="nome" placeholder="Digite seu nome" class="form-control input-md" required
+              type="text" />
+          </div>
         </div>
         <!-- Prepended text-->
-        <br \>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="prependedtext">Telefone do Posto<h11>*</h11></label>
-          <div class="col-md-4">
+          <label class="col-md-4 control-label" for="email">Email <h11>*</h11></label>
+          <div class="col-md-5">
             <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-              <input id="prependedtext" name="prependedtext" class="form-control" placeholder="XX XXXXX-XXXX"
-                required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                OnKeyPress="formatar('## #####-####', this)" />
+              <input id="email" name="email" class="form-control" placeholder="email@email.com" required type="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
             </div>
           </div>
-          <br \>
-          <!-- Prepended text-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="prependedtext">Email <h11>*</h11></label>
-            <div class="col-md-5">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                <input id="prependedtext" name="prependedtext" class="form-control" placeholder="email@email.com"
-                  required="" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
-              </div>
-            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="cnpj">CNPJ<h11>*</h11></label>
+          <div class="col-md-4">
+            <input id="cnpj" name="cnpj" placeholder="Apenas números" class="form-control input-md" required=""
+              type="text" maxlength="14" pattern="[0-9]" onblur="pesquisaCnpj(this.value);" />
           </div>
+
+
           <!-- Password input -->
-          <div class="form-group">
+          <div class="form-group mt-3">
             <label class="col-md-4 control-label" for="senha">Senha: <h11>*</h11></label>
             <div class="col-md-5">
               <div class="input-group">
-                <input id="senha" name="senha" class="form-control" placeholder="8 dígitos" required=""
-                  type="password" />
+                <input id="senha" name="senha" class="form-control" placeholder="8 dígitos" required type="password" />
               </div>
             </div>
           </div>
+          <%#
+                   <!-- Text input-->
+                   <div class="form-group">
+                    <label class="col-md-4 control-label" for="nomePosto">Nome do Posto<h11>*</h11></label>
+                    <div class="col-md-8">
+                      <input id="nomePosto" name="nomePosto" placeholder="Digite o nome do posto" class="form-control input-md"
+                        required type="text" />
+                    </div>
+                  </div>
+
+
           <!-- Search input-->
           <div class="form-group">
             <label class="col-md-4 control-label" for="CEP">CEP <h11>*</h11></label>
             <div class="col-md-4">
-              <input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md" required="" value=""
-                type="search" maxlength="8" pattern="[0-9]+$" />
+              <input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md" required type="text"
+                maxlength="8" pattern="[0-9]+$" />
             </div>
             <br \>
             <!-- Prepended text-->
-            <form>
+
+            <div class="form-row col-md-12">
               <div class="form-group col-md-6">
-                <label for="inputAddress">Endereço</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Rua dos Bobos, nº 0">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" id="endereco" placeholder="Endereço">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputAddress2">Complemento</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, hotel, casa, etc.">
-              </div>
-              <div class="form-row col-md-6">
-                <div class="form-group col-md-6">
-                  <label for="inputCity">Cidade</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputEstado">Estado</label>
-                  <select id="inputEstado" class="form-control">
-                    <option selected>Escolher...</option>
-                    <option>AC</option>
-                    <option>AL</option>
-                    <option>AM</option>
-                    <option>AP</option>
-                    <option>BA</option>
-                    <option>CE</option>
-                    <option>DF</option>
-                    <option>ES</option>
-                    <option>GO</option>
-                    <option>MA</option>
-                    <option>MG</option>
-                    <option>MS</option>
-                    <option>MT</option>
-                    <option>PA</option>
-                    <option>PE</option>
-                    <option>PB</option>
-                    <option>PI</option>
-                    <option>PR</option>
-                    <option>RJ</option>
-                    <option>RN</option>
-                    <option>RO</option>
-                    <option>RR</option>
-                    <option>RS</option>
-                    <option>SC</option>
-                    <option>SE</option>
-                    <option>SP</option>
-                    <option>TO</option>
-                  </select>
-                </div>
-              </div>
-              <label class="col-md-6">O estabelecimento possui serviço(s) adicional(is)?</label>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="bombapneu" id="bombapneu">
-                <label class="form-check-label" for="bombapneu">
-                  Bomba de calibrar pneu
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="lojaConveniencia" id="lojaConveniencia">
-                <label class="form-check-label" for="lojaConveniencia">
-                  Loja de Conveniência
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="restaurante" id="restaurante">
-                <label class="form-check-label" for="restaurante">
-                  Restaurante
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="oficina" id="oficina">
-                <label class="form-check-label" for="oficina">
-                  Oficina Mecânica
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="lavarVeiculo" id="lavarVeiculo">
-                <label class="form-check-label" for="lavarVeiculo">
-                  Lavagem de Veículo
-                </label>
-              </div>
-              <br \>
-              <div class="form-group">
-                <div class="form-check" id="termosDeUso">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                    Li e aceito os termos de uso!
-                  </label>
-                </div>
-              </div>
-            </form>
-            <!-- Button (Double) -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="Cadastrar"></label>
-              <div class="col-md-8">
-                <button id="botao-cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">
-                  Cadastrar
-                </button>
-                <a href="/login" id="cancelar" class="btn btn-outline-danger">
-                  Cancelar
-                </a>
+                <label for="numero">Número</label>
+                <input type="text" class="form-control" id="numero" placeholder="Número">
               </div>
             </div>
+            <div class="form-row col-md-12">
+              <div class="form-group col-md-6">
+                <label for="complemento">Complemento</label>
+                <input type="text" class="form-control" id="complemento" name="complemento"
+                  placeholder="Apartamento, hotel, casa, etc.">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
+              </div>
+            </div>
+            <div class="form-row col-md-12">
+              <div class="form-group col-md-6">
+                <label for="cidade">Cidade</label>
+                <input class="form-control" type="text" name="cidade" id="cidade">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="uf">Estado (UF)</label>
+                <input class="form-control" type="text" name="uf" id="ud">
+              </div>
+            </div> %>
+          <label class="col-md-6">O estabelecimento possui serviço(s) adicional(is)?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="bomba" id="bombapneu">
+            <label class="form-check-label" for="bombapneu">
+              Bomba de calibrar pneu
+            </label>
           </div>
-        </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="conveniencia" id="lojaConveniencia">
+            <label class="form-check-label" for="lojaConveniencia">
+              Loja de Conveniência
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="restaurante" id="restaurante">
+            <label class="form-check-label" for="restaurante">
+              Restaurante
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="lavage" id="lavarVeiculo">
+            <label class="form-check-label" for="lavarVeiculo">
+              Lavagem de Veículo
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="trocaDeOleo" id="trocaDeOleo">
+            <label class="form-check-label" for="trocaDeOleo">
+              Troca de Óleo
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="sanitarios" id="sanitarios">
+            <label class="form-check-label" for="sanitarios">
+              Sanitarios
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="aspirador" id="aspirador">
+            <label class="form-check-label" for="aspirador">
+              Aspirador de Pó
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="estacionamento" id="estacionamento">
+            <label class="form-check-label" for="estacionamento">
+              Estacionamento
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="loterica" id="loterica">
+            <label class="form-check-label" for="loterica">
+              Lotérica
+            </label>
+          </div>
+          <br \>
+          <div class="form-group">
+            <div class="form-check" id="termosDeUso">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Li e aceito os termos de uso!
+              </label>
+            </div>
+          </div>
+
+          <!-- Button (Double) -->
+          <div class="form-group">
+            <div class="col-md-8">
+              <button id="botao-cadastrar" name="Cadastrar" class="btn btn-success" type="submit">
+                Cadastrar
+              </button>
+              <a href="/login" id="cancelar" class="btn btn-outline-danger">
+                Cancelar
+              </a>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
 </fieldset>

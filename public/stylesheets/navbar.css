@@ -55,7 +55,8 @@ ul.navbar-nav li.nav-item {
   font-weight: bold;
 }
 
-#logar {
+#logar,
+#logarPosto {
   font-weight: bold;
   padding: 10px 20px;
   color: #e14242 !important;

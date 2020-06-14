@@ -1,11 +1,5 @@
 const bcrypt = require("bcrypt");
-const {
-  Usuario,
-  Posto,
-  Produto,
-  Avaliacoes,
-  postos_favoritos,
-} = require("../models");
+const { Usuario, Avaliacoes, postos_favoritos } = require("../models");
 const { capitalizeName } = require("../lib/utils");
 
 let active = {

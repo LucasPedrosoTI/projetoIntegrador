@@ -36,7 +36,19 @@
                 </li>
             </ul>
 
-            <% if (USUARIO) { %>
+            <% if (POSTO) { %>
+
+            <form id="logado" class="form-inline my-2 my-lg-0" style="display: flex;">
+                <a class="nav-link mr-3" id="logarPosto" href="/posto/dashboard">
+                    <i class="fas fa-gas-pump"></i>
+                    <%= POSTO.nome_proprietario %>
+                </a>
+                <a href="/posto/logout" class="text-danger d-inline-block">
+                    <i class="fas fa-sign-out-alt text-danger"></i>
+                </a>
+            </form>
+
+            <% } else if (USUARIO) { %>
 
             <form id="logado" class="form-inline my-2 my-lg-0" style="display: flex;">
                 <a class="nav-link mr-3" id="logar" href="/usuario/dashboard">
@@ -47,6 +59,7 @@
                     <i class="fas fa-sign-out-alt text-danger"></i>
                 </a>
             </form>
+
             <% } else { %>
 
 

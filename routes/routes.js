@@ -22,6 +22,4 @@ router.get("/contato", viewController.contato);
 
 router.get("/termosdeuso", viewController.termosdeuso);
 
-router.get("/dashboard-empresa", viewController.dashboardEmpresa);
-
 module.exports = router;

@@ -6,12 +6,23 @@ const logger = require("morgan");
 const session = require("express-session");
 const cookieLogin = require("./middlewares/cookieLogin");
 const methodOverride = require("method-override");
+const cors = require("cors");
 
 const viewRouter = require("./routes/routes");
 const usuarioRouter = require("./routes/usuarioRouter");
 const postoRouter = require("./routes/postoRouter");
 
 const app = express();
+app.use(cors());
+
+app.use((request, response, next) => {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.use("/public/stylesheets/", express.static("./public/stylesheets"));
 app.use("/public/images/", express.static("./public/images"));
@@ -32,9 +43,8 @@ app.use(
 
 // faz com que a session fique disponivel em todas as paginas
 app.use(function (req, res, next) {
+  res.locals.POSTO = req.session.posto;
   res.locals.USUARIO = req.session.usuario;
-  // console.log(res.locals.USUARIO);
-
   res.locals.error = null;
   res.locals.msg = null;
   res.locals.active = {
@@ -42,7 +52,6 @@ app.use(function (req, res, next) {
     favoritos: "",
     avaliacoes: "",
   };
-
   next();
 });
 

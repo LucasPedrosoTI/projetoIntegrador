@@ -54,7 +54,7 @@
                     </form>
                 </div>
                 <div class="tab-pane fade" id="posto" role="tabpanel" aria-labelledby="posto-tab">
-                    <form action="/dashboard-empresa" method="">
+                    <form action="/posto/logar" method="POST">
                         <div class="sign-up-htm">
                             <div class="group">
                                 <label for="email" class="label">E-mail</label>
@@ -65,8 +65,8 @@
                                 <input id="pass" name="senha" type="password" class="input" data-type="password">
                             </div>
                             <div class="group">
-                                <input id="check" type="checkbox" class="check" checked>
-                                <label for="check"><span class="icon"></span> Mantenha-me conectado</label>
+                                <input id="checkUser" type="checkbox" class="check" name="logado" checked>
+                                <label for="checkUser"><span class="icon"></span> Mantenha-me conectado</label>
                             </div>
                             <div class="group">
                                 <input type="submit" class="button" value="Entrar">

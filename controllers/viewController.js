@@ -272,8 +272,4 @@ module.exports = {
   termosdeuso: (req, res) => {
     res.render("termosdeuso");
   },
-
-  dashboardEmpresa: (req, res) => {
-    res.render("dashboard-empresa");
-  },
 };

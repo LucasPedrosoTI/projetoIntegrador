@@ -3,13 +3,17 @@ const router = express.Router();
 const usuarioController = require("../controllers/usuarioController");
 const auth = require("../middlewares/auth");
 
-router.get("/dashboard", auth, usuarioController.dashboardUsuario);
+router.get("/dashboard", auth.user, usuarioController.dashboardUsuario);
 
-router.get("/dashboard/favoritos", auth, usuarioController.verPostosFavoritos);
+router.get(
+  "/dashboard/favoritos",
+  auth.user,
+  usuarioController.verPostosFavoritos
+);
 
 router.get(
   "/dashboard/favoritos/add/:id",
-  auth,
+  auth.user,
   usuarioController.favoritarPosto
 );
 
@@ -18,7 +22,7 @@ router.delete(
   usuarioController.deletarFavorito
 );
 
-router.get("/dashboard/cadastro", auth, usuarioController.verCadastro);
+router.get("/dashboard/cadastro", auth.user, usuarioController.verCadastro);
 
 router.put("/dashboard/cadastro", usuarioController.editar);
 
@@ -26,9 +30,9 @@ router.put("/dashboard/cadastro/alterarsenha", usuarioController.alterarSenha);
 
 router.delete("/dashboard/cadastro/deletar", usuarioController.destroy);
 
-router.get("/dashboard/avaliacoes", auth, usuarioController.verAvaliacoes);
+router.get("/dashboard/avaliacoes", auth.user, usuarioController.verAvaliacoes);
 
-router.get("/avaliacoes/add", auth, usuarioController.criarAvaliacao);
+router.get("/avaliacoes/add", auth.user, usuarioController.criarAvaliacao);
 
 router.put("/dashboard/avaliacoes/editar", usuarioController.editarAvaliacao);
 

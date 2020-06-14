@@ -1,390 +1,396 @@
 <%- include('parts/head', {title: "Dashboard - Meu Posto"}) %>
-    <link rel="stylesheet" href="../public/stylesheets/login.css    ">
-    <link rel="stylesheet" href="/stylesheets/dashboard-empresa.css">
+<link rel="stylesheet" href="../public/stylesheets/login.css    ">
+<link rel="stylesheet" href="/stylesheets/dashboard-empresa.css">
 
-    <header>
-        <%- include('parts/navbar') %>
-    </header>
+<header>
+    <%- include('parts/navbar') %>
+</header>
 
-    <main>
-        <div class="dashboard-container">
-            <aside>
-                <div class="logo-empresa">
-                    <img src="/images/petrobras.png" alt="petrobras">
+<main>
+    <div class="dashboard-container">
+        <aside>
+            <div class="logo-empresa">
+                <img src="/images/petrobras.png" alt="petrobras">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><button class="btn btn-secondary btn-sm btn-block" onclick="mostrarServicos()">Atualizar meus
+                            serviços</button></li>
+                    <li><button class="btn btn-secondary btn-sm btn-block" onclick="mostrarCadastro()">Atualizar
+                            Cadastro</button></li>
+                    <li><button class="btn btn-secondary btn-sm btn-block"
+                            onclick="mostrarPublicidade()">Publicidade</button></li>
+                </ul>
+            </div>
+        </aside>
+        <section id="servicos" class="servicos">
+            <form class="form-servicos" action="">
+
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">troca de óleo</span>
+                        <label for="oil" class="switch">
+                            <input type="checkbox" name="oil" id="oil">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="preco ">
+                        <label for="">R$</label>
+                        <input placeholder="A partir de..." type="number" name="preco-oil" id="preco-oil">
+                    </div>
                 </div>
-                <div class="menu">
-                    <ul>
-                        <li><button class="btn btn-secondary btn-sm btn-block" onclick="mostrarServicos()">Atualizar meus serviços</button></li>
-                        <li><button class="btn btn-secondary btn-sm btn-block" onclick="mostrarCadastro()">Atualizar Cadastro</button></li>
-                        <li><button class="btn btn-secondary btn-sm btn-block" onclick="mostrarPublicidade()">Publicidade</button></li>
-                    </ul>
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">lavagem de veículos</span>
+                        <label for="lavagem" class="switch">
+                            <input type="checkbox" name="lavagem" id="lavagem">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="preco d-none">
+                        <label for="">R$</label>
+                        <input placeholder="A partir de..." type="number" name="preco-lavagem" id="preco-lavagem">
+                    </div>
                 </div>
-            </aside>
-            <section id="servicos" class="servicos">
-                <form class="form-servicos" action="">
-
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">troca de óleo</span>
-                            <label for="oil" class="switch">
-                                <input type="checkbox" name="oil" id="oil">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="preco ">
-                            <label for="">R$</label>
-                            <input placeholder="A partir de..." type="number" name="preco-oil" id="preco-oil">
-                        </div>
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">sanitários</span>
+                        <label for="sanitarios" class="switch">
+                            <input type="checkbox" name="sanitarios" id="sanitarios">
+                            <span class="slider round"></span>
+                        </label>
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">lavagem de veículos</span>
-                            <label for="lavagem" class="switch">
-                                <input type="checkbox" name="lavagem" id="lavagem">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="preco d-none">
-                            <label for="">R$</label>
-                            <input placeholder="A partir de..." type="number" name="preco-lavagem" id="preco-lavagem">
-                        </div>
+                    <div class="preco d-none">
+                        <label for="">R$</label>
+                        <input placeholder="Preço" type="number" name="preco-sanitarios" id="preco-sanitarios">
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">sanitários</span>
-                            <label for="sanitarios" class="switch">
-                                <input type="checkbox" name="sanitarios" id="sanitarios">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="preco d-none">
-                            <label for="">R$</label>
-                            <input placeholder="Preço" type="number" name="preco-sanitarios" id="preco-sanitarios">
-                        </div>
+                </div>
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">gás de cozinha</span>
+                        <label for="gas-cozinha" class="switch">
+                            <input type="checkbox" name="gas-cozinha" id="gas-cozinha">
+                            <span class="slider round"></span>
+                        </label>
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">gás de cozinha</span>
-                            <label for="gas-cozinha" class="switch">
-                                <input type="checkbox" name="gas-cozinha" id="gas-cozinha">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="preco d-none">
-                            <label for="">R$</label>
-                            <input placeholder="Preço" type="number" name="preco-gas-cozinha" id="preco-gas-cozinha">
-                        </div>
+                    <div class="preco d-none">
+                        <label for="">R$</label>
+                        <input placeholder="Preço" type="number" name="preco-gas-cozinha" id="preco-gas-cozinha">
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">lotérica</span>
-                            <label for="loterica" class="switch">
-                                <input type="checkbox" name="loterica" id="loterica">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
+                </div>
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">lotérica</span>
+                        <label for="loterica" class="switch">
+                            <input type="checkbox" name="loterica" id="loterica">
+                            <span class="slider round"></span>
+                        </label>
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">aspirador de pó</span>
-                            <label for="aspirador" class="switch">
-                                <input type="checkbox" name="aspirador" id="aspirador">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="preco d-none">
-                            <label for="">R$</label>
-                            <input placeholder="Preço" type="number" name="preco-aspirador" id="preco-aspirador">
-                        </div>
+                </div>
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">aspirador de pó</span>
+                        <label for="aspirador" class="switch">
+                            <input type="checkbox" name="aspirador" id="aspirador">
+                            <span class="slider round"></span>
+                        </label>
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">conveniência</span>
-                            <label for="conveniencia" class="switch">
-                                <input type="checkbox" name="conveniencia" id="conveniencia">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
+                    <div class="preco d-none">
+                        <label for="">R$</label>
+                        <input placeholder="Preço" type="number" name="preco-aspirador" id="preco-aspirador">
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">borracharia</span>
-                            <label for="borracharia" class="switch">
-                                <input type="checkbox" name="borracharia" id="borracharia">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="preco d-none">
-                            <label for="">R$</label>
-                            <input placeholder="A partir de..." type="number" name="preco-borracharia" id="preco-borracharia">
-                        </div>
+                </div>
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">conveniência</span>
+                        <label for="conveniencia" class="switch">
+                            <input type="checkbox" name="conveniencia" id="conveniencia">
+                            <span class="slider round"></span>
+                        </label>
                     </div>
-                    <div class="servico-container">
-                        <div class="titulo-switch">
-                            <span class="servico-titulo">estacionamento</span>
-                            <label for="estacionamento" class="switch">
-                                <input type="checkbox" name="estacionamento" id="estacionamento">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="preco d-none">
-                            <label for="">R$</label>
-                            <input placeholder="A partir de..." type="number" name="preco-estacionamento" id="preco-estacionamento">
-                        </div>
+                </div>
+                <div class="servico-container">
+                    <div class="titulo-switch">
+                        <span class="servico-titulo">estacionamento</span>
+                        <label for="estacionamento" class="switch">
+                            <input type="checkbox" name="estacionamento" id="estacionamento">
+                            <span class="slider round"></span>
+                        </label>
                     </div>
-
-                    <button class="btn btn-warning" type="submit">Salvar</button>
-
-                </form>
-            </section>
-            <section id="cadastro" class="cadastro" style="display: none;">
-                <form action="">
-                    <h1>Alterar Cadastro</h1>
-                    <div class="form-container">
-
-
-                        <div class="form-group">
-                            <label for="email"><b>Email</b></label>
-                            <input class="form-control-sm" type="text" placeholder="Enter Email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input class="form-control-sm" type="text" name="nome" id="nome">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="cnpj">CNPJ</label>
-                            <input class="form-control-sm" type="text" name="cnpj" id="cnpj">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="cep">CEP</label>
-                            <input class="form-control-sm" type="text" name="cep" id="cep">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="endereco">Endereço</label>
-                            <input class="form-control-sm" type="text" name="endereco" id="endereco">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="numero">Número</label>
-                            <input class="form-control-sm" type="text" name="numero" id="numero">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="cidade">Cidade</label>
-                            <input class="form-control-sm" type="text" name="cidade" id="cidade">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="estado">Estado</label>
-                            <input class="form-control-sm" type="text" name="estado" id="estado">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="nome-fantasia">Nome Fantasia</label>
-                            <input class="form-control-sm" type="text" name="nome-fantasia" id="nome-fantasia">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="razao-social">Razão social</label>
-                            <input class="form-control-sm" type="text" name="razao-social" id="razao-social">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="psw"><b>Senha</b></label>
-                            <input class="form-control-sm" type="password" placeholder="Enter Password" name="psw" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="psw-repeat"><b>Repetir Senha</b></label>
-                            <input class="form-control-sm" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-warning">Salvar</button>
-                    </div>
-
-                </form>
-            </section>
-            <section id="publicidade" class="publicidade" style="display: none;">
-
-                <div class="modal-anuncio">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#anuncio">
-                        Novo Anúncio
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="anuncio" tabindex="-1" role="dialog" aria-labelledby="anuncioTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="anuncioTitle">Novo Anúncio</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <form action="">
-                                        <select class="custom-select">
-                                            <option selected>Tipo</option>
-                                            <option value="1">1 Mês</option>
-                                            <option value="2">2 Meses</option>
-                                            <option value="3">Trimestral</option>
-                                            <option value="3">Semestral</option>
-                                            <option value="3">Anual</option>
-                                          </select>
-                                        <div class="row">
-                                            <div class="col-75">
-                                                <div class="container-pagamento">
-                                                    <div class="row">
-                                                        <div class="col-50">
-                                                            <h3>Endereço de cobrança</h3>
-                                                            <label for="fname"><i class="fa fa-user"></i> Nome Completo</label>
-                                                            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-                                                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                                                            <input type="text" id="email" name="email" placeholder="john@example.com">
-                                                            <label for="adr"><i class="fa fa-address-card-o"></i> Endereço</label>
-                                                            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                                                            <label for="city"><i class="fa fa-institution"></i> Cidade</label>
-                                                            <input type="text" id="city" name="city" placeholder="New York">
-
-                                                            <div class="row">
-                                                                <div class="col-50">
-                                                                    <label for="state">Estado</label>
-                                                                    <input type="text" id="state" name="state" placeholder="NY">
-                                                                </div>
-                                                                <div class="col-50">
-                                                                    <label for="zip">CEP</label>
-                                                                    <input type="text" id="zip" name="zip" placeholder="10001">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-50">
-                                                            <h3>Pagamento</h3>
-                                                            <label for="fname">Bandeiras</label>
-                                                            <div class="icon-container">
-                                                                <i class="fa fa-cc-visa" style="color:navy;"></i>
-                                                                <i class="fa fa-cc-amex" style="color:blue;"></i>
-                                                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                                                                <i class="fa fa-cc-discover" style="color:orange;"></i>
-                                                            </div>
-                                                            <label for="cname">Nome no Cartão</label>
-                                                            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                                                            <label for="ccnum">Número do Cartão</label>
-                                                            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                                                            <label for="expmonth">Mês Exp.</label>
-                                                            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-
-                                                            <div class="row">
-                                                                <div class="col-50">
-                                                                    <label for="expyear">Ano Exp</label>
-                                                                    <input type="text" id="expyear" name="expyear" placeholder="2018">
-                                                                </div>
-                                                                <div class="col-50">
-                                                                    <label for="cvv">CVV</label>
-                                                                    <input type="text" id="cvv" name="cvv" placeholder="352">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <input type="submit" value="Confirmar" class="btn btn-success">
-                                    </form>
-                                    </div>
-                                    </div>
-
-                                    <div class="col-25">
-                                        <div class="container-pagamento">
-                                            <h4>Carrinho
-                                                <span class="price" style="color:black">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    <b>4</b>
-                                                  </span>
-                                            </h4>
-                                            <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-                                            <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-                                            <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-                                            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-                                            <hr>
-                                            <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-
-                                </div>
-                            </div>
-                        </div>
+                    <div class="preco d-none">
+                        <label for="">R$</label>
+                        <input placeholder="A partir de..." type="number" name="preco-estacionamento"
+                            id="preco-estacionamento">
                     </div>
                 </div>
 
-                <div class="modal-extrato">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#extrato">
-                    Extrato de pagamentos
+                <button class="btn btn-warning" type="submit">Salvar</button>
+
+            </form>
+        </section>
+        <section id="cadastro" class="cadastro" style="display: none;">
+            <form action="">
+                <h1>Alterar Cadastro</h1>
+                <div class="form-container">
+
+
+                    <div class="form-group">
+                        <label for="email"><b>Email</b></label>
+                        <input class="form-control-sm" type="text" placeholder="Enter Email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input class="form-control-sm" type="text" name="nome" id="nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ</label>
+                        <input class="form-control-sm" type="text" name="cnpj" id="cnpj">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input class="form-control-sm" type="text" name="cep" id="cep">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco">Endereço</label>
+                        <input class="form-control-sm" type="text" name="endereco" id="endereco">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input class="form-control-sm" type="text" name="numero" id="numero">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input class="form-control-sm" type="text" name="cidade" id="cidade">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <input class="form-control-sm" type="text" name="estado" id="estado">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nome-fantasia">Nome Fantasia</label>
+                        <input class="form-control-sm" type="text" name="nome-fantasia" id="nome-fantasia">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="razao-social">Razão social</label>
+                        <input class="form-control-sm" type="text" name="razao-social" id="razao-social">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="psw"><b>Senha</b></label>
+                        <input class="form-control-sm" type="password" placeholder="Enter Password" name="psw" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="psw-repeat"><b>Repetir Senha</b></label>
+                        <input class="form-control-sm" type="password" placeholder="Repeat Password" name="psw-repeat"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">Salvar</button>
+                </div>
+
+            </form>
+        </section>
+        <section id="publicidade" class="publicidade" style="display: none;">
+
+            <div class="modal-anuncio">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#anuncio">
+                    Novo Anúncio
                 </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="extrato" tabindex="-1" role="dialog" aria-labelledby="extrato" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="extrato">Extrato</h5>
-                                    <button type="button" class="Fechar" data-dismiss="modal" aria-label="Fechar">
-                                 <span aria-hidden="true">&times;</span>
+                <!-- Modal -->
+                <div class="modal fade" id="anuncio" tabindex="-1" role="dialog" aria-labelledby="anuncioTitle"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="anuncioTitle">Novo Anúncio</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
-                                </div>
-                                <div class="modal-body">
-                                    <table class="table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Serviço</th>
-                                                <th scope="col">Valor</th>
-                                                <th scope="col">Data</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Anúncio 1 mês</td>
-                                                <td>R$ 20,00</td>
-                                                <td>21-04-2020</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Anúncio 2 meses</td>
-                                                <td>R$ 35,00</td>
-                                                <td>21-02-2020</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Anúncio 1 mês</td>
-                                                <td>R$ 20,00</td>
-                                                <td>21-01-2020</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                                </div>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="">
+                                    <select class="custom-select">
+                                        <option selected>Tipo</option>
+                                        <option value="1">1 Mês</option>
+                                        <option value="2">2 Meses</option>
+                                        <option value="3">Trimestral</option>
+                                        <option value="3">Semestral</option>
+                                        <option value="3">Anual</option>
+                                    </select>
+                                    <div class="row">
+                                        <div class="col-75">
+                                            <div class="container-pagamento">
+                                                <div class="row">
+                                                    <div class="col-50">
+                                                        <h3>Endereço de cobrança</h3>
+                                                        <label for="fname"><i class="fa fa-user"></i> Nome
+                                                            Completo</label>
+                                                        <input type="text" id="fname" name="firstname"
+                                                            placeholder="John M. Doe">
+                                                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                                        <input type="text" id="email" name="email"
+                                                            placeholder="john@example.com">
+                                                        <label for="adr"><i class="fa fa-address-card-o"></i>
+                                                            Endereço</label>
+                                                        <input type="text" id="adr" name="address"
+                                                            placeholder="542 W. 15th Street">
+                                                        <label for="city"><i class="fa fa-institution"></i>
+                                                            Cidade</label>
+                                                        <input type="text" id="city" name="city" placeholder="New York">
+
+                                                        <div class="row">
+                                                            <div class="col-50">
+                                                                <label for="state">Estado</label>
+                                                                <input type="text" id="state" name="state"
+                                                                    placeholder="NY">
+                                                            </div>
+                                                            <div class="col-50">
+                                                                <label for="zip">CEP</label>
+                                                                <input type="text" id="zip" name="zip"
+                                                                    placeholder="10001">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-50">
+                                                        <h3>Pagamento</h3>
+                                                        <label for="fname">Bandeiras</label>
+                                                        <div class="icon-container">
+                                                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                                                        </div>
+                                                        <label for="cname">Nome no Cartão</label>
+                                                        <input type="text" id="cname" name="cardname"
+                                                            placeholder="John More Doe">
+                                                        <label for="ccnum">Número do Cartão</label>
+                                                        <input type="text" id="ccnum" name="cardnumber"
+                                                            placeholder="1111-2222-3333-4444">
+                                                        <label for="expmonth">Mês Exp.</label>
+                                                        <input type="text" id="expmonth" name="expmonth"
+                                                            placeholder="September">
+
+                                                        <div class="row">
+                                                            <div class="col-50">
+                                                                <label for="expyear">Ano Exp</label>
+                                                                <input type="text" id="expyear" name="expyear"
+                                                                    placeholder="2018">
+                                                            </div>
+                                                            <div class="col-50">
+                                                                <label for="cvv">CVV</label>
+                                                                <input type="text" id="cvv" name="cvv"
+                                                                    placeholder="352">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <input type="submit" value="Confirmar" class="btn btn-success">
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-25">
+                            <div class="container-pagamento">
+                                <h4>Carrinho
+                                    <span class="price" style="color:black">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <b>4</b>
+                                    </span>
+                                </h4>
+                                <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+                                <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+                                <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+                                <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+                                <hr>
+                                <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 
-            </section>
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="modal-extrato">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#extrato">
+            Extrato de pagamentos
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="extrato" tabindex="-1" role="dialog" aria-labelledby="extrato" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="extrato">Extrato</h5>
+                        <button type="button" class="Fechar" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Serviço</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Anúncio 1 mês</td>
+                                    <td>R$ 20,00</td>
+                                    <td>21-04-2020</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Anúncio 2 meses</td>
+                                    <td>R$ 35,00</td>
+                                    <td>21-02-2020</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Anúncio 1 mês</td>
+                                    <td>R$ 20,00</td>
+                                    <td>21-01-2020</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
 
-    <script src="../public/javascripts/dashboard-empresa.js"></script>
-    <%- include('parts/foot') %>
+    </section>
+    </div>
+</main>
+
+<script src="../public/javascripts/dashboard-empresa.js"></script>
+<%- include('parts/foot') %>
