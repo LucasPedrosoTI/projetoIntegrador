@@ -2,6 +2,7 @@ const { Posto, postos_produtos, Usuario_Posto } = require("../models");
 const opencage = require("opencage-api-client");
 const { calcularDistancia } = require("../lib/utils.js");
 const bcrypt = require("bcrypt");
+const axios = require("axios");
 
 module.exports = {
   dashboardEmpresa: (req, res) => {
@@ -148,12 +149,21 @@ module.exports = {
       res.cookie("postoLogado", user.email, { maxAge: 3600000 });
     }
 
-    return res.json(user);
     res.redirect("/posto/dashboard");
   },
   logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("postoLogado");
     res.redirect("/login");
+  },
+  consultaCnpj: async (req, res) => {
+    const { cnpj } = req.query;
+
+    // return res.send("rota ok" + cnpj);
+    const { data } = await axios.get(
+      `https://www.receitaws.com.br/v1/cnpj/${cnpj}`
+    );
+
+    res.json(data);
   },
 };

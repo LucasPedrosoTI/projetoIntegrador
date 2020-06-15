@@ -26,39 +26,28 @@ async function pesquisaCnpj(valor) {
 
     //Valida o formato do cnpj.
     if (validaCnpj.test(cnpj)) {
-      console.log("entrou no if valida cnpj");
-      console.log(typeof cnpj);
+      nomePosto.value = "...";
+      cep.value = "...";
+      endereco.value = "...";
+      bairro.value = "...";
+      cidade.value = "...";
+      uf.value = "...";
 
-      const request = new XMLHttpRequest();
-      request.open("GET", `https://www.receitaws.com.br/v1/cnpj/${cnpj}`, true);
-      request.onload = function () {
-        // Begin accessing JSON data here
-        const data = JSON.parse(this.response);
-        if (request.status >= 200 && request.status < 400) {
-          console.log(data);
-        } else {
-          console.log(data);
-        }
-      };
-      request.send();
+      try {
+        const { data } = await axios.get(
+          `http://localhost:3000/posto/consulta?cnpj=${cnpj}`
+        );
+        console.log(data);
 
-      // try {
-      //   const {
-      //     data,
-      //   } = await axios.get(, {
-      //     headers: { "Access-Control-Allow-Origin": "*" },
-      //   });
-      //   console.log(data);
-
-      //   nomePosto.value = data.nome;
-      //   cep.value = data.cep;
-      //   endereco.value = data.logradouro;
-      //   bairro.value = data.bairro;
-      //   cidade.value = data.municipio;
-      //   uf.value = data.uf;
-      // } catch (error) {
-      //   console.log(error);
-      // }
+        nomePosto.value = data.nome;
+        cep.value = data.cep;
+        endereco.value = data.logradouro;
+        bairro.value = data.bairro;
+        cidade.value = data.municipio;
+        uf.value = data.uf;
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       //cep é inválido.
       limpa_formulário_cnpj();

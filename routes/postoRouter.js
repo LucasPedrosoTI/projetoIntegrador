@@ -3,6 +3,8 @@ const router = express.Router();
 const postoController = require("../controllers/postoController");
 const auth = require("../middlewares/auth");
 
+router.get("/consulta", postoController.consultaCnpj);
+
 router.get("/dashboard", auth.posto, postoController.dashboardEmpresa);
 
 router.get("/index", postoController.index);

@@ -28,8 +28,8 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="cnpj">CNPJ<h11>*</h11></label>
           <div class="col-md-4">
-            <input id="cnpj" name="cnpj" placeholder="Apenas números" class="form-control input-md" required=""
-              type="text" maxlength="14" pattern="[0-9]" onblur="pesquisaCnpj(this.value);" />
+            <input id="cnpj" name="cnpj" placeholder="Apenas números" class="form-control input-md" required type="text"
+              maxlength="14" pattern="[0-9]" onblur="pesquisaCnpj(this.value);" />
           </div>
 
 
@@ -42,15 +42,15 @@
               </div>
             </div>
           </div>
-          <%#
-                   <!-- Text input-->
-                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="nomePosto">Nome do Posto<h11>*</h11></label>
-                    <div class="col-md-8">
-                      <input id="nomePosto" name="nomePosto" placeholder="Digite o nome do posto" class="form-control input-md"
-                        required type="text" />
-                    </div>
-                  </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="nomePosto">Nome do Posto<h11>*</h11></label>
+            <div class="col-md-8">
+              <input id="nomePosto" name="nomePosto" placeholder="Digite o nome do posto" class="form-control input-md"
+                required type="text" readonly />
+            </div>
+          </div>
 
 
           <!-- Search input-->
@@ -58,7 +58,7 @@
             <label class="col-md-4 control-label" for="CEP">CEP <h11>*</h11></label>
             <div class="col-md-4">
               <input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md" required type="text"
-                maxlength="8" pattern="[0-9]+$" />
+                maxlength="8" pattern="[0-9]+$" readonly />
             </div>
             <br \>
             <!-- Prepended text-->
@@ -66,11 +66,11 @@
             <div class="form-row col-md-12">
               <div class="form-group col-md-6">
                 <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+                <input type="text" class="form-control" id="endereco" placeholder="Endereço" readonly>
               </div>
               <div class="form-group col-md-6">
                 <label for="numero">Número</label>
-                <input type="text" class="form-control" id="numero" placeholder="Número">
+                <input type="text" class="form-control" id="numero" placeholder="Número" required>
               </div>
             </div>
             <div class="form-row col-md-12">
@@ -81,95 +81,121 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="bairro">Bairro</label>
-                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
+                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" readonly>
               </div>
             </div>
             <div class="form-row col-md-12">
               <div class="form-group col-md-6">
                 <label for="cidade">Cidade</label>
-                <input class="form-control" type="text" name="cidade" id="cidade">
+                <input class="form-control" type="text" name="cidade" id="cidade" readonly>
               </div>
               <div class="form-group col-md-6">
                 <label for="uf">Estado (UF)</label>
-                <input class="form-control" type="text" name="uf" id="ud">
+                <input class="form-control" type="text" name="uf" id="uf" readonly>
               </div>
-            </div> %>
-          <label class="col-md-6">O estabelecimento possui serviço(s) adicional(is)?</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="bomba" id="bombapneu">
-            <label class="form-check-label" for="bombapneu">
-              Bomba de calibrar pneu
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="conveniencia" id="lojaConveniencia">
-            <label class="form-check-label" for="lojaConveniencia">
-              Loja de Conveniência
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="restaurante" id="restaurante">
-            <label class="form-check-label" for="restaurante">
-              Restaurante
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="lavage" id="lavarVeiculo">
-            <label class="form-check-label" for="lavarVeiculo">
-              Lavagem de Veículo
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="trocaDeOleo" id="trocaDeOleo">
-            <label class="form-check-label" for="trocaDeOleo">
-              Troca de Óleo
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="sanitarios" id="sanitarios">
-            <label class="form-check-label" for="sanitarios">
-              Sanitarios
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="aspirador" id="aspirador">
-            <label class="form-check-label" for="aspirador">
-              Aspirador de Pó
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="estacionamento" id="estacionamento">
-            <label class="form-check-label" for="estacionamento">
-              Estacionamento
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="loterica" id="loterica">
-            <label class="form-check-label" for="loterica">
-              Lotérica
-            </label>
-          </div>
-          <br \>
-          <div class="form-group">
-            <div class="form-check" id="termosDeUso">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Li e aceito os termos de uso!
-              </label>
             </div>
-          </div>
 
-          <!-- Button (Double) -->
-          <div class="form-group">
-            <div class="col-md-8">
-              <button id="botao-cadastrar" name="Cadastrar" class="btn btn-success" type="submit">
-                Cadastrar
-              </button>
-              <a href="/login" id="cancelar" class="btn btn-outline-danger">
-                Cancelar
-              </a>
+            <h5 class="text-center my-3">O estabelecimento possui serviço(s) adicional(is)?</h5>
+
+            <div class="servicos-container">
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input type="checkbox" type="checkbox" value="bomba" id="bombapneu">
+                  <span class="slider round"></span>
+                </label>
+                <label for="bombapneu">Bomba de calibrar pneu</label>
+              </div>
+
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="conveniencia" id="lojaConveniencia">
+                  <span class="slider round"></span>
+                </label>
+                <label for="lojaConveniencia">Loja de Conveniência</label>
+              </div>
+
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="restaurante" id="restaurante">
+                  <span class="slider round"></span>
+                </label>
+                <label for="restaurante">Restaurante</label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="lavage" id="lavarVeiculo">
+                  <span class="slider round"></span>
+                </label>
+                <label for="lavarVeiculo">Lavagem de Veículos</label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="trocaDeOleo" id="trocaDeOleo">
+                  <span class="slider round"></span>
+                </label>
+                <label for="trocaDeOleo">Troca de óleo</label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="sanitarios" id="sanitarios">
+                  <span class="slider round"></span>
+                </label>
+                <label for="sanitarios">Sanitários</label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="aspirador" id="aspirador">
+                  <span class="slider round"></span>
+                </label>
+                <label for="aspirador">Aspirador de Pó</label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="estacionamento" id="estacionamento">
+                  <span class="slider round"></span>
+                </label>
+                <label for="estacionamento">Estacionamento</label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input class="form-check-input" type="checkbox" value="loterica" id="loterica">
+                  <span class="slider round"></span>
+                </label>
+                <label for="loterica">Lotérica</label>
+              </div>
             </div>
-          </div>
+
+
+            <br \>
+            <div class="form-group">
+              <div class="form-check" id="termosDeUso">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Li e aceito os termos de uso!
+                </label>
+              </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+              <div class="col-md-8">
+                <button id="botao-cadastrar" name="Cadastrar" class="btn btn-success" type="submit">
+                  Cadastrar
+                </button>
+                <a href="/login" id="cancelar" class="btn btn-outline-danger">
+                  Cancelar
+                </a>
+              </div>
+            </div>
       </form>
     </div>
   </div>
