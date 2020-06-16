@@ -4,9 +4,11 @@ const endereco = document.getElementById("endereco");
 const bairro = document.getElementById("bairro");
 const cidade = document.getElementById("cidade");
 const uf = document.getElementById("uf");
+const cnpjPosto = document.getElementById("cnpj-posto");
 
-function limpa_formulário_cnpj() {
+function limpaFormularioCnpj() {
   //Limpa valores do formulário de cep.
+  cnpjPosto.value = "";
   nomePosto.value = "";
   cep.value = "";
   endereco.value = "";
@@ -39,6 +41,11 @@ async function pesquisaCnpj(valor) {
         );
         console.log(data);
 
+        if (data.status === "ERROR") {
+          alert("Formato de CNPJ inválido.");
+          limpaFormularioCnpj();
+        }
+
         nomePosto.value = data.nome;
         cep.value = data.cep;
         endereco.value = data.logradouro;
@@ -48,14 +55,10 @@ async function pesquisaCnpj(valor) {
       } catch (error) {
         console.log(error);
       }
-    } else {
-      //cep é inválido.
-      limpa_formulário_cnpj();
-      alert("Formato de CNPJ inválido.");
     }
   } //end if.
   else {
     //cep sem valor, limpa formulário.
-    limpa_formulário_cnpj();
+    limpaFormularioCnpj();
   }
 }

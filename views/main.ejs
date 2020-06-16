@@ -36,10 +36,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"
     defer></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 
   <script src="/javascripts/cep.js" defer></script>
   <script src="/javascripts/main.js" defer></script>
   <script src="/javascripts/sidebar.js" defer></script>
+  <script src="/javascripts/pesquisaCnpj.js" defer></script>
+
 </head>
 
 <body>
@@ -126,14 +129,15 @@
             <form id="form-novo-posto" class="text-dark" action="/posto/adicionar" method="POST">
               <div class="form-row my-3">
                 <div class="col-6">
-                  <label for="nome-posto">Nome do Posto</label>
-                  <input required class="form-control mx-auto" type="text" name="nome" placeholder="Nome do posto"
-                    id="nome-posto" />
+                  <label for="cnpj-posto">CNPJ</label>
+                  <input required class="form-control mx-auto" type="text" name="cnpj"
+                    placeholder="CNPJ do posto (somente números)" maxlength="14" id="cnpj-posto" pattern="[0-9]"
+                    onblur="pesquisaCnpj(this.value);" />
                 </div>
                 <div class="col-6">
-                  <label for="cnpj-posto">CNPJ</label>
-                  <input required class="form-control mx-auto" type="text" name="cnpj" placeholder="CNPJ do posto"
-                    id="cnpj-posto" />
+                  <label for="nomePosto">Nome do Posto</label>
+                  <input required class="form-control mx-auto" type="text" name="nome" placeholder="Nome do posto"
+                    id="nomePosto" readonly />
                 </div>
               </div>
 
@@ -141,12 +145,13 @@
                 <div class="col-4">
                   <label for="cep">CEP</label>
                   <input required class="form-control mx-auto" type="text" name="cep" placeholder="CEP" id="cep"
-                    maxlength="9" onblur="pesquisacep(this.value);" />
+                    maxlength="9" readonly />
+                  <!-- onblur="pesquisacep(this.value);" -->
                 </div>
                 <div class="col-8">
-                  <label for="rua">Rua</label>
-                  <input id="rua" required class="form-control mx-auto" type="text" name="endereco" placeholder="Rua x"
-                    readonly />
+                  <label for="endereco">Rua</label>
+                  <input id="endereco" required class="form-control mx-auto" type="text" name="endereco"
+                    placeholder="Rua x" readonly />
                 </div>
               </div>
               <div class="form-row mb-3">
