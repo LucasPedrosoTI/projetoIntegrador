@@ -38,13 +38,6 @@ function renderMap(latitude, longitude) {
   mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
 
-  // let params = new URLSearchParams(document.location.search.substring(1));
-
-  // if (params) {
-  //   latitude = params.get("latitude");
-  //   longitude = params.get("longitude");
-  // }
-
   var request = new XMLHttpRequest();
   const postos = { type: "FeatureCollection", features: [] };
   request.open(
@@ -267,11 +260,14 @@ function renderMap(latitude, longitude) {
         currentFeature.properties.preco +
         "</strong> <br>" +
         //       '<a class="btn btn-success" href="geo:' +
-        '<a class="btn btn-success" href="https://www.google.com/maps/@' +
+        '<a class="btn btn-success" href="https://www.google.com/maps/dir/?api=1&origin=' +
         currentFeature.geometry.coordinates[1] +
         "," +
         currentFeature.geometry.coordinates[0] +
-        ",17z" + //Comentar essa linha se utilizar o geo:
+        "&destination=" +
+        `${encodeURI(currentFeature.properties.address)}, ${
+          currentFeature.properties.city
+        }, ${currentFeature.properties.state}&travelmode=driving` + //Comentar essa linha se utilizar o geo:
           '"target="_blank">Ir</a> </div> </div>' // Alterar para _system se utilizar o geo
       )
       .addTo(map);
