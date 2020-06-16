@@ -1,14 +1,17 @@
-// if (!latitude && !longitude) {
-//   latitude = -23.5089623;
-//   longitude = -46.3993002;
-// }
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const lat = urlParams.get("latitude");
+const lng = urlParams.get("longitude");
 var latitude;
 var longitude;
+
 document.addEventListener("DOMContentLoaded", function () {
   navigator.geolocation.getCurrentPosition(
     function (pos) {
-      latitude = pos.coords.latitude;
-      longitude = pos.coords.longitude;
+      latitude = lat || pos.coords.latitude;
+      longitude = lng || pos.coords.longitude;
+
+      console.log("params: ", latitude, longitude);
 
       renderMap(latitude, longitude);
     },
