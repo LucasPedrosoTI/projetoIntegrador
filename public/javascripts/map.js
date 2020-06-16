@@ -2,14 +2,25 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const lat = urlParams.get("latitude");
 const lng = urlParams.get("longitude");
+const search = urlParams.get("search");
 var latitude;
 var longitude;
 
 document.addEventListener("DOMContentLoaded", function () {
   navigator.geolocation.getCurrentPosition(
-    function (pos) {
+    async function (pos) {
       latitude = lat || pos.coords.latitude;
       longitude = lng || pos.coords.longitude;
+
+      if (search) {
+        const response = await fetch(
+          `http://localhost:3000/posto/consulta?search=${search}`
+        );
+        const data = await response.json();
+
+        latitude = data[0].geometry.lat;
+        longitude = data[0].geometry.lng;
+      }
 
       console.log("params: ", latitude, longitude);
 

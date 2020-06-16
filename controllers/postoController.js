@@ -156,14 +156,52 @@ module.exports = {
     res.clearCookie("postoLogado");
     res.redirect("/login");
   },
-  consultaCnpj: async (req, res) => {
-    const { cnpj } = req.query;
+  consulta: async (req, res) => {
+    const { cnpj, search } = req.query;
+    const validaCep = /^[0-9]{8}$/;
 
-    // return res.send("rota ok" + cnpj);
-    const { data } = await axios.get(
-      `https://www.receitaws.com.br/v1/cnpj/${cnpj}`
-    );
+    if (search) {
+      const enderecoNormalizado = search
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") //remove acentos
+        .replace(/[\/-]/gm, ""); //remove barra e traço
 
-    res.json(data);
+      if (validaCep.test(enderecoNormalizado)) {
+        try {
+          const { data } = await axios.get(
+            `http://viacep.com.br/ws/${enderecoNormalizado}/json/`
+          );
+
+          const { logradouro, bairro, localidade, uf } = data;
+
+          const { results } = await opencage.geocode({
+            q: `${logradouro}, ${bairro}, ${localidade}, ${uf}, Brazil`,
+            language: "pt",
+          });
+
+          return res.json(results);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      const { results } = await opencage.geocode({
+        q: `${enderecoNormalizado}, Brazil`,
+        language: "pt",
+      });
+
+      return res.json(results);
+    }
+
+    if (cnpj) {
+      const { data } = await axios.get(
+        `https://www.receitaws.com.br/v1/cnpj/${cnpj}`
+      );
+
+      return res.json(data);
+    }
+
+    return res.json({ msg: "Nenhum parâmetro passado" });
   },
 };
