@@ -21,9 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         latitude = data[0].geometry.lat;
         longitude = data[0].geometry.lng;
       }
-
-      console.log("params: ", latitude, longitude);
-
       renderMap(latitude, longitude);
     },
     function () {

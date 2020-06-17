@@ -37,8 +37,6 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"
     defer></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
-
-  <script src="/javascripts/cep.js" defer></script>
   <script src="/javascripts/main.js" defer></script>
   <script src="/javascripts/sidebar.js" defer></script>
   <script src="/javascripts/pesquisaCnpj.js" defer></script>
@@ -131,7 +129,7 @@
                 <div class="col-6">
                   <label for="cnpj-posto">CNPJ</label>
                   <input required class="form-control mx-auto" type="text" name="cnpj"
-                    placeholder="CNPJ do posto (somente números)" maxlength="14" id="cnpj-posto" pattern="[0-9]"
+                    placeholder="CNPJ do posto (somente números)" maxlength="14" id="cnpj-posto"
                     onblur="pesquisaCnpj(this.value);" />
                 </div>
                 <div class="col-6">

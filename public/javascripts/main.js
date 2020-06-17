@@ -3,8 +3,7 @@ const li = Array.from(document.querySelectorAll(".posto-item"));
 const hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
 const prices = Array.from(document.querySelectorAll("a.price"));
 const dates = Array.from(document.querySelectorAll("p.date"));
-
-let postosFiltradosTeste = li.filter(filtrarPostos);
+var postosFiltrados;
 
 function mostrarLista(array) {
   let ol = array[0].parentNode;
@@ -18,7 +17,7 @@ function filtrarPostos(distancia) {
   return (
     Number(
       distancia.firstElementChild.lastElementChild.firstElementChild.children[0].innerText.trim()
-    ) < 10
+    ) <= 10
   );
 }
 
@@ -251,7 +250,7 @@ window.addEventListener("load", function () {
 });
 
 async function atualizarDistancias(li) {
-  console.log("distâncias atualizada", latitude, longitude);
+  console.log("distâncias atualizadas: ", latitude, longitude);
 
   for (var i = 0; i <= li.length; i++) {
     var lat = parseFloat(li[i].children[1].value);
@@ -273,13 +272,6 @@ async function atualizarDistancias(li) {
     );
   }
 }
-const interval = setInterval(() => {
-  atualizarDistancias(li);
-
-  if (latitude && longitude) {
-    clearInterval(interval);
-  }
-}, 500);
 
 function submeterAvaliacao(arrayDeButtons) {
   for (let i = 0; i < arrayDeButtons.length; i++) {
@@ -291,13 +283,16 @@ function submeterAvaliacao(arrayDeButtons) {
   }
 }
 
-document.getElementById("bars").addEventListener("click", function () {
-  const postosFiltrados = li.filter(filtrarPostos);
+// document.getElementById("bars").addEventListener("click", function () {
+// });
+
+function filtrarAposAtualizarDistancias(array) {
+  postosFiltrados = array.filter(filtrarPostos);
+
+  console.log("postosFiltrados");
 
   if (postosFiltrados.length == 0) {
-    console.log("entrou no if !postosfitlrados");
-
-    const ol = li[0].parentNode;
+    const ol = array[0].parentNode;
     ol.innerHTML = "";
 
     const emptyLi = document.createElement("li");
@@ -318,4 +313,34 @@ document.getElementById("bars").addEventListener("click", function () {
 
   const btns = Array.from(document.querySelectorAll(".salvar-form"));
   submeterAvaliacao(btns);
-});
+}
+
+/**
+ * Interval que tenta calcular as distâncias e atualizar a DOM até que a lat e lgn estejam disponíveis
+ */
+const intervalAtualizarDistancias = setInterval(() => {
+  atualizarDistancias(li);
+
+  if (latitude && longitude) {
+    clearInterval(intervalAtualizarDistancias);
+  }
+}, 1000);
+
+/**
+ * Interval que tenta filtrar postos até que o primeiro posto tenha distancia menor que 10 ou caso não tenha postos nessa condição
+ */
+const intervalFiltrarPostos = setInterval(() => {
+  filtrarAposAtualizarDistancias(li);
+
+  if (postosFiltrados.length == 0) {
+    clearInterval(intervalFiltrarPostos);
+  }
+
+  if (
+    Number(
+      postosFiltrados[0].firstElementChild.lastElementChild.firstElementChild.children[0].innerText.trim()
+    ) <= 10
+  ) {
+    clearInterval(intervalFiltrarPostos);
+  }
+}, 1000);
