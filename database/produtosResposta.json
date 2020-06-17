@@ -828,5 +828,15 @@
     "produtos_id": 1,
     "preco": 4.899,
     "postos_id": 166
+  },
+  {
+    "produtos_id": 1,
+    "preco": 3.899,
+    "postos_id": 167
+  },
+  {
+    "produtos_id": 2,
+    "preco": 2.899,
+    "postos_id": 167
   }
 ]

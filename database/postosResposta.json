@@ -2488,5 +2488,20 @@
     "longitude": -42.53111,
     "create_time": "09/06/2020",
     "update_time": "26/02/2020"
+  },
+  {
+    "id": 167,
+    "nome": "AUTO POSTO MC DE SAO PAULO LTDA",
+    "cnpj": "09525863000157",
+    "cep": "08140000",
+    "cidade": "SAO PAULO",
+    "estado": "SP",
+    "bairro": "ITAIM PAULISTA",
+    "endereco": "RUA TIBURCIO DE SOUZA",
+    "bandeira": "BOXTER",
+    "latitude": -23.5067273,
+    "longitude": -46.3979627,
+    "create_time": "09/06/2020",
+    "update_time": "15/06/2020"
   }
 ]

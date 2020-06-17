@@ -1,6 +1,6 @@
 "use strict";
 
-const postos = require("../database/postosResposta-50.json");
+const postos = require("../database/postosResposta.json");
 const moment = require("moment");
 
 for (const posto of postos) {

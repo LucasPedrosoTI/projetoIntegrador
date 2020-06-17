@@ -1,6 +1,6 @@
 "use strict";
 
-const produtos = require("../database/produtosResposta-50.json");
+const produtos = require("../database/produtosResposta.json");
 
 // let id = 1;
 // let produtos_id;

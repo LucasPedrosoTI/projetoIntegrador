@@ -321,6 +321,21 @@ aside {
   overflow: auto;
 }
 
+.postoNaoEncontrado {
+  color: #fff;
+  text-align: center;
+  background: #597081;
+  padding: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.postoNaoEncontrado:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
 .scroller {
   scrollbar-width: 0;
 }

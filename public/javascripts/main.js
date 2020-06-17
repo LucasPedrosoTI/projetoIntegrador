@@ -4,9 +4,9 @@ const hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
 const prices = Array.from(document.querySelectorAll("a.price"));
 const dates = Array.from(document.querySelectorAll("p.date"));
 
-function mostrarLista(array) {
-  console.log("lista filtrada");
+let postosFiltradosTeste = li.filter(filtrarPostos);
 
+function mostrarLista(array) {
   let ol = array[0].parentNode;
   ol.innerHTML = "";
   array.forEach(function (a) {
@@ -215,22 +215,28 @@ window.addEventListener("load", function () {
   }
 
   function controlarSelect(select) {
-    const postosFiltrados = li.filter(filtrarPostos);
-
     select.addEventListener("change", function (e) {
       if (e.target.value == "precoMenor") {
+        const postosFiltrados = li.filter(filtrarPostos);
+
         postosFiltrados.sort(porPrecoMenor);
 
         mostrarLista(postosFiltrados);
       } else if (e.target.value == "maisCurtidas") {
+        const postosFiltrados = li.filter(filtrarPostos);
+
         postosFiltrados.sort(porLikes);
 
         mostrarLista(postosFiltrados);
       } else if (e.target.value == "melhorNota") {
+        const postosFiltrados = li.filter(filtrarPostos);
+
         postosFiltrados.sort(porNota);
 
         mostrarLista(postosFiltrados);
       } else {
+        const postosFiltrados = li.filter(filtrarPostos);
+
         postosFiltrados.sort(porMenorDistancia);
 
         mostrarLista(postosFiltrados);
@@ -287,7 +293,29 @@ function submeterAvaliacao(arrayDeButtons) {
 
 document.getElementById("bars").addEventListener("click", function () {
   const postosFiltrados = li.filter(filtrarPostos);
-  mostrarLista(postosFiltrados);
+
+  if (postosFiltrados.length == 0) {
+    console.log("entrou no if !postosfitlrados");
+
+    const ol = li[0].parentNode;
+    ol.innerHTML = "";
+
+    const emptyLi = document.createElement("li");
+    const h3 = document.createElement("h3");
+
+    h3.innerText =
+      "Ooops, parece que ainda não há postos cadastrados na sua região. Clique para cadastrar um novo posto ";
+    h3.classList.add("postoNaoEncontrado");
+    h3.setAttribute("data-toggle", "modal");
+    h3.setAttribute("data-target", "#novo-posto");
+
+    emptyLi.appendChild(h3);
+
+    ol.appendChild(emptyLi);
+  } else {
+    mostrarLista(postosFiltrados);
+  }
+
   const btns = Array.from(document.querySelectorAll(".salvar-form"));
   submeterAvaliacao(btns);
 });
