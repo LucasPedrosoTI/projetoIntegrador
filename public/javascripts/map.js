@@ -31,51 +31,88 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 });
 
-function renderMap(latitude, longitude) {
+async function renderMap(latitude, longitude) {
   mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
 
-  var request = new XMLHttpRequest();
+  // var request = new XMLHttpRequest();
   const postos = { type: "FeatureCollection", features: [] };
-  request.open(
-    "GET",
-    `http://localhost:3000/posto/index?latP=${latitude}&longP=${longitude}`,
-    true
-  );
-  request.onload = function () {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response);
-    if (request.status >= 200 && request.status < 400) {
-      data.forEach(function (posto) {
-        let novoPosto = {
-          type: "Feature",
-          geometry: {
-            type: "Point",
-            coordinates: [posto.longitude, posto.latitude],
-          },
-          properties: {
-            id: posto.id,
-            name: posto.nome,
-            address: posto.endereco,
-            city: posto.cidade,
-            country: "Brasil",
-            postalCode: posto.cep,
-            state: posto.estado,
-            bandeira: posto.bandeira,
-            produto: posto.produtos[0].nome,
-            preco: posto.produtos[0].postos_produtos.preco
-              .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-              .replace(".", ","),
-          },
-        };
 
-        postos.features.push(novoPosto);
-      });
-    } else {
-      console.log(data);
-    }
-  };
-  request.send();
+  try {
+    const response = await fetch(
+      `http://localhost:3000/posto/index?latP=${latitude}&longP=${longitude}`
+    );
+
+    const data = await response.json();
+
+    data.forEach(function (posto) {
+      let novoPosto = {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [posto.longitude, posto.latitude],
+        },
+        properties: {
+          id: posto.id,
+          name: posto.nome,
+          address: posto.endereco,
+          city: posto.cidade,
+          country: "Brasil",
+          postalCode: posto.cep,
+          state: posto.estado,
+          bandeira: posto.bandeira,
+          produto: posto.produtos[0].nome,
+          preco: posto.produtos[0].postos_produtos.preco
+            .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+            .replace(".", ","),
+        },
+      };
+
+      postos.features.push(novoPosto);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  // request.open(
+  //   "GET",
+  //   `http://localhost:3000/posto/index?latP=${latitude}&longP=${longitude}`,
+  //   true
+  // );
+  // request.onload = function () {
+  //   // Begin accessing JSON data here
+  //   var data = JSON.parse(this.response);
+  //   if (request.status >= 200 && request.status < 400) {
+  //     data.forEach(function (posto) {
+  //       let novoPosto = {
+  //         type: "Feature",
+  //         geometry: {
+  //           type: "Point",
+  //           coordinates: [posto.longitude, posto.latitude],
+  //         },
+  //         properties: {
+  //           id: posto.id,
+  //           name: posto.nome,
+  //           address: posto.endereco,
+  //           city: posto.cidade,
+  //           country: "Brasil",
+  //           postalCode: posto.cep,
+  //           state: posto.estado,
+  //           bandeira: posto.bandeira,
+  //           produto: posto.produtos[0].nome,
+  //           preco: posto.produtos[0].postos_produtos.preco
+  //             .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+  //             .replace(".", ","),
+  //         },
+  //       };
+
+  //       postos.features.push(novoPosto);
+  //     });
+  //   } else {
+  //     console.log(data);
+  //   }
+  // };
+  // request.send();
 
   var map = new mapboxgl.Map({
     container: "map",
@@ -83,10 +120,6 @@ function renderMap(latitude, longitude) {
     center: [longitude, latitude], //starting position
     zoom: 15, //starting zoom
   });
-
-  // postos.features.forEach(function (posto, i) {
-  //   posto.properties.id = i;
-  // });
 
   map.loadImage("../images/icone-semfundo.png", function (error0, image0) {
     if (error0) throw error0;
