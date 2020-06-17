@@ -163,6 +163,20 @@
 </main>
 
 
+<script>
+    const btns = Array.from(document.querySelectorAll(".salvar-form"));
 
+    function submeterAvaliacao(arrayDeButtons) {
+        for (let i = 0; i < arrayDeButtons.length; i++) {
+            arrayDeButtons[i].addEventListener("click", function () {
+                let formSubmit = document.querySelectorAll("form[id|=form-posto]")[i];
+
+                formSubmit.submit();
+            });
+        }
+    }
+
+    submeterAvaliacao(btns);
+</script>
 
 <%- include('../parts/foot') %>
