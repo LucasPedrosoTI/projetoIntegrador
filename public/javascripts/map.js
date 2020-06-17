@@ -196,14 +196,7 @@ async function renderMap(latitude, longitude) {
    **/
   function buildLocationList(postos) {
     postos.features.forEach(function (posto, i) {
-      /**
-       * Create a shortcut for `posto.properties`,
-       * which will be used several times below.
-       **/
-      const prop = posto.properties;
-
       /* Add a new listing section to the sidebar. */
-      // var listings = document.querySelector("listings");
       let listing = document.getElementById(
         "listing-" + postos.features[i].properties.id
       );
