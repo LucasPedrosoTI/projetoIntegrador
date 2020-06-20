@@ -6,7 +6,7 @@ const opencage = require("opencage-api-client");
 const postosResposta = require("../database/postosResposta.json");
 const produtosResposta = require("../database/produtosResposta.json");
 const moment = require("moment");
-const { Posto, Usuario } = require("../models");
+const { Posto, Usuario , Servico} = require("../models");
 
 const now = moment();
 
@@ -257,8 +257,39 @@ module.exports = {
     res.render("cadastro");
   },
 
-  servicos: (req, res) => {
-    res.render("servicos");
+  servicos: async (req, res) => {
+    let postos = [];
+
+      postos = await Posto.findAll({
+        include: [
+          {
+            association: "servicos",
+            where: { id: 2 },
+          },
+          "avaliacoes",
+        ],
+      });
+
+// CÓDIGO PARA CALCULAR E ARMAZENAR A NOTA MÉDIA DOS POSTOS
+for (const posto of postos) {
+  if (posto.avaliacoes.length == 0) {
+    posto.media = 0;
+  } else {
+    // EXTRAIR TODAS AS NOTAS DE UM POSTO E ARMAZENAR EM UM ARRAY
+    let notas = [];
+    for (const avaliacao of posto.avaliacoes) {
+      notas.push(Number(avaliacao.Avaliacoes.nota));
+    }
+    // COM O ARRAY DE NOTAS, BASTA SOMAR TODOS OS INDICES E DIVIDIR PELA QTD PARA OBTER A MEDIA
+    let media = notas.reduce((a, b) => a + b) / notas.length;
+
+    // COD P/ TER CTZ QUE A NOTA SERÁ SEMPRE DE 0.5 EM 0.5
+    media = Math.round(media * 2) / 2;
+    // CRIAR A PROPRIEDADE MEDIA
+    posto.media = media;
+  }
+}
+    res.render("servicos",  { postos });
   },
 
   quemsomos: (req, res) => {

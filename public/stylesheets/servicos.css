@@ -6,7 +6,7 @@ body {
 
 .boxwhite {
   margin: 20vh 5% 2% 5%;
-  padding: 2%;
+  padding: 1%;
   position: relative;
   border-radius: 20px;
   background-color: #f6f6f6dd;
@@ -57,17 +57,15 @@ form {
 
 .logo {
   height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background-image: url("../images/petrobras.png");
-  background-size: 50px;
+  border-radius: 5%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
 }
 
 .texto {
-  font-size: 10pt;
+  font-size: 7pt;
+  color: gray;
   width: 160px;
 }
 
@@ -100,8 +98,14 @@ h6 {
   font-size: 10pt;
 }
 
-hr {
-  margin: 2px;
+h7 {
+  margin: 0px;
+  color: black;
+  font-size: 8pt;
+}
+
+.stars {
+  color: black;
 }
 
 @media (max-width: 400px) {

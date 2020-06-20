@@ -13,59 +13,61 @@
       <select class="form-control" id="servicos" name="servicos">
         <option value="borracharia">Borracharia</option>
         <option value="conveniencia">Conveniência</option>
-        <option value="gasDeCozinha">Gás de Cozinha</option>
-        <option value="lavaRapido">Lava Rápido</option>
-        <option value="loterica">Lotérica</option>
-        <option value="sanitarios">Sanitários</option>
-        <option value="trocaDeOleo">Troca de Óleo</option>
+        <option value="gasDeCozinha">Lavagem</option>
       </select>
       <input class="form-control" type="text" id="local" name="local" placeholder="Digite o endereço">
       <input type="submit" value="Buscar" class="busca">
     </form>
 
+    <% postos.forEach(posto => {  %>
 
     <div class="content">
       <div class="card">
-        <div class="logo"></div>
-        <div class="texto">
-          <h4>Posto Petrobrás</h4><br>
-          R. Brigadeiro Galvão, 458, Barra Funda, São Paulo/SP<br>
-          <img src="../public/images/star-24px.svg">
-          <img src="../public/images/star-24px.svg">
-          <img src="../public/images/star-24px.svg">
-          <img src="../public/images/star_half-24px.svg">
-          <img src="../public/images/star_border-24px.svg">
+          <% if
+          (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
+          "").replace(" distribuidora s.a.","") == "petrobras" ||
+          posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
+          "") == "ipiranga" ||
+          posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
+          "") == "raizen" ||
+          posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
+          "") == "alesat") { %>
+        <div class="img">
+          <img class= "logo" src="/images/<%=posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
+            "").replace(" distribuidora s.a.","")%>.png" alt="<%=posto.bandeira%>">
         </div>
-        <div class="distancia">
-          <h5>2 km</h5><br>
-          distante<br>
-          <hr>
-          <h6>R$/L</h6>
-          <span class="badge badge-warning">R$ 4,59</span>
+        <% } else { %>
+        <div class="img">
+          <img class="logo" src="/images/branca.png" alt="Branca" />
+        </div>
+        <% } %>
+
+        <div class="texto">
+          <h7><%= posto.nome %></h7><br>
+          <%= posto.endereco %>, <%= posto.bairro %>, <%= posto.cidade %>-<%= posto.estado %><br>
+         
+         
+          <div class="stars">
+            <span class="d-none">
+              <%=posto.media%>
+            </span>
+            <% for( let i = 0; i < parseInt(posto.media); i++ ) { %>
+            <i class="fas fa-star"></i>
+            <% } %> <% for( let i = 0; i <
+              posto.media-parseInt(posto.media) ; i++ ) { %>
+            <i class="fas fa-star-half-alt"></i>
+            <% } %> <% for( let i = 0; i < 5-Math.ceil(posto.media) ;
+              i++ ) { %>
+            <i class="far fa-star"></i>
+            <% } %>
+          </div>
+
+
         </div>
       </div>
-
-      <div class="card">
-        <div class="logo"></div>
-        <div class="texto">
-          <h4>Posto Petrobrás</h4><br>
-          R. Brigadeiro Galvão, 458, Barra Funda, São Paulo/SP<br>
-          <img src="../public/images/star-24px.svg">
-          <img src="../public/images/star-24px.svg">
-          <img src="../public/images/star-24px.svg">
-          <img src="../public/images/star_half-24px.svg">
-          <img src="../public/images/star_border-24px.svg">
-        </div>
-        <div class="distancia">
-          <h5>2 km</h5><br>
-          distante<br>
-          <hr>
-          <h6>R$/L</h6>
-          <span class="badge badge-warning">R$ 4,59</span>
-        </div>
-      </div>
-
     </div>
+
+    <% }) %>
 
   </div>
 </body>
