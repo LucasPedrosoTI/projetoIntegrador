@@ -1,7 +1,7 @@
 <%- include('parts/head', {title: 'Meu Posto'}) %>
-<link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
-<link rel="stylesheet" href="../public/stylesheets/servicos.css" />
-
+  <link rel="stylesheet" href="../public/stylesheets/indexStyle.css" />
+  <link rel="stylesheet" href="../public/stylesheets/servicos.css" />
+  <script src="../public/javascripts/servicos.js"></script>
 <header>
   <%- include('parts/navbar') %>
 </header>
@@ -9,19 +9,18 @@
 <body>
   <div class="boxwhite">
 
-    <form action="#" method="GET" class="form-group">
-      <select class="form-control" id="servicos" name="servicos">
-        <option value="borracharia">Borracharia</option>
-        <option value="conveniencia">Conveniência</option>
-        <option value="gasDeCozinha">Lavagem</option>
+    <form method="GET">
+      <select class="form-control" id="form_serv_number" name="servico">
+        <option value="1" >Borracharia</option>
+        <option value="2" >Conveniência</option>
+        <option value="3" >Lavagem</option>
       </select>
-      <input class="form-control" type="text" id="local" name="local" placeholder="Digite o endereço">
-      <input type="submit" value="Buscar" class="busca">
+      <button type="submit" class="busca">Buscar</button> 
     </form>
 
-    <% postos.forEach(posto => {  %>
-
     <div class="content">
+      
+    <% postos.forEach(posto => {  %>
       <div class="card">
           <% if
           (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
@@ -49,7 +48,7 @@
          
           <div class="stars">
             <span class="d-none">
-              <%=posto.media%>
+              <%= posto.media %>
             </span>
             <% for( let i = 0; i < parseInt(posto.media); i++ ) { %>
             <i class="fas fa-star"></i>
@@ -65,11 +64,12 @@
 
         </div>
       </div>
-    </div>
 
     <% }) %>
 
+    </div>
   </div>
+
 </body>
 
 <%- include("./parts/foot") %>

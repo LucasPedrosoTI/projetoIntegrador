@@ -258,13 +258,22 @@ module.exports = {
   },
 
   servicos: async (req, res) => {
+    
     let postos = [];
+
+    let serv = 1;
+    if (req.query.servico){
+      serv = req.query.servico;
+    }
+    
+
+    console.log(serv)
 
       postos = await Posto.findAll({
         include: [
           {
             association: "servicos",
-            where: { id: 2 },
+            where: { id: serv},
           },
           "avaliacoes",
         ],

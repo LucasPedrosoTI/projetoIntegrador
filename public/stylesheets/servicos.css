@@ -6,7 +6,8 @@ body {
 
 .boxwhite {
   margin: 20vh 5% 2% 5%;
-  padding: 1%;
+  height: 480px;
+  padding: 2%;
   position: relative;
   border-radius: 20px;
   background-color: #f6f6f6dd;
@@ -23,6 +24,7 @@ form {
 
 .form-control {
   margin-right: 5%;
+  width: 40%;
 }
 
 .busca {
@@ -41,6 +43,7 @@ form {
 .content {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .card {
