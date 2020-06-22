@@ -1,26 +1,30 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const lat = urlParams.get("latitude");
-const lng = urlParams.get("longitude");
+// const lat = urlParams.get("latitude");
+// const lng = urlParams.get("longitude");
 const search = urlParams.get("search");
 var latitude;
 var longitude;
+var listing;
 
 document.addEventListener("DOMContentLoaded", function () {
   navigator.geolocation.getCurrentPosition(
     async function (pos) {
-      latitude = lat || pos.coords.latitude;
-      longitude = lng || pos.coords.longitude;
-
       if (search) {
         const response = await fetch(
           `http://localhost:3000/posto/consulta?search=${search}`
         );
         const data = await response.json();
 
-        latitude = data[0].geometry.lat;
-        longitude = data[0].geometry.lng;
+        var lat = data[0].geometry.lat;
+        var long = data[0].geometry.lng;
       }
+
+      latitude = lat || pos.coords.latitude;
+      longitude = long || pos.coords.longitude;
+
+      // console.log(`lat: ${latitude}, long: ${longitude}`);
+
       renderMap(latitude, longitude);
     },
     function () {
@@ -35,7 +39,6 @@ async function renderMap(latitude, longitude) {
   mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXNwZWRyb3NvdGkiLCJhIjoiY2s3czdncXpyMGJuNTNmbzVzMWtkd3k5ayJ9.fgW0dfdOAaDbrGjlWb5rCg";
 
-  // var request = new XMLHttpRequest();
   const postos = { type: "FeatureCollection", features: [] };
 
   try {
@@ -73,46 +76,6 @@ async function renderMap(latitude, longitude) {
   } catch (error) {
     console.log(error);
   }
-
-  // request.open(
-  //   "GET",
-  //   `http://localhost:3000/posto/index?latP=${latitude}&longP=${longitude}`,
-  //   true
-  // );
-  // request.onload = function () {
-  //   // Begin accessing JSON data here
-  //   var data = JSON.parse(this.response);
-  //   if (request.status >= 200 && request.status < 400) {
-  //     data.forEach(function (posto) {
-  //       let novoPosto = {
-  //         type: "Feature",
-  //         geometry: {
-  //           type: "Point",
-  //           coordinates: [posto.longitude, posto.latitude],
-  //         },
-  //         properties: {
-  //           id: posto.id,
-  //           name: posto.nome,
-  //           address: posto.endereco,
-  //           city: posto.cidade,
-  //           country: "Brasil",
-  //           postalCode: posto.cep,
-  //           state: posto.estado,
-  //           bandeira: posto.bandeira,
-  //           produto: posto.produtos[0].nome,
-  //           preco: posto.produtos[0].postos_produtos.preco
-  //             .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-  //             .replace(".", ","),
-  //         },
-  //       };
-
-  //       postos.features.push(novoPosto);
-  //     });
-  //   } else {
-  //     console.log(data);
-  //   }
-  // };
-  // request.send();
 
   var map = new mapboxgl.Map({
     container: "map",
@@ -194,15 +157,15 @@ async function renderMap(latitude, longitude) {
   /**
    * Add a listing for each store to the sidebar.
    **/
-  function buildLocationList(postos) {
-    postos.features.forEach(function (posto, i) {
+  async function buildLocationList(postos) {
+    await postos.features.forEach(function (posto, i) {
       /* Add a new listing section to the sidebar. */
-      let listing = document.getElementById(
+      listing = document.getElementById(
         "listing-" + postos.features[i].properties.id
       );
 
       /* Add the link to the individual listing created above. */
-      let link =
+      link =
         listing.firstElementChild.firstElementChild.lastElementChild
           .lastElementChild.children[3];
       link.dataPosition = i;

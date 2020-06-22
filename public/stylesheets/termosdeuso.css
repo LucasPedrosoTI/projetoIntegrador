@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  background: url(../images/backLogin.jpg) no-repeat center;
+  font: 600 16px/18px "Roboto", sans-serif;
+}
+
+.boxwhite {
+  margin: 20vh 5% 2% 5%;
+  height: 100%;
+  padding: 2%;
+  position: relative;
+  border-radius: 20px;
+  background-color: #f6f6f6dd;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: #000d;
+  line-height: 20px;
+}
+
+@media (max-width: 400px) {
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    margin: 5px auto;
+  }
+}

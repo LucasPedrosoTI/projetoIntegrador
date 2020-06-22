@@ -28,7 +28,7 @@ module.exports = {
       );
     }
 
-    const postosFiltrados = postos.filter((posto) => posto.distancia < 10);
+    const postosFiltrados = postos.filter((posto) => posto.distancia <= 10);
 
     res.json(postosFiltrados);
   },

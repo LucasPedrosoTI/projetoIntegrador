@@ -223,9 +223,9 @@
           <div class="part1">
             <div class="likes my-2 h6">
               <!-- heart image -->
-              <% if (USUARIO) { %> <% var favorito = "far" %> <%
+              <% if (USUARIO) { %> <% var favorito = "0 far" %> <%
                 posto.usuarios.forEach(usuario => { %> <% if (USUARIO.id ==
-                usuario.id ) { %> <% favorito = "fas" %> <% } else { %> <% } %>
+                usuario.id ) { %> <% favorito = "1 fas" %> <% } else { %> <% } %>
               <% }) %>
               <span>
                 <a href="/usuario/dashboard/favoritos/add/<%=posto.id%>">

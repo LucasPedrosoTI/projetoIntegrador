@@ -3,7 +3,7 @@ const li = Array.from(document.querySelectorAll(".posto-item"));
 const hearts = Array.from(document.querySelectorAll(".far.fa-heart"));
 const prices = Array.from(document.querySelectorAll("a.price"));
 const dates = Array.from(document.querySelectorAll("p.date"));
-var postosFiltrados;
+var postosFiltrados = li;
 
 function mostrarLista(array) {
   let ol = array[0].parentNode;
@@ -43,6 +43,53 @@ function calcularDistancia(latitudeP, longitudeP, latitude, longitude) {
   }
 
   return menorDistancia(latitudeP, longitudeP, latitude, longitude);
+}
+
+function addColorsByPrice(array) {
+  // SETA UM ARRAY COM OS VALORES EM FORMATO NUMERICO
+  let values = [];
+  array.forEach(function (p) {
+    let value = Number(
+      p.firstElementChild.lastElementChild.children[2].children[4].innerText
+        .replace("R$", "")
+        .replace(",", ".")
+        .trim()
+    );
+    values.push(value);
+  });
+
+  // CALCULA A MEDIA DESSE ARRAY
+  let media =
+    values.reduce(function (a, b) {
+      return a + b;
+    }) / values.length;
+  media = media.toFixed(2);
+
+  // console.log("Função addColorsByPrice executada: " + media);
+
+  // COMPARA OS VALORES COM A MEDIA E DEFINE A CLASSE
+  array.forEach(function (p) {
+    let n = Number(
+      p.firstElementChild.lastElementChild.children[2].children[4].innerText
+        .replace("R$", "")
+        .replace(",", ".")
+        .trim()
+    );
+
+    if (n > media * 1.01) {
+      p.firstElementChild.lastElementChild.children[2].children[4].classList.add(
+        "high"
+      );
+    } else if (n < media * 0.99) {
+      p.firstElementChild.lastElementChild.children[2].children[4].classList.add(
+        "low"
+      );
+    } else {
+      p.firstElementChild.lastElementChild.children[2].children[4].classList.add(
+        "med"
+      );
+    }
+  });
 }
 
 window.addEventListener("load", function () {
@@ -108,39 +155,6 @@ window.addEventListener("load", function () {
     });
   }
 
-  function addColorsByPrice(array) {
-    // SETA UM ARRAY COM OS VALORES EM FORMATO NUMERICO
-    let values = [];
-    array.forEach(function (p) {
-      let value = Number(
-        p.innerText.replace("R$", "").replace(",", ".").trim()
-      );
-      values.push(value);
-    });
-
-    // CALCULA A MEDIA DESSE ARRAY
-    let media =
-      values.reduce(function (a, b) {
-        return a + b;
-      }) / values.length;
-    media = media.toFixed(2);
-
-    console.log("Função addColorsByPrice executada: " + media);
-
-    // COMPARA OS VALORES COM A MEDIA E DEFINE A CLASSE
-    array.forEach(function (p) {
-      let n = Number(p.innerText.replace("R$", "").replace(",", ".").trim());
-
-      if (n > media * 1.01) {
-        p.classList.add("high");
-      } else if (n < media * 0.99) {
-        p.classList.add("low");
-      } else {
-        p.classList.add("med");
-      }
-    });
-  }
-
   function hoverHeart() {
     for (let i = 0; i < hearts.length; i++) {
       hearts[i].addEventListener("mouseover", function (e) {
@@ -202,6 +216,19 @@ window.addEventListener("load", function () {
     );
   }
 
+  function favsPrimeiro(a, b) {
+    return (
+      Number(
+        b.firstElementChild.firstElementChild.children[0].firstElementChild
+          .firstElementChild.firstElementChild.classList[0]
+      ) -
+      Number(
+        a.firstElementChild.firstElementChild.children[0].firstElementChild
+          .firstElementChild.firstElementChild.classList[0]
+      )
+    );
+  }
+
   function porMenorDistancia(a, b) {
     return (
       Number(
@@ -233,6 +260,12 @@ window.addEventListener("load", function () {
         postosFiltrados.sort(porNota);
 
         mostrarLista(postosFiltrados);
+      } else if (e.target.value == "favsPrimeiro") {
+        const postosFiltrados = li.filter(filtrarPostos);
+
+        postosFiltrados.sort(favsPrimeiro);
+
+        mostrarLista(postosFiltrados);
       } else {
         const postosFiltrados = li.filter(filtrarPostos);
 
@@ -246,13 +279,11 @@ window.addEventListener("load", function () {
   controlarSelect(select);
   formatarDatas(dates);
   hoverHeart();
-  addColorsByPrice(prices);
 });
 
 async function atualizarDistancias(li) {
-  console.log("distâncias atualizadas: ", latitude, longitude);
-
-  for (var i = 0; i <= li.length; i++) {
+  // console.log("distâncias atualizadas: ", latitude, longitude);
+  for (var i = 0; i < li.length; i++) {
     var lat = parseFloat(li[i].children[1].value);
     var long = parseFloat(li[i].children[2].value);
     var latitudeUsuario = await window.latitude;
@@ -289,7 +320,7 @@ function submeterAvaliacao(arrayDeButtons) {
 function filtrarAposAtualizarDistancias(array) {
   postosFiltrados = array.filter(filtrarPostos);
 
-  console.log("postosFiltrados");
+  // console.log("postosFiltrados");
 
   if (postosFiltrados.length == 0) {
     const ol = array[0].parentNode;
@@ -308,6 +339,7 @@ function filtrarAposAtualizarDistancias(array) {
 
     ol.appendChild(emptyLi);
   } else {
+    addColorsByPrice(postosFiltrados);
     mostrarLista(postosFiltrados);
   }
 
@@ -319,28 +351,32 @@ function filtrarAposAtualizarDistancias(array) {
  * Interval que tenta calcular as distâncias e atualizar a DOM até que a lat e lgn estejam disponíveis
  */
 const intervalAtualizarDistancias = setInterval(() => {
-  atualizarDistancias(li);
-
   if (latitude && longitude) {
+    atualizarDistancias(li);
+
+    /**
+     * Interval que tenta filtrar postos até que o primeiro posto tenha distancia menor que 10 ou caso não tenha postos nessa condição
+     */
+    const intervalFiltrarPostos = setInterval(() => {
+      filtrarAposAtualizarDistancias(li);
+      if (postosFiltrados.length == 0) {
+        // console.log("length igual a zero limpou o interval");
+
+        clearInterval(intervalFiltrarPostos);
+        return;
+      }
+
+      if (
+        Number(
+          postosFiltrados[0].firstElementChild.lastElementChild.firstElementChild.children[0].innerText.trim()
+        ) <= 10
+      ) {
+        // console.log("a dist do primeiro posto limpou o interval");
+        clearInterval(intervalFiltrarPostos);
+        return;
+      }
+    }, 1000);
+
     clearInterval(intervalAtualizarDistancias);
-  }
-}, 1000);
-
-/**
- * Interval que tenta filtrar postos até que o primeiro posto tenha distancia menor que 10 ou caso não tenha postos nessa condição
- */
-const intervalFiltrarPostos = setInterval(() => {
-  filtrarAposAtualizarDistancias(li);
-
-  if (postosFiltrados.length == 0) {
-    clearInterval(intervalFiltrarPostos);
-  }
-
-  if (
-    Number(
-      postosFiltrados[0].firstElementChild.lastElementChild.firstElementChild.children[0].innerText.trim()
-    ) <= 10
-  ) {
-    clearInterval(intervalFiltrarPostos);
   }
 }, 1000);

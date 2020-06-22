@@ -1,6 +1,7 @@
 <%- include('../parts/head', {title: "Dashboard - Meu Posto"}) %>
 <link rel="stylesheet" href="/stylesheets/login.css    " />
 <link rel="stylesheet" href="/stylesheets/dashboard-usuario.css" />
+<script src="/javascripts/usuarioFavoritos.js" defer></script>
 
 <header>
     <%- include('../parts/navbar') %>
@@ -41,9 +42,9 @@
 
 
                         <% if (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","") == "petrobras" ||
-                            posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
-                            posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
-                            posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
+                                posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "ipiranga" || 
+                                posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "raizen" || 
+                                posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") == "alesat") { %>
                         <div class="img">
                             <img src="/images/<%=posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" distribuidora s.a.","")%>.png"
                                 alt="<%=posto.bandeira%>">
@@ -75,10 +76,10 @@
                         </div>
                         <% }) %>
                     </div>
-                    <button type="submit"
-                        onclick="window.location.href = '/main?latitude=<%=posto.latitude%>&longitude=<%=posto.longitude%>'"
-                        class="btn btn-success btn-sm ir">Ir </button>
-                    <!-- <a href="/main" id="favoritos"  class="btn btn-success btn-sm ir">Ir </a> -->
+                    <% var latitude, longitude %>
+
+                    <a href='https://www.google.com/maps/dir/?api=1&origin=&destination=<%=posto.latitude%>,<%=posto.longitude%>&travelmode=driving'
+                        class="btn btn-success btn-sm ir" target="_blank">Ir </a>
                 </div>
 
                 <% }) %>
