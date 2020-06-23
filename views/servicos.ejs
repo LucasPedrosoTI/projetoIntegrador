@@ -12,16 +12,16 @@
     <form method="GET">
       <select class="form-control" id="form_serv_number" name="servico">
         <option value="1" >Borracharia</option>
-        <option value="2" >Conveniência</option>
-        <option value="3" >Lavagem</option>
+        <option value="2" >Lavagem</option>
+        <option value="3" >Conveniência</option>
       </select>
       <button type="submit" class="busca">Buscar</button> 
     </form>
 
-    <div class="content">
+    <section class="container flex">
       
     <% postos.forEach(posto => {  %>
-      <div class="card">
+      <div class="card flex">
           <% if
           (posto.bandeira.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
           "").replace(" distribuidora s.a.","") == "petrobras" ||
@@ -61,8 +61,11 @@
             <% } %>
           </div>
 
-
         </div>
+        <div class="preco">
+          Preço<br>
+          R$ 20.00 
+       </div>
       </div>
 
     <% }) %>
